@@ -1,4 +1,3 @@
-const requireEsm = require("esm")(module);
 const path = require("path");
 
 const defaultGetTemplate = (template, defaultTemplate) =>
@@ -7,7 +6,6 @@ const defaultGetTemplate = (template, defaultTemplate) =>
     : defaultTemplate;
 
 exports.pluginOptionsSchema = ({ Joi }) => {
-  console.log("PLUGIN OPTIONS SCHEMA");
   return Joi.object({
     disable: Joi.boolean().default(Boolean(process.env.SKIP_DOCS)),
     getTemplate: Joi.function().default(() => defaultGetTemplate),
@@ -65,4 +63,4 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 
 exports.createPages = require("./createPages.js");
 
-exports.onCreateNode = requireEsm("./onCreateNode.esm.js");
+exports.onCreateNode = require("./onCreateNode.js");

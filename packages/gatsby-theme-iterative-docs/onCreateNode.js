@@ -1,5 +1,4 @@
-import path from "path";
-import remark from "remark";
+const path = require("path");
 
 async function onCreateNode(
   {
@@ -14,8 +13,6 @@ async function onCreateNode(
   if (disable || node.internal.type !== "MarkdownRemark") {
     return;
   }
-
-  console.log(remark);
 
   const parentNode = getNode(node.parent);
   const splitDir = parentNode.relativeDirectory.split(path.sep);
@@ -56,13 +53,11 @@ async function onCreateNode(
     frontmatter: { name: frontmatterName, match, tooltip },
   } = node;
 
-  console.log(frontmatterName, match, tooltip);
   const glossaryFieldData = {
     name: frontmatterName,
     match,
     tooltip: tooltip,
   };
-  console.log("GLOSSARY");
 
   const entryNode = {
     ...glossaryFieldData,
@@ -74,8 +69,6 @@ async function onCreateNode(
       contentDigest: createContentDigest(glossaryFieldData),
     },
   };
-
-  console.log(entryNode);
 }
 
 module.exports = onCreateNode;

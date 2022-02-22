@@ -94,11 +94,11 @@
 }
 
 .githubIcon {
-  background-image: url("/img/github_icon.svg");
+  background-image: url("../../../images/github_icon.svg");
 }
 
 .discordIcon {
   width: 1.2em;
   height: 1.2em;
-  background-image: url("/img/discord.svg");
+  background-image: url("../../../images/discord.svg");
 }

@@ -14,7 +14,6 @@ declare global {
 const SearchForm: React.FC = (props) => {
   useEffect(() => {
     if (!window.docsearch) {
-      console.log("Loading docsearch!");
       Promise.all([
         loadResource(
           "https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.css"
@@ -24,7 +23,6 @@ const SearchForm: React.FC = (props) => {
         ),
       ]).then(() => {
         if (window.docsearch) {
-          console.log("Initializing docsearch!");
           window.docsearch({
             apiKey: "755929839e113a981f481601c4f52082",
             indexName: "dvc",
