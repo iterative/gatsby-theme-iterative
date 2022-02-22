@@ -1,9 +1,1 @@
-module.exports = [
-  {
-    slug: "",
-    label: "Home",
-    source: "index.md",
-    icon: "house",
-  },
-  "page",
-];
+module.exports = require("../../content/docs/sidebar.json");
