@@ -3,7 +3,7 @@ module.exports = {
     title: "Example website",
     description: "Example website description",
     keywords: ["docs", "test"],
-    siteUrl: "localhost:8000",
+    siteUrl: "http://localhost:8000",
   },
   plugins: [{ resolve: `gatsby-theme-iterative-docs`, options: {} }],
 };

@@ -5,8 +5,9 @@
   "author": "christopherbiscardi <chris@christopherbiscardi.com> (@chrisbiscardi)",
   "license": "MIT",
   "scripts": {
-    "develop": "gatsby develop",
-    "build": "gatsby build"
+    "clean": "gatsby clean",
+    "build": "gatsby build",
+    "develop": "gatsby develop"
   },
   "dependencies": {
     "gatsby": "^4.8.0",

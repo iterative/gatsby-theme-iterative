@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "clean": "yarn workspace example clean",
     "build": "yarn workspace example build",
     "develop": "yarn workspace example develop"
   },
