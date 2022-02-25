@@ -1,141 +1,141 @@
-import React, { useRef, useState } from "react";
-import cn from "classnames";
+import React, { useRef, useState } from 'react'
+import cn from 'classnames'
 
-import Link from "../../../Link";
-import { OtherToolsPopup, CommunityPopup } from "../Popup";
+import Link from '../../../Link'
+import { OtherToolsPopup, CommunityPopup } from '../Popup'
 
-import { ReactComponent as ArrowUpSVG } from "../../../../images/arrow-up-icon.svg";
-import { ReactComponent as ArrowDownSVG } from "../../../../images/arrow-down-icon.svg";
+import { ReactComponent as ArrowUpSVG } from '../../../../images/arrow-up-icon.svg'
+import { ReactComponent as ArrowDownSVG } from '../../../../images/arrow-down-icon.svg'
 
-import { logEvent } from "../../../../utils/front/plausible";
-import { getFirstPage } from "../../../../utils/shared/sidebar";
+import { logEvent } from '../../../../utils/front/plausible'
+import { getFirstPage } from '../../../../utils/shared/sidebar'
 
-const docsPage = getFirstPage();
+const docsPage = getFirstPage()
 
-import * as styles from "./styles.module.css";
+import * as styles from './styles.module.css'
 
-type PopupName = "CommunityPopup" | "OtherToolsPopup";
+type PopupName = 'CommunityPopup' | 'OtherToolsPopup'
 
 interface INavLinkData {
-  href: string;
-  eventType: string;
-  text: string;
+  href: string
+  eventType: string
+  text: string
 }
 
 interface INavLinkPopupData {
-  text: string;
-  popup: PopupName;
+  text: string
+  popup: PopupName
 }
 
 const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
   {
-    href: "/features",
-    eventType: "features",
-    text: "Features",
+    href: '/features',
+    eventType: 'features',
+    text: 'Features'
   },
   {
     href: docsPage,
-    eventType: "doc",
-    text: "Doc",
+    eventType: 'doc',
+    text: 'Doc'
   },
   {
-    href: "/blog",
-    eventType: "blog",
-    text: "Blog",
+    href: '/blog',
+    eventType: 'blog',
+    text: 'Blog'
   },
   {
-    text: "Community",
-    popup: "CommunityPopup",
+    text: 'Community',
+    popup: 'CommunityPopup'
   },
   {
-    href: "/support",
-    eventType: "support",
-    text: "Support",
+    href: '/support',
+    eventType: 'support',
+    text: 'Support'
   },
   {
-    text: "Other Tools",
-    popup: "OtherToolsPopup",
-  },
-];
+    text: 'Other Tools',
+    popup: 'OtherToolsPopup'
+  }
+]
 
 const isPopup = (
   item: INavLinkData | INavLinkPopupData
-): item is INavLinkPopupData => (item as INavLinkPopupData).popup !== undefined;
+): item is INavLinkPopupData => (item as INavLinkPopupData).popup !== undefined
 
 const LinkItems: React.FC = ({}) => {
-  const [isCommunityPopupOpen, setIsCommunityPopupOpen] = useState(false);
-  const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false);
-  const communityPopupContainerEl = useRef<HTMLLIElement>(null);
-  const otherToolsPopupContainerEl = useRef<HTMLLIElement>(null);
-  let pageCloseEventListener: () => void = () => null;
-  let keyupCloseEventListener: () => void = () => null;
+  const [isCommunityPopupOpen, setIsCommunityPopupOpen] = useState(false)
+  const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
+  const communityPopupContainerEl = useRef<HTMLLIElement>(null)
+  const otherToolsPopupContainerEl = useRef<HTMLLIElement>(null)
+  let pageCloseEventListener: () => void = () => null
+  let keyupCloseEventListener: () => void = () => null
 
   const closeAllPopups = (): void => {
-    setIsCommunityPopupOpen(false);
-    setIsOtherToolsPopupOpen(false);
+    setIsCommunityPopupOpen(false)
+    setIsOtherToolsPopupOpen(false)
 
-    pageCloseEventListener();
-    keyupCloseEventListener();
-  };
+    pageCloseEventListener()
+    keyupCloseEventListener()
+  }
 
   const handlePageClick = (event: MouseEvent): void => {
     if (
       !communityPopupContainerEl.current ||
       !otherToolsPopupContainerEl.current
     ) {
-      return;
+      return
     }
     if (
       !communityPopupContainerEl.current.contains(event.target as Node) &&
       !otherToolsPopupContainerEl.current.contains(event.target as Node)
     ) {
-      closeAllPopups();
+      closeAllPopups()
     }
-  };
+  }
 
   const handlePageKeyup = (event: KeyboardEvent): void => {
-    if (event.key === "Escape") {
-      closeAllPopups();
+    if (event.key === 'Escape') {
+      closeAllPopups()
     }
-  };
+  }
 
   const setupPopupEventListeners = (): void => {
-    document.addEventListener("click", handlePageClick);
-    document.addEventListener("keyup", handlePageKeyup);
+    document.addEventListener('click', handlePageClick)
+    document.addEventListener('keyup', handlePageKeyup)
 
     pageCloseEventListener = (): void =>
-      document.removeEventListener("click", handlePageClick);
+      document.removeEventListener('click', handlePageClick)
     keyupCloseEventListener = (): void =>
-      document.removeEventListener("keyup", handlePageKeyup);
-  };
+      document.removeEventListener('keyup', handlePageKeyup)
+  }
 
   const openCommunityPopup = (): void => {
-    setupPopupEventListeners();
-    setIsCommunityPopupOpen(true);
-  };
+    setupPopupEventListeners()
+    setIsCommunityPopupOpen(true)
+  }
 
   const openOtherToolsPopup = (): void => {
-    setupPopupEventListeners();
-    setIsOtherToolsPopupOpen(true);
-  };
+    setupPopupEventListeners()
+    setIsOtherToolsPopupOpen(true)
+  }
 
   const toggleCommunityPopup = (): void => {
-    setIsOtherToolsPopupOpen(false);
+    setIsOtherToolsPopupOpen(false)
     if (isCommunityPopupOpen) {
-      closeAllPopups();
+      closeAllPopups()
     } else {
-      openCommunityPopup();
+      openCommunityPopup()
     }
-  };
+  }
 
   const toggleOtherToolsPopup = (): void => {
-    setIsCommunityPopupOpen(false);
+    setIsCommunityPopupOpen(false)
     if (isOtherToolsPopupOpen) {
-      closeAllPopups();
+      closeAllPopups()
     } else {
-      openOtherToolsPopup();
+      openOtherToolsPopup()
     }
-  };
+  }
 
   return (
     <ul className={styles.linksList}>
@@ -145,7 +145,7 @@ const LinkItems: React.FC = ({}) => {
           className={styles.linkItem}
           ref={
             isPopup(item)
-              ? item.popup === "OtherToolsPopup"
+              ? item.popup === 'OtherToolsPopup'
                 ? otherToolsPopupContainerEl
                 : communityPopupContainerEl
               : undefined
@@ -155,13 +155,13 @@ const LinkItems: React.FC = ({}) => {
             <>
               <button
                 onClick={
-                  item.popup === "OtherToolsPopup"
+                  item.popup === 'OtherToolsPopup'
                     ? toggleOtherToolsPopup
                     : toggleCommunityPopup
                 }
                 className={cn(
                   styles.link,
-                  (item.popup === "OtherToolsPopup"
+                  (item.popup === 'OtherToolsPopup'
                     ? isOtherToolsPopupOpen
                     : isCommunityPopupOpen) && styles.open
                 )}
@@ -174,7 +174,7 @@ const LinkItems: React.FC = ({}) => {
                   className={cn(styles.linkIcon, styles.arrowUpIcon)}
                 />
               </button>
-              {item.popup === "OtherToolsPopup" ? (
+              {item.popup === 'OtherToolsPopup' ? (
                 <OtherToolsPopup
                   closePopup={closeAllPopups}
                   isVisible={isOtherToolsPopupOpen}
@@ -188,7 +188,7 @@ const LinkItems: React.FC = ({}) => {
             </>
           ) : (
             <Link
-              onClick={(): void => logEvent("Nav", { Item: item.eventType })}
+              onClick={(): void => logEvent('Nav', { Item: item.eventType })}
               href={item.href}
               className={styles.link}
             >
@@ -198,7 +198,7 @@ const LinkItems: React.FC = ({}) => {
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default LinkItems;
+export default LinkItems

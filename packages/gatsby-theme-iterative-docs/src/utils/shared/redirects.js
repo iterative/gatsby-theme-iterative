@@ -1,96 +1,96 @@
 /* eslint-env node */
 
-const { navigate } = require("@reach/router");
-const { structure, findChildWithSource } = require("./sidebar");
-const redirects = require("gatsby-theme-iterative-docs/redirects");
+const { navigate } = require('@reach/router')
+const { structure, findChildWithSource } = require('./sidebar')
+const redirects = require('gatsby-theme-iterative-docs/redirects')
 
 const buildSidebarRedirects = (list, redirects = []) => {
-  list.forEach((item) => {
+  list.forEach(item => {
     if (!item.source && item.children) {
-      const redirectToChild = findChildWithSource(item);
+      const redirectToChild = findChildWithSource(item)
 
-      redirects.push(`^${item.path}/?$ ${redirectToChild.path} 307`);
+      redirects.push(`^${item.path}/?$ ${redirectToChild.path} 307`)
     }
 
     if (Array.isArray(item.children)) {
-      buildSidebarRedirects(item.children, redirects);
+      buildSidebarRedirects(item.children, redirects)
     }
-  });
+  })
 
-  return redirects;
-};
+  return redirects
+}
 
-const processRedirectString = (redirectString) => {
-  const redirectParts = redirectString.split(/\s+/g);
-  const matchPathname = /^\^?\//.test(redirectParts[0]);
-  const regex = new RegExp(redirectParts[0]);
+const processRedirectString = redirectString => {
+  const redirectParts = redirectString.split(/\s+/g)
+  const matchPathname = /^\^?\//.test(redirectParts[0])
+  const regex = new RegExp(redirectParts[0])
 
   return {
     regex,
     matchPathname,
     replace: redirectParts[1],
-    code: Number(redirectParts[2] || 301),
-  };
-};
+    code: Number(redirectParts[2] || 301)
+  }
+}
 
 const getRedirects = (() => {
-  let allRedirects;
+  let allRedirects
 
   return () => {
     if (!allRedirects) {
       allRedirects = [...redirects, ...buildSidebarRedirects(structure)].map(
         processRedirectString
-      );
+      )
     }
 
-    return allRedirects;
-  };
-})();
+    return allRedirects
+  }
+})()
 
 const matchRedirectList = (host, pathname) => {
-  const wholeUrl = `https://${host}${pathname}`;
+  const wholeUrl = `https://${host}${pathname}`
 
   for (const { matchPathname, regex, replace, code } of getRedirects()) {
-    const matchTarget = matchPathname ? pathname : wholeUrl;
+    const matchTarget = matchPathname ? pathname : wholeUrl
     if (regex.test(matchTarget)) {
-      return [code, matchTarget.replace(regex, replace).replace(/^\/+/, "/")];
+      return [code, matchTarget.replace(regex, replace).replace(/^\/+/, '/')]
     }
   }
 
-  return [];
-};
+  return []
+}
 
 const getRedirect = (host, pathname, { req, dev } = {}) => {
-  const httpsRedirect = req != null && !dev && !/^localhost(:\d+)?$/.test(host);
-  if (httpsRedirect && req.headers["x-forwarded-proto"] !== "https") {
-    return [301, `https://${host.replace(/^www\./, "")}${req.url}`];
+  const httpsRedirect = req != null && !dev && !/^localhost(:\d+)?$/.test(host)
+  if (httpsRedirect && req.headers['x-forwarded-proto'] !== 'https') {
+    return [301, `https://${host.replace(/^www\./, '')}${req.url}`]
   }
 
-  return matchRedirectList(host, pathname);
-};
+  return matchRedirectList(host, pathname)
+}
 
 const handleFrontRedirect = (host, pathname, clickEvent) => {
-  let [, redirectUrl] = getRedirect(host, pathname);
+  let [, redirectUrl] = getRedirect(host, pathname)
 
   if (redirectUrl) {
     if (clickEvent) {
-      clickEvent.preventDefault();
+      clickEvent.preventDefault()
     }
 
-    if (redirectUrl.startsWith("/")) {
-      redirectUrl = redirectUrl + location.search;
+    if (redirectUrl.startsWith('/')) {
+      redirectUrl = redirectUrl + location.search
 
       // If it's trailing slash redirect we should save hash in the url
       if (pathname === `${redirectUrl}/`) {
-        redirectUrl = redirectUrl + location.hash;
+        redirectUrl = redirectUrl + location.hash
       }
     }
 
-    navigate(redirectUrl);
+    navigate(redirectUrl)
   }
-};
+}
 
-exports.buildSidebarRedirects = buildSidebarRedirects;
-exports.processRedirectString = processRedirectString;
-exports.getRedirect = getRedirect;
-exports.handleFrontRedirect = handleFrontRedirect;
+exports.buildSidebarRedirects = buildSidebarRedirects
+exports.processRedirectString = processRedirectString
+exports.getRedirect = getRedirect
+exports.handleFrontRedirect = handleFrontRedirect

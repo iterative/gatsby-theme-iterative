@@ -1,22 +1,22 @@
-import MainLayout from "../MainLayout";
-import DocumentationLayout from "../DocumentationLayout";
-import AlertLandingLayout from "../AlertLandingLayout";
+import MainLayout from '../MainLayout'
+import DocumentationLayout from '../DocumentationLayout'
+import AlertLandingLayout from '../AlertLandingLayout'
 
 const getLayoutComponent = (props: {
   pageContext: {
-    is404: boolean;
-    isDocs: boolean;
-    isAlertLanding: boolean;
-  };
+    is404: boolean
+    isDocs: boolean
+    isAlertLanding: boolean
+  }
 }) => {
   if (!props.pageContext.is404) {
     if (props.pageContext.isDocs) {
-      return DocumentationLayout;
+      return DocumentationLayout
     } else if (props.pageContext.isAlertLanding) {
-      return AlertLandingLayout;
+      return AlertLandingLayout
     }
   }
-  return MainLayout;
-};
+  return MainLayout
+}
 
-export default getLayoutComponent;
+export default getLayoutComponent

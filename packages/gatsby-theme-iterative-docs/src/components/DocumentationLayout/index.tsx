@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 
-import MainLayout, { LayoutComponent, LayoutModifiers } from "../MainLayout";
-import ThemeDocumentationLayout from "../Documentation/Layout";
+import MainLayout, { LayoutComponent, LayoutModifiers } from '../MainLayout'
+import ThemeDocumentationLayout from '../Documentation/Layout'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const {
-    location: { pathname },
-  } = restProps;
+    location: { pathname }
+  } = restProps
 
   return (
     <MainLayout
@@ -17,7 +17,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
         {children}
       </ThemeDocumentationLayout>
     </MainLayout>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

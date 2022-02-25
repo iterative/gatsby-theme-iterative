@@ -1,29 +1,29 @@
-import cn from "classnames";
-import React from "react";
-import includes from "lodash/includes";
+import cn from 'classnames'
+import React from 'react'
+import includes from 'lodash/includes'
 
-import { LayoutModifiers, ILayoutModifiable } from "../MainLayout";
-import LayoutWidthContainer from "../LayoutWidthContainer";
-import Link from "../Link";
-import Nav from "./Nav";
+import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
+import LayoutWidthContainer from '../LayoutWidthContainer'
+import Link from '../Link'
+import Nav from './Nav'
 import {
   HamburgerMenu,
   HamburgerButton,
-  useHamburgerMenu,
-} from "../HamburgerMenu";
+  useHamburgerMenu
+} from '../HamburgerMenu'
 
-import { useHeaderIsScrolled } from "../../utils/front/scroll";
-import { ReactComponent as LogoSVG } from "../../images/dvc_icon-color--square_vector.svg";
-import * as styles from "./styles.module.css";
+import { useHeaderIsScrolled } from '../../utils/front/scroll'
+import { ReactComponent as LogoSVG } from '../../images/dvc_icon-color--square_vector.svg'
+import * as styles from './styles.module.css'
 
-import LayoutAlert from "./alert";
+import LayoutAlert from './alert'
 
 const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
-  const { opened, handleToggle, handleItemClick } = useHamburgerMenu();
-  const scrolled = useHeaderIsScrolled();
-  const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed);
-  const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert);
-  const collapsed = opened || hasCollapsedModifier || scrolled;
+  const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
+  const scrolled = useHeaderIsScrolled()
+  const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
+  const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
+  const collapsed = opened || hasCollapsedModifier || scrolled
 
   return (
     <>
@@ -74,7 +74,7 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
         handleItemClick={handleItemClick}
       />
     </>
-  );
-};
+  )
+}
 
-export default LayoutHeader;
+export default LayoutHeader

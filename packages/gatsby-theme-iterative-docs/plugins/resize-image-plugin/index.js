@@ -12,50 +12,47 @@
 
 const {
   imageClass,
-  imageWrapperClass,
-} = require("gatsby-remark-images/constants");
+  imageWrapperClass
+} = require('gatsby-remark-images/constants')
 
-const imageMaxWidth = 700;
+const imageMaxWidth = 700
 
 const {
   imageWrapClassPrefix,
   imageWrapStopClass,
-  stopWrapTag,
-} = require("./constants");
+  stopWrapTag
+} = require('./constants')
 
-const {
-  convertHtmlToHast,
-  convertHastToHtml,
-} = require("../utils/convertHast");
+const { convertHtmlToHast, convertHastToHtml } = require('../utils/convertHast')
 
-const extractInstructions = (titleString) => {
-  const regexResize = /=\d{2,4}/g;
-  const regexWrap = /:wrap-(left|right)/;
+const extractInstructions = titleString => {
+  const regexResize = /=\d{2,4}/g
+  const regexWrap = /:wrap-(left|right)/
 
   const title = titleString
-    .replace(regexResize, "")
-    .replace(regexWrap, "")
-    .trim();
-  const resize = titleString.match(regexResize);
-  const wrap = titleString.match(regexWrap);
+    .replace(regexResize, '')
+    .replace(regexWrap, '')
+    .trim()
+  const resize = titleString.match(regexResize)
+  const wrap = titleString.match(regexWrap)
 
   return {
-    resize: resize ? Number(resize[0].replace("=", "")) : null,
+    resize: resize ? Number(resize[0].replace('=', '')) : null,
     title,
-    wrap: wrap ? wrap[1] : null,
-  };
-};
+    wrap: wrap ? wrap[1] : null
+  }
+}
 
 module.exports = async ({ markdownAST }) => {
-  const { selectAll, select } = await import("hast-util-select");
-  const { visit } = await import("unist-util-visit");
-  visit(markdownAST, "html", (node) => {
-    const regexMaxWidth = /max-width: \d{1,5}px/g;
-    const hast = convertHtmlToHast(node.value);
-    const wrapperImageList = selectAll(`.${imageWrapperClass}`, hast);
+  const { selectAll, select } = await import('hast-util-select')
+  const { visit } = await import('unist-util-visit')
+  visit(markdownAST, 'html', node => {
+    const regexMaxWidth = /max-width: \d{1,5}px/g
+    const hast = convertHtmlToHast(node.value)
+    const wrapperImageList = selectAll(`.${imageWrapperClass}`, hast)
 
     if (!wrapperImageList.length) {
-      return;
+      return
     }
 
     /*
@@ -70,40 +67,40 @@ module.exports = async ({ markdownAST }) => {
             <img .gatsby-resp-image-image title='..' alt='...' max-width: 100%>
           ...
     */
-    wrapperImageList.forEach((wrapperImage) => {
-      const source = select(`picture > source:first-child`, wrapperImage);
-      const image = select(`.${imageClass}`, wrapperImage);
+    wrapperImageList.forEach(wrapperImage => {
+      const source = select(`picture > source:first-child`, wrapperImage)
+      const image = select(`.${imageClass}`, wrapperImage)
       const { resize, title, wrap } = extractInstructions(
         image.properties.title
-      );
+      )
 
       if (resize || wrap) {
         //  by default Gatsby populates title value with alt,
         //  restoring it here if needed
-        image.properties.title = title ? title : image.properties.alt;
+        image.properties.title = title ? title : image.properties.alt
       }
 
       const originalSize = source.properties.srcSet[
         source.properties.srcSet.length - 1
       ]
-        .split(" ")[1]
-        .replace("w", "");
+        .split(' ')[1]
+        .replace('w', '')
 
       const maxWidth = wrapperImage.properties.style
         .match(regexMaxWidth)[0]
-        .replace(/\D/g, "");
+        .replace(/\D/g, '')
 
       if (wrap) {
-        const { className, style } = wrapperImage.properties;
+        const { className, style } = wrapperImage.properties
         wrapperImage.properties.className = `${
-          className || ""
-        } ${imageWrapClassPrefix}${wrap}`;
+          className || ''
+        } ${imageWrapClassPrefix}${wrap}`
 
         // Prevent us from using an !important in the CSS
         wrapperImage.properties.style = style.replace(
           /margin-(left|right):\s+auto/g,
-          ""
-        );
+          ''
+        )
       }
 
       if (resize || imageMaxWidth * 2 > originalSize) {
@@ -112,18 +109,18 @@ module.exports = async ({ markdownAST }) => {
           `max-width: ${
             resize ? Math.min(resize, maxWidth) : originalSize / 2
           }px`
-        );
+        )
       }
-    });
+    })
 
-    const stopWrapTagList = selectAll(stopWrapTag, hast);
-    stopWrapTagList.forEach((stopWrap) => {
-      stopWrap.tagName = "div";
-      stopWrap.properties.className = imageWrapStopClass;
-    });
+    const stopWrapTagList = selectAll(stopWrapTag, hast)
+    stopWrapTagList.forEach(stopWrap => {
+      stopWrap.tagName = 'div'
+      stopWrap.properties.className = imageWrapStopClass
+    })
 
-    node.value = convertHastToHtml(hast);
-  });
-};
+    node.value = convertHastToHtml(hast)
+  })
+}
 
-module.exports.extractInstructions = extractInstructions;
+module.exports.extractInstructions = extractInstructions

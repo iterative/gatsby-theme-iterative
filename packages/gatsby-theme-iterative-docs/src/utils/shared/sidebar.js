@@ -20,35 +20,35 @@
   }
 */
 
-const { titleCase } = require("title-case");
-const sidebar = require("gatsby-theme-iterative-docs/sidebar");
+const { titleCase } = require('title-case')
+const sidebar = require('gatsby-theme-iterative-docs/sidebar')
 
-const PATH_ROOT = "/doc";
-const FILE_ROOT = "/docs/";
-const FILE_EXTENSION = ".md";
+const PATH_ROOT = '/doc'
+const FILE_ROOT = '/docs/'
+const FILE_EXTENSION = '.md'
 
 function dvcTitleCase(slug) {
-  return titleCase(slug.replace(/dvc/g, "DVC").replace(/-/g, " "));
+  return titleCase(slug.replace(/dvc/g, 'DVC').replace(/-/g, ' '))
 }
 
 function validateRawItem({ slug, source, children, type, url }) {
-  const isSourceDisabled = source === false;
+  const isSourceDisabled = source === false
 
   switch (type) {
-    case "external":
-      if (typeof url !== "string") {
-        throw Error("'url' field is required in external sidebar.json entries");
+    case 'external':
+      if (typeof url !== 'string') {
+        throw Error("'url' field is required in external sidebar.json entries")
       }
-      break;
+      break
     default:
-      if (typeof slug !== "string") {
-        throw Error("'slug' field is required in local sidebar.json entries");
+      if (typeof slug !== 'string') {
+        throw Error("'slug' field is required in local sidebar.json entries")
       }
 
       if (isSourceDisabled && (!children || !children.length)) {
         throw Error(
-          "Local sidebar.json entries with no source must have children"
-        );
+          'Local sidebar.json entries with no source must have children'
+        )
       }
   }
 }
@@ -56,14 +56,14 @@ function validateRawItem({ slug, source, children, type, url }) {
 function findItemByField(data, field, targetValue) {
   if (data.length) {
     for (let i = 0; i < data.length; i++) {
-      const { children } = data[i];
+      const { children } = data[i]
 
       if (data[i][field] === targetValue) {
-        return data[i];
+        return data[i]
       } else if (children) {
-        const result = findItemByField(children, field, targetValue);
+        const result = findItemByField(children, field, targetValue)
         if (result) {
-          return result;
+          return result
         }
       }
     }
@@ -72,43 +72,43 @@ function findItemByField(data, field, targetValue) {
 
 function findPrevItemWithSource(data, item) {
   if (item && item.source) {
-    return item;
+    return item
   } else if (item && item.prev) {
-    const prevItem = findItemByField(data, "path", item.prev);
+    const prevItem = findItemByField(data, 'path', item.prev)
 
-    return findPrevItemWithSource(data, prevItem);
+    return findPrevItemWithSource(data, prevItem)
   }
 }
 
 function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
-  validateRawItem(rawItem);
+  validateRawItem(rawItem)
 
-  const { label, slug, source, tutorials, type, url, style, icon } = rawItem;
+  const { label, slug, source, tutorials, type, url, style, icon } = rawItem
 
   const sharedFields = {
     style,
-    icon,
-  };
+    icon
+  }
 
   switch (type) {
-    case "external":
+    case 'external':
       return {
         type,
         path: url,
         label,
-        ...sharedFields,
-      };
+        ...sharedFields
+      }
     default:
       // If prev item doesn't have source we need to search for it
       const prevItemWithSource =
-        prevRef && findPrevItemWithSource(resultRef, prevRef);
+        prevRef && findPrevItemWithSource(resultRef, prevRef)
 
-      const prev = prevItemWithSource && prevItemWithSource.path;
+      const prev = prevItemWithSource && prevItemWithSource.path
 
-      const sourceFileName = source ? source : slug + FILE_EXTENSION;
-      const sourcePath = FILE_ROOT + parentPath + sourceFileName;
+      const sourceFileName = source ? source : slug + FILE_EXTENSION
+      const sourcePath = FILE_ROOT + parentPath + sourceFileName
 
-      const relativePath = parentPath + slug;
+      const relativePath = parentPath + slug
 
       return {
         path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
@@ -117,8 +117,8 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
         tutorials: tutorials || {},
         prev,
         next: undefined,
-        ...sharedFields,
-      };
+        ...sharedFields
+      }
   }
 }
 
@@ -126,24 +126,24 @@ function normalizeSidebar({
   data,
   parentPath,
   parentResultRef,
-  startingPrevRef,
+  startingPrevRef
 }) {
-  const currentResult = [];
-  const resultRef = parentResultRef || currentResult;
-  let prevRef = startingPrevRef;
+  const currentResult = []
+  const resultRef = parentResultRef || currentResult
+  let prevRef = startingPrevRef
 
-  data.forEach((rawItem) => {
-    const isShortcut = typeof rawItem === "string";
-    rawItem = isShortcut ? { slug: rawItem } : rawItem;
+  data.forEach(rawItem => {
+    const isShortcut = typeof rawItem === 'string'
+    rawItem = isShortcut ? { slug: rawItem } : rawItem
     const normalizedItem = normalizeItem({
       rawItem,
       parentPath,
       resultRef,
-      prevRef,
-    });
+      prevRef
+    })
 
     if (prevRef) {
-      prevRef.next = normalizedItem.path;
+      prevRef.next = normalizedItem.path
     }
 
     if (rawItem.children) {
@@ -151,18 +151,18 @@ function normalizeSidebar({
         data: rawItem.children,
         parentPath: `${parentPath}${rawItem.slug}/`,
         parentResultRef: resultRef,
-        startingPrevRef: normalizedItem,
-      });
+        startingPrevRef: normalizedItem
+      })
 
-      prevRef = normalizedItem.children[normalizedItem.children.length - 1];
+      prevRef = normalizedItem.children[normalizedItem.children.length - 1]
     } else {
-      prevRef = normalizedItem;
+      prevRef = normalizedItem
     }
 
-    currentResult.push(normalizedItem);
-  });
+    currentResult.push(normalizedItem)
+  })
 
-  return currentResult;
+  return currentResult
 }
 
 /*
@@ -171,58 +171,58 @@ function normalizeSidebar({
 
 const normalizedSidebar = normalizeSidebar({
   data: sidebar,
-  parentPath: "",
-});
+  parentPath: ''
+})
 
 function findChildWithSource(item) {
   // Return item unchanged if isn't root-relative
-  if (!item.path.startsWith("/")) return item;
+  if (!item.path.startsWith('/')) return item
   return item.source
     ? item
-    : findChildWithSource(item.children && item.children[0]);
+    : findChildWithSource(item.children && item.children[0])
 }
 
 function getFirstPage() {
-  return findChildWithSource(normalizedSidebar[0]).path;
+  return findChildWithSource(normalizedSidebar[0]).path
 }
 
 function getItemByPath(path) {
-  const normalizedPath = path.replace(/\/$/, "");
-  const isRoot = normalizedPath === PATH_ROOT;
+  const normalizedPath = path.replace(/\/$/, '')
+  const isRoot = normalizedPath === PATH_ROOT
   const item = isRoot
     ? normalizedSidebar[0]
-    : findItemByField(normalizedSidebar, "path", normalizedPath);
+    : findItemByField(normalizedSidebar, 'path', normalizedPath)
 
-  if (!item) return false;
+  if (!item) return false
 
-  return findChildWithSource(item);
+  return findChildWithSource(item)
 }
 
 function getItemBySource(source) {
-  const item = findItemByField(normalizedSidebar, "source", source);
+  const item = findItemByField(normalizedSidebar, 'source', source)
 
-  return item || false;
+  return item || false
 }
 
 function getPathWithSource(path) {
-  return getItemByPath(path).path;
+  return getItemByPath(path).path
 }
 function getParentsListFromPath(path) {
   // If path is the homepage, indicate that it's the only one active.
   // This will have to change if we add children under home, but we don't currently.
-  if (path === PATH_ROOT) return [PATH_ROOT];
+  if (path === PATH_ROOT) return [PATH_ROOT]
 
-  let currentPath = PATH_ROOT;
+  let currentPath = PATH_ROOT
 
   return path
-    .replace(PATH_ROOT + "/", "")
-    .split("/")
-    .map((part) => {
-      const path = `${currentPath}/${part}`;
-      currentPath = path;
+    .replace(PATH_ROOT + '/', '')
+    .split('/')
+    .map(part => {
+      const path = `${currentPath}/${part}`
+      currentPath = path
 
-      return path;
-    });
+      return path
+    })
 }
 
 module.exports = {
@@ -232,5 +232,5 @@ module.exports = {
   getItemBySource,
   getPathWithSource,
   getParentsListFromPath,
-  getFirstPage,
-};
+  getFirstPage
+}

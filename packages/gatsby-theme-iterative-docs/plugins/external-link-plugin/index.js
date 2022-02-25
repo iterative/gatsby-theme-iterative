@@ -1,16 +1,13 @@
-const escape = require("escape-html");
+const escape = require('escape-html')
 
-const {
-  convertHastToHtml,
-  convertHtmlToHast,
-} = require("../utils/convertHast");
+const { convertHastToHtml, convertHtmlToHast } = require('../utils/convertHast')
 
-const requiredExternalLinkAttrs = ["href", "title", "description", "link"];
+const requiredExternalLinkAttrs = ['href', 'title', 'description', 'link']
 
 function isCorrectExternalLinkAttr(attrsKeyTagArray) {
-  return requiredExternalLinkAttrs.every((attr) =>
+  return requiredExternalLinkAttrs.every(attr =>
     attrsKeyTagArray.includes(attr)
-  );
+  )
 }
 
 function renderTag(attrs) {
@@ -33,37 +30,37 @@ function renderTag(attrs) {
            }
       </a>
     </section>
-    `;
+    `
 }
 
 module.exports = async ({ markdownAST }) => {
-  const { visit } = await import("unist-util-visit");
-  const { selectAll } = await import("hast-util-select");
-  visit(markdownAST, "html", (node) => {
-    const hast = convertHtmlToHast(node.value);
-    const externalLinkNodeList = selectAll("external-link", hast);
+  const { visit } = await import('unist-util-visit')
+  const { selectAll } = await import('hast-util-select')
+  visit(markdownAST, 'html', node => {
+    const hast = convertHtmlToHast(node.value)
+    const externalLinkNodeList = selectAll('external-link', hast)
 
     if (!externalLinkNodeList.length) {
-      return;
+      return
     }
 
-    externalLinkNodeList.forEach((externalLinkNode) => {
-      const { properties } = externalLinkNode;
+    externalLinkNodeList.forEach(externalLinkNode => {
+      const { properties } = externalLinkNode
       if (isCorrectExternalLinkAttr(Object.keys(properties))) {
-        const externalLinkHtml = renderTag(properties);
-        const externalLinkHast = convertHtmlToHast(externalLinkHtml);
+        const externalLinkHtml = renderTag(properties)
+        const externalLinkHast = convertHtmlToHast(externalLinkHtml)
 
-        externalLinkNode.type = externalLinkHast.type;
-        externalLinkNode.tagName = externalLinkHast.tagName;
-        externalLinkNode.properties = externalLinkHast.properties;
-        externalLinkNode.children = externalLinkHast.children;
+        externalLinkNode.type = externalLinkHast.type
+        externalLinkNode.tagName = externalLinkHast.tagName
+        externalLinkNode.properties = externalLinkHast.properties
+        externalLinkNode.children = externalLinkHast.children
       } else {
         throw new Error(
           `No correct tag <external-link /> or not all nested tags in ${node.value}`
-        );
+        )
       }
-    });
+    })
 
-    node.value = convertHastToHtml(hast);
-  });
-};
+    node.value = convertHastToHtml(hast)
+  })
+}

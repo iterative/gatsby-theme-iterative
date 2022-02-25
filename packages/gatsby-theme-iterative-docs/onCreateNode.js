@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path')
 
 async function onCreateNode(
   {
@@ -6,30 +6,30 @@ async function onCreateNode(
     getNode,
     createNodeId,
     createContentDigest,
-    actions: { createNode, createParentChildLink },
+    actions: { createNode, createParentChildLink }
   },
   { disable }
 ) {
-  if (disable || node.internal.type !== "MarkdownRemark") {
-    return;
+  if (disable || node.internal.type !== 'MarkdownRemark') {
+    return
   }
 
-  const parentNode = getNode(node.parent);
-  const splitDir = parentNode.relativeDirectory.split(path.sep);
-  if (splitDir[0] !== "docs") return;
+  const parentNode = getNode(node.parent)
+  const splitDir = parentNode.relativeDirectory.split(path.sep)
+  if (splitDir[0] !== 'docs') return
 
-  const { name, relativePath } = parentNode;
-  splitDir[0] = "doc";
+  const { name, relativePath } = parentNode
+  splitDir[0] = 'doc'
 
-  const slug = path.posix.join("/", ...splitDir, name === "index" ? "" : name);
+  const slug = path.posix.join('/', ...splitDir, name === 'index' ? '' : name)
 
   const fieldData = {
     slug,
     sourcePath: relativePath,
     template: node.frontmatter.template,
-    title: node.frontmatter.title === "" ? null : node.frontmatter.title,
-    description: node.frontmatter.description,
-  };
+    title: node.frontmatter.title === '' ? null : node.frontmatter.title,
+    description: node.frontmatter.description
+  }
 
   const docNode = {
     ...fieldData,
@@ -38,26 +38,26 @@ async function onCreateNode(
     children: [],
     internal: {
       type: `DocsPage`,
-      contentDigest: createContentDigest(fieldData),
-    },
-  };
+      contentDigest: createContentDigest(fieldData)
+    }
+  }
 
-  createNode(docNode);
-  createParentChildLink({ parent: node, child: docNode });
+  createNode(docNode)
+  createParentChildLink({ parent: node, child: docNode })
 
   // Glossary
 
-  if (parentNode.relativeDirectory !== "docs/user-guide/basic-concepts") return;
+  if (parentNode.relativeDirectory !== 'docs/user-guide/basic-concepts') return
 
   const {
-    frontmatter: { name: frontmatterName, match, tooltip },
-  } = node;
+    frontmatter: { name: frontmatterName, match, tooltip }
+  } = node
 
   const glossaryFieldData = {
     name: frontmatterName,
     match,
-    tooltip: tooltip,
-  };
+    tooltip: tooltip
+  }
 
   const entryNode = {
     ...glossaryFieldData,
@@ -66,9 +66,9 @@ async function onCreateNode(
     children: [],
     internal: {
       type: `GlossaryEntry`,
-      contentDigest: createContentDigest(glossaryFieldData),
-    },
-  };
+      contentDigest: createContentDigest(glossaryFieldData)
+    }
+  }
 }
 
-module.exports = onCreateNode;
+module.exports = onCreateNode

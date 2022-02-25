@@ -1,74 +1,74 @@
-import React from "react";
-import cn from "classnames";
+import React from 'react'
+import cn from 'classnames'
 
-import Link from "../../../Link";
-import { logEvent } from "../../../../utils/front/plausible";
+import Link from '../../../Link'
+import { logEvent } from '../../../../utils/front/plausible'
 
-import { ReactComponent as ExternalLinkIcon } from "../../../../images/external-link-icon.svg";
+import { ReactComponent as ExternalLinkIcon } from '../../../../images/external-link-icon.svg'
 
-import * as styles from "./styles.module.css";
+import * as styles from './styles.module.css'
 
 interface IOtherToolsLinkData {
-  href: string;
-  title: string;
-  description: string;
-  iconClass: string;
-  target?: "_blank";
+  href: string
+  title: string
+  description: string
+  iconClass: string
+  target?: '_blank'
 }
 
 interface ICommunityLinkData {
-  href: string;
-  text: string;
+  href: string
+  text: string
 }
 
 const communityPopupData: Array<ICommunityLinkData> = [
-  { text: "Meet the Community", href: "/community" },
-  { text: "Testimonials", href: "/community#testimonial" },
-  { text: "Contribute", href: "/community#contribute" },
-  { text: "Learn", href: "/community#learn" },
-  { text: "Events", href: "/community#events" },
-];
+  { text: 'Meet the Community', href: '/community' },
+  { text: 'Testimonials', href: '/community#testimonial' },
+  { text: 'Contribute', href: '/community#contribute' },
+  { text: 'Learn', href: '/community#learn' },
+  { text: 'Events', href: '/community#events' }
+]
 
 const otherToolsPopupData: Array<IOtherToolsLinkData> = [
   {
-    title: "Studio",
+    title: 'Studio',
     iconClass: styles.studioIcon,
-    description: "Track experiments and share insights from ML projects",
-    href: "https://studio.iterative.ai/",
+    description: 'Track experiments and share insights from ML projects',
+    href: 'https://studio.iterative.ai/'
   },
   {
-    title: "DVC",
+    title: 'DVC',
     iconClass: styles.dvcIcon,
-    description: "Open-source version control system for ML projects",
-    href: "/",
+    description: 'Open-source version control system for ML projects',
+    href: '/'
   },
   {
-    title: "CML",
+    title: 'CML',
     iconClass: styles.cmlIcon,
-    description: "Open-source CI/CD for ML projects",
-    href: "https://cml.dev/",
+    description: 'Open-source CI/CD for ML projects',
+    href: 'https://cml.dev/'
   },
   {
-    title: "MLEM",
+    title: 'MLEM',
     iconClass: styles.mlemIcon,
     description:
-      "Open-source model registry and deployment tool for ML projects",
-    href: "https://mlem.ai/",
-  },
-];
+      'Open-source model registry and deployment tool for ML projects',
+    href: 'https://mlem.ai/'
+  }
+]
 
 export const Popup: React.FC<{
-  className?: string;
-  isVisible?: boolean;
+  className?: string
+  isVisible?: boolean
 }> = ({ children, isVisible, className }) => (
   <div className={cn(styles.popup, isVisible && styles.visible, className)}>
     {children}
   </div>
-);
+)
 
 export const CommunityPopup: React.FC<{
-  isVisible: boolean;
-  closePopup: () => void;
+  isVisible: boolean
+  closePopup: () => void
 }> = ({ isVisible, closePopup }) => (
   <Popup className={styles.communityPopup} isVisible={isVisible}>
     {communityPopupData.map(({ text, href }, i) => (
@@ -77,19 +77,19 @@ export const CommunityPopup: React.FC<{
         href={href}
         key={i}
         onClick={(): void => {
-          logEvent("Nav", { Item: "community" });
-          closePopup();
+          logEvent('Nav', { Item: 'community' })
+          closePopup()
         }}
       >
         {text}
       </Link>
     ))}
   </Popup>
-);
+)
 
 export const OtherToolsPopup: React.FC<{
-  isVisible: boolean;
-  closePopup: () => void;
+  isVisible: boolean
+  closePopup: () => void
 }> = ({ isVisible, closePopup }) => (
   <Popup className={styles.otherToolsPopup} isVisible={isVisible}>
     {otherToolsPopupData.map(
@@ -113,4 +113,4 @@ export const OtherToolsPopup: React.FC<{
       )
     )}
   </Popup>
-);
+)

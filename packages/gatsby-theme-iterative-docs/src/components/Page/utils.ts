@@ -1,40 +1,40 @@
-import { useEffect } from "react";
-import { useLocation } from "@reach/router";
+import { useEffect } from 'react'
+import { useLocation } from '@reach/router'
 
-import { handleFrontRedirect } from "../../utils/shared/redirects";
-import { scrollIntoLayout, getScrollNode } from "../../utils/front/scroll";
-import safeQuerySelector from "../../utils/front/safeQuerySelector";
+import { handleFrontRedirect } from '../../utils/shared/redirects'
+import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
+import safeQuerySelector from '../../utils/front/safeQuerySelector'
 
-import * as styles from "./styles.module.css";
+import * as styles from './styles.module.css'
 
 export const useAnchorNavigation = (): void => {
-  const location = useLocation();
+  const location = useLocation()
 
   useEffect(() => {
     if (location.hash) {
-      const node = safeQuerySelector(location.hash);
+      const node = safeQuerySelector(location.hash)
 
       if (node) {
-        scrollIntoLayout(node, { waitImages: true });
+        scrollIntoLayout(node, { waitImages: true })
       }
     } else {
-      getScrollNode().scrollTop = 0;
+      getScrollNode().scrollTop = 0
     }
-  }, [location.href]);
-};
+  }, [location.href])
+}
 
 export const useRedirects = (): void => {
-  const location = useLocation();
+  const location = useLocation()
 
   useEffect(() => {
-    handleFrontRedirect(location.host, location.pathname);
-  }, [location.href]);
-};
+    handleFrontRedirect(location.host, location.pathname)
+  }, [location.href])
+}
 
 export const useSmoothScroll = (enable: boolean): void => {
   useEffect(() => {
-    const method = enable ? "add" : "remove";
+    const method = enable ? 'add' : 'remove'
 
-    document.body.classList[method](styles.smoothScrolling);
-  }, [enable]);
-};
+    document.body.classList[method](styles.smoothScrolling)
+  }, [enable])
+}

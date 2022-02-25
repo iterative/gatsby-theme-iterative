@@ -1,227 +1,227 @@
-require("dotenv").config();
-const fs = require("fs");
-const path = require("path");
+require('dotenv').config()
+const fs = require('fs')
+const path = require('path')
 
-const nested = require("postcss-nested");
-const autoprefixer = require("autoprefixer");
-const customMedia = require("postcss-custom-media");
-const customProperties = require("postcss-custom-properties");
-const mixins = require("postcss-mixins");
-const colorMod = require("postcss-color-mod-function");
+const nested = require('postcss-nested')
+const autoprefixer = require('autoprefixer')
+const customMedia = require('postcss-custom-media')
+const customProperties = require('postcss-custom-properties')
+const mixins = require('postcss-mixins')
+const colorMod = require('postcss-color-mod-function')
 
-const mediaConfig = require("./config/postcss/media");
-const mixinsConfig = require("./config/postcss/mixins");
+const mediaConfig = require('./config/postcss/media')
+const mixinsConfig = require('./config/postcss/mixins')
 
-const cssBase = path.join(__dirname, "src", "components", "Page", "base.css");
+const cssBase = path.join(__dirname, 'src', 'components', 'Page', 'base.css')
 
-const customYoutubeTransformer = require("./config/gatsby-remark-embedder/custom-yt-embedder");
+const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
 
 const linkIcon = fs
-  .readFileSync(path.join(__dirname, "src", "images", "linkIcon.svg"))
-  .toString();
+  .readFileSync(path.join(__dirname, 'src', 'images', 'linkIcon.svg'))
+  .toString()
 
 const postCssPlugins = [
   mixins(mixinsConfig),
   customMedia({ importFrom: mediaConfig }),
   customProperties({
-    importFrom: [cssBase],
+    importFrom: [cssBase]
   }),
   nested,
   colorMod({
-    importFrom: [cssBase],
+    importFrom: [cssBase]
   }),
-  autoprefixer,
-];
+  autoprefixer
+]
 
-require("./config/prismjs/dvc");
-require("./config/prismjs/usage");
-require("./config/prismjs/dvctable");
+require('./config/prismjs/dvc')
+require('./config/prismjs/usage')
+require('./config/prismjs/dvctable')
 
-const imageMaxWidth = 700;
+const imageMaxWidth = 700
 
 const plugins = [
   {
     resolve: `gatsby-plugin-typescript`,
     options: {
       isTSX: true,
-      allExtensions: true,
-    },
+      allExtensions: true
+    }
   },
   {
-    resolve: "gatsby-plugin-postcss",
+    resolve: 'gatsby-plugin-postcss',
     options: {
-      postCssPlugins,
-    },
+      postCssPlugins
+    }
   },
-  "gatsby-plugin-react-helmet",
-  "gatsby-plugin-sitemap",
+  'gatsby-plugin-react-helmet',
+  'gatsby-plugin-sitemap',
   {
-    resolve: "gatsby-source-filesystem",
+    resolve: 'gatsby-source-filesystem',
     options: {
-      name: "content",
-      path: path.resolve("content"),
-    },
+      name: 'content',
+      path: path.resolve('content')
+    }
   },
   {
-    resolve: "gatsby-source-filesystem",
+    resolve: 'gatsby-source-filesystem',
     options: {
-      name: "static",
-      path: path.resolve("static"),
-    },
+      name: 'static',
+      path: path.resolve('static')
+    }
   },
-  "gatsby-plugin-image",
+  'gatsby-plugin-image',
   {
-    resolve: "gatsby-transformer-remark",
+    resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
         {
-          resolve: "gatsby-remark-embedder",
+          resolve: 'gatsby-remark-embedder',
           options: {
-            customTransformers: [customYoutubeTransformer],
-          },
+            customTransformers: [customYoutubeTransformer]
+          }
         },
-        require.resolve("./plugins/gatsby-remark-dvc-linker"),
+        require.resolve('./plugins/gatsby-remark-dvc-linker'),
         {
-          resolve: require.resolve("./plugins/gatsby-remark-args-linker"),
+          resolve: require.resolve('./plugins/gatsby-remark-args-linker'),
           options: {
             icon: linkIcon,
             // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
-            pathname: "docs/command-reference",
-          },
+            pathname: 'docs/command-reference'
+          }
         },
         {
-          resolve: "gatsby-remark-prismjs",
+          resolve: 'gatsby-remark-prismjs',
           options: {
             noInlineHighlight: true,
             languageExtensions: [
               {
-                language: "text",
-                definition: {},
-              },
-            ],
-          },
+                language: 'text',
+                definition: {}
+              }
+            ]
+          }
         },
         {
-          resolve: "gatsby-remark-smartypants",
+          resolve: 'gatsby-remark-smartypants',
           options: {
-            quotes: false,
-          },
+            quotes: false
+          }
         },
         {
-          resolve: "gatsby-remark-embed-gist",
+          resolve: 'gatsby-remark-embed-gist',
           options: {
-            includeDefaultCss: true,
-          },
+            includeDefaultCss: true
+          }
         },
-        "gatsby-remark-relative-images",
-        "gatsby-remark-copy-linked-files",
-        "gatsby-remark-external-links",
+        'gatsby-remark-relative-images',
+        'gatsby-remark-copy-linked-files',
+        'gatsby-remark-external-links',
         {
-          resolve: "gatsby-remark-autolink-headers",
+          resolve: 'gatsby-remark-autolink-headers',
           options: {
             enableCustomId: true,
             isIconAfterHeader: true,
-            icon: linkIcon,
-          },
+            icon: linkIcon
+          }
         },
         {
-          resolve: "gatsby-remark-images",
+          resolve: 'gatsby-remark-images',
           options: {
             maxWidth: imageMaxWidth,
             withWebp: true,
             quality: 90,
-            loading: "auto",
-          },
+            loading: 'auto'
+          }
         },
-        "gatsby-remark-responsive-iframe",
-        require.resolve("./plugins/resize-image-plugin"),
-        require.resolve("./plugins/external-link-plugin"),
-      ],
-    },
+        'gatsby-remark-responsive-iframe',
+        require.resolve('./plugins/resize-image-plugin'),
+        require.resolve('./plugins/external-link-plugin')
+      ]
+    }
   },
   {
-    resolve: "gatsby-plugin-svgr",
+    resolve: 'gatsby-plugin-svgr',
     options: {
-      ref: true,
-    },
+      ref: true
+    }
   },
-  "gatsby-transformer-sharp",
+  'gatsby-transformer-sharp',
   {
-    resolve: "gatsby-plugin-sharp",
+    resolve: 'gatsby-plugin-sharp',
     options: {
       defaults: {
-        placeholder: "blurred",
-      },
-    },
+        placeholder: 'blurred'
+      }
+    }
   },
   {
-    resolve: "gatsby-plugin-manifest",
+    resolve: 'gatsby-plugin-manifest',
     options: {
       /* eslint-disable @typescript-eslint/naming-convention */
-      background_color: "#eff4f8",
-      display: "minimal-ui",
-      icon: "static/favicon-512x512.png",
-      name: "dvc.org",
-      short_name: "dvc.org",
-      start_url: "/",
-      theme_color: "#eff4f8",
+      background_color: '#eff4f8',
+      display: 'minimal-ui',
+      icon: 'static/favicon-512x512.png',
+      name: 'dvc.org',
+      short_name: 'dvc.org',
+      start_url: '/',
+      theme_color: '#eff4f8',
       icons: [
         {
-          src: "/apple-touch-icon-48x48.png",
-          sizes: "48x48",
-          type: "image/png",
+          src: '/apple-touch-icon-48x48.png',
+          sizes: '48x48',
+          type: 'image/png'
         },
         {
-          src: "/apple-touch-icon-72x72.png",
-          sizes: "72x72",
-          type: "image/png",
+          src: '/apple-touch-icon-72x72.png',
+          sizes: '72x72',
+          type: 'image/png'
         },
         {
-          src: "/apple-touch-icon-96x96.png",
-          sizes: "96x96",
-          type: "image/png",
+          src: '/apple-touch-icon-96x96.png',
+          sizes: '96x96',
+          type: 'image/png'
         },
         {
-          src: "/apple-touch-icon-144x144.png",
-          sizes: "144x144",
-          type: "image/png",
+          src: '/apple-touch-icon-144x144.png',
+          sizes: '144x144',
+          type: 'image/png'
         },
         {
-          src: "/apple-touch-icon.png",
-          sizes: "180x180",
-          type: "image/png",
+          src: '/apple-touch-icon.png',
+          sizes: '180x180',
+          type: 'image/png'
         },
         {
-          src: "/apple-touch-icon-192x192.png",
-          sizes: "192x192",
-          type: "image/png",
+          src: '/apple-touch-icon-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
         },
         {
-          src: "/apple-touch-icon-256x256.png",
-          sizes: "256x256",
-          type: "image/png",
+          src: '/apple-touch-icon-256x256.png',
+          sizes: '256x256',
+          type: 'image/png'
         },
         {
-          src: "/apple-touch-icon-384x384.png",
-          sizes: "384x384",
-          type: "image/png",
+          src: '/apple-touch-icon-384x384.png',
+          sizes: '384x384',
+          type: 'image/png'
         },
         {
-          src: "/apple-touch-icon-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-        },
-      ],
+          src: '/apple-touch-icon-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }
+      ]
       /* eslint-enable @typescript-eslint/naming-convention */
-    },
+    }
   },
   {
-    resolve: "gatsby-plugin-sentry",
+    resolve: 'gatsby-plugin-sentry',
     options: {
       dsn: process.env.SENTRY_DSN,
       environment: process.env.NODE_ENV,
       release: process.env.SOURCE_VERSION,
-      enabled: process.env.NODE_ENV === "production",
+      enabled: process.env.NODE_ENV === 'production',
       ignoreErrors: [
         /* When we deploy new version we delete assets which were generated for
         the previous deployed version, but users can have opened old version in 
@@ -229,21 +229,21 @@ const plugins = [
         fetch old chunks and will get ChunkLoadError, but then will load static
         page from the new deployed version and all will be ok. So we can just
         ignore these type of errors */
-        "ChunkLoadError",
+        'ChunkLoadError'
       ],
       /* There are some common urls which recomment to ignore. It's even 
       mentioned in the official documentation: https://docs.sentry.io/platforms/javascript/#decluttering-sentry
       In our case we just ignore all errors from the browser's extensions,
       because we can't influence on then somehow. */
-      blacklistUrls: [/extensions\//i, /^chrome:\/\//i],
-    },
-  },
-];
+      blacklistUrls: [/extensions\//i, /^chrome:\/\//i]
+    }
+  }
+]
 
 module.exports = {
   plugins,
   siteMetadata: {
-    author: "Iterative",
-    siteUrl: "https://cml.dev",
-  },
-};
+    author: 'Iterative',
+    siteUrl: 'https://cml.dev'
+  }
+}

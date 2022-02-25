@@ -1,45 +1,45 @@
-import React from "react";
+import React from 'react'
 
-import DefaultSEO from "./DefaultSEO";
+import DefaultSEO from './DefaultSEO'
 
-import { useRedirects, useAnchorNavigation, useSmoothScroll } from "./utils";
+import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 
-import "reset-css";
-import "./base.css";
-import "./fonts/fonts.css";
+import 'reset-css'
+import './base.css'
+import './fonts/fonts.css'
 
-import getLayoutComponent from "./getLayoutComponent";
+import getLayoutComponent from './getLayoutComponent'
 
 export interface IPageProps {
   location: {
-    pathname: string;
-  };
+    pathname: string
+  }
   pageContext: {
-    is404: boolean;
-    isDocs: boolean;
-    isAlertLanding: boolean;
+    is404: boolean
+    isDocs: boolean
+    isAlertLanding: boolean
     pageInfo?: {
-      currentPage: number;
-      nextPage?: string;
-    };
-  };
-  children: React.ReactNode;
-  enableSmoothScroll: boolean;
+      currentPage: number
+      nextPage?: string
+    }
+  }
+  children: React.ReactNode
+  enableSmoothScroll: boolean
 }
 
-const Page: React.FC<IPageProps> = (props) => {
-  useRedirects();
-  useAnchorNavigation();
-  useSmoothScroll(props.enableSmoothScroll);
+const Page: React.FC<IPageProps> = props => {
+  useRedirects()
+  useAnchorNavigation()
+  useSmoothScroll(props.enableSmoothScroll)
 
-  const LayoutComponent = getLayoutComponent(props);
+  const LayoutComponent = getLayoutComponent(props)
 
   return (
     <>
       <DefaultSEO pathname={props.location.pathname} />
       <LayoutComponent {...props} />
     </>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

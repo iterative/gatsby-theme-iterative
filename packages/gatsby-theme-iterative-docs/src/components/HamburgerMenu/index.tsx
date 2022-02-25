@@ -1,61 +1,61 @@
-import cn from "classnames";
-import React, { useEffect, useState, useCallback, MouseEvent } from "react";
+import cn from 'classnames'
+import React, { useEffect, useState, useCallback, MouseEvent } from 'react'
 
-import HamburgerIcon from "../HamburgerIcon";
-import Link from "../Link";
-import { logEvent } from "../../utils/front/plausible";
+import HamburgerIcon from '../HamburgerIcon'
+import Link from '../Link'
+import { logEvent } from '../../utils/front/plausible'
 
-import { getFirstPage } from "../../utils/shared/sidebar";
-import { ReactComponent as LogoSVG } from "../../images/logo-white.svg";
-import { ReactComponent as TwitterIcon } from "../SocialIcon/twitter.svg";
-import { ReactComponent as GithubIcon } from "../SocialIcon/github.svg";
+import { getFirstPage } from '../../utils/shared/sidebar'
+import { ReactComponent as LogoSVG } from '../../images/logo-white.svg'
+import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
+import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
 
-import * as styles from "./styles.module.css";
+import * as styles from './styles.module.css'
 
-const docsPage = getFirstPage();
+const docsPage = getFirstPage()
 
 export type HamburgerHelpers = {
-  opened: boolean;
-  setOpened: (newState: boolean) => void;
-  handleToggle: () => void;
-  handleClose: () => void;
-  handleItemClick: (name?: string) => (e: MouseEvent) => void;
-};
+  opened: boolean
+  setOpened: (newState: boolean) => void
+  handleToggle: () => void
+  handleClose: () => void
+  handleItemClick: (name?: string) => (e: MouseEvent) => void
+}
 
 export const useHamburgerMenu: () => HamburgerHelpers = () => {
-  const [opened, setOpened] = useState(false);
+  const [opened, setOpened] = useState(false)
 
-  const handleToggle = useCallback(() => setOpened(!opened), [opened]);
+  const handleToggle = useCallback(() => setOpened(!opened), [opened])
 
-  const handleClose = useCallback(() => setOpened(false), [opened]);
+  const handleClose = useCallback(() => setOpened(false), [opened])
 
   const handleItemClick = useCallback(
-    (item) => (): void => {
-      handleClose();
+    item => (): void => {
+      handleClose()
       if (item) {
-        logEvent("Hamburger Menu", { Item: item });
+        logEvent('Hamburger Menu', { Item: item })
       }
     },
     []
-  );
+  )
 
   useEffect(() => {
-    const method = opened ? "add" : "remove";
-    document.body.classList[method](styles.hiddenScrollbar);
-  }, [opened]);
+    const method = opened ? 'add' : 'remove'
+    document.body.classList[method](styles.hiddenScrollbar)
+  }, [opened])
 
   return {
     opened,
     setOpened,
     handleToggle,
     handleClose,
-    handleItemClick,
-  };
-};
+    handleItemClick
+  }
+}
 
 export const HamburgerMenu: React.FC<
-  Pick<HamburgerHelpers, "opened" | "handleItemClick" | "handleToggle"> & {
-    collapsed: boolean;
+  Pick<HamburgerHelpers, 'opened' | 'handleItemClick' | 'handleToggle'> & {
+    collapsed: boolean
   }
 > = ({ opened, handleItemClick }) => {
   return (
@@ -82,7 +82,7 @@ export const HamburgerMenu: React.FC<
           <Link
             href="/features"
             className={styles.sectionHeading}
-            onClick={() => handleItemClick("features")}
+            onClick={() => handleItemClick('features')}
           >
             Features
           </Link>
@@ -91,7 +91,7 @@ export const HamburgerMenu: React.FC<
           <Link
             href={docsPage}
             className={styles.sectionHeading}
-            onClick={() => handleItemClick("doc")}
+            onClick={() => handleItemClick('doc')}
           >
             Doc
           </Link>
@@ -100,7 +100,7 @@ export const HamburgerMenu: React.FC<
           <Link
             href="/blog"
             className={styles.sectionHeading}
-            onClick={() => handleItemClick("blog")}
+            onClick={() => handleItemClick('blog')}
           >
             Blog
           </Link>
@@ -109,7 +109,7 @@ export const HamburgerMenu: React.FC<
           <Link
             href="/community"
             className={styles.sectionHeading}
-            onClick={() => handleItemClick("community")}
+            onClick={() => handleItemClick('community')}
           >
             Community
           </Link>
@@ -118,7 +118,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#meet"
                 className={styles.subSectionLink}
-                onClick={() => handleItemClick("community")}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -132,7 +132,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#contribute"
                 className={styles.subSectionLink}
-                onClick={() => handleItemClick("community")}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -146,7 +146,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#learn"
                 className={styles.subSectionLink}
-                onClick={() => handleItemClick("community")}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -160,7 +160,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#events"
                 className={styles.subSectionLink}
-                onClick={() => handleItemClick("community")}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -174,7 +174,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#testimonial"
                 className={styles.subSectionLink}
-                onClick={() => handleItemClick("community")}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -190,7 +190,7 @@ export const HamburgerMenu: React.FC<
           <Link
             href="/support"
             className={styles.sectionHeading}
-            onClick={() => handleItemClick("support")}
+            onClick={() => handleItemClick('support')}
           >
             Support
           </Link>
@@ -200,7 +200,7 @@ export const HamburgerMenu: React.FC<
                 className={styles.subSectionLink}
                 href="mailto:support@dvc.org"
                 target="_blank"
-                onClick={() => handleItemClick("mail")}
+                onClick={() => handleItemClick('mail')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -214,7 +214,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 className={styles.subSectionLink}
                 href="https://github.com/iterative/dvc"
-                onClick={() => handleItemClick("github")}
+                onClick={() => handleItemClick('github')}
                 target="_blank"
               >
                 <GithubIcon className={styles.subSectionLinkImage} />
@@ -225,7 +225,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 className={styles.subSectionLink}
                 href="/chat"
-                onClick={() => handleItemClick("chat")}
+                onClick={() => handleItemClick('chat')}
                 target="_blank"
               >
                 <img
@@ -240,7 +240,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 className={styles.subSectionLink}
                 href="https://twitter.com/DVCorg"
-                onClick={() => handleItemClick("twitter")}
+                onClick={() => handleItemClick('twitter')}
                 target="_blank"
               >
                 <TwitterIcon className={styles.subSectionLinkImage} />
@@ -301,18 +301,18 @@ export const HamburgerMenu: React.FC<
       <Link
         href="/doc/start"
         className={styles.linkButton}
-        onClick={() => handleItemClick("get-started")}
+        onClick={() => handleItemClick('get-started')}
       >
         Get started
       </Link>
     </div>
-  );
-};
+  )
+}
 
 export const HamburgerButton: React.FC<{
-  opened: boolean;
-  collapsed: boolean;
-  handleClick: (e: MouseEvent) => void;
+  opened: boolean
+  collapsed: boolean
+  handleClick: (e: MouseEvent) => void
 }> = ({ opened, collapsed, handleClick }) => (
   <button
     className={cn(
@@ -325,4 +325,4 @@ export const HamburgerButton: React.FC<{
   >
     <HamburgerIcon opened={opened} />
   </button>
-);
+)
