@@ -34,24 +34,9 @@ interface IFooterListData {
 
 const footerListsData: Array<IFooterListData> = [
   {
-    header: 'Product',
-    links: [
-      {
-        href: '/',
-        text: 'Overview'
-      },
-      {
-        href: '/features',
-        text: 'Features'
-      }
-    ]
-  },
-  {
     header: 'Help',
     links: [
-      { href: '/support', text: 'Support' },
       { href: '/doc/start', text: 'Get started' },
-      { href: '/community', text: 'Community' },
       { href: docsPage, text: 'Documentation' }
     ]
   },
@@ -80,10 +65,6 @@ const footerListsData: Array<IFooterListData> = [
   {
     header: 'Company',
     links: [
-      {
-        href: '/blog',
-        text: 'Blog'
-      },
       {
         href: '/doc/user-guide/privacy',
         text: 'Privacy Policy'

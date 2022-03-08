@@ -29,28 +29,9 @@ interface INavLinkPopupData {
 
 const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
   {
-    href: '/features',
-    eventType: 'features',
-    text: 'Features'
-  },
-  {
     href: docsPage,
     eventType: 'doc',
     text: 'Doc'
-  },
-  {
-    href: '/blog',
-    eventType: 'blog',
-    text: 'Blog'
-  },
-  {
-    text: 'Community',
-    popup: 'CommunityPopup'
-  },
-  {
-    href: '/support',
-    eventType: 'support',
-    text: 'Support'
   },
   {
     text: 'Other Tools',
