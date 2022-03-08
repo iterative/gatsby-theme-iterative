@@ -9,6 +9,12 @@ import { getFirstPage } from '../../utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '../../images/logo-white.svg'
 import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
 import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
+import mailIcon from '../../images/icon-mail.svg'
+import discordLogo from '../../images/icon-discord.svg'
+import dvcLogo from '../../images/dvc_icon-color--square_vector.svg'
+import cmlLogo from '../../images/cml_icon-color--square_vector.svg'
+import studioLogo from '../../images/studio_icon-color--square_vector.svg'
+import mlemLogo from '../../images/mlem-icon.svg'
 
 import * as styles from './styles.module.css'
 
@@ -80,15 +86,6 @@ export const HamburgerMenu: React.FC<
       <ul className={styles.sections}>
         <li className={styles.section}>
           <Link
-            href="/features"
-            className={styles.sectionHeading}
-            onClick={() => handleItemClick('features')}
-          >
-            Features
-          </Link>
-        </li>
-        <li className={styles.section}>
-          <Link
             href={docsPage}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('doc')}
@@ -97,103 +94,12 @@ export const HamburgerMenu: React.FC<
           </Link>
         </li>
         <li className={styles.section}>
-          <Link
-            href="/blog"
-            className={styles.sectionHeading}
-            onClick={() => handleItemClick('blog')}
-          >
-            Blog
-          </Link>
-        </li>
-        <li className={styles.section}>
-          <Link
-            href="/community"
-            className={styles.sectionHeading}
-            onClick={() => handleItemClick('community')}
-          >
-            Community
-          </Link>
-          <ul className={styles.subSections}>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#meet"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-community.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Meet Us</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#contribute"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-contribute.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Contribute</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#learn"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-learn.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Learn</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#events"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-events.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Events</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#testimonial"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-community.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Testimonials</span>
-              </Link>
-            </li>
-          </ul>
-        </li>
-        <li className={styles.section}>
-          <Link
-            href="/support"
+          <div
             className={styles.sectionHeading}
             onClick={() => handleItemClick('support')}
           >
             Support
-          </Link>
+          </div>
           <ul className={styles.subSections}>
             <li className={styles.subSection}>
               <Link
@@ -204,7 +110,7 @@ export const HamburgerMenu: React.FC<
               >
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/community/icon-mail.svg"
+                  src={mailIcon}
                   alt=""
                 />
                 <span className={styles.subSectionLinkTitle}>E-Mail</span>
@@ -230,7 +136,7 @@ export const HamburgerMenu: React.FC<
               >
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/community/icon-discord.svg"
+                  src={discordLogo}
                   alt=""
                 />
                 <span className={styles.subSectionLinkTitle}>Discord</span>
@@ -259,7 +165,7 @@ export const HamburgerMenu: React.FC<
               >
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/studio_icon-color--square_vector.svg"
+                  src={studioLogo}
                   alt="Studio logo"
                 />
                 <span className={styles.subSectionLinkTitle}>Studio</span>
@@ -269,7 +175,7 @@ export const HamburgerMenu: React.FC<
               <Link href="/" className={styles.subSectionLink}>
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/dvc_icon-color--square_vector.svg"
+                  src={dvcLogo}
                   alt="DVC logo"
                 />
                 <span className={styles.subSectionLinkTitle}>DVC</span>
@@ -279,7 +185,7 @@ export const HamburgerMenu: React.FC<
               <Link href="https://cml.dev/" className={styles.subSectionLink}>
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/cml_icon-color--square_vector.svg"
+                  src={cmlLogo}
                   alt="CML logo"
                 />
                 <span className={styles.subSectionLinkTitle}>CML</span>
@@ -289,7 +195,7 @@ export const HamburgerMenu: React.FC<
               <Link href="https://mlem.ai/" className={styles.subSectionLink}>
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/mlem-icon.svg"
+                  src={mlemLogo}
                   alt="MLEM logo"
                 />
                 <span className={styles.subSectionLinkTitle}>MLEM</span>
