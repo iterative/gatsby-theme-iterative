@@ -1,5 +1,22 @@
 const path = require('path')
 
+let tooltipHTMLProcessor
+const getTooltipHTMLProcessor = async () => {
+  if (!tooltipHTMLProcessor) {
+    const { remark } = await import('remark')
+    const { default: recommended } = await import(
+      'remark-preset-lint-recommended'
+    )
+    const { default: remarkHtml } = await import('remark-html')
+
+    tooltipHTMLProcessor = remark().use(recommended).use(remarkHtml)
+  }
+  return tooltipHTMLProcessor
+}
+
+const processTooltip = async tooltip =>
+  (await getTooltipHTMLProcessor()).processSync(tooltip).toString()
+
 async function onCreateNode(
   {
     node,
@@ -8,66 +25,88 @@ async function onCreateNode(
     createContentDigest,
     actions: { createNode, createParentChildLink }
   },
-  { disable }
+  { disable, glossaryDirectory }
 ) {
   if (disable || node.internal.type !== 'MarkdownRemark') {
     return
   }
 
-  const parentNode = getNode(node.parent)
-  const splitDir = parentNode.relativeDirectory.split(path.sep)
-  if (splitDir[0] !== 'docs') return
-
-  const { name, relativePath } = parentNode
-  splitDir[0] = 'doc'
-
-  const slug = path.posix.join('/', ...splitDir, name === 'index' ? '' : name)
-
-  const fieldData = {
-    slug,
-    sourcePath: relativePath,
-    template: node.frontmatter.template,
-    title: node.frontmatter.title === '' ? null : node.frontmatter.title,
-    description: node.frontmatter.description
+  if (!node.parent) {
+    console.warn(`MarkdownRemark node doesn't have a parent`)
+    return
   }
 
-  const docNode = {
-    ...fieldData,
-    id: createNodeId(`MarkdownDocsPage >>> ${node.id}`),
-    parent: node.id,
-    children: [],
-    internal: {
-      type: `DocsPage`,
-      contentDigest: createContentDigest(fieldData)
+  const parentFileNode = getNode(node.parent)
+
+  if (parentFileNode === undefined) {
+    console.warn(`getNode on parent with ID ${node.parent} was undefined`)
+    return
+  }
+  if (parentFileNode.internal.type !== 'File') {
+    console.warn(
+      `parent of markdown node was not a File, but a ${node.internal.type}`
+    )
+    return
+  }
+
+  if (parentFileNode.relativeDirectory === glossaryDirectory) {
+    // Glossary
+
+    const {
+      frontmatter: { name: frontmatterName, match, tooltip }
+    } = node
+
+    const glossaryFieldData = {
+      name: frontmatterName,
+      match,
+      tooltip: tooltip && (await processTooltip(tooltip))
     }
-  }
 
-  createNode(docNode)
-  createParentChildLink({ parent: node, child: docNode })
-
-  // Glossary
-
-  if (parentNode.relativeDirectory !== 'docs/user-guide/basic-concepts') return
-
-  const {
-    frontmatter: { name: frontmatterName, match, tooltip }
-  } = node
-
-  const glossaryFieldData = {
-    name: frontmatterName,
-    match,
-    tooltip: tooltip
-  }
-
-  const entryNode = {
-    ...glossaryFieldData,
-    id: createNodeId(`DVCGlossaryEntry >>> ${node.id}`),
-    parent: node.id,
-    children: [],
-    internal: {
-      type: `GlossaryEntry`,
-      contentDigest: createContentDigest(glossaryFieldData)
+    const entryNode = {
+      ...glossaryFieldData,
+      id: createNodeId(`DVCGlossaryEntry >>> ${node.id}`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: `GlossaryEntry`,
+        contentDigest: createContentDigest(glossaryFieldData)
+      }
     }
+
+    createNode(entryNode)
+    createParentChildLink({ parent: node, child: entryNode })
+  } else {
+    // Doc page
+
+    const splitDir = parentFileNode.relativeDirectory.split(path.sep)
+    if (splitDir[0] !== 'docs') return
+
+    const { name, relativePath } = parentFileNode
+    splitDir[0] = 'doc'
+
+    const slug = path.posix.join('/', ...splitDir, name === 'index' ? '' : name)
+
+    const fieldData = {
+      slug,
+      sourcePath: relativePath,
+      template: node.frontmatter.template,
+      title: node.frontmatter.title === '' ? null : node.frontmatter.title,
+      description: node.frontmatter.description
+    }
+
+    const docNode = {
+      ...fieldData,
+      id: createNodeId(`MarkdownDocsPage >>> ${node.id}`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: `DocsPage`,
+        contentDigest: createContentDigest(fieldData)
+      }
+    }
+
+    createNode(docNode)
+    createParentChildLink({ parent: node, child: docNode })
   }
 }
 

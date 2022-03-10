@@ -5,5 +5,12 @@ module.exports = {
     keywords: ['docs', 'test'],
     siteUrl: 'http://localhost:8000'
   },
-  plugins: [{ resolve: `gatsby-theme-iterative-docs`, options: {} }]
+  plugins: [
+    {
+      resolve: `gatsby-theme-iterative-docs`,
+      options: {
+        simpleLinkerTerms: require('./content/docs/linked-terms')
+      }
+    }
+  ]
 }

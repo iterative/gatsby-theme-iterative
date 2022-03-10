@@ -13,7 +13,14 @@ exports.pluginOptionsSchema = ({ Joi }) => {
       require.resolve('./src/templates/doc.tsx')
     ),
     remark: Joi.boolean().default(true),
-    filesystem: Joi.boolean().default(true)
+    filesystem: Joi.boolean().default(true),
+    glossaryDirectory: Joi.string().default('docs/user-guide/basic-concepts'),
+    simpleLinkerTerms: Joi.array().items(
+      Joi.object({
+        matches: Joi.string(),
+        url: Joi.string()
+      })
+    )
   })
 }
 
