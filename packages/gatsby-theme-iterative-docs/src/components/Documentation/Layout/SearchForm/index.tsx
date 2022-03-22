@@ -12,25 +12,29 @@ declare global {
 }
 
 const SearchForm: React.FC = props => {
+  const [searchAvailable, setSearchAvailable] = useState<boolean>(false)
   useEffect(() => {
-    if (!window.docsearch) {
-      Promise.all([
-        loadResource(
-          'https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.css'
-        ),
-        loadResource(
-          'https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.js'
-        )
-      ]).then(() => {
-        if (window.docsearch) {
-          window.docsearch({
-            apiKey: '755929839e113a981f481601c4f52082',
-            indexName: 'dvc',
-            inputSelector: '#doc-search',
-            debug: false // Set to `true` if you want to inspect the dropdown
-          })
-        }
-      })
+    if (window) {
+      if (!window.docsearch) {
+        Promise.all([
+          loadResource(
+            'https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.css'
+          ),
+          loadResource(
+            'https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.js'
+          )
+        ]).then(() => {
+          if (window.docsearch) {
+            window.docsearch({
+              apiKey: '755929839e113a981f481601c4f52082',
+              indexName: 'dvc',
+              inputSelector: '#doc-search',
+              debug: false // Set to `true` if you want to inspect the dropdown
+            })
+            setSearchAvailable(true)
+          }
+        })
+      }
     }
   }, [])
 
@@ -42,7 +46,7 @@ const SearchForm: React.FC = props => {
           type="text"
           id="doc-search"
           placeholder="Search docs"
-          disabled={!window.docsearch}
+          disabled={!searchAvailable}
           {...props}
         />
       </div>
