@@ -7,7 +7,7 @@
   }
 
   .Collapsible__trigger {
-    font-family: var(--font-brandon);
+    font-family: var(--font-base);
     font-weight: 500;
     display: block;
     position: relative;
@@ -152,7 +152,7 @@ a.card {
     border-bottom: 2px solid transparent;
     font-weight: bold;
     font-size: 16px;
-    font-family: var(--font-brandon);
+    font-family: var(--font-base);
     order: -1;
 
     &:hover {
