@@ -1,1 +1,1 @@
-export const githubRepo = 'iterative/dvc.org'
+export const githubRepo = 'iterative/example-website'

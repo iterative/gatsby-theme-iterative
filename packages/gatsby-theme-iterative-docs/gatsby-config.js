@@ -174,8 +174,8 @@ module.exports = ({ simpleLinkerTerms, cssBase = defaultCssBase }) => {
           background_color: '#eff4f8',
           display: 'minimal-ui',
           icon: 'static/favicon-512x512.png',
-        name: 'dvc.org',
-        short_name: 'dvc.org',
+          name: 'example-website.com',
+          short_name: 'example-website.com',
           start_url: '/',
           theme_color: '#eff4f8',
           icons: [
