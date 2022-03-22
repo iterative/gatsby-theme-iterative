@@ -20,7 +20,8 @@ exports.pluginOptionsSchema = ({ Joi }) => {
         matches: Joi.string(),
         url: Joi.string()
       })
-    )
+    ),
+    cssBase: Joi.string()
   })
 }
 
