@@ -47,7 +47,7 @@ async function makeFeedHtml(htmlAst, siteUrl) {
        */
       .use(unwrapImages)
       .use(rootToAbsolute, siteUrl)
-      .runSync(htmlAst)
+      .run(htmlAst)
   )
 }
 
