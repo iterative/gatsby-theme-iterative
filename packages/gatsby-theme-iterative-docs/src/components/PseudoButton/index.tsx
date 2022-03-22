@@ -22,7 +22,12 @@ const PseudoButton: React.FC<IPseudoButtonProps> = ({
   ...restProps
 }) => (
   <Link
-    className={cn(styles.button, styles[type], styles[size], className)}
+    className={cn(
+      styles.button,
+      styles[type],
+      styles[size],
+      className || styles.defaultButton
+    )}
     {...restProps}
   >
     {children}

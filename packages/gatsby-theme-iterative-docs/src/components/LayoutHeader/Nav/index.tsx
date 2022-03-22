@@ -1,4 +1,5 @@
 import React from 'react'
+import cn from 'classnames'
 
 import PseudoButton from '../../PseudoButton'
 import SocialIcons from './SocialIcons'
@@ -13,7 +14,7 @@ const Nav: React.FC = () => (
     <LinkItems />
     <SocialIcons />
     <PseudoButton
-      className={`${styles.getStartedButton} btn-with-focus`}
+      className={cn(styles.getStartedButton, 'btn-with-focus')}
       href="/doc/start"
       onClick={(): void => logEvent('Nav', { Item: 'get-started' })}
       size="none"
