@@ -5,7 +5,7 @@ import RightPanel from '../RightPanel'
 
 import { IHeading } from '../'
 import { getItemByPath } from '../../../utils/shared/sidebar'
-import { getGithubLink } from '../../../getGithubLink'
+import getEditLink from '../../../getEditLink'
 
 interface IWithJSXProps {
   path: string
@@ -14,7 +14,7 @@ interface IWithJSXProps {
 
 const WithJSX: React.FC<IWithJSXProps> = ({ children, path, headings }) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
-  const githubLink = getGithubLink(source)
+  const githubLink = getEditLink(source)
 
   return (
     <>

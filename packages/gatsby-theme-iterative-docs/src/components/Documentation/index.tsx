@@ -5,7 +5,7 @@ import Markdown from './Markdown'
 import RightPanel from './RightPanel'
 
 import { getItemByPath } from '../../utils/shared/sidebar'
-import { getGithubLink } from '../../getGithubLink'
+import getEditLink from '../../getEditLink'
 
 export interface IHeading {
   slug: string
@@ -24,7 +24,7 @@ const Documentation: React.FC<IDocumentationProps> = ({
   headings
 }) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
-  const githubLink = getGithubLink(source)
+  const githubLink = getEditLink(source)
 
   return (
     <>
