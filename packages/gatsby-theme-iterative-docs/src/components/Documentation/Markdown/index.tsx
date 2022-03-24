@@ -19,7 +19,7 @@ import Admonition from './Admonition'
 
 import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
-import linkIcon from '../../../images/linkIcon.svg'
+import { ReactComponent as LinkIcon } from '../../../images/linkIcon.svg'
 import { useLocation } from '@reach/router'
 
 import GithubSlugger from 'github-slugger'
@@ -77,7 +77,7 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
         aria-label={triggerChildren.toString()}
         className="anchor after"
       >
-        <span dangerouslySetInnerHTML={{ __html: linkIcon }}></span>
+        <LinkIcon />
       </Link>
       <Collapsible
         open={isOpen}
