@@ -37,7 +37,8 @@ module.exports = ({ simpleLinkerTerms, cssBase = defaultCssBase }) => {
     mixins(mixinsConfig),
     customMedia({ importFrom: mediaConfig }),
     customProperties({
-      importFrom: [cssBase]
+      importFrom: [cssBase],
+      disableDeprecationNotice: true
     }),
     nested,
     colorMod({
