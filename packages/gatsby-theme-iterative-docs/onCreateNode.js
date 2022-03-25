@@ -14,8 +14,11 @@ const getTooltipHTMLProcessor = async () => {
   return tooltipHTMLProcessor
 }
 
-const processTooltip = async tooltip =>
-  (await getTooltipHTMLProcessor()).processSync(tooltip).toString()
+const processTooltip = async tooltip => {
+  const processor = await getTooltipHTMLProcessor()
+  const vfile = await processor.process(tooltip)
+  return vfile.toString()
+}
 
 async function onCreateNode(
   {
