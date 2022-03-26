@@ -71,13 +71,6 @@ module.exports = ({ simpleLinkerTerms, cssBase = defaultCssBase }) => {
           path: path.resolve('content')
         }
       },
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'static',
-          path: path.resolve('static')
-        }
-      },
       'gatsby-plugin-image',
       {
         resolve: 'gatsby-transformer-remark',
