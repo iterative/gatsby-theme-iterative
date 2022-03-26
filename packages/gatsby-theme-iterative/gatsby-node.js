@@ -1,4 +1,5 @@
 const path = require('path')
+const { name: packageName } = require('./package.json')
 
 const defaultGetTemplate = (template, defaultTemplate) =>
   template
@@ -60,8 +61,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        'gatsby-theme-iterative/sidebar$': require.resolve('./src/sidebar'),
-        'gatsby-theme-iterative/redirects$': require.resolve('./src/redirects')
+        [`${packageName}/sidebar$`]: require.resolve('./src/sidebar'),
+        [`${packageName}/redirects$`]: require.resolve('./src/redirects')
       }
     }
   })

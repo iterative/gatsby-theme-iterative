@@ -1,3 +1,7 @@
+const {
+  name: themePackageName
+} = require('../gatsby-theme-iterative/package.json')
+
 module.exports = {
   trailingSlash: 'never',
   siteMetadata: {
@@ -8,7 +12,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-theme-iterative`,
+      resolve: themePackageName,
       options: {
         simpleLinkerTerms: require('./content/docs/linked-terms')
       }
