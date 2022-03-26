@@ -21,7 +21,7 @@
 */
 
 const { titleCase } = require('title-case')
-const sidebar = require('gatsby-theme-iterative-docs/sidebar')
+const sidebar = require('gatsby-theme-iterative/sidebar')
 
 const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'

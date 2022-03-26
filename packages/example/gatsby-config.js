@@ -8,7 +8,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-theme-iterative-docs`,
+      resolve: `gatsby-theme-iterative`,
       options: {
         simpleLinkerTerms: require('./content/docs/linked-terms')
       }

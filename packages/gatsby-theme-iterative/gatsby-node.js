@@ -60,10 +60,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        'gatsby-theme-iterative-docs/sidebar$':
-          require.resolve('./src/sidebar'),
-        'gatsby-theme-iterative-docs/redirects$':
-          require.resolve('./src/redirects')
+        'gatsby-theme-iterative/sidebar$': require.resolve('./src/sidebar'),
+        'gatsby-theme-iterative/redirects$': require.resolve('./src/redirects')
       }
     }
   })
