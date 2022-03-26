@@ -2,7 +2,7 @@
 
 const { navigate } = require('@reach/router')
 const { structure, findChildWithSource } = require('./sidebar')
-const redirects = require('gatsby-theme-iterative/redirects')
+const redirects = require('@dvcorg/gatsby-theme-iterative/redirects')
 
 const buildSidebarRedirects = (list, redirects = []) => {
   list.forEach(item => {

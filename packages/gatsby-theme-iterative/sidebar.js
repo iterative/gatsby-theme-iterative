@@ -1,2 +1,2 @@
 const pseudoShadow = require('./pseudo-shadow')
-module.exports = pseudoShadow('./src/gatsby-theme-iterative/sidebar')
+module.exports = pseudoShadow('./src/@dvcorg/gatsby-theme-iterative/sidebar')
