@@ -78,39 +78,39 @@ async function onCreateNode(
 
     createNode(entryNode)
     createParentChildLink({ parent: node, child: entryNode })
-  } else {
-    // Doc page
-
-    const splitDir = parentFileNode.relativeDirectory.split(path.sep)
-    if (splitDir[0] !== 'docs') return
-
-    const { name, relativePath } = parentFileNode
-    splitDir[0] = 'doc'
-
-    const slug = path.posix.join('/', ...splitDir, name === 'index' ? '' : name)
-
-    const fieldData = {
-      slug,
-      sourcePath: relativePath,
-      template: node.frontmatter.template,
-      title: node.frontmatter.title === '' ? null : node.frontmatter.title,
-      description: node.frontmatter.description
-    }
-
-    const docNode = {
-      ...fieldData,
-      id: createNodeId(`MarkdownDocsPage >>> ${node.id}`),
-      parent: node.id,
-      children: [],
-      internal: {
-        type: `DocsPage`,
-        contentDigest: createContentDigest(fieldData)
-      }
-    }
-
-    createNode(docNode)
-    createParentChildLink({ parent: node, child: docNode })
   }
+
+  // Doc page
+
+  const splitDir = parentFileNode.relativeDirectory.split(path.sep)
+  if (splitDir[0] !== 'docs') return
+
+  const { name, relativePath } = parentFileNode
+  splitDir[0] = 'doc'
+
+  const slug = path.posix.join('/', ...splitDir, name === 'index' ? '' : name)
+
+  const fieldData = {
+    slug,
+    sourcePath: relativePath,
+    template: node.frontmatter.template,
+    title: node.frontmatter.title === '' ? null : node.frontmatter.title,
+    description: node.frontmatter.description
+  }
+
+  const docNode = {
+    ...fieldData,
+    id: createNodeId(`MarkdownDocsPage >>> ${node.id}`),
+    parent: node.id,
+    children: [],
+    internal: {
+      type: `DocsPage`,
+      contentDigest: createContentDigest(fieldData)
+    }
+  }
+
+  createNode(docNode)
+  createParentChildLink({ parent: node, child: docNode })
 }
 
 module.exports = onCreateNode
