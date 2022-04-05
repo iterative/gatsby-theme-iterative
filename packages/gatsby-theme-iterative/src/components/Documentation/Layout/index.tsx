@@ -1,5 +1,6 @@
 import React, { Reducer, useEffect, useReducer } from 'react'
 import cn from 'classnames'
+import { SkipNavContent } from '@reach/skip-nav'
 
 import LayoutWidthContainer from '../../LayoutWidthContainer'
 import HamburgerIcon from '../../HamburgerIcon'
@@ -58,7 +59,10 @@ const Layout: React.FC<{ currentPath: string }> = ({
           }}
         />
       </div>
-      <div className={styles.content}>{children}</div>
+      <div className={styles.content}>
+        <SkipNavContent id="main-content" />
+        {children}
+      </div>
     </LayoutWidthContainer>
   )
 }
