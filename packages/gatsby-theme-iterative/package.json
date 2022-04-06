@@ -1,12 +1,12 @@
 {
   "name": "@dvcorg/gatsby-theme-iterative",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx ."
   },
-  "author": "",
+  "author": "Roger Parent (@rogermparent)",
   "license": "MIT",
   "dependencies": {
     "@reach/portal": "^0.16.2",

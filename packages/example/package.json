@@ -2,7 +2,7 @@
   "name": "example",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "christopherbiscardi <chris@christopherbiscardi.com> (@chrisbiscardi)",
+  "author": "Roger Parent (@rogermparent)",
   "license": "MIT",
   "scripts": {
     "clean": "gatsby clean",
@@ -11,7 +11,7 @@
     "develop": "gatsby develop"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.0.4",
+    "@dvcorg/gatsby-theme-iterative": "^0.0.5",
     "gatsby": "^4.11.2",
     "gatsby-transformer-remark": "^5.11.1",
     "react": "^18.0.0",
