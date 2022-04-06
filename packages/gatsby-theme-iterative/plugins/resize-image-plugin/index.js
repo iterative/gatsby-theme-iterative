@@ -46,14 +46,13 @@ const extractInstructions = titleString => {
 module.exports = async ({ markdownAST }) => {
   const { selectAll, select } = await import('hast-util-select')
   const { visit } = await import('unist-util-visit')
+  let nodes = []
   visit(markdownAST, 'html', node => {
+    nodes.push(node)
+  })
+  for (const node of nodes) {
     const regexMaxWidth = /max-width: \d{1,5}px/g
-    const hast = convertHtmlToHast(node.value)
-    const wrapperImageList = selectAll(`.${imageWrapperClass}`, hast)
-
-    if (!wrapperImageList.length) {
-      return
-    }
+    const hast = await convertHtmlToHast(node.value)
 
     /*
        Image related HTML produced by Gatsby looks like:
@@ -67,7 +66,7 @@ module.exports = async ({ markdownAST }) => {
             <img .gatsby-resp-image-image title='..' alt='...' max-width: 100%>
           ...
     */
-    wrapperImageList.forEach(wrapperImage => {
+    for (const wrapperImage of selectAll(`.${imageWrapperClass}`, hast)) {
       const source = select(`picture > source:first-child`, wrapperImage)
       const image = select(`.${imageClass}`, wrapperImage)
       const { resize, title, wrap } = extractInstructions(
@@ -79,12 +78,6 @@ module.exports = async ({ markdownAST }) => {
         //  restoring it here if needed
         image.properties.title = title ? title : image.properties.alt
       }
-
-      const originalSize = source.properties.srcSet[
-        source.properties.srcSet.length - 1
-      ]
-        .split(' ')[1]
-        .replace('w', '')
 
       const maxWidth = wrapperImage.properties.style
         .match(regexMaxWidth)[0]
@@ -103,24 +96,31 @@ module.exports = async ({ markdownAST }) => {
         )
       }
 
-      if (resize || imageMaxWidth * 2 > originalSize) {
-        wrapperImage.properties.style = wrapperImage.properties.style.replace(
-          regexMaxWidth,
-          `max-width: ${
-            resize ? Math.min(resize, maxWidth) : originalSize / 2
-          }px`
-        )
-      }
-    })
+      const sizeString =
+        source.properties.srcSet[source.properties.srcSet.length - 1].split(
+          ' '
+        )[1]
+      if (sizeString) {
+        const originalSize = sizeString && sizeString.replace('w', '')
 
-    const stopWrapTagList = selectAll(stopWrapTag, hast)
-    stopWrapTagList.forEach(stopWrap => {
+        if (resize || imageMaxWidth * 2 > originalSize) {
+          wrapperImage.properties.style = wrapperImage.properties.style.replace(
+            regexMaxWidth,
+            `max-width: ${
+              resize ? Math.min(resize, maxWidth) : originalSize / 2
+            }px`
+          )
+        }
+      }
+    }
+
+    for (const stopWrap of selectAll(stopWrapTag, hast)) {
       stopWrap.tagName = 'div'
       stopWrap.properties.className = imageWrapStopClass
-    })
+    }
 
-    node.value = convertHastToHtml(hast)
-  })
+    node.value = await convertHastToHtml(hast)
+  }
 }
 
 module.exports.extractInstructions = extractInstructions

@@ -4,6 +4,8 @@ const { convertHastToHtml, convertHtmlToHast } = require('../utils/convertHast')
 
 const requiredExternalLinkAttrs = ['href', 'title', 'description', 'link']
 
+const { inspect } = require('util')
+
 function isCorrectExternalLinkAttr(attrsKeyTagArray) {
   return requiredExternalLinkAttrs.every(attr =>
     attrsKeyTagArray.includes(attr)
@@ -36,19 +38,19 @@ function renderTag(attrs) {
 module.exports = async ({ markdownAST }) => {
   const { visit } = await import('unist-util-visit')
   const { selectAll } = await import('hast-util-select')
+  const nodes = []
   visit(markdownAST, 'html', node => {
-    const hast = convertHtmlToHast(node.value)
+    nodes.push(node)
+  })
+  for (const node of nodes) {
+    const hast = await convertHtmlToHast(node.value)
     const externalLinkNodeList = selectAll('external-link', hast)
 
-    if (!externalLinkNodeList.length) {
-      return
-    }
-
-    externalLinkNodeList.forEach(externalLinkNode => {
+    for (const externalLinkNode of externalLinkNodeList) {
       const { properties } = externalLinkNode
       if (isCorrectExternalLinkAttr(Object.keys(properties))) {
         const externalLinkHtml = renderTag(properties)
-        const externalLinkHast = convertHtmlToHast(externalLinkHtml)
+        const externalLinkHast = await convertHtmlToHast(externalLinkHtml)
 
         externalLinkNode.type = externalLinkHast.type
         externalLinkNode.tagName = externalLinkHast.tagName
@@ -59,8 +61,8 @@ module.exports = async ({ markdownAST }) => {
           `No correct tag <external-link /> or not all nested tags in ${node.value}`
         )
       }
-    })
+    }
 
-    node.value = convertHastToHtml(hast)
-  })
+    node.value = await convertHastToHtml(hast)
+  }
 }
