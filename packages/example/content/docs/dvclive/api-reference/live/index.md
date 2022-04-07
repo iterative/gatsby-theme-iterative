@@ -9,7 +9,6 @@ class Live:
         self,
         path: Optional[str] = None,
         resume: bool = False,
-        summary: bool = True,
     ):
 ```
 
@@ -26,15 +25,19 @@ live = Live()
 A `Live()` instance is required in order to log machine learning metrics and
 other metadata.
 
-⚠️ `Live()` will remove all existing DVCLive related files under `path` unless
+<admon type="warn">
+
+`Live()` will remove all existing DVCLive related files under `path` unless
 `resume=True`.
+
+</admon>
 
 ## Attributes
 
-- `dir` - Location of the [metrics history](/doc/dvclive/get-started#history)
-  directory.
+- `dir` - Location of the directory to store
+  [outputs](/doc/dvclive/get-started#outputs).
 - `summary_path` - Location of the
-  [summary](/doc/dvclive/get-started#metrics-summary).
+  [summary](/doc/dvclive/api-reference/live/#parameters).
 - `html_path` - Location of the
   [html report](/doc/dvclive/dvclive-with-dvc#html-report).
 
@@ -49,15 +52,12 @@ other metadata.
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
   `path` directory and start from that point. _Default_: `False`.
 
-  ⚠️ If you are not using steps, don't set to `True` since DVCLive will preserve
-  previous run's files and assume that `step` has been enabled.
+  <admon type="info">
 
-- `summary` - If `True`, upon each `Live.log()` call, DVCLive will generate a
-  summary (usable by `dvc metrics`). The summary will be located at
-  `{path}.json`. _Default_: `True`.
+  If you are not using steps, don't set `resume=True` since DVCLive will
+  preserve previous run's files and assume that `step` has been enabled.
 
-  ⚠️ If you are not using steps, don't set to `False` since `Live.log()` won't
-  be generating any output.
+  </admon>
 
 ## Exceptions
 
@@ -68,6 +68,8 @@ other metadata.
 ## Methods
 
 - `Live.log()`
+- `Live.log_image()`
+- `Live.log_plot()`
 - `Live.get_step()`
 - `Live.next_step()`
 - `Live.set_step()`

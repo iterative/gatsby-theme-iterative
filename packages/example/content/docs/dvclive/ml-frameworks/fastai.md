@@ -25,12 +25,16 @@ learn.fit_one_cycle(
 +  cbs=[DvcLiveCallback()])
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -50,7 +54,7 @@ from dvclive.fastai import DvcLiveCallback
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DvcLiveCallback(model_file='model.pth')])
+  cbs=[DvcLiveCallback(model_file="model.pth")])
 ```
 
 - Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
@@ -61,5 +65,5 @@ from dvclive.fastai import DvcLiveCallback
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DvcLiveCallback(path='custom_path', summary=False)])
+  cbs=[DvcLiveCallback(model_file="model.pth", path="custom_path")])
 ```

@@ -8,8 +8,8 @@ Displays your experiments in a customizable table or
 ## Synopsis
 
 ```usage
-usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
-                    [--no-pager] [--drop <regex>]
+usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [--rev <commit>]
+                    [-n <num>] [--no-pager] [--drop <regex>]
                     [--keep <regex>] [--param-deps]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--sha]
@@ -44,10 +44,9 @@ $ dvc exp show
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-Your terminal will enter a
-[paginated screen](/doc/command-reference/dag#paginating-the-output) by default,
-which you can typically exit by typing `Q`. Use `--no-pager` to print the table
-to standard output.
+Your terminal will enter a [paginated screen](#paginating-the-output) by
+default, which you can typically exit by typing `q`. Use `--no-pager` to print
+the table to standard output.
 
 By default, the printed experiments table will include columns for all metrics,
 parameters and dependencies from the entire project. The `--only-changed`,
@@ -65,6 +64,33 @@ will be generated using the same data from the table.
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
 
+### Paginating the output
+
+This command's output is automatically piped to
+[less](<https://en.wikipedia.org/wiki/Less_(Unix)>) if available in the terminal
+(the exact command used is `less --chop-long-lines --clear-screen`). If `less`
+is not available (e.g. on Windows), the output is simply printed out.
+
+> It's also possible to
+> [enable `less` on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
+
+### Providing a custom pager
+
+It's possible to override the default pager via the `DVC_PAGER` environment
+variable. Set it to a program found in `PATH` or give a full path to it. For
+example on Linux shell:
+
+```dvc
+$ DVC_PAGER=more dvc exp show  # Use more as pager once.
+...
+
+$ export DVC_PAGER=more  # Set more as pager for all commands.
+$ dvc exp show ...
+```
+
+> For a persistent change, set `DVC_PAGER` in the shell configuration, for
+> example in `~/.bashrc` for Bash.
+
 ## Options
 
 - `-a`, `--all-branches` - include experiments derived from all Git branches, as
@@ -78,7 +104,12 @@ will be generated using the same data from the table.
 - `-A`, `--all-commits` - include experiments derived from all Git commits, as
   well as from the last one. This prints all experiments in the project.
 
-- `-n <num>`, `--num <num>` - show the last `num` commits from HEAD.
+- `--rev <commit>` - show experiments derived from the specified `<commit>` as
+  baseline. Defaults to `HEAD` if none of `--rev`, `-a`, `-T`, `-A` is used.
+
+- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
@@ -291,7 +322,7 @@ sorting only applies to experiment groups (sharing a parent commit).
 
 ## Example: Parallel coordinates plot (PCP)
 
-To generate an interactive parallel coordiantes plot based on the experiments
+To generate an interactive parallel coordinates plot based on the experiments
 and their parameters:
 
 ```dvc

@@ -19,7 +19,7 @@ pipeline is [codified with DVC].
 Other tools tend to focus on experiment navigation by saving metrics and
 artifacts that result from your pipelines, along with fragile links to code
 revisions. DVC's approach guarantees reproducibility by working on top of Git
-instead, and not as a parallel system.
+instead, and not as a separate system.
 
 [experiment management]: /doc/user-guide/experiment-management
 [codified with dvc]: /doc/user-guide/project-structure/pipelines-files
@@ -98,11 +98,11 @@ whether you're using Jupyter notebooks or Scala, CSV data frames or HDFS.
 
 ---
 
-To complete your stack, we also offer [DVC Studio], an advanced web interface to
-collaborate on DVC projects online, including full experiment management
-support. You can also integrate with CI/CD using [CML], and run your experiments
-there straight from Studio!
+To complete your stack, we also offer [Iterative Studio], an advanced web
+interface to collaborate on DVC projects online, including full experiment
+management support. You can also integrate with CI/CD using [CML], and run your
+experiments there straight from Studio!
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[dvc studio]: /doc/studio
+[iterative studio]: /doc/studio
 [cml]: https://cml.dev/

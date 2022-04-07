@@ -26,12 +26,16 @@ xgboost.train(
 +   evals=[(dval, "eval_data")])
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -53,7 +57,6 @@ xgboost.train(
     callbacks=[
       DvcLiveCallback(
         "eval_data",
-        path="custom_path",
-        summary=False)],
+        path="custom_path")],
     evals=[(dval, "eval_data")])
 ```

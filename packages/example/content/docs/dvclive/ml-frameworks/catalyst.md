@@ -28,12 +28,16 @@ runner.train(
 +    callbacks=[DvcLiveCallback()])
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -56,7 +60,7 @@ runner.train(
     optimizer=optimizer,
     loaders=loaders,
     num_epochs=2,
-    callbacks=[DvcLiveCallback("model.pth")])
+    callbacks=[DvcLiveCallback(model_file="model.pth")])
 ```
 
 - Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
@@ -71,5 +75,5 @@ runner.train(
     loaders=loaders,
     num_epochs=2,
     callbacks=[
-      DvcLiveCallback(path="custom_path", summary=False)])
+      DvcLiveCallback(model_file="model.pth", path="custom_path")])
 ```

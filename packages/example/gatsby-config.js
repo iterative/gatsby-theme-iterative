@@ -15,7 +15,7 @@ module.exports = {
     {
       resolve: themePackageName,
       options: {
-        simpleLinkerTerms: require('./content/docs/linked-terms')
+        simpleLinkerTerms: require('./content/linked-terms')
       }
     },
     {

@@ -54,7 +54,7 @@ An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
 similar to using `dvc add` after downloading the data. This makes it possible to
 update the import later, if the data source has changed (see `dvc update`).
 
-> Note that data imported from external locaitons can be
+> Note that data imported from external locations can be
 > [pushed](/doc/command-reference/push) and
 > [pulled](/doc/command-reference/pull) to/from
 > [remote storage](/doc/command-reference/remote) normally (unlike for
@@ -150,8 +150,8 @@ produces a regular stage in `dvc.yaml`.
   `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Using more jobs may speed up the operation.
+  from the source. The default value is `4 * cpu_count()`. Using more jobs may
+  speed up the operation.
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.

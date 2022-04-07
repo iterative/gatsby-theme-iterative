@@ -7,7 +7,7 @@ Run or resume a
 
 ```usage
 usage: dvc exp run [-h] [-q | -v] [-f]
-                   [repro_options ...]
+                   { repro options ... }
                    [-S [<filename>:]<params_list>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset]
@@ -23,9 +23,12 @@ Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
-> `dvc exp run` has the same behavior as `dvc repro` when it comes to `targets`
-> and stage execution (restores the dependency graph, etc.). See the command
-> [options](#options) for more on the differences.
+`dvc exp run` has the same general behavior as `dvc repro` when it comes to
+`targets` and stage execution (restores the dependency graph, etc.).
+
+> This includes committing any changed data <abbr>dependencies</abbr> to the
+> <abbr>DVC cache</abbr> when preparing the experiment, which can take some
+> time. See the [Options](#options) section for the differences.
 
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
@@ -61,8 +64,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Options
 
-> In addition to the following, `dvc exp run` accepts all the options in
-> `dvc repro`, with the exception that `--no-commit` has no effect.
+> In addition to the following, `dvc exp run` accepts the options in `dvc repro`
+> except for `--glob`, `--no-commit`, and `--no-run-cache`.
 
 - `-S [<filename>:]<param_name>=<param_value>`,
   `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
@@ -97,7 +100,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   > stages may sometimes be executed several times depending on the state of the
   > [run-cache] at that time.
 
-- `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
+- `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
 
 - `--reset` - deletes `checkpoint: true` outputs before running this experiment
