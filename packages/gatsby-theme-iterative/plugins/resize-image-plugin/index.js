@@ -66,7 +66,11 @@ module.exports = async ({ markdownAST }) => {
             <img .gatsby-resp-image-image title='..' alt='...' max-width: 100%>
           ...
     */
-    for (const wrapperImage of selectAll(`.${imageWrapperClass}`, hast)) {
+    const wrapperImages = selectAll(`.${imageWrapperClass}`, hast)
+    if (!wrapperImages.length) {
+      continue
+    }
+    for (const wrapperImage of wrapperImages) {
       const source = select(`picture > source:first-child`, wrapperImage)
       const image = select(`.${imageClass}`, wrapperImage)
       const { resize, title, wrap } = extractInstructions(

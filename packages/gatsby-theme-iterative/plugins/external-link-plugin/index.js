@@ -44,9 +44,12 @@ module.exports = async ({ markdownAST }) => {
   })
   for (const node of nodes) {
     const hast = await convertHtmlToHast(node.value)
-    const externalLinkNodeList = selectAll('external-link', hast)
+    const externalLinkNodes = selectAll('external-link', hast)
+    if (!externalLinkNodes.length) {
+      continue
+    }
 
-    for (const externalLinkNode of externalLinkNodeList) {
+    for (const externalLinkNode of externalLinkNodes) {
       const { properties } = externalLinkNode
       if (isCorrectExternalLinkAttr(Object.keys(properties))) {
         const externalLinkHtml = renderTag(properties)
