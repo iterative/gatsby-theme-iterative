@@ -4,7 +4,9 @@ import React, {
   useRef,
   ReactNode,
   ReactElement,
-  useContext
+  useContext,
+  ReactChild,
+  PropsWithChildren
 } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
@@ -50,7 +52,9 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
     firstChild.props.children.length - 1
   ) as ReactNode[]
 
-  const title = (triggerChildren as any[]).reduce((acc, cur) => {
+  const title: string = (
+    triggerChildren as (string | ReactChild)[]
+  ).reduce<string>((acc, cur) => {
     return (acc +=
       typeof cur === 'string'
         ? cur
@@ -244,8 +248,8 @@ const Tab: React.FC = ({ children }) => {
 }
 
 // Rehype's typedefs don't allow for custom components, even though they work
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderAst = (slugger: GithubSlugger) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return new (rehypeReact as any)({
     createElement: React.createElement,
     Fragment: React.Fragment,
@@ -254,7 +258,9 @@ const renderAst = (slugger: GithubSlugger) => {
       abbr: Abbr,
       card: Card,
       cards: Cards,
-      details: (props: any) => <Details slugger={slugger} {...props} />,
+      details: (props: PropsWithChildren<Record<string, unknown>>) => (
+        <Details slugger={slugger} {...props} />
+      ),
       toggle: Toggle,
       tab: Tab,
       admon: Admonition,

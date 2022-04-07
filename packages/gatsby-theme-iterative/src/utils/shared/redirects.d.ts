@@ -1,15 +1,15 @@
-import { SidebarItem } from './sidebar'
+import { ISidebarItem } from './sidebar'
 
-interface Redirect {
+interface IRedirect {
   regex: RegExp
   matchPathname: boolean
   replace: string
   code: number
 }
 
-export function buildSidebarRedirects(list: SidebarItem[]): string[]
+export function buildSidebarRedirects(list: ISidebarItem[]): string[]
 
-export function processRedirectString(redirectString: string): Redirect
+export function processRedirectString(redirectString: string): IRedirect
 
 export function getRedirect(
   host: string,

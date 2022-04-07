@@ -94,12 +94,7 @@ export const HamburgerMenu: React.FC<
           </Link>
         </li>
         <li className={styles.section}>
-          <div
-            className={styles.sectionHeading}
-            onClick={() => handleItemClick('support')}
-          >
-            Support
-          </div>
+          <div className={styles.sectionHeading}>Support</div>
           <ul className={styles.subSections}>
             <li className={styles.subSection}>
               <Link

@@ -4,8 +4,6 @@ const { convertHastToHtml, convertHtmlToHast } = require('../utils/convertHast')
 
 const requiredExternalLinkAttrs = ['href', 'title', 'description', 'link']
 
-const { inspect } = require('util')
-
 function isCorrectExternalLinkAttr(attrsKeyTagArray) {
   return requiredExternalLinkAttrs.every(attr =>
     attrsKeyTagArray.includes(attr)

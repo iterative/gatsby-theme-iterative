@@ -26,7 +26,7 @@ exports.pluginOptionsSchema = ({ Joi }) => {
   })
 }
 
-exports.createSchemaCustomization = async (api, options) => {
+exports.createSchemaCustomization = async api => {
   const {
     actions: { createTypes },
     schema: { buildObjectType }

@@ -1,4 +1,4 @@
-export interface SidebarItem {
+export interface ISidebarItem {
   label: string
   path: string
   source: string
@@ -9,18 +9,18 @@ export interface SidebarItem {
   tutorials?: {
     katacoda: string
   }
-  children?: SidebarItem[]
+  children?: ISidebarItem[]
 }
 
-export const structure: SidebarItem[]
+export const structure: ISidebarItem[]
 
-export function findChildWithSource(source: SidebarItem): SidebarItem
+export function findChildWithSource(source: ISidebarItem): ISidebarItem
 
 export function getFirstPage(): string
 
-export function getItemByPath(path: string): SidebarItem
+export function getItemByPath(path: string): ISidebarItem
 
-export function getItemBySource(source: string): SidebarItem | false
+export function getItemBySource(source: string): ISidebarItem | false
 
 export function getPathWithSource(path: string): string
 
