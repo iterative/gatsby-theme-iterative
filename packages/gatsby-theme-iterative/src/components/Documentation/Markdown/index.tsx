@@ -265,7 +265,7 @@ const renderAst = (slugger: GithubSlugger) => {
 interface IMarkdownProps {
   htmlAst: Node
   githubLink: string
-  tutorials: { [type: string]: string }
+  tutorials?: { [type: string]: string }
   prev?: string
   next?: string
 }

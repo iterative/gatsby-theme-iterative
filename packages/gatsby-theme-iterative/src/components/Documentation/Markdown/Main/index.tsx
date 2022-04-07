@@ -29,7 +29,7 @@ const isInsideCodeBlock = (node: Element): boolean => {
 
 interface IMainProps {
   githubLink: string
-  tutorials: { [type: string]: string }
+  tutorials?: { [type: string]: string }
   prev?: string
   next?: string
 }

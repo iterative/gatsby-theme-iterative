@@ -22,7 +22,9 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
   const rootRef = useRef<HTMLDivElement>(null)
   const psRef = useRef<PerfectScrollbar | undefined>(undefined)
   const [isScrollHidden, setIsScrollHidden] = useState(false)
-  const activePaths = currentPath && getParentsListFromPath(currentPath)
+  const activePaths = currentPath
+    ? getParentsListFromPath(currentPath)
+    : undefined
 
   const scrollToActiveItem = (): void => {
     const node = document.getElementById(currentPath)

@@ -6,7 +6,7 @@ import SidebarMenuItem from '../Item'
 import { SidebarItemClickHandler } from '..'
 
 export interface IInnerSidebarProps {
-  activePaths: string[]
+  activePaths?: string[]
   onClick: SidebarItemClickHandler
 }
 
@@ -21,7 +21,9 @@ const SidebarSections: React.FC<IInnerSidebarProps> = ({
           <SidebarMenuItem
             key={item.path}
             activePaths={
-              includes(activePaths, item.path) ? activePaths : undefined
+              activePaths && includes(activePaths, item.path)
+                ? activePaths
+                : undefined
             }
             onClick={onClick}
             {...item}

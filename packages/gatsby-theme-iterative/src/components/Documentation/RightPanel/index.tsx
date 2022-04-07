@@ -14,8 +14,8 @@ import * as styles from './styles.module.css'
 
 interface IRightPanelProps {
   headings: Array<IHeading>
-  tutorials: { [type: string]: string }
   githubLink: string
+  tutorials?: { [type: string]: string }
 }
 
 interface IHeadingsCoordinates {
@@ -162,10 +162,12 @@ const RightPanel: React.FC<IRightPanelProps> = ({
               </span>{' '}
               It can be run online:
             </p>
-            <Tutorials
-              buttonClassName={cn(styles.button, styles.tutorials)}
-              tutorials={tutorials}
-            />
+            {tutorials && (
+              <Tutorials
+                buttonClassName={cn(styles.button, styles.tutorials)}
+                tutorials={tutorials}
+              />
+            )}
           </div>
         )}
         <div className={styles.buttonSection}>
