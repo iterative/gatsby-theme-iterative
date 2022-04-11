@@ -14,7 +14,8 @@
     "clean": "yarn workspace example clean",
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
-    "develop": "yarn workspace example develop"
+    "develop": "yarn workspace example develop",
+    "storybook": "yarn workspace @dvcorg/gatsby-theme-iterative storybook"
   },
   "workspaces": [
     "./packages/*"
