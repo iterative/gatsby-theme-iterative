@@ -1,3 +1,14 @@
 const path = require('path')
-const pseudoShadow = modulePath => require(path.resolve(modulePath))
+const pseudoShadow = modulePath => {
+  try {
+    return require(path.resolve(
+      'src',
+      '@dvcorg',
+      'gatsby-theme-iterative',
+      modulePath
+    ))
+  } catch (e) {
+    return require(path.resolve(__dirname, 'src', modulePath))
+  }
+}
 module.exports = pseudoShadow
