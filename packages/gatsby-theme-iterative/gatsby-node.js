@@ -22,7 +22,10 @@ exports.pluginOptionsSchema = ({ Joi }) => {
         url: Joi.string()
       })
     ),
-    cssBase: Joi.string()
+    cssBase: Joi.string(),
+    customMediaConfig: Joi.object(),
+    customPropertiesConfig: Joi.object(),
+    colorModConfig: Joi.object()
   })
 }
 
