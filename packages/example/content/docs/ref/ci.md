@@ -1,7 +1,7 @@
 # Command Reference: `ci`
 
-```bash
-cml ci [options]
+```usage
+cml ci [--unshallow] [options]
 ```
 
 Prepares Git repository for CML operations (setting Git `user.name` &
@@ -25,6 +25,6 @@ Instead of wrangling with
 `git config user.email` before being able to `git commit` or use
 [`cml pr`](/doc/ref/pr), simply run:
 
-```bash
+```usage
 cml ci
 ```

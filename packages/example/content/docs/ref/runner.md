@@ -1,6 +1,6 @@
 # Command Reference: `runner`
 
-```bash
+```usage
 cml runner [options]
 ```
 
