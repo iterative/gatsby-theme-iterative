@@ -5,8 +5,7 @@ import React, {
   ReactNode,
   ReactElement,
   useContext,
-  ReactChild,
-  PropsWithChildren
+  useMemo
 } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
@@ -24,11 +23,12 @@ import { TogglesContext, TogglesProvider } from './ToggleProvider'
 import { ReactComponent as LinkIcon } from '../../../images/linkIcon.svg'
 import { useLocation } from '@reach/router'
 
-import GithubSlugger from 'github-slugger'
+import Slugger from '../../../utils/front/Slugger'
 
-const Details: React.FC<{ slugger: GithubSlugger }> = ({
+const Details: React.FC<{ slugger: Slugger; id: string }> = ({
   slugger,
-  children
+  children,
+  id
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -52,9 +52,7 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
     firstChild.props.children.length - 1
   ) as ReactNode[]
 
-  const title: string = (
-    triggerChildren as (string | ReactChild)[]
-  ).reduce<string>((acc, cur) => {
+  const title = (triggerChildren as any[]).reduce((acc, cur) => {
     return (acc +=
       typeof cur === 'string'
         ? cur
@@ -62,10 +60,9 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
         ? cur?.props?.children?.toString()
         : '')
   }, '')
-
-  let slug = slugger.slug(title)
-  slug = slug.replaceAll('️', '').replaceAll('ℹ', '')
-  const id = slug.replace(/(^\-+|\-+$)/g, '')
+  id = useMemo(() => {
+    return id ? slugger.slug(id) : slugger.slug(title)
+  }, [id, title])
 
   useEffect(() => {
     if (location.hash === `#${id}`) {
@@ -248,8 +245,8 @@ const Tab: React.FC = ({ children }) => {
 }
 
 // Rehype's typedefs don't allow for custom components, even though they work
-const renderAst = (slugger: GithubSlugger) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const renderAst = (slugger: Slugger) => {
   return new (rehypeReact as any)({
     createElement: React.createElement,
     Fragment: React.Fragment,
@@ -258,9 +255,7 @@ const renderAst = (slugger: GithubSlugger) => {
       abbr: Abbr,
       card: Card,
       cards: Cards,
-      details: (props: PropsWithChildren<Record<string, unknown>>) => (
-        <Details slugger={slugger} {...props} />
-      ),
+      details: (props: any) => <Details slugger={slugger} {...props} />,
       toggle: Toggle,
       tab: Tab,
       admon: Admonition,
@@ -271,7 +266,7 @@ const renderAst = (slugger: GithubSlugger) => {
 interface IMarkdownProps {
   htmlAst: Node
   githubLink: string
-  tutorials?: { [type: string]: string }
+  tutorials: { [type: string]: string }
   prev?: string
   next?: string
 }
@@ -283,7 +278,7 @@ const Markdown: React.FC<IMarkdownProps> = ({
   tutorials,
   githubLink
 }) => {
-  const slugger = new GithubSlugger()
+  const slugger = new Slugger()
   return (
     <Main prev={prev} next={next} tutorials={tutorials} githubLink={githubLink}>
       <TogglesProvider>{renderAst(slugger)(htmlAst)}</TogglesProvider>
