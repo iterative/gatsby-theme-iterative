@@ -87,6 +87,10 @@
       visibility: visible;
     }
 
+    .collapsableDiv:hover .anchor svg {
+      visibility: visible;
+    }
+
     .collapsableDiv .anchor {
       line-height: 2.5;
     }
@@ -105,7 +109,7 @@
 
     li .anchor {
       line-height: unset;
-      margin-left: -16px;
+      margin-left: -17px;
     }
 
     .anchor {
