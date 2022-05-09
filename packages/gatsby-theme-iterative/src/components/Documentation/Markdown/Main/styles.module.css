@@ -172,7 +172,8 @@
         color: #0086b3;
       }
 
-      .token.dvc {
+      .token.dvc,
+      .token.cml {
         color: #56b1d0;
         font-weight: bold;
       }
