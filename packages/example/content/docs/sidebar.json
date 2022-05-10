@@ -476,6 +476,41 @@
     ]
   },
   {
+    "label": "CML Command Reference",
+    "slug": "ref",
+    "source": "ref/index.md",
+    "children": [
+      {
+        "label": "ci",
+        "slug": "ci"
+      },
+      {
+        "label": "pr",
+        "slug": "pr"
+      },
+      {
+        "label": "publish",
+        "slug": "publish"
+      },
+      {
+        "label": "runner",
+        "slug": "runner"
+      },
+      {
+        "label": "send-comment",
+        "slug": "send-comment"
+      },
+      {
+        "label": "send-github-check",
+        "slug": "send-github-check"
+      },
+      {
+        "label": "tensorboard-dev",
+        "slug": "tensorboard-dev"
+      }
+    ]
+  },
+  {
     "slug": "api-reference",
     "label": "Python API Reference",
     "source": "api-reference/index.md",

@@ -9,6 +9,7 @@ require('./dvc-hook')
 const { bash } = Prism.languages
 
 const dvc = require('./dvc-commands')
+const cml = require('./cml-commands')
 
 // Command arrays are intentionally reverse sorted
 // to prevent shorter matches before longer ones
@@ -41,6 +42,34 @@ Prism.languages.dvc = {
       dvc: {
         pattern: new RegExp(
           String.raw`${beforeCommand}\b(?:dvc (?:${dvc.join('|')}))\b`
+        ),
+        greedy: true,
+        lookbehind: true
+      },
+      git: {
+        pattern: new RegExp(
+          String.raw`${beforeCommand}\b(?:git (?:${git.join('|')}))\b`
+        ),
+        greedy: true,
+        lookbehind: true
+      },
+      command: {
+        pattern: new RegExp(String.raw`${beforeCommand}\b[a-zA-Z0-9\-_]+\b`),
+        greedy: true,
+        lookbehind: true
+      },
+      ...bash
+    }
+  },
+  comment: bash.comment
+}
+Prism.languages.cml = {
+  line: {
+    pattern: /(?<=(^|\n))\$[\s\S]*?[^\\](:?\n|$)/,
+    inside: {
+      cml: {
+        pattern: new RegExp(
+          String.raw`${beforeCommand}\b(?:cml (?:${cml.join('|')}))\b`
         ),
         greedy: true,
         lookbehind: true
