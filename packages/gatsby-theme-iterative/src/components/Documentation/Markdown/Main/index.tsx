@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from 'react'
+import React, { useEffect, useRef, useCallback, PropsWithChildren } from 'react'
 import cn from 'classnames'
 import { navigate } from '@reach/router'
 
@@ -34,7 +34,9 @@ interface IMainProps {
   next?: string
 }
 
-const Main: React.FC<IMainProps> = ({
+type RawTouchHandler = (this: Document, e: TouchEvent) => void
+
+const Main: React.FC<PropsWithChildren<IMainProps>> = ({
   children,
   prev,
   next,
@@ -56,11 +58,11 @@ const Main: React.FC<IMainProps> = ({
       navigate(prev)
     }
   }, [prev, next])
-  const onTouchStart = useCallback(e => {
-    isCodeBlockRef.current = isInsideCodeBlock(e.target)
+  const onTouchStart = useCallback<RawTouchHandler>(e => {
+    isCodeBlockRef.current = isInsideCodeBlock(e.target as Element)
     touchstartXRef.current = e.changedTouches[0].screenX
   }, [])
-  const onTouchEnd = useCallback(e => {
+  const onTouchEnd = useCallback<RawTouchHandler>(e => {
     touchendXRef.current = e.changedTouches[0].screenX
     handleSwipeGesture()
   }, [])

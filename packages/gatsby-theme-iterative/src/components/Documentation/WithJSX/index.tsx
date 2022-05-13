@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import MarkdownMain from '../Markdown/Main'
 import RightPanel from '../RightPanel'
@@ -12,7 +12,11 @@ interface IWithJSXProps {
   headings: Array<IHeading>
 }
 
-const WithJSX: React.FC<IWithJSXProps> = ({ children, path, headings }) => {
+const WithJSX: React.FC<PropsWithChildren<IWithJSXProps>> = ({
+  children,
+  path,
+  headings
+}) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
   const githubLink = getEditLink(source)
 

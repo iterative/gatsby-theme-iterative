@@ -35,7 +35,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
 
   const handleClose = useCallback(() => setOpened(false), [opened])
 
-  const handleItemClick = useCallback(
+  const handleItemClick = useCallback<(item?: string) => void>(
     item => (): void => {
       handleClose()
       if (item) {
@@ -56,7 +56,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
     handleToggle,
     handleClose,
     handleItemClick
-  }
+  } as HamburgerHelpers
 }
 
 export const HamburgerMenu: React.FC<

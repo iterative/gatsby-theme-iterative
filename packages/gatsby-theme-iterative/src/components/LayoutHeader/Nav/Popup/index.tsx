@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import cn from 'classnames'
 
 import Link from '../../../Link'
@@ -57,10 +57,12 @@ const otherToolsPopupData: Array<IOtherToolsLinkData> = [
   }
 ]
 
-export const Popup: React.FC<{
-  className?: string
-  isVisible?: boolean
-}> = ({ children, isVisible, className }) => (
+export const Popup: React.FC<
+  PropsWithChildren<{
+    className?: string
+    isVisible?: boolean
+  }>
+> = ({ children, isVisible, className }) => (
   <div className={cn(styles.popup, isVisible && styles.visible, className)}>
     {children}
   </div>

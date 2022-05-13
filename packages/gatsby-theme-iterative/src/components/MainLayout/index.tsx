@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 
 import { IPageProps } from '../Page'
 import LayoutHeader from '../LayoutHeader'
@@ -22,7 +22,7 @@ interface IMainLayoutProps {
 }
 
 export type LayoutComponent = React.FC<
-  IMainLayoutProps & IPageProps & ILayoutModifiable
+  PropsWithChildren<IMainLayoutProps & IPageProps & ILayoutModifiable>
 >
 
 const MainLayout: LayoutComponent = ({

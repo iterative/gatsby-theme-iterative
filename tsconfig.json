@@ -19,7 +19,8 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "alwaysStrict": true,
-    "noEmit": true
+    "noEmit": true,
+    "skipLibCheck": true
   },
-  "include": ["./src/**/*", "./*.js"]
+  "include": ["./packages/*/src/**/*", "./packages/*/src/*.js", "./*.js"]
 }
