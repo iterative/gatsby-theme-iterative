@@ -2,7 +2,6 @@ require('dotenv').config()
 const fs = require('fs')
 const path = require('path')
 
-const nested = require('postcss-nested')
 const autoprefixer = require('autoprefixer')
 const customMedia = require('postcss-custom-media')
 const customProperties = require('postcss-custom-properties')

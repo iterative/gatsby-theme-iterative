@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import cn from 'classnames'
 import * as styles from './styles.module.css'
 
@@ -15,19 +15,21 @@ const icons: { [key: string]: string } = {
 const typeOptions = ['info', 'tip', 'warn']
 const defaultType = 'info'
 
-const Admonition: React.FC<{
-  title?: string
-  type?: 'info' | 'tip' | 'warn'
-  icon?:
-    | 'tip'
-    | 'info'
-    | 'warn'
-    | 'fire'
-    | 'exclamation'
-    | 'lady_beetle'
-    | 'bug'
-    | 'none'
-}> = ({ title, type = defaultType, children, icon = '' }) => {
+const Admonition: React.FC<
+  PropsWithChildren<{
+    title?: string
+    type?: 'info' | 'tip' | 'warn'
+    icon?:
+      | 'tip'
+      | 'info'
+      | 'warn'
+      | 'fire'
+      | 'exclamation'
+      | 'lady_beetle'
+      | 'bug'
+      | 'none'
+  }>
+> = ({ title, type = defaultType, children, icon = '' }) => {
   const setType = typeOptions.includes(type) ? type : defaultType
   const iconContent = icon in icons ? icons[icon] : icons[setType]
   return (

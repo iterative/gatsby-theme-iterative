@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import * as styles from './styles.module.css'
 
 interface IElementProps {
@@ -6,7 +6,11 @@ interface IElementProps {
   el?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'
 }
 
-const Element: React.FC<IElementProps> = ({ children, el, attributes }) => {
+const Element: React.FC<PropsWithChildren<IElementProps>> = ({
+  children,
+  el,
+  attributes
+}) => {
   switch (el) {
     case 'h6':
       return <h6 {...attributes}>{children}</h6>
@@ -31,7 +35,7 @@ interface IAutoLinkHeaderProps {
   anchorStyle?: Record<string, unknown>
 }
 
-const AutoLinkElement: React.FC<IAutoLinkHeaderProps> = ({
+const AutoLinkElement: React.FC<PropsWithChildren<IAutoLinkHeaderProps>> = ({
   children,
   id,
   el,

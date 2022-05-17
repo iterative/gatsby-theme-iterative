@@ -1,4 +1,9 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, {
+  createContext,
+  PropsWithChildren,
+  useEffect,
+  useState
+} from 'react'
 
 interface ITogglesData {
   [key: string]: {
@@ -52,7 +57,9 @@ const getSelectedIndexBasedOffQueryVal = (
   return index > -1 ? index : 0
 }
 
-export const TogglesProvider: React.FC = ({ children }) => {
+export const TogglesProvider: React.FC<
+  PropsWithChildren<Record<never, never>>
+> = ({ children }) => {
   const [togglesData, setTogglesData] = useState({})
   const [lastSelectedTab, setLastSelectedTab] = useState<null | string>(null)
 

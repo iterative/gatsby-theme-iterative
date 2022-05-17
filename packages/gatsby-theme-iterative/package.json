@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx ."
-  },
   "author": "Roger Parent (@rogermparent)",
   "license": "MIT",
   "dependencies": {

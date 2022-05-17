@@ -5,7 +5,8 @@ import React, {
   ReactNode,
   ReactElement,
   useContext,
-  useMemo
+  useMemo,
+  PropsWithChildren
 } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
@@ -25,17 +26,17 @@ import { useLocation } from '@reach/router'
 
 import Slugger from '../../../utils/front/Slugger'
 
-const Details: React.FC<{ slugger: Slugger; id: string }> = ({
-  slugger,
-  children,
-  id
-}) => {
+type RemarkNode = { props: { children: RemarkNode[] } } | string
+
+const Details: React.FC<
+  PropsWithChildren<{ slugger: Slugger; id: string }>
+> = ({ slugger, children, id }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
 
-  const filteredChildren: ReactNode[] = (
-    children as Array<{ props: { children: ReactNode } } | string>
-  ).filter(child => child !== '\n')
+  const filteredChildren = (children as Array<RemarkNode>).filter(
+    child => child !== '\n'
+  )
   const firstChild = filteredChildren[0] as JSX.Element
 
   if (!/^h.$/.test(firstChild.type)) {
@@ -47,12 +48,12 @@ const Details: React.FC<{ slugger: Slugger; id: string }> = ({
      must be removed. The only way around this is the change the autolinker,
      which we currently have as an external package.
    */
-  const triggerChildren: ReactNode[] = firstChild.props.children.slice(
+  const triggerChildren: RemarkNode[] = firstChild.props.children.slice(
     0,
     firstChild.props.children.length - 1
-  ) as ReactNode[]
+  )
 
-  const title = (triggerChildren as any[]).reduce((acc, cur) => {
+  const title = triggerChildren.reduce<string>((acc, cur) => {
     return (acc +=
       typeof cur === 'string'
         ? cur
@@ -92,7 +93,7 @@ const Details: React.FC<{ slugger: Slugger; id: string }> = ({
         trigger={triggerChildren as unknown as ReactElement}
         transitionTime={200}
       >
-        {filteredChildren.slice(1)}
+        {filteredChildren.slice(1) as ReactNode}
       </Collapsible>
     </div>
   )
@@ -102,14 +103,18 @@ const Abbr: React.FC<Record<string, never>> = ({ children }) => {
   return <Tooltip text={(children as string[])[0]} />
 }
 
-const Cards: React.FC = ({ children }) => {
+const Cards: React.FC<PropsWithChildren<Record<never, never>>> = ({
+  children
+}) => {
   return <div className={styles.cards}>{children}</div>
 }
 
-const InnerCard: React.FC<{
-  href?: string
-  className?: string
-}> = ({ href, children, className }) =>
+const InnerCard: React.FC<
+  PropsWithChildren<{
+    href?: string
+    className?: string
+  }>
+> = ({ href, children, className }) =>
   href ? (
     <Link href={href} className={className}>
       {children}
@@ -118,16 +123,20 @@ const InnerCard: React.FC<{
     <div className={className}>{children}</div>
   )
 
-const Card: React.FC<{
-  icon?: string
-  heading?: string
-  href?: string
-  headingtag:
-    | string
-    | React.FC<{
-        className: string
-      }>
-}> = ({ children, icon, heading, headingtag: Heading = 'h3', href }) => {
+const Card: React.FC<
+  PropsWithChildren<{
+    icon?: string
+    heading?: string
+    href?: string
+    headingtag:
+      | string
+      | React.FC<
+          PropsWithChildren<{
+            className: string
+          }>
+        >
+  }>
+> = ({ children, icon, heading, headingtag: Heading = 'h3', href }) => {
   let iconElement
 
   if (Array.isArray(children) && icon) {
@@ -151,13 +160,15 @@ const Card: React.FC<{
   )
 }
 
-const ToggleTab: React.FC<{
-  id: string
-  title: string
-  ind: number
-  onChange: () => void
-  checked: boolean
-}> = ({ children, id, checked, ind, onChange, title }) => {
+const ToggleTab: React.FC<
+  PropsWithChildren<{
+    id: string
+    title: string
+    ind: number
+    onChange: () => void
+    checked: boolean
+  }>
+> = ({ children, id, checked, ind, onChange, title }) => {
   const inputId = `tab-${id}-${ind}`
 
   return (
@@ -233,20 +244,22 @@ const Toggle: React.FC<{
               minHeight: height
             }}
           >
-            {tab}
+            {tab as string}
           </div>
         </ToggleTab>
       ))}
     </div>
   )
 }
-const Tab: React.FC = ({ children }) => {
+const Tab: React.FC<PropsWithChildren<Record<never, never>>> = ({
+  children
+}) => {
   return <React.Fragment>{children}</React.Fragment>
 }
 
 // Rehype's typedefs don't allow for custom components, even though they work
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderAst = (slugger: Slugger) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return new (rehypeReact as any)({
     createElement: React.createElement,
     Fragment: React.Fragment,
@@ -255,7 +268,11 @@ const renderAst = (slugger: Slugger) => {
       abbr: Abbr,
       card: Card,
       cards: Cards,
-      details: (props: any) => <Details slugger={slugger} {...props} />,
+      details: ({ id, children }: PropsWithChildren<{ id: string }>) => (
+        <Details slugger={slugger} id={id}>
+          {children}
+        </Details>
+      ),
       toggle: Toggle,
       tab: Tab,
       admon: Admonition,
@@ -266,7 +283,7 @@ const renderAst = (slugger: Slugger) => {
 interface IMarkdownProps {
   htmlAst: Node
   githubLink: string
-  tutorials: { [type: string]: string }
+  tutorials?: { [type: string]: string }
   prev?: string
   next?: string
 }
