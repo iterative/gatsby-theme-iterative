@@ -19,6 +19,11 @@ declare module '*.svg' {
   export default filePath
 }
 
+declare module '*.mp4' {
+  const src: string
+  export default src
+}
+
 declare module 'scroll' {
   type ScrollTo = (
     node: Element,
