@@ -78,3 +78,5 @@ Prism.languages.cli = {
   },
   comment: bash.comment
 }
+
+Prism.languages.dvc = Prism.languages.cli
