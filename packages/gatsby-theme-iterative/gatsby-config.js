@@ -99,7 +99,11 @@ module.exports = ({
               options: {
                 icon: linkIcon,
                 // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
-                pathname: ['docs/command-reference', `docs/ref`]
+                pathname: [
+                  'docs/command-reference',
+                  `docs/ref`,
+                  'docs/cli-reference'
+                ]
               }
             },
             {

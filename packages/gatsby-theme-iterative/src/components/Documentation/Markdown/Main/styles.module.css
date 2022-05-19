@@ -183,7 +183,8 @@
       }
 
       .token.dvc,
-      .token.cml {
+      .token.cml,
+      .token.mlem {
         color: #56b1d0;
         font-weight: bold;
       }
