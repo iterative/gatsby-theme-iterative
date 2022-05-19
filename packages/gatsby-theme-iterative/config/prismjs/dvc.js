@@ -10,6 +10,7 @@ const { bash } = Prism.languages
 
 const dvc = require('./dvc-commands')
 const cml = require('./cml-commands')
+const mlem = require('./mlem-commands')
 
 // Command arrays are intentionally reverse sorted
 // to prevent shorter matches before longer ones
@@ -35,7 +36,7 @@ const git = [
 
 const beforeCommand = String.raw`(\$[\s(]+|;\s*)`
 
-Prism.languages.dvc = {
+Prism.languages.cli = {
   line: {
     pattern: /(?<=(^|\n))\$[\s\S]*?[^\\](:?\n|$)/,
     inside: {
@@ -46,30 +47,16 @@ Prism.languages.dvc = {
         greedy: true,
         lookbehind: true
       },
-      git: {
+      cml: {
         pattern: new RegExp(
-          String.raw`${beforeCommand}\b(?:git (?:${git.join('|')}))\b`
+          String.raw`${beforeCommand}\b(?:cml (?:${cml.join('|')}))\b`
         ),
         greedy: true,
         lookbehind: true
       },
-      command: {
-        pattern: new RegExp(String.raw`${beforeCommand}\b[a-zA-Z0-9\-_]+\b`),
-        greedy: true,
-        lookbehind: true
-      },
-      ...bash
-    }
-  },
-  comment: bash.comment
-}
-Prism.languages.cml = {
-  line: {
-    pattern: /(?<=(^|\n))\$[\s\S]*?[^\\](:?\n|$)/,
-    inside: {
-      cml: {
+      mlem: {
         pattern: new RegExp(
-          String.raw`${beforeCommand}\b(?:cml (?:${cml.join('|')}))\b`
+          String.raw`${beforeCommand}\b(?:mlem (?:${mlem.join('|')}))\b`
         ),
         greedy: true,
         lookbehind: true
