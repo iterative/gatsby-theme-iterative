@@ -16,7 +16,8 @@ Prism.languages.usage = {
     pattern: new RegExp(`mlem (?:${mlem.join('|')})`)
   },
   usage: {
-    pattern: /(^|\n)\s*(usage|positional arguments|optional arguments)/
+    pattern:
+      /(^|\n)\s*(usage|arguments|positional arguments|optional arguments)/
   },
   args: {
     pattern: /(?<=\[)(?:[^\]\[]+|\[(?:[^\]\[]+|\[[^\]\[]*\])*\])*(?=\])/,
