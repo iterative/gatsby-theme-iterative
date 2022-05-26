@@ -2,10 +2,9 @@
 
 const { createLinkNode } = require('./helpers')
 const { getItemByPath } = require('../../src/utils/shared/sidebar')
+const consts = require('../../consts')
 
-const CLI_API_REGEXP = /(dvc|mlem).api([a-z-._]*\(\)$)?/
-const METHOD_REGEXP = /^[a-z-._]*\(\)$/
-const API_ROOT = '/doc/api-reference/'
+const { CLI_API_REGEXP, METHOD_REGEXP, API_ROOT } = consts
 
 module.exports = astNode => {
   const node = astNode[0]

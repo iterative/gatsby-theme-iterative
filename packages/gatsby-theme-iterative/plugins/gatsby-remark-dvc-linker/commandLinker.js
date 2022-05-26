@@ -2,14 +2,15 @@
 
 const { createLinkNode } = require('./helpers')
 const { getItemByPath } = require('../../src/utils/shared/sidebar')
+const consts = require('../../consts')
 
-const CLI_REGEXP = /(dvc|cml|mlem)\s+[a-z][a-z-.]*/
-
-const COMMAND_REGEXP = /^[a-z][a-z-]*$/
-const ARGS_REGEXP = new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig')
-
-const COMMAND_ROOT = '/doc/command-reference/'
-const CML_COMMAND_ROOT = '/doc/ref/'
+const {
+  ARGS_REGEXP,
+  CLI_REGEXP,
+  COMMAND_REGEXP,
+  COMMAND_ROOT,
+  CML_COMMAND_ROOT
+} = consts
 
 module.exports = astNode => {
   const node = astNode[0]
