@@ -573,7 +573,6 @@
       },
       "usage",
       {
-        "label": "CML with DVC",
         "slug": "cml-with-dvc"
       },
       {
@@ -644,7 +643,6 @@
     "source": "dvclive/index.md",
     "children": [
       {
-        "label": "Get Started",
         "slug": "get-started"
       },
       {
@@ -652,7 +650,6 @@
         "slug": "dvclive-with-dvc"
       },
       {
-        "label": "ML Frameworks",
         "slug": "ml-frameworks",
         "source": "dvclive/ml-frameworks/index.md",
         "children": [
@@ -699,7 +696,6 @@
         ]
       },
       {
-        "label": "API Reference",
         "slug": "api-reference",
         "source": "api-reference/index.md",
         "children": [
