@@ -572,9 +572,7 @@
         "slug": "start-gitlab"
       },
       "usage",
-      {
-        "slug": "cml-with-dvc"
-      },
+      "cml-with-dvc",
       {
         "label": "Self-hosted Runners",
         "slug": "self-hosted-runners"
@@ -597,7 +595,6 @@
       },
       "get-started",
       {
-        "label": "User Guide",
         "slug": "user-guide",
         "source": "user-guide/index.md",
         "children": [
@@ -642,9 +639,7 @@
     "slug": "dvclive",
     "source": "dvclive/index.md",
     "children": [
-      {
-        "slug": "get-started"
-      },
+      "get-started",
       {
         "label": "DVCLive with DVC",
         "slug": "dvclive-with-dvc"
