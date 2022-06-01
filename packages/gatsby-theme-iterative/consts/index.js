@@ -9,7 +9,12 @@ const consts = {
   CLI_API_REGEXP: /(dvc|mlem).api([a-z-._]*\(\)$)?/,
   METHOD_REGEXP: /^[a-z-._]*\(\)$/,
 
-  API_ROOT: '/doc/api-reference/'
+  API_ROOT: '/doc/api-reference/',
+
+  SIDEBAR_UPPERCASE_KEYWORDS_REGEX: /dvc|cml|api|mlem|ml|ldb/g,
+  SIDEBAR_PATH_ROOT: '/doc',
+  SIDEBAR_FILE_ROOT: '/docs/',
+  SIDEBAR_FILE_EXTENSION: '.md'
 }
 
 module.exports = consts
