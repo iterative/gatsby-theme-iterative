@@ -1,6 +1,6 @@
 {
   "name": "@dvcorg/gatsby-theme-iterative",
-  "version": "0.1.5",
+  "version": "0.1.5-beta.1",
   "description": "",
   "main": "index.js",
   "types": "src/typings.d.ts",
