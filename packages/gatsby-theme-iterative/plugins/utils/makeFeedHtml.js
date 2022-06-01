@@ -38,6 +38,7 @@ const unwrapImages = () => async tree => {
 async function makeFeedHtml(htmlAst, siteUrl) {
   const { unified } = await import('unified')
   // We add the rootToAbsolute processor before usage because it depends on siteUrl.
+  console.log({ htmlAst, siteUrl })
   return convertHastToHtml(
     unified()
       /*

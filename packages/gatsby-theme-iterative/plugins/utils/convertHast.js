@@ -8,6 +8,7 @@ async function convertHtmlToHast(htmlString) {
 async function convertHastToHtml(htmlAst) {
   const { unified } = await import('unified')
   const stringify = (await import('rehype-stringify')).default
+  console.log({ htmlAst, unified, stringify })
   return unified().use(stringify).stringify(htmlAst)
 }
 
