@@ -50,7 +50,7 @@ module.exports = async ({ markdownAST }) => {
   visit(markdownAST, 'html', node => {
     nodes.push(node)
   })
-  for await (const node of nodes) {
+  for (const node of nodes) {
     const regexMaxWidth = /max-width: \d{1,5}px/g
     const hast = await convertHtmlToHast(node.value)
 
