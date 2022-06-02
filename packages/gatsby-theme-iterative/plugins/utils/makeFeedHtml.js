@@ -39,7 +39,7 @@ async function makeFeedHtml(htmlAst, siteUrl) {
   const { unified } = await import('unified')
   // We add the rootToAbsolute processor before usage because it depends on siteUrl.
   return convertHastToHtml(
-    unified()
+    await unified()
       /*
          All images processed by Gatsby to be responsive are "unwrapped" into
          their fallback 'img' nodes, as RSS doesn't work with the tricks that
