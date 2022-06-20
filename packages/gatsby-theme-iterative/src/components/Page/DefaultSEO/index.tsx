@@ -1,4 +1,5 @@
 import React from 'react'
+import { Script } from 'gatsby'
 import Helmet from 'react-helmet'
 
 import { MetaProps } from '../../SEO'
@@ -117,11 +118,11 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
         }
       ]}
     >
-      <script
+      <Script
         defer
         data-domain="dvc.org"
         src="https://plausible.io/js/plausible.outbound-links.js"
-      ></script>
+      />
     </Helmet>
   )
 }
