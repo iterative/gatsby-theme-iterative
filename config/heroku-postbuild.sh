@@ -1,3 +1,5 @@
 yarn build
-mv /app/packages/example/public /app/public
-rm -rf -v !("public") .
+mv /app/packages/example/public /tmp/public
+rm -rf /app/*
+mv /tmp/public /app/public
+
