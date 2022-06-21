@@ -14,8 +14,7 @@
     "clean": "yarn workspace example clean",
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
-    "develop": "yarn workspace example develop",
-    "heroku-postbuild": "./config/heroku-postbuild.sh"
+    "develop": "yarn workspace example develop"
   },
   "workspaces": [
     "./packages/*"
