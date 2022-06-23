@@ -3,7 +3,7 @@
   flex-direction: row;
   z-index: 2;
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     padding: 0 15px;
   }
 
@@ -19,7 +19,7 @@
     pointer-events: none;
     background-color: var(--color-light-blue);
 
-    @media (--xs-scr) {
+    @media screen(xs) {
       display: none;
     }
   }
@@ -28,7 +28,7 @@
 .backdrop {
   display: none;
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     display: block;
     opacity: 0;
     pointer-events: none;
@@ -54,7 +54,7 @@
   width: 280px;
   background-color: var(--color-light-blue);
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     position: fixed;
     display: block;
     z-index: 2;
@@ -92,7 +92,7 @@
     transform: translateX(calc(100vw - 60px));
   }
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     display: flex;
 
     > * {
@@ -108,7 +108,7 @@
   background-color: #fff;
   flex: 1;
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     max-width: 100%;
   }
 }

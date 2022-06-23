@@ -337,7 +337,7 @@
       }
 
       a {
-        @mixin focus;
+        @apply focus;
 
         color: #fff;
         text-decoration: underline;
@@ -356,7 +356,7 @@
   flex: 1;
   background-color: #fff;
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     margin: 15px 0;
   }
 }
@@ -367,7 +367,7 @@
   float: right;
   margin: 5px 0 0 10px;
 
-  @media (--md-scr) {
+  @media screen(md) {
     margin: 0 0 15px;
   }
 
@@ -383,7 +383,7 @@
   z-index: 1;
   position: relative;
 
-  @media (--md-scr) {
+  @media screen(md) {
     float: none;
     margin: 0 0 15px;
   }

@@ -3,13 +3,10 @@ const fs = require('fs')
 const path = require('path')
 
 const autoprefixer = require('autoprefixer')
-const customMedia = require('postcss-custom-media')
 const customProperties = require('postcss-custom-properties')
-const mixins = require('postcss-mixins')
 const colorMod = require('postcss-color-mod-function')
 
 const mediaConfig = require('./config/postcss/media')
-const mixinsConfig = require('./config/postcss/mixins')
 
 const defaultCssBase = path.join(
   __dirname,
@@ -34,7 +31,6 @@ const imageMaxWidth = 700
 module.exports = ({
   simpleLinkerTerms,
   cssBase = defaultCssBase,
-  customMediaConfig = { importFrom: [mediaConfig] },
   customPropertiesConfig = {
     importFrom: [cssBase],
     disableDeprecationNotice: true
@@ -44,8 +40,6 @@ module.exports = ({
   },
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
-    customMedia(customMediaConfig),
-    mixins(mixinsConfig),
     customProperties(customPropertiesConfig),
     colorMod(colorModConfig),
     autoprefixer,

@@ -35,14 +35,14 @@
   will-change: height;
   padding: 0 24px;
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     padding: 0 16px;
   }
 }
 
 .logoLink {
-  @mixin hover;
-  @mixin active;
+  @apply hover;
+  @apply active;
 
   height: 40px;
   width: 40px;
@@ -62,8 +62,8 @@
 }
 
 .company {
-  @mixin active;
-  @mixin hover;
+  @apply active;
+  @apply hover;
 
   font-size: 15px;
   line-height: 20px;
@@ -87,11 +87,11 @@
     opacity: 0.7;
   }
 
-  @media (--sm-scr) {
+  @media screen(sm) {
     margin-left: 2px;
   }
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     padding: 10px 0;
     margin-left: 8px;
   }

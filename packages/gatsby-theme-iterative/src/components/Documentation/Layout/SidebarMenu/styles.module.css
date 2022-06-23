@@ -12,7 +12,7 @@
     }
   }
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     position: relative;
     top: 0;
     height: calc(100% - 60px);
@@ -30,13 +30,13 @@
   margin-bottom: 25px;
   margin-top: 10px;
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     min-width: auto;
   }
 }
 
 .sectionLinks {
-  @media (--sm-scr) {
+  @media screen(sm) {
     position: relative;
   }
 }
@@ -56,7 +56,7 @@
   &:hover {
     color: #3c3937;
 
-    @media (--xs-scr) {
+    @media screen(xs) {
       color: var(--color-gray-light);
     }
   }

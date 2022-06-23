@@ -7,11 +7,11 @@
     max-width: var(--layout-width-wide);
   }
 
-  @media (--md-scr) {
+  @media screen(md) {
     max-width: 100%;
   }
 
-  @media (--xs-scr) {
+  @media screen(xs) {
     padding: 0 31px;
   }
 }

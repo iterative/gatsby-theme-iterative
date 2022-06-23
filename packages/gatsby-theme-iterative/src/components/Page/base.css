@@ -21,7 +21,7 @@
   --layout-header-height: 72px;
   --layout-alert-height: 35px;
 
-  @media (--md-scr) {
+  @media screen(md) {
     --layout-header-height: 64px;
   }
 }

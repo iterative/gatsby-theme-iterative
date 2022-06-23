@@ -15,7 +15,7 @@
     margin: 0;
   }
 
-  @media (--md-scr) {
+  @media screen(md) {
     margin-left: 0;
 
     &:first-child {
@@ -23,7 +23,7 @@
     }
   }
 
-  @media (--sm-scr) {
+  @media screen(sm) {
     margin-left: 4px;
 
     &:nth-child(5),
@@ -34,9 +34,9 @@
 }
 
 .link {
-  @mixin active;
-  @mixin hover;
-  @mixin focus;
+  @apply active;
+  @apply hover;
+  @apply focus;
 
   font-family: var(--font-base);
   font-weight: 400;
@@ -76,7 +76,7 @@
     display: none;
   }
 
-  @media (--md-scr) {
+  @media screen(md) {
     font-size: 17px;
     line-height: 20px;
 
