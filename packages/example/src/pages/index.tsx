@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <h1>Gatsby Theme: Iterative</h1>
       <p>
-        Welcome to the documentation and example website for Iterative's website
+        Welcome to the documentation and example website for Iterative&apos;s website
         engine!
       </p>
       <p>
