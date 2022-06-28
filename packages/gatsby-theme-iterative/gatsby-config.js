@@ -6,8 +6,6 @@ const autoprefixer = require('autoprefixer')
 const customProperties = require('postcss-custom-properties')
 const colorMod = require('postcss-color-mod-function')
 
-const mediaConfig = require('./config/postcss/media')
-
 const defaultCssBase = path.join(
   __dirname,
   'src',

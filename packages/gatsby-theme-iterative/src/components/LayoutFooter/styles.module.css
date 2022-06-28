@@ -241,7 +241,6 @@
 .socialIcon {
   width: 26px;
   height: 26px;
-  padding: 11px;
   margin-right: 24px;
 
   @media screen(md) {

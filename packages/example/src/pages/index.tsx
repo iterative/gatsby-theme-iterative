@@ -3,11 +3,13 @@ import { Link } from 'gatsby'
 
 export default function Home() {
   return (
-    <div>
-      <h1>Gatsby Theme: Iterative</h1>
+    <div className="container px-2 py-3 mx-auto">
+      <h1 className="text-xl font-bold text-center mb-2">
+        Gatsby Theme: Iterative
+      </h1>
       <p>
-        Welcome to the documentation and example website for Iterative's website
-        engine!
+        Welcome to the documentation and example website for Iterative&apos;s
+        website engine!
       </p>
       <p>
         This theme is primarily related to adding a documentation engine, which

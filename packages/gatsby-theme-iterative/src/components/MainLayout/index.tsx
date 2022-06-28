@@ -50,9 +50,9 @@ const MainLayout: LayoutComponent = ({
   }, [])
 
   return (
-    <div className={styles.layoutWrapper}>
+    <div className="h-full flex flex-col items-center">
       <LayoutHeader modifiers={modifiers} />
-      <div id="layoutContent" className={styles.layoutContent}>
+      <div id="layoutContent" className="flex-1">
         {children}
       </div>
       <LayoutFooter />
