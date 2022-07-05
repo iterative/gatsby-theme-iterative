@@ -2,7 +2,6 @@ import scroll from 'scroll'
 import { useWindowScroll } from 'react-use'
 export { default as ease } from 'ease-component'
 
-import { getCustomProperty } from './customProperties'
 import isClient from './isClient'
 import { allImagesLoadedInContainer } from './images'
 
@@ -18,17 +17,8 @@ export const getScrollPosition = (): number =>
 export const getScrollNode = (): Element =>
   document.scrollingElement || document.documentElement
 
-export const getHeaderHeightAt = (): number => {
-  const header = getCustomProperty('--layout-header-height')
-
-  return header as number
-}
-
-export const getHeaderHeight = (): number => getHeaderHeightAt()
-
 export const useHeaderIsScrolled = (): boolean => {
   const { y } = useWindowScroll()
-
   return headerIsCollapsedAt(y)
 }
 
@@ -45,9 +35,7 @@ const scrollToPosition = (node: Element, opts?: ScrollOptions): void => {
   const htmlNode = getScrollNode()
   const nodeOffset = node.getBoundingClientRect()
   const nodePosition = htmlNode.scrollTop + nodeOffset.top + (opts?.offset || 0)
-  // const headerHeight = getHeaderHeightAt(nodePosition)
-  const headerHeight = getHeaderHeightAt()
-  const scrollTo = Math.floor(nodePosition - headerHeight)
+  const scrollTo = Math.floor(nodePosition)
 
   if (!opts?.smooth) {
     requestAnimationFrame(() => (htmlNode.scrollTop = scrollTo))

@@ -1,18 +1,6 @@
-.placeholder {
-  transition: height 0.2s linear;
-  height: var(--layout-header-height);
-
-  &.withAlert {
-    height: calc(var(--layout-header-height) + var(--layout-alert-height));
-  }
-
-  &.collapsed {
-    height: var(--layout-header-height);
-  }
-}
-
 .header {
-  position: fixed;
+  position: sticky;
+  width: 100%;
   z-index: 11;
   top: 0;
   left: 0;

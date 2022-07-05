@@ -24,8 +24,6 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     ),
     cssBase: Joi.string(),
     customMediaConfig: Joi.object(),
-    customPropertiesConfig: Joi.object(),
-    colorModConfig: Joi.object(),
     postCssPlugins: Joi.array()
   })
 }

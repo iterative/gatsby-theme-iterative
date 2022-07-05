@@ -6,7 +6,7 @@ import { IHeading } from '../'
 import Link from '../../Link'
 import Tutorials from '../TutorialsLinks'
 
-import { getScrollPosition, getHeaderHeight } from '../../../utils/front/scroll'
+import { getScrollPosition } from '../../../utils/front/scroll'
 import { allImagesLoadedInContainer } from '../../../utils/front/images'
 
 import * as sharedStyles from '../styles.module.css'
@@ -40,11 +40,8 @@ const RightPanel: React.FC<IRightPanelProps> = ({
 
     if (!coordinateKeys.length) return
 
-    const headerHeight = getHeaderHeight()
     const filteredKeys = coordinateKeys.filter(
-      offsetTop =>
-        parseInt(offsetTop, 10) <=
-        currentScroll + (documentHeight - headerHeight) / 2
+      offsetTop => parseInt(offsetTop, 10) <= currentScroll + documentHeight / 2
     )
 
     const newCurrentHeadingSlug = filteredKeys.length

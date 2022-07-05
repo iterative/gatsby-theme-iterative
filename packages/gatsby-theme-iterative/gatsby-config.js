@@ -3,8 +3,6 @@ const fs = require('fs')
 const path = require('path')
 
 const autoprefixer = require('autoprefixer')
-const customProperties = require('postcss-custom-properties')
-const colorMod = require('postcss-color-mod-function')
 
 const defaultCssBase = path.join(
   __dirname,
@@ -29,17 +27,8 @@ const imageMaxWidth = 700
 module.exports = ({
   simpleLinkerTerms,
   cssBase = defaultCssBase,
-  customPropertiesConfig = {
-    importFrom: [cssBase],
-    disableDeprecationNotice: true
-  },
-  colorModConfig = {
-    importFrom: [cssBase]
-  },
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
-    customProperties(customPropertiesConfig),
-    colorMod(colorModConfig),
     autoprefixer,
     require('tailwindcss')
   ]
