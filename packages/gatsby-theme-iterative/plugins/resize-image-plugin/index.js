@@ -100,10 +100,8 @@ module.exports = async ({ markdownAST }) => {
         )
       }
 
-      const sizeString =
-        source.properties.srcSet[source.properties.srcSet.length - 1].split(
-          ' '
-        )[1]
+      const srcSetLines = source.properties.srcSet.split(/\n/)
+      const sizeString = srcSetLines[srcSetLines.length - 1].split(' ')[1]
       if (sizeString) {
         const originalSize = sizeString && sizeString.replace('w', '')
 

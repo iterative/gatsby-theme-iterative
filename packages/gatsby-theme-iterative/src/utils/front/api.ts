@@ -94,6 +94,7 @@ export interface IDiscussCommentsCountResponse {
 export function useCommentsCount(
   commentsUrl: string
 ): UseApiResult<IDiscussCommentsCountResponse, number> {
+  if (!commentsUrl) return { error: null, ready: false, result: 0 }
   const response = useAPICall<IDiscussCommentsCountResponse>(
     `/api/comments?url=${commentsUrl}`
   )
