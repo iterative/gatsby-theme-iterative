@@ -19,18 +19,27 @@ import LayoutAlert from './alert'
 
 import { useInView } from 'react-intersection-observer'
 
-const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
+const LayoutHeader: React.FC<
+  Required<ILayoutModifiable> & { root: HTMLDivElement | null }
+> = ({ modifiers, root }) => {
   const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
-  const { ref, inView } = useInView()
-  const scrolled = !inView
+  const { ref, inView: scrolled } = useInView({
+    root,
+    rootMargin: '-15px 0px 0px 0px',
+    threshold: 1
+  })
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
   const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
   const collapsed = opened || hasCollapsedModifier || scrolled
 
   return (
     <>
-      <div ref={ref} />
-      <header id="header" data-collapsed={collapsed} className={styles.header}>
+      <header
+        id="header"
+        data-collapsed={collapsed}
+        className={styles.header}
+        ref={ref}
+      >
         {!hasHideAlertModifier && LayoutAlert && (
           <LayoutAlert collapsed={collapsed} />
         )}

@@ -1,26 +1,16 @@
 import scroll from 'scroll'
-import { useWindowScroll } from 'react-use'
 export { default as ease } from 'ease-component'
 
 import isClient from './isClient'
 import { allImagesLoadedInContainer } from './images'
 
 const CONTENT_ROOT_ID = 'layoutContent'
-const COLLAPSE_HEADER_AFTER = 25
-
-const headerIsCollapsedAt = (scrollPosition: number): boolean =>
-  scrollPosition > COLLAPSE_HEADER_AFTER
 
 export const getScrollPosition = (): number =>
   isClient ? window.pageYOffset : 0
 
 export const getScrollNode = (): Element =>
   document.scrollingElement || document.documentElement
-
-export const useHeaderIsScrolled = (): boolean => {
-  const { y } = useWindowScroll()
-  return headerIsCollapsedAt(y)
-}
 
 type ScrollOptions = {
   offset?: number

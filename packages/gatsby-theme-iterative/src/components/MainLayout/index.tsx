@@ -1,11 +1,10 @@
-import React, { PropsWithChildren, useEffect } from 'react'
+import React, { PropsWithChildren, useEffect, useRef } from 'react'
+import cx from 'classnames'
 
 import { IPageProps } from '../Page'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
-
-import * as styles from './styles.module.css'
 
 export enum LayoutModifiers {
   Wide,
@@ -31,17 +30,6 @@ const MainLayout: LayoutComponent = ({
   modifiers = []
 }) => {
   useEffect(() => {
-    if (className) {
-      document.body.classList.add(className)
-
-      return (): void => {
-        document.body.classList.remove(className)
-      }
-    }
-  }, [className])
-
-  useEffect(() => {
-    document.body.classList.add(styles.mainLayout)
     window.addEventListener('keydown', handleFirstTab)
 
     return (): void => {
@@ -49,13 +37,17 @@ const MainLayout: LayoutComponent = ({
     }
   }, [])
 
+  const rootRef = useRef<HTMLDivElement>(null)
+
   return (
-    <div className="h-full flex flex-col items-center">
-      <LayoutHeader modifiers={modifiers} />
-      <div id="layoutContent" className="flex-1">
-        {children}
+    <div className={cx('h-screen', className)}>
+      <div className="h-full flex flex-col items-center" ref={rootRef}>
+        <LayoutHeader modifiers={modifiers} root={rootRef.current} />
+        <div id="layoutContent" className="flex-1">
+          {children}
+        </div>
+        <LayoutFooter />
       </div>
-      <LayoutFooter />
     </div>
   )
 }
