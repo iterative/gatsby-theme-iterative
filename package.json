@@ -5,7 +5,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "format-staged": "pretty-quick --staged --no-restage --bail --pattern '**/*.{js,jsx,md,tsx,ts,json}'",
     "format-check": "prettier --check '**/*.{js,jsx,md,tsx,ts,json,css}'",
     "format-all": "prettier --write '**/*.{js,jsx,md,tsx,ts,json,css}'",
     "format": "prettier --write",
@@ -14,7 +13,8 @@
     "clean": "yarn workspace example clean",
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
-    "develop": "yarn workspace example develop"
+    "develop": "yarn workspace example develop",
+    "prepare": "husky install"
   },
   "workspaces": [
     "./packages/*"
@@ -28,6 +28,8 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0"
