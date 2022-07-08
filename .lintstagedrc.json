@@ -1,4 +1,4 @@
 {
-  "*.{tsx,ts,js} ": ["prettier --list-different", "eslint"],
-  "*.{md,json}": ["prettier --list-different"]
+  "**/*.{tsx,ts,js,md,json} ": "prettier -c",
+  "**/*.{tsx,ts,js}": "eslint"
 }
