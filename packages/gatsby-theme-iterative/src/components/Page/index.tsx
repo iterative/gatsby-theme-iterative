@@ -29,7 +29,6 @@ export interface IPageProps {
 
 const Page: React.FC<IPageProps> = props => {
   useRedirects()
-  useAnchorNavigation()
   useSmoothScroll(props.enableSmoothScroll)
 
   const LayoutComponent = getLayoutComponent(props)

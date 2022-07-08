@@ -114,6 +114,10 @@
 
     .anchor {
       margin-left: -24px;
+
+      svg {
+        display: inline;
+      }
     }
 
     li {

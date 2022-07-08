@@ -5,6 +5,7 @@ import { IPageProps } from '../Page'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
+import { useInView } from 'react-intersection-observer'
 
 export enum LayoutModifiers {
   Wide,
@@ -39,11 +40,19 @@ const MainLayout: LayoutComponent = ({
 
   const rootRef = useRef<HTMLDivElement>(null)
 
+  const { ref, inView } = useInView({
+    root: rootRef.current,
+    threshold: 1
+  })
+
   return (
-    <div className={cx('h-screen', className)}>
-      <div className="h-full flex flex-col items-center" ref={rootRef}>
-        <LayoutHeader modifiers={modifiers} root={rootRef.current} />
-        <div id="layoutContent" className="flex-1">
+    <div className={cx('h-screen flex flex-col items-center', className)}>
+      <LayoutHeader modifiers={modifiers} scrolled={!inView} />
+      <div
+        className="flex flex-col items-center h-full w-full overflow-auto"
+        ref={rootRef}
+      >
+        <div id="layoutContent" className="flex-1" ref={ref}>
           {children}
         </div>
         <LayoutFooter />

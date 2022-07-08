@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import React from 'react'
+import React, { RefObject } from 'react'
 import includes from 'lodash/includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
@@ -17,29 +17,17 @@ import * as styles from './styles.module.css'
 
 import LayoutAlert from './alert'
 
-import { useInView } from 'react-intersection-observer'
-
 const LayoutHeader: React.FC<
-  Required<ILayoutModifiable> & { root: HTMLDivElement | null }
-> = ({ modifiers, root }) => {
+  Required<ILayoutModifiable> & { scrolled: boolean }
+> = ({ modifiers, scrolled }) => {
   const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
-  const { ref, inView: scrolled } = useInView({
-    root,
-    rootMargin: '-15px 0px 0px 0px',
-    threshold: 1
-  })
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
   const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
   const collapsed = opened || hasCollapsedModifier || scrolled
 
   return (
     <>
-      <header
-        id="header"
-        data-collapsed={collapsed}
-        className={styles.header}
-        ref={ref}
-      >
+      <header id="header" data-collapsed={collapsed} className={styles.header}>
         {!hasHideAlertModifier && LayoutAlert && (
           <LayoutAlert collapsed={collapsed} />
         )}

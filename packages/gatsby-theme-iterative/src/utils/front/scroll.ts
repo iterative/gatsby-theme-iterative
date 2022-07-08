@@ -21,21 +21,8 @@ type ScrollOptions = {
   ease?: (value: number) => number
 }
 
-const scrollToPosition = (node: Element, opts?: ScrollOptions): void => {
-  const htmlNode = getScrollNode()
-  const nodeOffset = node.getBoundingClientRect()
-  const nodePosition = htmlNode.scrollTop + nodeOffset.top + (opts?.offset || 0)
-  const scrollTo = Math.floor(nodePosition)
-
-  if (!opts?.smooth) {
-    requestAnimationFrame(() => (htmlNode.scrollTop = scrollTo))
-    return
-  }
-
-  scroll.top(htmlNode, scrollTo, {
-    duration: opts?.duration,
-    ease: opts?.ease
-  })
+const scrollToPosition = (node: Element, opts: ScrollOptions = {}): void => {
+  return node.scrollIntoView({ behavior: opts.smooth ? 'smooth' : 'auto' })
 }
 
 export const scrollIntoLayout = (
