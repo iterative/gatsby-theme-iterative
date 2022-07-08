@@ -1,4 +1,3 @@
-import scroll from 'scroll'
 export { default as ease } from 'ease-component'
 
 import isClient from './isClient'

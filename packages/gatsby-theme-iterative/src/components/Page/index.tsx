@@ -2,7 +2,7 @@ import React from 'react'
 
 import DefaultSEO from './DefaultSEO'
 
-import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
+import { useRedirects, useSmoothScroll } from './utils'
 
 import 'reset-css'
 import './base.css'
