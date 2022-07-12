@@ -3,18 +3,20 @@ import { Link } from 'gatsby'
 
 export default function Home() {
   return (
-    <div className="container px-2 py-3 mx-auto" style={{ height: 1000 }}>
-      <h1 className="text-xl font-bold text-center mb-2">
+    <div className="container px-4 py-10 flex flex-col justify-center items-center">
+      <h1 className="text-2xl font-bold text-center mb-5">
         Gatsby Theme: Iterative
       </h1>
-      <p>
-        Welcome to the documentation and example website for Iterative&apos;s
-        website engine!
-      </p>
-      <p>
-        This theme is primarily related to adding a documentation engine, which
-        you can see <Link to="/doc">here!</Link>
-      </p>
+      <section className="text-lg">
+        <p>
+          Welcome to the documentation and example website for Iterative&apos;s
+          website engine!
+        </p>
+        <p>
+          This theme is primarily related to adding a documentation engine,
+          which you can see <Link to="/doc">here!</Link>
+        </p>
+      </section>
     </div>
   )
 }
