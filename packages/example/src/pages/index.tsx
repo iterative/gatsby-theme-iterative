@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 export default function Home() {
   return (
-    <div className="container px-2 py-3 mx-auto">
+    <div className="container px-2 py-3 mx-auto" style={{ height: 1000 }}>
       <h1 className="text-xl font-bold text-center mb-2">
         Gatsby Theme: Iterative
       </h1>
