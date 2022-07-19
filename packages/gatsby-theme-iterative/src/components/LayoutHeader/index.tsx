@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import React, { RefObject } from 'react'
+import React from 'react'
 import includes from 'lodash/includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
