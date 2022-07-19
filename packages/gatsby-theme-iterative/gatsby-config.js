@@ -4,14 +4,6 @@ const path = require('path')
 
 const autoprefixer = require('autoprefixer')
 
-const defaultCssBase = path.join(
-  __dirname,
-  'src',
-  'components',
-  'Page',
-  'base.css'
-)
-
 const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
 
 const linkIcon = fs
@@ -26,7 +18,6 @@ const imageMaxWidth = 700
 
 module.exports = ({
   simpleLinkerTerms,
-  cssBase = defaultCssBase,
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
     autoprefixer,
