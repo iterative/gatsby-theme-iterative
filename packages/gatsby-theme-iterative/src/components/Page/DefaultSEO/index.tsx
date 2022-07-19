@@ -103,27 +103,32 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   ]
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang: 'en'
-      }}
-      defaultTitle={metaTitle}
-      titleTemplate={`%s | ${metaTitle}`}
-      meta={meta}
-      link={[
-        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#13adc7' },
-        {
-          rel: 'canonical',
-          href: fullUrl
-        }
-      ]}
-    >
+    <>
+      <Helmet
+        htmlAttributes={{
+          lang: 'en'
+        }}
+        defaultTitle={metaTitle}
+        titleTemplate={`%s | ${metaTitle}`}
+        meta={meta}
+        link={[
+          {
+            rel: 'mask-icon',
+            href: '/safari-pinned-tab.svg',
+            color: '#13adc7'
+          },
+          {
+            rel: 'canonical',
+            href: fullUrl
+          }
+        ]}
+      />
       <Script
         defer
         data-domain="dvc.org"
         src="https://plausible.io/js/plausible.outbound-links.js"
       />
-    </Helmet>
+    </>
   )
 }
 
