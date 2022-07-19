@@ -50,16 +50,13 @@ const MainLayout: LayoutComponent = ({
   }, [])
 
   return (
-    <>
+    <div className={styles.layoutWrapper}>
       <LayoutHeader modifiers={modifiers} />
-      <div
-        id="layoutContent"
-        //  className={styles.pageContent}
-      >
+      <div id="layoutContent" className={styles.layoutContent}>
         {children}
       </div>
       <LayoutFooter />
-    </>
+    </div>
   )
 }
 
