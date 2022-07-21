@@ -52,6 +52,7 @@ module.exports = [
   'exp push',
   'exp pull',
   'exp gc',
+  'exp init',
   'exp diff',
   'exp branch',
   'exp apply',
