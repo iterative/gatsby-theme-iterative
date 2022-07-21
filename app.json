@@ -1,0 +1,20 @@
+{
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nginx.git"
+    }
+  ],
+  "env": {},
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "gatsby-theme-iterative-example",
+  "scripts": {},
+  "stack": "heroku-22"
+}
