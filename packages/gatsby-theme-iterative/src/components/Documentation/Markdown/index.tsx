@@ -25,6 +25,7 @@ import { ReactComponent as LinkIcon } from '../../../images/linkIcon.svg'
 import { useLocation } from '@reach/router'
 
 import Slugger from '../../../utils/front/Slugger'
+import patchHtmlAst from '../../../utils/front/patchHtmlAst'
 
 type RemarkNode = { props: { children: RemarkNode[] } } | string
 
@@ -296,9 +297,10 @@ const Markdown: React.FC<IMarkdownProps> = ({
   githubLink
 }) => {
   const slugger = new Slugger()
+  const patchedAst = patchHtmlAst(htmlAst)
   return (
     <Main prev={prev} next={next} tutorials={tutorials} githubLink={githubLink}>
-      <TogglesProvider>{renderAst(slugger)(htmlAst)}</TogglesProvider>
+      <TogglesProvider>{renderAst(slugger)(patchedAst)}</TogglesProvider>
     </Main>
   )
 }
