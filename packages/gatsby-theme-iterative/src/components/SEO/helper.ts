@@ -74,7 +74,11 @@ export const buildMetadata = (
   }
   if (image) {
     const isStr = typeof image === 'string'
-    const imageUrl = siteUrl + (isStr ? image : getSrc(image))
+    const imageUrl = isStr
+      ? image.startsWith('http')
+        ? image
+        : siteUrl + image
+      : siteUrl + getSrc(image)
     prebuildMeta.push(
       ...getMetaImage(imageUrl, imageAlt, imageHeight, imageWidth)
     )
