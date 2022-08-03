@@ -265,7 +265,11 @@ const renderAst = (slugger: Slugger) => {
     createElement: React.createElement,
     Fragment: React.Fragment,
     components: {
-      a: Link,
+      a: ({ children, ...props }: PropsWithChildren<{ href: string }>) => (
+        <Link {...props} optOutPreRedirect>
+          {children}
+        </Link>
+      ),
       abbr: Abbr,
       card: Card,
       cards: Cards,
