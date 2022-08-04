@@ -10,7 +10,7 @@ import React, {
 } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
-import { Node } from 'unist'
+import { Element } from 'hast'
 import rehypeReact from 'rehype-react'
 import Collapsible from 'react-collapsible'
 
@@ -29,76 +29,75 @@ import patchHtmlAst from '../../../utils/front/patchHtmlAst'
 
 type RemarkNode = { props: { children: RemarkNode[] } } | string
 
-const Details: React.FC<
-  PropsWithChildren<{ slugger: Slugger; id: string }>
-> = ({ slugger, children, id }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const location = useLocation()
+const Details: React.FC<PropsWithChildren<{ slugger: Slugger; id: string }>> =
+  ({ slugger, children, id }) => {
+    const [isOpen, setIsOpen] = useState(false)
+    const location = useLocation()
 
-  const filteredChildren = (children as Array<RemarkNode>).filter(
-    child => child !== '\n'
-  )
-  const firstChild = filteredChildren[0] as JSX.Element
+    const filteredChildren = (children as Array<RemarkNode>).filter(
+      child => child !== '\n'
+    )
+    const firstChild = filteredChildren[0] as JSX.Element
 
-  if (!/^h.$/.test(firstChild.type)) {
-    throw new Error('The first child of a details element must be a heading!')
-  }
+    if (!/^h.$/.test(firstChild.type)) {
+      throw new Error('The first child of a details element must be a heading!')
+    }
 
-  /*
+    /*
      To work around auto-linked headings, the last child of the heading node
      must be removed. The only way around this is the change the autolinker,
      which we currently have as an external package.
    */
-  const triggerChildren: RemarkNode[] = firstChild.props.children.slice(
-    0,
-    firstChild.props.children.length - 1
-  )
+    const triggerChildren: RemarkNode[] = firstChild.props.children.slice(
+      0,
+      firstChild.props.children.length - 1
+    )
 
-  const title = triggerChildren.reduce<string>((acc, cur) => {
-    return (acc +=
-      typeof cur === 'string'
-        ? cur
-        : typeof cur === 'object'
-        ? cur?.props?.children?.toString()
-        : '')
-  }, '')
-  id = useMemo(() => {
-    return id ? slugger.slug(id) : slugger.slug(title)
-  }, [id, title])
+    const title = triggerChildren.reduce<string>((acc, cur) => {
+      return (acc +=
+        typeof cur === 'string'
+          ? cur
+          : typeof cur === 'object'
+          ? cur?.props?.children?.toString()
+          : '')
+    }, '')
+    id = useMemo(() => {
+      return id ? slugger.slug(id) : slugger.slug(title)
+    }, [id, title])
 
-  useEffect(() => {
-    if (location.hash === `#${id}`) {
-      setIsOpen(true)
-    }
+    useEffect(() => {
+      if (location.hash === `#${id}`) {
+        setIsOpen(true)
+      }
 
-    return () => {
-      setIsOpen(false)
-    }
-  }, [location.hash])
+      return () => {
+        setIsOpen(false)
+      }
+    }, [location.hash])
 
-  /*
+    /*
      Collapsible's trigger type wants ReactElement, so we force a TS cast from
      ReactNode here.
    */
-  return (
-    <div id={id} className="collapsableDiv">
-      <Link
-        href={`#${id}`}
-        aria-label={triggerChildren.toString()}
-        className="anchor after"
-      >
-        <LinkIcon />
-      </Link>
-      <Collapsible
-        open={isOpen}
-        trigger={triggerChildren as unknown as ReactElement}
-        transitionTime={200}
-      >
-        {filteredChildren.slice(1) as ReactNode}
-      </Collapsible>
-    </div>
-  )
-}
+    return (
+      <div id={id} className="collapsableDiv">
+        <Link
+          href={`#${id}`}
+          aria-label={triggerChildren.toString()}
+          className="anchor after"
+        >
+          <LinkIcon />
+        </Link>
+        <Collapsible
+          open={isOpen}
+          trigger={triggerChildren as unknown as ReactElement}
+          transitionTime={200}
+        >
+          {filteredChildren.slice(1) as ReactNode}
+        </Collapsible>
+      </div>
+    )
+  }
 
 const Abbr: React.FC<Record<string, never>> = ({ children }) => {
   return <Tooltip text={(children as string[])[0]} />
@@ -281,8 +280,9 @@ const renderAst = (slugger: Slugger) => {
     }
   }).Compiler
 }
+
 interface IMarkdownProps {
-  htmlAst: Node
+  htmlAst: Element
   githubLink: string
   tutorials?: { [type: string]: string }
   prev?: string
