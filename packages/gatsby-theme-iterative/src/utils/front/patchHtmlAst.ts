@@ -2,7 +2,6 @@ import { Element } from 'hast'
 
 // Strange issue with srcSet value are without comma
 const patchHtmlAst = (ast: Element) => {
-  console.log('AST', ast.children)
   if (ast.properties?.srcSet && Array.isArray(ast.properties.srcSet)) {
     ast.properties.srcSet = ast.properties.srcSet.join(', ')
   }
