@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Node } from 'unist'
+import { Element } from 'hast'
 import { getItemByPath } from '../utils/shared/sidebar'
 
 import SEO from '../components/SEO'
@@ -13,7 +13,7 @@ interface IDocPageProps {
       description?: string
       title?: string
       parent: {
-        htmlAst: Node
+        htmlAst: Element
       }
     }
   }
