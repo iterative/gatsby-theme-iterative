@@ -10,7 +10,7 @@ import React, {
 } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
-import { Node } from 'unist'
+import { Element } from 'hast'
 import rehypeReact from 'rehype-react'
 import Collapsible from 'react-collapsible'
 
@@ -281,8 +281,9 @@ const renderAst = (slugger: Slugger) => {
     }
   }).Compiler
 }
+
 interface IMarkdownProps {
-  htmlAst: Node
+  htmlAst: Element
   githubLink: string
   tutorials?: { [type: string]: string }
   prev?: string
