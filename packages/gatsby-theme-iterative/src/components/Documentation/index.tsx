@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Node } from 'unist'
 
 import Markdown from './Markdown'
@@ -18,6 +18,8 @@ interface IDocumentationProps {
   htmlAst: Node
 }
 
+const scrollPositions: Record<string, number> = {}
+
 const Documentation: React.FC<IDocumentationProps> = ({
   htmlAst,
   path,
@@ -25,6 +27,14 @@ const Documentation: React.FC<IDocumentationProps> = ({
 }) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
   const githubLink = getEditLink(source)
+
+  useEffect(() => {
+    const savedPosition = scrollPositions[path]
+    if (!savedPosition) {
+      window.scroll({ top: 0 })
+    }
+    console.log({ savedPosition, path })
+  }, [path])
 
   return (
     <>

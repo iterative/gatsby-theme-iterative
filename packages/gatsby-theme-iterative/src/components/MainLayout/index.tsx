@@ -1,11 +1,15 @@
-import React, { PropsWithChildren, useEffect, useRef } from 'react'
+import React, { ReactNode, useEffect, useRef } from 'react'
+import { PageProps } from 'gatsby'
 import cx from 'classnames'
 
-import { IPageProps } from '../Page'
+import 'reset-css'
+import './base.css'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
 import { useInView } from 'react-intersection-observer'
+import DefaultSEO from './DefaultSEO'
+import { useRedirects } from './utils'
 
 export enum LayoutModifiers {
   Wide,
@@ -13,23 +17,14 @@ export enum LayoutModifiers {
   HideAlert
 }
 
-export interface ILayoutModifiable {
-  modifiers?: Array<LayoutModifiers>
-}
-
-interface IMainLayoutProps {
+const MainLayout: React.FC<{
+  location: PageProps['location']
   className?: string
-}
+  modifiers?: Array<LayoutModifiers>
+  children?: ReactNode
+}> = ({ className, children, modifiers = [], location }) => {
+  useRedirects()
 
-export type LayoutComponent = React.FC<
-  PropsWithChildren<IMainLayoutProps & IPageProps & ILayoutModifiable>
->
-
-const MainLayout: LayoutComponent = ({
-  className,
-  children,
-  modifiers = []
-}) => {
   useEffect(() => {
     window.addEventListener('keydown', handleFirstTab)
 
@@ -49,6 +44,7 @@ const MainLayout: LayoutComponent = ({
       className={cx('h-screen flex flex-col items-center', className)}
       ref={rootRef}
     >
+      <DefaultSEO pathname={location.pathname} />
       <LayoutHeader modifiers={modifiers} scrolled={!inView} />
       <div className="flex flex-col items-center h-full w-full overflow-auto">
         <div ref={ref} />
