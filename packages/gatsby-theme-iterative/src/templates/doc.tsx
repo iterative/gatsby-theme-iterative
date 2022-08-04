@@ -1,44 +1,38 @@
 import React from 'react'
-import { graphql } from 'gatsby'
-import { Node } from 'unist'
+import { graphql, PageProps } from 'gatsby'
+import { Element } from 'hast'
 import { getItemByPath } from '../utils/shared/sidebar'
 
 import SEO from '../components/SEO'
 
 import Documentation from '../components/Documentation'
-import { IPageProps } from '../components/Page'
 import DocumentationLayout from '../components/Documentation/Layout'
 import MainLayout, { LayoutModifiers } from '../components/MainLayout'
 
-interface IDocPageProps extends IPageProps {
-  data: {
-    page: {
-      description?: string
-      title?: string
-      parent: {
-        htmlAst: Node
+const DocPage: React.FC<
+  PageProps<
+    {
+      page: {
+        description?: string
+        title?: string
+        parent: {
+          htmlAst: Element
+        }
+      }
+    },
+    {
+      slug: string
+      headings: []
+      is404: boolean
+      isDocs: boolean
+      isAlertLanding: boolean
+      pageInfo?: {
+        currentPage: number
+        nextPage?: string
       }
     }
-  }
-  location: {
-    pathname: string
-  }
-  pageContext: {
-    slug: string
-    headings: []
-    is404: boolean
-    isDocs: boolean
-    isAlertLanding: boolean
-    pageInfo?: {
-      currentPage: number
-      nextPage?: string
-    }
-  }
-  children: React.ReactNode
-  enableSmoothScroll: boolean
-}
-
-const DocPage: React.FC<IDocPageProps> = ({ data, pageContext, location }) => {
+  >
+> = ({ data, pageContext, location }) => {
   const { slug, headings } = pageContext
   const { pathname } = location
   const {

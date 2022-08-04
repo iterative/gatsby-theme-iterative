@@ -17,12 +17,22 @@ export enum LayoutModifiers {
   HideAlert
 }
 
-const MainLayout: React.FC<{
+export interface ILayoutModifiable {
+  modifiers?: Array<LayoutModifiers>
+}
+
+export interface ILayoutComponentProps extends ILayoutModifiable {
   location: PageProps['location']
   className?: string
-  modifiers?: Array<LayoutModifiers>
   children?: ReactNode
-}> = ({ className, children, modifiers = [], location }) => {
+}
+
+const MainLayout = ({
+  className,
+  children,
+  modifiers = [],
+  location
+}: ILayoutComponentProps) => {
   useRedirects()
 
   useEffect(() => {

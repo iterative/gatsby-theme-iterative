@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Node } from 'unist'
+import React from 'react'
+import { Element } from 'hast'
 
 import Markdown from './Markdown'
 import RightPanel from './RightPanel'
@@ -15,10 +15,8 @@ export interface IHeading {
 interface IDocumentationProps {
   path: string
   headings: Array<IHeading>
-  htmlAst: Node
+  htmlAst: Element
 }
-
-const scrollPositions: Record<string, number> = {}
 
 const Documentation: React.FC<IDocumentationProps> = ({
   htmlAst,
@@ -27,14 +25,6 @@ const Documentation: React.FC<IDocumentationProps> = ({
 }) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
   const githubLink = getEditLink(source)
-
-  useEffect(() => {
-    const savedPosition = scrollPositions[path]
-    if (!savedPosition) {
-      window.scroll({ top: 0 })
-    }
-    console.log({ savedPosition, path })
-  }, [path])
 
   return (
     <>
