@@ -27,6 +27,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   rel,
   target,
   download = false,
+  className = 'underline text-blue-600 hover:text-blue-800 visited:text-purple-600',
   ...restProps
 }) => {
   // Handle all situations where a basic `a` must be used over Gatsby Link
@@ -64,6 +65,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
         href={href}
         rel={rel}
         target={target}
+        className={className}
         {...restProps}
       >
         {children}
@@ -72,7 +74,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   }
 
   return (
-    <GatsbyLink to={href} {...restProps}>
+    <GatsbyLink to={href} className={className} {...restProps}>
       {children}
     </GatsbyLink>
   )

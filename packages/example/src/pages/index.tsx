@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link, PageProps } from 'gatsby'
+import { PageProps } from 'gatsby'
 import MainLayout from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 export default function Home({ location }: PageProps) {
   return (
@@ -16,7 +17,7 @@ export default function Home({ location }: PageProps) {
           </p>
           <p>
             This theme is primarily related to adding a documentation engine,
-            which you can see <Link to="/doc">here!</Link>
+            which you can see <Link href="/doc">here!</Link>
           </p>
         </section>
       </div>
