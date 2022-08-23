@@ -360,7 +360,7 @@
   flex: 1;
   background-color: #fff;
 
-  @media screen(xs) {
+  @media screen(xsMax) {
     margin: 15px 0;
   }
 }
@@ -371,7 +371,7 @@
   float: right;
   margin: 5px 0 0 10px;
 
-  @media screen(md) {
+  @media screen(mdMax) {
     margin: 0 0 15px;
   }
 
@@ -387,7 +387,7 @@
   z-index: 1;
   position: relative;
 
-  @media screen(md) {
+  @media screen(mdMax) {
     float: none;
     margin: 0 0 15px;
   }

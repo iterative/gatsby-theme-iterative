@@ -15,7 +15,7 @@
     margin: 0;
   }
 
-  @media screen(md) {
+  @media screen(mdMax) {
     margin-left: 0;
 
     &:first-child {
@@ -23,7 +23,7 @@
     }
   }
 
-  @media screen(sm) {
+  @media screen(smMax) {
     margin-left: 4px;
 
     &:nth-child(5),
@@ -76,7 +76,7 @@
     display: none;
   }
 
-  @media screen(md) {
+  @media screen(mdMax) {
     font-size: 17px;
     line-height: 20px;
 

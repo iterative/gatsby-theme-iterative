@@ -1,7 +1,7 @@
 .mobile {
   display: none;
 
-  @media screen(xs) {
+  @media screen(xsMax) {
     display: initial;
   }
 }
@@ -9,7 +9,7 @@
 .desktop {
   display: initial;
 
-  @media screen(xs) {
+  @media screen(xsMax) {
     display: none;
   }
 }

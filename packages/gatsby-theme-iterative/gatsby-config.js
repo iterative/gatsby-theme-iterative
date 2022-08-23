@@ -170,6 +170,6 @@ module.exports = ({
   ],
   siteMetadata: {
     author: 'Iterative',
-    siteUrl: 'https://cml.dev'
+    siteUrl: 'https://example.com'
   }
 })

@@ -8,11 +8,11 @@
     margin: 0 24px 0 12px;
   }
 
-  @media screen(md) {
+  @media screen(mdMax) {
     margin: 0 16px 0 0;
   }
 
-  @media screen(sm) {
+  @media screen(smMax) {
     margin: 0 16px 0 4px;
   }
 }
@@ -24,7 +24,7 @@
   color: #6f7685;
   margin: 0;
 
-  @media screen(md) {
+  @media screen(mdMax) {
     width: 20px;
     height: 20px;
     padding: 6px;

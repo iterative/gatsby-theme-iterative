@@ -12,7 +12,7 @@
     }
   }
 
-  @media screen(xs) {
+  @media screen(xsMax) {
     position: relative;
     top: 0;
     height: calc(100% - 60px);
@@ -30,13 +30,13 @@
   margin-bottom: 25px;
   margin-top: 10px;
 
-  @media screen(xs) {
+  @media screen(xsMax) {
     min-width: auto;
   }
 }
 
 .sectionLinks {
-  @media screen(sm) {
+  @media screen(smMax) {
     position: relative;
   }
 }
@@ -56,7 +56,7 @@
   &:hover {
     color: #3c3937;
 
-    @media screen(xs) {
+    @media screen(xsMax) {
       color: var(--color-gray-light);
     }
   }

@@ -25,7 +25,7 @@
   --layout-header-height: 72px;
   --layout-alert-height: 35px;
 
-  @media screen(md) {
+  @media screen(mdMax) {
     --layout-header-height: 64px;
   }
 }

@@ -19,7 +19,7 @@
   color: #fff;
   overflow-y: auto;
 
-  @media screen(xs) {
+  @media screen(xsMax) {
     display: block;
   }
 
@@ -65,7 +65,7 @@
     top: 47px;
   }
 
-  @media screen(xs) {
+  @media screen(xsMax) {
     display: flex;
     visibility: visible;
   }

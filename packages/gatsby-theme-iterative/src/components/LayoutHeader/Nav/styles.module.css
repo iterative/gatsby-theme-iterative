@@ -8,7 +8,7 @@
     list-style-type: none;
   }
 
-  @media screen(xs) {
+  @media screen(xsMax) {
     display: none;
   }
 }
@@ -47,7 +47,7 @@
     opacity: 1;
   }
 
-  @media screen(md) {
+  @media screen(mdMax) {
     padding: 12px 24px;
     font-size: 14px;
   }
