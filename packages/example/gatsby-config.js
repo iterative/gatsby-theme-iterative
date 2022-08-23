@@ -4,9 +4,6 @@ const {
 } = require('../gatsby-theme-iterative/package.json')
 
 module.exports = {
-  flags: {
-    DEV_SSR: true
-  },
   trailingSlash: 'never',
   siteMetadata: {
     title: 'Example website',
