@@ -1,1 +1,1 @@
-module.exports = require('../../../content/docs/sidebar.json')
+module.exports = require('../../../tmp/sidebar.json')

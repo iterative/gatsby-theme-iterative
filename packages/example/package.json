@@ -8,7 +8,7 @@
     "clean": "gatsby clean",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "develop": "gatsby develop"
+    "develop": "node get-sidebar.js && gatsby develop"
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "*",
