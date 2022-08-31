@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "gatsby clean",
-    "build": "gatsby build",
+    "build": "node get-sidebar.js && gatsby build",
     "serve": "gatsby serve",
     "develop": "node get-sidebar.js && gatsby develop"
   },
