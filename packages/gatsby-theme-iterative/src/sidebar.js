@@ -1,8 +1,13 @@
 module.exports = [
   {
-    slug: '',
-    label: 'Home',
-    source: 'index.md',
-    icon: 'house'
+    name: 'dvc',
+    data: [
+      {
+        slug: '',
+        label: 'Home',
+        source: 'index.md',
+        icon: 'house'
+      }
+    ]
   }
 ]

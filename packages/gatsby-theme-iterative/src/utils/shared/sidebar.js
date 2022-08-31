@@ -21,7 +21,8 @@
 */
 
 const { titleCase } = require('title-case')
-const sidebar = require('@dvcorg/gatsby-theme-iterative/sidebar')
+const sidebarArr = require('@dvcorg/gatsby-theme-iterative/sidebar')
+
 const {
   SIDEBAR_UPPERCASE_KEYWORDS_REGEX,
   SIDEBAR_PATH_ROOT,
@@ -61,15 +62,19 @@ function validateRawItem({ slug, source, children, type, url }) {
   }
 }
 
-function findItemByField(data, field, targetValue) {
+function findItemByField(data, field, targetValue, tool) {
   if (data.length) {
     for (let i = 0; i < data.length; i++) {
       const { children } = data[i]
 
-      if (data[i][field] === targetValue) {
+      if (
+        tool
+          ? data[i][field] === targetValue && data[i]['name'] === tool
+          : data[i][field] === targetValue
+      ) {
         return data[i]
       } else if (children) {
-        const result = findItemByField(children, field, targetValue)
+        const result = findItemByField(children, field, targetValue, tool)
         if (result) {
           return result
         }
@@ -88,7 +93,7 @@ function findPrevItemWithSource(data, item) {
   }
 }
 
-function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
+function normalizeItem({ name, rawItem, parentPath, resultRef, prevRef }) {
   validateRawItem(rawItem)
 
   const { label, slug, source, tutorials, type, url, style, icon } = rawItem
@@ -101,6 +106,7 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
   switch (type) {
     case 'external':
       return {
+        name,
         type,
         path: url,
         label,
@@ -119,6 +125,7 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
       const relativePath = parentPath + slug
 
       return {
+        name,
         path: relativePath
           ? `${SIDEBAR_PATH_ROOT}/${relativePath}`
           : SIDEBAR_PATH_ROOT,
@@ -133,6 +140,7 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
 }
 
 function normalizeSidebar({
+  name,
   data,
   parentPath,
   parentResultRef,
@@ -146,6 +154,7 @@ function normalizeSidebar({
     const isShortcut = typeof rawItem === 'string'
     rawItem = isShortcut ? { slug: rawItem } : rawItem
     const normalizedItem = normalizeItem({
+      name,
       rawItem,
       parentPath,
       resultRef,
@@ -158,6 +167,7 @@ function normalizeSidebar({
 
     if (rawItem.children) {
       normalizedItem.children = normalizeSidebar({
+        name,
         data: rawItem.children,
         parentPath: `${parentPath}${rawItem.slug}/`,
         parentResultRef: resultRef,
@@ -175,14 +185,28 @@ function normalizeSidebar({
   return currentResult
 }
 
+const getNormalizedSidebar = sidebarArr => {
+  let allSidebar = []
+  for (const sidebar of sidebarArr) {
+    allSidebar = allSidebar.concat(
+      normalizeSidebar({
+        data: sidebar.data,
+        parentPath: '',
+        name: sidebar.name
+      })
+    )
+  }
+  return allSidebar
+}
+
 /*
  * Exports
  */
+const normalizedSidebar = getNormalizedSidebar(sidebarArr)
 
-const normalizedSidebar = normalizeSidebar({
-  data: sidebar,
-  parentPath: ''
-})
+const structure = getNormalizedSidebar(
+  sidebarArr.filter(sidebar => sidebar.local)
+)
 
 function findChildWithSource(item) {
   // Return item unchanged if isn't root-relative
@@ -196,12 +220,12 @@ function getFirstPage() {
   return findChildWithSource(normalizedSidebar[0]).path
 }
 
-function getItemByPath(path) {
+function getItemByPath(path, tool) {
   const normalizedPath = path.replace(/\/$/, '')
   const isRoot = normalizedPath === SIDEBAR_PATH_ROOT
   const item = isRoot
     ? normalizedSidebar[0]
-    : findItemByField(normalizedSidebar, 'path', normalizedPath)
+    : findItemByField(normalizedSidebar, 'path', normalizedPath, tool)
 
   if (!item) return false
 
@@ -236,7 +260,7 @@ function getParentsListFromPath(path) {
 }
 
 module.exports = {
-  structure: normalizedSidebar,
+  structure,
   findChildWithSource,
   getItemByPath,
   getItemBySource,
