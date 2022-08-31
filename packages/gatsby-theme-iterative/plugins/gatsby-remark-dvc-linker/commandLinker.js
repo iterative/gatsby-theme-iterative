@@ -3,6 +3,7 @@
 const { createLinkNode } = require('./helpers')
 const { getItemByPath } = require('../../src/utils/shared/sidebar')
 const consts = require('../../consts')
+const { getToolsBaseUrl } = require('../../src/utils/shared/sidebarUtils')
 
 const {
   ARGS_REGEXP,
@@ -19,25 +20,31 @@ module.exports = astNode => {
     const parts = node.value.split(/\s+/)
     const index = parts.findIndex(part => {
       const cli = String(part).trim()
-      return cli === 'dvc' || cli === 'cml' || cli === 'mlem'
+      return ['dvc', 'cml', 'mlem'].includes(cli)
     })
     const cli = parts[index]
     const commandRoot = cli === 'cml' ? CML_COMMAND_ROOT : COMMAND_ROOT
     const command = parts[index + 1]
-    const baseUrl = `${commandRoot}${command}`
-    let url
-    const isCommandPageExists = getItemByPath(baseUrl)
+    const basePath = `${commandRoot}${command}`
+    let fullPath
+    const isCommandPageExists = getItemByPath(basePath, cli)
     if (isCommandPageExists) {
-      url = baseUrl
+      fullPath = basePath
       for (const arg of parts.slice(index + 2)) {
-        if (arg && COMMAND_REGEXP.test(arg) && getItemByPath(`${url}/${arg}`)) {
-          url = `${url}/${arg}`
+        if (
+          arg &&
+          COMMAND_REGEXP.test(arg) &&
+          getItemByPath(`${fullPath}/${arg}`, cli)
+        ) {
+          fullPath = `${fullPath}/${arg}`
         } else if (arg && ARGS_REGEXP.test(arg)) {
           const id = arg.match(ARGS_REGEXP)[0]
-          url = `${url}#${id}`
+          fullPath = `${fullPath}#${id}`
           break
         }
       }
+      const baseUrl = getToolsBaseUrl(cli)
+      const url = baseUrl + fullPath
       createLinkNode(url, astNode)
     }
   }
