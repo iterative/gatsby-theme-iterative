@@ -68,6 +68,7 @@ module.exports = [
   'diff',
   'destroy',
   'data status',
+  'data',
   'dag',
   'config',
   'commit',
