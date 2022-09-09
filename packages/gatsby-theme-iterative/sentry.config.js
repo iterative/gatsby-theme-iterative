@@ -36,11 +36,6 @@ Sentry.init({
     // See http://toolbar.conduit.com/Developer/HtmlAndGadget/Methods/JSInjection.aspx
     'conduitPage'
   ],
-  /* There are some common urls which recomment to ignore. It's even 
-      mentioned in the official documentation: https://docs.sentry.io/platforms/javascript/#decluttering-sentry
-      In our case we just ignore all errors from the browser's extensions,
-      because we can't influence on then somehow. */
-  blacklistUrls: [/extensions\//i, /^chrome:\/\//i],
   // from https://docs.sentry.io/platforms/javascript/guides/gatsby/configuration/filtering/#decluttering-sentry
   denyUrls: [
     // Facebook flakiness
