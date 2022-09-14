@@ -10,6 +10,7 @@ const icons: { [key: string]: string } = {
   exclamation: '❗',
   lady_beetle: '🐞',
   bug: '🐛',
+  book: '📖',
   none: ''
 }
 const typeOptions = ['info', 'tip', 'warn']
