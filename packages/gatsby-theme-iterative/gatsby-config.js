@@ -168,8 +168,7 @@ module.exports = ({
           placeholder: 'blurred'
         }
       }
-    },
-    '@sentry/gatsby'
+    }
   ],
   siteMetadata: {
     author: 'Iterative',
