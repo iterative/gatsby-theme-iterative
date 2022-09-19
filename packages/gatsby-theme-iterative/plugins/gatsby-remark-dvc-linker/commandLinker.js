@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-const { createLinkNode } = require('./helpers')
+const { createLinkNode, useMatcher } = require('./helpers')
 const { getItemByPath } = require('../../src/utils/shared/sidebar')
 const consts = require('../../consts')
 
@@ -12,7 +12,7 @@ const {
   CML_COMMAND_ROOT
 } = consts
 
-module.exports = astNode => {
+module.exports = aliasEntries => astNode => {
   const node = astNode[0]
   const parent = astNode[2]
   if (parent.type !== 'link' && CLI_REGEXP.test(node.value)) {
@@ -24,7 +24,13 @@ module.exports = astNode => {
     const cli = parts[index]
     const commandRoot = cli === 'cml' ? CML_COMMAND_ROOT : COMMAND_ROOT
     const command = parts[index + 1]
-    const baseUrl = `${commandRoot}${command}`
+    const aliasEntry =
+      aliasEntries &&
+      aliasEntries.find(({ matches }) =>
+        useMatcher(matches, `${cli} ${command}`)
+      )
+    const baseUrl =
+      aliasEntry && aliasEntry.url ? aliasEntry.url : `${commandRoot}${command}`
     let url
     const isCommandPageExists = getItemByPath(baseUrl)
     if (isCommandPageExists) {
