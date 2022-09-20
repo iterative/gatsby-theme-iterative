@@ -51,8 +51,8 @@ module.exports = ({
     autoprefixer,
     require('tailwindcss')
   ]
-}) => ({
-  plugins: [
+}) => {
+  const plugins = [
     {
       resolve: `gatsby-plugin-typescript`,
       options: {
@@ -168,11 +168,15 @@ module.exports = ({
           placeholder: 'blurred'
         }
       }
-    },
-    '@sentry/gatsby'
-  ],
-  siteMetadata: {
-    author: 'Iterative',
-    siteUrl: 'https://cml.dev'
+    }
+  ]
+  if (process.env.SENTRY_DSN) plugins.push('@sentry/gatsby')
+
+  return {
+    plugins,
+    siteMetadata: {
+      author: 'Iterative',
+      siteUrl: 'https://cml.dev'
+    }
   }
-})
+}
