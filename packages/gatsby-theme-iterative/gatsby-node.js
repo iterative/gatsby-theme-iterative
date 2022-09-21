@@ -26,7 +26,8 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     customMediaConfig: Joi.object(),
     customPropertiesConfig: Joi.object(),
     colorModConfig: Joi.object(),
-    postCssPlugins: Joi.array()
+    postCssPlugins: Joi.array(),
+    disableSentry: Joi.boolean().default(false)
   })
 }
 

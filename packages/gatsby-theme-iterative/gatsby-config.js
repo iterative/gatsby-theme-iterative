@@ -51,8 +51,13 @@ module.exports = ({
     colorMod(colorModConfig),
     autoprefixer,
     require('tailwindcss')
-  ]
+  ],
+  disableSentry = false
 }) => {
+  sentryConfig.enabled = disableSentry
+    ? false
+    : process.env.NODE_ENV === 'production'
+
   const plugins = [
     {
       resolve: `gatsby-plugin-typescript`,
