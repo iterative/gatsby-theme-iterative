@@ -20,6 +20,7 @@ const defaultCssBase = path.join(
 )
 
 const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
+const sentryConfig = require('./sentry-config')
 
 const linkIcon = fs
   .readFileSync(path.join(__dirname, 'src', 'images', 'linkIcon.svg'))
@@ -168,9 +169,9 @@ module.exports = ({
           placeholder: 'blurred'
         }
       }
-    }
+    },
+    { resolve: '@sentry/gatsby', options: sentryConfig }
   ]
-  if (process.env.SENTRY_DSN) plugins.push('@sentry/gatsby')
 
   return {
     plugins,
