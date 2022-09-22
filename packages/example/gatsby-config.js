@@ -24,6 +24,7 @@ module.exports = {
         name: 'images',
         path: path.join(__dirname, 'static', 'img')
       }
-    }
+    },
+    '@sentry/gatsby'
   ]
 }
