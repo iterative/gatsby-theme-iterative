@@ -14,7 +14,8 @@
     "clean": "yarn workspace example clean",
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
-    "develop": "yarn workspace example develop"
+    "develop": "yarn workspace example develop",
+    "prepare": "husky install"
   },
   "workspaces": [
     "./packages/*"
@@ -28,6 +29,8 @@
     "eslint-plugin-jsx-a11y": "6.6.1",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react": "7.31.8",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
     "prettier": "2.7.1",
     "stylelint": "14.11.0",
     "stylelint-config-standard": "28.0.0"
