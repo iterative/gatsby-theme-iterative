@@ -1,3 +1,11 @@
+:root {
+  --bg-dark: #1a1e23;
+  --yellow-one: #ffc66d;
+  --default-blue: #38b3dc;
+  --hl-green: #09b43930;
+  --hl-red: #ff6a6930;
+  --hl-white: #ffffff25;
+}
 :global {
   ul {
     list-style-type: disc;
@@ -121,13 +129,40 @@
     }
 
     /**
-    * Shades of Purple Theme for Prism.js
-    *
+    * Prismjs Code Syntax Highlighting
     */
+
+    /**
+    * Add back the container background-color, border-radius, padding, margin
+    * and overflow that we removed from <pre>.
+    */
+    .gatsby-highlight {
+      background-color: var(--bg-dark);
+      border-radius: 0.3em;
+      margin: 0.5em 0;
+      padding: 1em;
+      overflow: auto;
+    }
+
+    /**
+    * Remove the default PrismJS theme background-color, border-radius, margin,
+    * padding and overflow.
+    * 1. Make the element just wide enough to fit its content.
+    * 2. Always fill the visible space in .gatsby-highlight.
+    * 3. Adjust the position of the line numbers
+    */
+    .gatsby-highlight pre[class*="language-"] {
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+      overflow: initial;
+      float: left; /* 1 */
+      min-width: 100%; /* 2 */
+    }
 
     code[class*="language-"],
     pre[class*="language-"] {
-      color: #9efeff;
+      color: var(--default-blue);
       direction: ltr;
       text-align: left;
       white-space: pre;
@@ -143,7 +178,6 @@
       -ms-hyphens: none;
       hyphens: none;
 
-      line-height: 25px;
       letter-spacing: 0.5px;
       text-shadow: 0 1px #222245;
     }
@@ -169,7 +203,7 @@
 
     :not(pre) > code[class*="language-"],
     pre[class*="language-"] {
-      background: #1e1e3f;
+      background: var(--bg-dark);
     }
 
     /* Inline code */
@@ -199,7 +233,7 @@
 
     .token.operator,
     .token.attr-name {
-      color: rgb(255, 180, 84);
+      color: #a074c4;
     }
 
     .token.punctuation {
@@ -214,7 +248,7 @@
     .token.tag .punctuation,
     .token.doctype,
     .token.builtin {
-      color: rgb(255, 157, 0);
+      color: #a074c4;
     }
 
     .token.entity,
@@ -268,11 +302,11 @@
     }
 
     .token.inserted {
-      background: #09b43930;
+      background: var(--hl-green);
     }
 
     .token.deleted {
-      background: #ff6a6930;
+      background: var(--hl-red);
     }
 
     code.language-css .token.property,
@@ -281,14 +315,14 @@
     }
 
     code.language-css .token.id {
-      color: #ffc66d;
+      color: var(--yellow-one);
     }
 
     code.language-css .token.selector > .token.class,
     code.language-css .token.selector > .token.attribute,
     code.language-css .token.selector > .token.pseudo-class,
     code.language-css .token.selector > .token.pseudo-element {
-      color: #ffc66d;
+      color: var(--yellow-one);
     }
 
     .token.class-name {
@@ -325,6 +359,16 @@
       opacity: 0.7;
     }
 
+    .gatsby-highlight-code-line {
+      background-color: var(--hl-white);
+      display: block;
+      margin-right: -1em;
+      margin-left: -1em;
+      padding-right: 1em;
+      padding-left: 0.75em;
+      border-left: 0.25em solid var(--yellow-one);
+    }
+
     /* Iterative Customization */
 
     .token.input {
@@ -334,13 +378,13 @@
     .token.dvc,
     .token.cml,
     .token.mlem {
-      color: #fabd2f;
+      color: #6ceb2c;
       font-weight: bold;
     }
 
     .token.usage,
     .token.git {
-      color: #e9836e;
+      color: #ff8e78;
     }
 
     .token.hide {
