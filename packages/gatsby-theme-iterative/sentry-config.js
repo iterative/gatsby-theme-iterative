@@ -1,6 +1,8 @@
-import * as Sentry from '@gatsby/sentry'
-
-Sentry.init({
+/* This is the default Sentry config for all Iterative websites.
+ * Much of this is lifted from Sentry's docs
+ * see https://docs.sentry.io/platforms/javascript/guides/gatsby/configuration/filtering/#decluttering-sentry
+ */
+export default {
   dsn: process.env.SENTRY_DSN,
   environment: process.env.NODE_ENV,
   release: process.env.SOURCE_VERSION,
@@ -13,7 +15,6 @@ Sentry.init({
         page from the new deployed version and all will be ok. So we can just
         ignore these type of errors */
     'ChunkLoadError',
-    // from https://docs.sentry.io/platforms/javascript/guides/gatsby/configuration/filtering/#decluttering-sentry
     // Random plugins/extensions
     'top.GLOBALS',
     // See: http://blog.errorception.com/2012/03/tale-of-unfindable-js-error.html
@@ -36,7 +37,6 @@ Sentry.init({
     // See http://toolbar.conduit.com/Developer/HtmlAndGadget/Methods/JSInjection.aspx
     'conduitPage'
   ],
-  // from https://docs.sentry.io/platforms/javascript/guides/gatsby/configuration/filtering/#decluttering-sentry
   denyUrls: [
     // Facebook flakiness
     /graph\.facebook\.com/i,
@@ -53,4 +53,4 @@ Sentry.init({
     /webappstoolbarba\.texthelp\.com\//i,
     /metrics\.itunes\.apple\.com\.edgesuite\.net\//i
   ]
-})
+}
