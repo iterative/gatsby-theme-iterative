@@ -10,6 +10,7 @@ import useCustomYtEmbeds from '../../../../utils/front/useCustomYtEmbeds'
 import 'github-markdown-css/github-markdown-light.css'
 import * as sharedStyles from '../../styles.module.css'
 import * as styles from './styles.module.css'
+import * as themeStyles from './theme.module.css'
 
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {
@@ -92,7 +93,7 @@ const Main: React.FC<PropsWithChildren<IMainProps>> = ({
         <i className={cn(sharedStyles.buttonIcon, styles.githubIcon)} /> Edit on
         GitHub
       </Link>
-      <div className="markdown-body">{children}</div>
+      <div className={cn('markdown-body', themeStyles.code)}>{children}</div>
       <div className={styles.navButtons}>
         <Link className={styles.navButton} href={prev || '#'}>
           <i className={cn(styles.navButtonIcon, styles.prev)} />
