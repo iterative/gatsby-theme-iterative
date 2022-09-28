@@ -2,8 +2,7 @@
   {
     "slug": "",
     "label": "Home",
-    "source": "index.md",
-    "icon": "house"
+    "source": "index.md"
   },
   {
     "slug": "install",
@@ -730,8 +729,8 @@
     ]
   },
   {
-    "slug": "testing",
-    "label": "Testing",
-    "source": "testing.md"
+    "slug": "examples",
+    "label": "Theme Examples",
+    "source": "examples.md"
   }
 ]
