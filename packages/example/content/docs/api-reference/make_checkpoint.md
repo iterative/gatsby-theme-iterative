@@ -65,7 +65,7 @@ checkpoint for [DVC experiments]:
 
 [dvc experiments]: /doc/user-guide/experiment-management#experiments
 
-```py
+```py{19}
 import os
 
 from dvc.api import make_checkpoint

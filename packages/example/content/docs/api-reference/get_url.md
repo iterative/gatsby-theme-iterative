@@ -12,12 +12,10 @@ def get_url(path: str,
 
 #### Usage:
 
-```py
+```py{3}
 import dvc.api
 
-resource_url = dvc.api.get_url(
-    'get-started/data.xml',
-    repo='https://github.com/iterative/dataset-registry')
+resource_url = dvc.api.get_url('get-started/data.xml', repo='https://github.com/iterative/dataset-registry')
 
 # resource_url is now "https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355"
 ```
@@ -76,7 +74,7 @@ an appropriate library, such as [`boto3`] or [`paramiko`].
 
 ## Example: Getting the URL to a DVC-tracked file
 
-```py
+```py{3-6}
 import dvc.api
 
 resource_url = dvc.api.get_url(
