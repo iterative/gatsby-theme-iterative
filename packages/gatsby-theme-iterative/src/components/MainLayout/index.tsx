@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useRef } from 'react'
 import { PageProps } from 'gatsby'
-import cx from 'classnames'
+import cn from 'classnames'
 
 import 'reset-css'
 import './base.css'
@@ -51,12 +51,21 @@ const MainLayout = ({
 
   return (
     <div
-      className={cx('h-screen flex flex-col items-center', className)}
+      className={cn('h-screen', 'flex', 'flex-col', 'items-center', className)}
       ref={rootRef}
     >
       <DefaultSEO pathname={location.pathname} />
       <LayoutHeader modifiers={modifiers} scrolled={!inView} />
-      <div className="flex flex-col items-center h-full w-full overflow-auto">
+      <div
+        className={cn(
+          'flex',
+          'flex-col',
+          'items-center',
+          'h-full',
+          'w-full',
+          'overflow-auto'
+        )}
+      >
         <div ref={ref} />
         <div id="layoutContent" className="flex-1">
           {children}
