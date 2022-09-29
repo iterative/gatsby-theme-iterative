@@ -10,6 +10,19 @@ const buildAst = async mdToBuild => {
   )
 }
 
+const useMatcher = (matcher, item) => {
+  switch (typeof matcher) {
+    case 'string':
+      return item === matcher
+    case 'object':
+      if (Array.isArray(matcher))
+        return matcher.find(submatcher => useMatcher(submatcher, item))
+      if (matcher instanceof RegExp) return matcher.match(item)
+    default:
+      throw `gatsby-remark-dvc-linker simpleLinker given bad matcher of type "${typeof matcher}"`
+  }
+}
+
 const createLinkNode = (url, [node, index, parent]) =>
   url &&
   (parent.children[index] = {
@@ -20,4 +33,4 @@ const createLinkNode = (url, [node, index, parent]) =>
     position: node.position
   })
 
-module.exports = { buildAst, createLinkNode }
+module.exports = { buildAst, createLinkNode, useMatcher }
