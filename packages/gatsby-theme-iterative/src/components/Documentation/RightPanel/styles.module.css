@@ -31,7 +31,7 @@
 }
 
 .header {
-  @apply h-14;
+  @apply h-14 pb-2 flex flex-col flex-nowrap justify-end;
   font-size: 14px;
   text-transform: uppercase;
   border-bottom: 1px solid var(--color-lighter-blue);

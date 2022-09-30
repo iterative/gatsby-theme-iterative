@@ -34,7 +34,7 @@
     font-family: inherit;
     font-size: 18px;
 
-    h1:first-of-type {
+    h1:first-child {
       @apply h-14;
     }
 

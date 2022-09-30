@@ -53,6 +53,10 @@
   text-decoration: none;
   color: var(--color-gray-light);
 
+  svg {
+    display: inline-block;
+  }
+
   &:hover {
     color: #3c3937;
 

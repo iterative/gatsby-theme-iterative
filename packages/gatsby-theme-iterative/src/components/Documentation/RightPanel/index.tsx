@@ -124,9 +124,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     <div className={styles.container}>
       {headings.length > 0 && (
         <>
-          <div>
-            <h5 className={styles.header}>Content</h5>
-          </div>
+          <h5 className={styles.header}>Content</h5>
           <div className={styles.contentBlock} ref={contentBlockRef}>
             {headings.map(({ slug, text }) => (
               <div id={`link-${slug}`} key={`link-${slug}`}>
