@@ -9,10 +9,16 @@ export default function Home({ location }: PageProps) {
     <MainLayout location={location}>
       <div
         className={cn(
-          "container','px-4','py-10','flex','flex-col','justify-center','items-center"
+          'container',
+          'px-4',
+          'py-10',
+          'flex',
+          'flex-col',
+          'justify-center',
+          'items-center'
         )}
       >
-        <h1 className={cn("text-2xl','font-bold','text-center','mb-5")}>
+        <h1 className={cn('text-2xl', 'font-bold', 'text-center', 'mb-5')}>
           Gatsby Theme: Iterative
         </h1>
         <section className="text-lg">

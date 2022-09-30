@@ -34,6 +34,10 @@
     font-family: inherit;
     font-size: 18px;
 
+    h1:first-of-type {
+      @apply h-14;
+    }
+
     h1,
     h2,
     h3,
@@ -169,7 +173,7 @@
 
     &__tooltip {
       padding: 10px;
-      box-sizing: border-box;
+
       color: #fff;
       opacity: 0;
       width: 100%;
@@ -197,8 +201,8 @@
 }
 
 .content {
+  @apply m-7;
   min-width: 200px;
-  margin: 30px;
   flex: 1;
   background-color: #fff;
 

@@ -126,7 +126,6 @@ const RightPanel: React.FC<IRightPanelProps> = ({
         <>
           <div>
             <h5 className={styles.header}>Content</h5>
-            <hr className={styles.separator} />
           </div>
           <div className={styles.contentBlock} ref={contentBlockRef}>
             {headings.map(({ slug, text }) => (
