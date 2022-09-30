@@ -3,6 +3,8 @@ const GithubSlugger = require('github-slugger')
 const slugger = new GithubSlugger()
 const SLUG_REGEXP = /\s+{#([a-z0-9-]*[a-z0-9]+)}\s*$/
 
+const path = require('path')
+
 const extractSlugFromTitle = title => {
   // extracts expressions like {#too-many-files} from the end of a title
   const meta = title.match(SLUG_REGEXP)
@@ -34,7 +36,7 @@ const parseHeadings = text => {
 
 const createPages = async (
   { graphql, actions },
-  { defaultTemplate, getTemplate, disable }
+  { defaultTemplate, getTemplate, disable, docsPrefix }
 ) => {
   if (disable) return
   const docsResponse = await graphql(
@@ -73,14 +75,13 @@ const createPages = async (
     } = doc
     const headings = parseHeadings(rawMarkdownBody)
 
-    if (slug) {
+    if (slug !== undefined) {
       actions.createPage({
         component: getTemplate(template, defaultTemplate),
-        path: slug,
+        path: path.posix.join(docsPrefix, slug),
         context: {
           id,
           slug,
-          isDocs: true,
           headings
         }
       })

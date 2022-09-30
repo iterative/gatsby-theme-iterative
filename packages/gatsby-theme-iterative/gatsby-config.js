@@ -16,13 +16,19 @@ require('./config/prismjs/dvctable')
 
 const imageMaxWidth = 700
 
+const defaults = require('./config-defaults')
+
 module.exports = ({
   simpleLinkerTerms,
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
     autoprefixer,
     require('tailwindcss')
-  ]
+  ],
+  docsInstanceName = defaults.docsInstanceName,
+  docsPath = defaults.docsPath,
+  glossaryInstanceName = defaults.glossaryInstanceName,
+  glossaryPath = defaults.glossaryPath
 }) => ({
   plugins: [
     {
@@ -40,11 +46,18 @@ module.exports = ({
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
-    {
+    glossaryInstanceName && {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'content',
-        path: path.resolve('content')
+        name: glossaryInstanceName,
+        path: glossaryPath
+      }
+    },
+    docsInstanceName && {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: docsInstanceName,
+        path: docsPath
       }
     },
     'gatsby-plugin-image',
@@ -141,7 +154,7 @@ module.exports = ({
         }
       }
     }
-  ],
+  ].filter(Boolean),
   siteMetadata: {
     author: 'Iterative',
     siteUrl: 'https://example.com'

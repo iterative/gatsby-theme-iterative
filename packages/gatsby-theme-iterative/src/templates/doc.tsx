@@ -24,7 +24,6 @@ const DocPage: React.FC<
       slug: string
       headings: []
       is404: boolean
-      isDocs: boolean
       isAlertLanding: boolean
       pageInfo?: {
         currentPage: number
