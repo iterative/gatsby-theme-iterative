@@ -37,6 +37,12 @@ body {
   color: var(--color-black);
 }
 
+html,
+body,
+#___gatsby {
+  @apply h-full;
+}
+
 /* Focus state styles for interactive elements */
 
 button:focus,

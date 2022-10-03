@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import { PageProps } from 'gatsby'
 import cn from 'classnames'
 
@@ -43,36 +43,40 @@ const MainLayout = ({
     }
   }, [])
 
-  const rootRef = useRef<HTMLDivElement>(null)
-
   const { ref, inView } = useInView({ rootMargin: '40px 0px 0px 0px' })
 
   return (
-    <>
+    <div
+      className={cn(
+        'h-full',
+        'w-full',
+        'min-h-screen',
+        'flex',
+        'flex-col',
+        'flex-nowrap',
+        'items-center'
+      )}
+    >
+      <div ref={ref} />
       <LayoutHeader modifiers={modifiers} scrolled={!inView} />
       <main
         className={cn(
-          'h-full',
-          'min-h-full',
+          'w-full',
+          'grow',
           'flex',
           'flex-col',
+          'flex-nowrap',
           'items-center',
           className
         )}
-        ref={rootRef}
       >
-        <div ref={ref} />
         <DefaultSEO pathname={location.pathname} />
-        <div
-          className={cn('flex', 'flex-col', 'items-center', 'h-full', 'w-full')}
-        >
-          <div id="layoutContent" className="flex-1">
-            {children}
-          </div>
-          <LayoutFooter />
+        <div id="layoutContent" className={cn('grow')}>
+          {children}
         </div>
       </main>
-    </>
+      <LayoutFooter />
+    </div>
   )
 }
 
