@@ -39,8 +39,9 @@ body {
 
 html,
 body,
-#___gatsby {
-  @apply h-full;
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
 }
 
 /* Focus state styles for interactive elements */

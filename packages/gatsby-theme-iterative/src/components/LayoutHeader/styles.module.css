@@ -3,17 +3,15 @@
   z-index: 11;
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   background-color: #fff;
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .header {
-  width: auto;
+  width: 100%;
   z-index: 3;
-  position: sticky;
-  top: 0;
   color: #fff;
   display: flex;
   flex-flow: row nowrap;
@@ -50,8 +48,7 @@
 }
 
 .company {
-  @apply active;
-  @apply hover;
+  @apply active hover;
 
   font-size: 15px;
   line-height: 20px;

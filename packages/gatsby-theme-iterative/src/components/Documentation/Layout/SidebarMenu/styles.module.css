@@ -2,7 +2,6 @@
   position: sticky;
   top: 60px;
   overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
 
   &.isScrollHidden {
     .ps__rail-y {

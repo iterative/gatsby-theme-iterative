@@ -46,37 +46,38 @@ const MainLayout = ({
   const { ref, inView } = useInView({ rootMargin: '40px 0px 0px 0px' })
 
   return (
-    <div
-      className={cn(
-        'h-full',
-        'w-full',
-        'min-h-screen',
-        'flex',
-        'flex-col',
-        'flex-nowrap',
-        'items-center'
-      )}
-    >
+    <>
       <div ref={ref} />
       <LayoutHeader modifiers={modifiers} scrolled={!inView} />
-      <main
+      <div
         className={cn(
+          'h-full',
           'w-full',
-          'grow',
           'flex',
           'flex-col',
           'flex-nowrap',
-          'items-center',
-          className
+          'items-center'
         )}
       >
-        <DefaultSEO pathname={location.pathname} />
-        <div id="layoutContent" className={cn('grow')}>
-          {children}
-        </div>
-      </main>
-      <LayoutFooter />
-    </div>
+        <main
+          className={cn(
+            'w-full',
+            'grow',
+            'flex',
+            'flex-col',
+            'flex-nowrap',
+            'items-center',
+            className
+          )}
+        >
+          <DefaultSEO pathname={location.pathname} />
+          <div id="layoutContent" className={cn('grow')}>
+            {children}
+          </div>
+        </main>
+        <LayoutFooter />
+      </div>
+    </>
   )
 }
 
