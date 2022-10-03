@@ -36,12 +36,10 @@
 .toggleButton {
   @apply hover;
 
-  position: fixed;
-  display: none;
-  visibility: hidden;
+  position: relative;
+  display: flex;
+  visibility: visible;
   z-index: 999;
-  right: 16px;
-  top: 12px;
   padding: 0;
   border: none;
   width: 40px;
@@ -58,14 +56,13 @@
   }
 
   &.opened {
+    position: absolute;
+    top: 1rem;
+    right: 0.5rem;
     outline-color: #fff;
   }
 
-  &.expanded {
-    top: 47px;
-  }
-
-  @media screen(xsMax) {
+  @media screen(sm) {
     display: flex;
     visibility: visible;
   }

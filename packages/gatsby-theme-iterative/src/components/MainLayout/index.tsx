@@ -45,34 +45,34 @@ const MainLayout = ({
 
   const rootRef = useRef<HTMLDivElement>(null)
 
-  const { ref, inView } = useInView({
-    root: rootRef.current
-  })
+  const { ref, inView } = useInView({ rootMargin: '40px 0px 0px 0px' })
 
   return (
-    <div
-      className={cn('h-screen', 'flex', 'flex-col', 'items-center', className)}
-      ref={rootRef}
-    >
-      <DefaultSEO pathname={location.pathname} />
+    <>
       <LayoutHeader modifiers={modifiers} scrolled={!inView} />
-      <div
+      <main
         className={cn(
+          'h-full',
+          'min-h-full',
           'flex',
           'flex-col',
           'items-center',
-          'h-full',
-          'w-full',
-          'overflow-auto'
+          className
         )}
+        ref={rootRef}
       >
         <div ref={ref} />
-        <div id="layoutContent" className="flex-1">
-          {children}
+        <DefaultSEO pathname={location.pathname} />
+        <div
+          className={cn('flex', 'flex-col', 'items-center', 'h-full', 'w-full')}
+        >
+          <div id="layoutContent" className="flex-1">
+            {children}
+          </div>
+          <LayoutFooter />
         </div>
-        <LayoutFooter />
-      </div>
-    </div>
+      </main>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
-.header {
+.headerContainer {
   width: 100%;
   z-index: 11;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -8,13 +9,14 @@
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
 }
 
-.container {
-  height: var(--layout-header-height);
+.header {
   width: auto;
   z-index: 3;
-  position: relative;
+  position: sticky;
+  top: 0;
   color: #fff;
   display: flex;
+  flex-flow: row nowrap;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
@@ -28,8 +30,7 @@
 }
 
 .logoLink {
-  @apply hover;
-  @apply active;
+  @apply hover active;
 
   height: 40px;
   width: 40px;
@@ -89,8 +90,6 @@
 }
 
 .alert {
-  height: var(--layout-alert-height);
-  line-height: var(--layout-alert-height);
   font-size: 18px;
   text-align: center;
   width: 100%;

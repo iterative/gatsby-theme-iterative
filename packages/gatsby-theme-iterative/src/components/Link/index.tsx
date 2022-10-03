@@ -1,18 +1,14 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { URL } from 'iso-url'
 import { useLocation } from '@reach/router'
 import { Link as GatsbyLink } from 'gatsby'
 import { getRedirect } from '../../utils/shared/redirects'
-import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
-import safeQuerySelector from '../../utils/front/safeQuerySelector'
-
 export type ILinkProps = {
   children: React.ReactNode
   className?: string
   href: string
   target?: undefined | '_blank'
   state?: unknown
-  scrollOptions?: Record<string, unknown>
   optOutPreRedirect?: undefined | true
   opt_out_pre_redirect?: string
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
@@ -80,18 +76,8 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   )
 }
 
-const scrollToHash = (hash: string, scrollOptions = {}): void => {
-  if (hash) {
-    scrollIntoLayout(safeQuerySelector(hash), {
-      waitImages: true,
-      ...scrollOptions
-    })
-  }
-}
-
 const Link: React.FC<ILinkProps> = ({
   href,
-  scrollOptions,
   optOutPreRedirect,
   // remark custom components only support lowercase props and value is always a string
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -103,29 +89,6 @@ const Link: React.FC<ILinkProps> = ({
       opt_out_pre_redirect === 'true' ? true : optOutPreRedirect
   }
   const currentLocation = useLocation()
-
-  const onClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>) => {
-      if (restProps.onClick) {
-        restProps.onClick(e)
-      }
-
-      // Handle local fragments manually, allowing for more control than
-      // native HTML fragment navigation.
-      if (href === '#') {
-        getScrollNode().scrollTop = 0
-      } else if (href.startsWith('#')) {
-        e.preventDefault()
-
-        // We can't navigate by direct usage of @reach/router#navigate because
-        // gatsby-react-router-scroll will package intercept scroll in this
-        // case and we will see undesired jump
-        window.history.pushState(null, '', href)
-        scrollToHash(href, scrollOptions)
-      }
-    },
-    [restProps.onClick, currentLocation]
-  )
 
   const location = new URL(href)
 
@@ -140,7 +103,7 @@ const Link: React.FC<ILinkProps> = ({
     }
   }
 
-  return <ResultLinkComponent href={href} {...restProps} onClick={onClick} />
+  return <ResultLinkComponent href={href} {...restProps} />
 }
 
 export const NoPreRedirectLink: React.FC<ILinkProps> = props => (

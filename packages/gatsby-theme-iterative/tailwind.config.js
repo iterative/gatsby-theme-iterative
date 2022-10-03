@@ -1,13 +1,15 @@
 module.exports = {
   content: [`${__dirname}/src/**/*.{ts,js,tsx,jsx}`],
   theme: {
-    screens: {
-      xxsMax: { max: '376px' },
-      xsMax: { max: '572px' },
-      smMax: { max: '768px' },
-      mdMax: { max: '1004px' },
-      lg: '1005px',
-      xl: '1200px'
+    extend: {
+      screens: {
+        xxsMax: { max: '376px' },
+        xsMax: { max: '572px' },
+        smMax: { max: '768px' },
+        mdMax: { max: '1004px' },
+        lg: '1005px',
+        xl: '1200px'
+      }
     }
   },
   plugins: [
