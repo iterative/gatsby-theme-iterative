@@ -42,6 +42,8 @@ module.exports = [
   'params',
   'ls',
   'list',
+  'list-url',
+  'ls-url',
   'install',
   'init',
   'import-url',
