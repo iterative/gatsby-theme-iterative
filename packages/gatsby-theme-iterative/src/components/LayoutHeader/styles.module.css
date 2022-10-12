@@ -1,7 +1,6 @@
 .headerContainer {
   width: 100%;
   z-index: 11;
-  position: sticky;
   top: 0;
   background-color: #fff;
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
@@ -20,11 +19,6 @@
   align-items: center;
   transition: height 0.2s linear;
   will-change: height;
-  padding: 0 24px;
-
-  @media screen(xsMax) {
-    padding: 0 16px;
-  }
 }
 
 .logoLink {

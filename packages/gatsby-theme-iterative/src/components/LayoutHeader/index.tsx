@@ -40,6 +40,8 @@ const LayoutHeader: React.FC<
           'transition-all',
           'ease-in-out',
           'delay-150',
+          'py-2',
+          'px-3',
           collapsed && styles.collapsed
         )}
         wide
