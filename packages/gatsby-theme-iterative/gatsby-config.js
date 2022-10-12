@@ -172,6 +172,7 @@ module.exports = ({
   ],
   siteMetadata: {
     author: 'Iterative',
-    siteUrl: 'https://cml.dev'
+    siteUrl: 'https://cml.dev',
+    titleTemplate: ''
   }
 })
