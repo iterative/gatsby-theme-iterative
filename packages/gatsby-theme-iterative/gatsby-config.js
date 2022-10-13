@@ -157,6 +157,7 @@ module.exports = ({
   ].filter(Boolean),
   siteMetadata: {
     author: 'Iterative',
-    siteUrl: 'https://example.com'
+    siteUrl: 'https://example.com',
+    titleTemplate: ''
   }
 })

@@ -5,6 +5,7 @@ interface ISiteMeta {
   description: string
   keywords: string
   siteUrl: string
+  titleTemplate: string
 }
 
 export default function siteMeta(): ISiteMeta {
@@ -19,6 +20,7 @@ export default function siteMeta(): ISiteMeta {
             description
             keywords
             siteUrl
+            titleTemplate
           }
         }
       }
