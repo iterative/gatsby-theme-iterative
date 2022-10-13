@@ -34,13 +34,12 @@
 }
 
 .toggleButton {
-  @apply hover;
+  @apply hover px-2;
 
   position: relative;
   display: flex;
   visibility: visible;
   z-index: 999;
-  padding: 0;
   border: none;
   width: 40px;
   height: 40px;
@@ -62,9 +61,9 @@
     outline-color: #fff;
   }
 
-  @media screen(sm) {
-    display: flex;
-    visibility: visible;
+  @media screen(xs) {
+    display: none;
+    visibility: hidden;
   }
 }
 
