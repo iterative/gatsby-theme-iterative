@@ -43,54 +43,39 @@ const MainLayout = ({
     }
   }, [])
 
-  const { ref, inView } = useInView({ rootMargin: '40px 0px 0px 0px' })
+  const { ref, inView } = useInView({ rootMargin: '84px 0px 0px 0px' })
 
   return (
-    <>
-      <div
+    <div
+      className={cn(
+        'h-full',
+        'w-full',
+        'flex',
+        'flex-col',
+        'flex-nowrap',
+        'items-center'
+      )}
+    >
+      <div ref={ref} />
+      <LayoutHeader modifiers={modifiers} scrolled={!inView} />
+      <main
         className={cn(
-          'h-full',
           'w-full',
+          'grow',
           'flex',
           'flex-col',
           'flex-nowrap',
-          'items-center'
+          'items-center',
+          className
         )}
       >
-        <LayoutHeader modifiers={modifiers} scrolled={!inView} />
-        <div
-          className={cn(
-            'h-full',
-            'w-full',
-            'overflow-y-auto',
-            'flex-grow',
-            'flex',
-            'flex-col',
-            'flex-nowrap',
-            'items-center'
-          )}
-        >
-          <div ref={ref} />
-          <main
-            className={cn(
-              'w-full',
-              'grow',
-              'flex',
-              'flex-col',
-              'flex-nowrap',
-              'items-center',
-              className
-            )}
-          >
-            <DefaultSEO pathname={location.pathname} />
-            <div id="layoutContent" className={cn('grow')}>
-              {children}
-            </div>
-          </main>
-          <LayoutFooter />
+        <DefaultSEO pathname={location.pathname} />
+        <div id="layoutContent" className={cn('grow')}>
+          {children}
         </div>
-      </div>
-    </>
+      </main>
+      <LayoutFooter />
+    </div>
   )
 }
 

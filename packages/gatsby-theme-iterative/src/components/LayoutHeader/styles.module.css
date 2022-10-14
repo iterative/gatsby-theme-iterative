@@ -1,4 +1,5 @@
 .headerContainer {
+  position: sticky;
   width: 100%;
   z-index: 11;
   top: 0;
@@ -81,17 +82,13 @@
 }
 
 .alert {
+  position: sticky;
   font-size: 18px;
   text-align: center;
   width: 100%;
   background-color: #dee;
   transition: 0.5s all;
   overflow: hidden;
-
-  &.collapsed {
-    height: 0;
-    transform: translateY(-100%);
-  }
 }
 
 .gitHubAlertLink {

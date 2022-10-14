@@ -8,36 +8,11 @@ import { ReactComponent as ArrowUpSVG } from '../../../../images/arrow-up-icon.s
 import { ReactComponent as ArrowDownSVG } from '../../../../images/arrow-down-icon.svg'
 
 import { logEvent } from '../../../../utils/front/plausible'
-import { getFirstPage } from '../../../../utils/shared/sidebar'
-
-const docsPage = getFirstPage()
 
 import * as styles from './styles.module.css'
+import { INavLinkData, INavLinkPopupData } from './types'
 
-type PopupName = 'CommunityPopup' | 'OtherToolsPopup'
-
-interface INavLinkData {
-  href: string
-  eventType: string
-  text: string
-}
-
-interface INavLinkPopupData {
-  text: string
-  popup: PopupName
-}
-
-const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
-  {
-    href: docsPage,
-    eventType: 'doc',
-    text: 'Doc'
-  },
-  {
-    text: 'Other Tools',
-    popup: 'OtherToolsPopup'
-  }
-]
+import navLinkItemsData from './data'
 
 const isPopup = (
   item: INavLinkData | INavLinkPopupData
@@ -122,8 +97,8 @@ const LinkItems: React.FC = ({}) => {
     <ul className={styles.linksList}>
       {navLinkItemsData.map((item, i) => (
         <li
+          className={cn('relative')}
           key={i}
-          className={styles.linkItem}
           ref={
             isPopup(item)
               ? item.popup === 'OtherToolsPopup'

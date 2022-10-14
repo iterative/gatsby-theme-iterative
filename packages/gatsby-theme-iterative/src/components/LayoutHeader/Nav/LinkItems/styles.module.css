@@ -7,32 +7,6 @@
   padding: 0;
 }
 
-.linkItem {
-  position: relative;
-  margin-left: 12px;
-
-  &:first-of-type {
-    margin: 0;
-  }
-
-  @media screen(mdMax) {
-    margin-left: 0;
-
-    &:first-child {
-      display: none;
-    }
-  }
-
-  @media screen(smMax) {
-    margin-left: 4px;
-
-    &:nth-child(5),
-    &:nth-child(4) {
-      display: none;
-    }
-  }
-}
-
 .link {
   @apply active;
   @apply hover;
