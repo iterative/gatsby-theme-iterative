@@ -1,12 +1,17 @@
+import { ScreenSize } from './getShowOnClass'
+
 export type PopupName = 'CommunityPopup' | 'OtherToolsPopup'
 
-export interface INavLinkData {
-  href: string
-  eventType: string
+interface INavLinkCommonData {
+  showOn?: ScreenSize
   text: string
 }
 
-export interface INavLinkPopupData {
-  text: string
+export interface INavLinkData extends INavLinkCommonData {
+  href: string
+  eventType: string
+}
+
+export interface INavLinkPopupData extends INavLinkCommonData {
   popup: PopupName
 }
