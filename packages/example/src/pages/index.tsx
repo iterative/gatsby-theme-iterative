@@ -10,6 +10,7 @@ export default function Home({ location }: PageProps) {
       <div
         className={cn(
           'container',
+          'mx-auto',
           'px-4',
           'py-10',
           'flex',
