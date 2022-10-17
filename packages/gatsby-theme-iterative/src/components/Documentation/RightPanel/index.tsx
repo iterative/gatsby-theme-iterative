@@ -123,7 +123,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   return (
     <div className={styles.container}>
       {headings.length > 0 && (
-        <>
+        <div className={styles.contentSection}>
           <h5 className={styles.header}>Content</h5>
           <div className={styles.contentBlock} ref={contentBlockRef}>
             {headings.map(({ slug, text }) => (
@@ -141,7 +141,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
               </div>
             ))}
           </div>
-        </>
+        </div>
       )}
       <div className={styles.buttonsBlock}>
         {Object.keys(tutorials || {}).length > 0 && (

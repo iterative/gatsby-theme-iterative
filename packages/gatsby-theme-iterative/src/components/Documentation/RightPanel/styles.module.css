@@ -1,7 +1,5 @@
 .container {
-  @apply mt-7;
-  position: sticky;
-  top: 0;
+  @apply sticky mt-7 top-4;
   flex-shrink: 0;
 
   width: 170px;
@@ -16,6 +14,8 @@
 }
 
 .contentBlock {
+  @apply basis-36;
+
   overflow-y: scroll;
   margin-bottom: 27px;
 

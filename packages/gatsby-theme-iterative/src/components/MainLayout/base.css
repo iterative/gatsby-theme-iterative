@@ -41,7 +41,8 @@ html,
 body,
 #___gatsby,
 #gatsby-focus-wrapper {
-  height: 100%;
+  min-height: 100%;
+  min-height: 100vh;
 }
 
 /* Focus state styles for interactive elements */

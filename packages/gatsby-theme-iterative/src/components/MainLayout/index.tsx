@@ -48,7 +48,7 @@ const MainLayout = ({
   return (
     <div
       className={cn(
-        'h-full',
+        'min-h-screen',
         'w-full',
         'flex',
         'flex-col',
@@ -70,7 +70,7 @@ const MainLayout = ({
         )}
       >
         <DefaultSEO pathname={location.pathname} />
-        <div id="layoutContent" className={cn('grow')}>
+        <div id="layoutContent" className={cn('w-full', 'grow')}>
           {children}
         </div>
       </main>

@@ -35,7 +35,7 @@
     font-size: 18px;
 
     h1:first-child {
-      @apply h-14;
+      @apply lg:h-14 pb-2;
     }
 
     h1,
@@ -45,6 +45,7 @@
     h5,
     h6 {
       font-weight: 500;
+      word-wrap: normal;
     }
 
     img + em,
