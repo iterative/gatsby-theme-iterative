@@ -89,42 +89,44 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
   const contentBlockRef = useRef<HTMLDivElement>(null)
-  const [
-    isScrollToCurrentHeadingHappened,
-    setIsScrollToCurrentHeadingHappened
-  ] = useState(false)
   useEffect(() => {
-    if (isScrollToCurrentHeadingHappened) {
-      return
-    }
-    if (!document.location.hash) {
-      setIsScrollToCurrentHeadingHappened(true)
-      return
-    }
-    if (currentHeadingSlug) {
-      setIsScrollToCurrentHeadingHappened(true)
-      const currentHeadingSlugElem = document.getElementById(
-        `link-${currentHeadingSlug}`
-      )
+    if (currentHeadingSlug !== undefined) {
       const contentBlockElem = contentBlockRef.current
-      if (currentHeadingSlugElem && contentBlockElem) {
-        const hasVerticalScrollbar =
-          contentBlockElem.scrollHeight > contentBlockElem.clientHeight
-        if (hasVerticalScrollbar) {
-          currentHeadingSlugElem.scrollIntoView({
-            block: 'start',
-            inline: 'nearest'
+      if (contentBlockElem) {
+        if (currentHeadingSlug) {
+          const currentHeadingSlugElem = document.getElementById(
+            `link-${currentHeadingSlug}`
+          )
+          if (currentHeadingSlugElem) {
+            const hasVerticalScrollbar =
+              contentBlockElem.scrollHeight > contentBlockElem.clientHeight
+            if (hasVerticalScrollbar) {
+              contentBlockElem.scrollTo({
+                top:
+                  currentHeadingSlugElem.offsetTop -
+                  contentBlockElem.clientHeight +
+                  currentHeadingSlugElem.clientHeight / 2,
+                behavior: 'smooth'
+              })
+            }
+          }
+        } else {
+          contentBlockElem.scrollTo({
+            top: 0
           })
         }
       }
     }
-  })
+  }, [currentHeadingSlug])
 
   return (
     <div className={styles.container}>
       {headings.length > 0 && (
-        <div className={styles.contentSection}>
-          <h5 className={styles.header}>Content</h5>
+        <>
+          <div>
+            <h5 className={styles.header}>Content</h5>
+            <hr className={styles.separator} />
+          </div>
           <div className={styles.contentBlock} ref={contentBlockRef}>
             {headings.map(({ slug, text }) => (
               <div id={`link-${slug}`} key={`link-${slug}`}>
@@ -141,7 +143,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
               </div>
             ))}
           </div>
-        </div>
+        </>
       )}
       <div className={styles.buttonsBlock}>
         {Object.keys(tutorials || {}).length > 0 && (
