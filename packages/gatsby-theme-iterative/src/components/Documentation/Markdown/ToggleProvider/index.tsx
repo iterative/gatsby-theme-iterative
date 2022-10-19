@@ -95,7 +95,17 @@ export const TogglesProvider: React.FC<
   const updateToggleInd = (id: string, newInd: number): void => {
     const togglesDataCopy: ITogglesData = { ...togglesData }
     const selectedTabText = togglesDataCopy[id].texts[newInd]
-    togglesDataCopy[id] = { ...togglesDataCopy[id], checkedInd: newInd }
+
+    for (const [key, value] of Object.entries(togglesDataCopy)) {
+      if (key === id) {
+        togglesDataCopy[id].checkedInd = newInd
+        continue
+      }
+      const index = value.texts.indexOf(selectedTabText)
+      if (index !== -1) {
+        togglesDataCopy[key].checkedInd = index
+      }
+    }
 
     setUrlQuery(
       window.location.href,
