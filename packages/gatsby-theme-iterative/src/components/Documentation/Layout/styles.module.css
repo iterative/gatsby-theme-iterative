@@ -50,6 +50,7 @@
 }
 
 .side {
+  @apply pt-16 pb-1 h-full;
   flex-shrink: 0;
   width: 280px;
   background-color: var(--color-light-blue);
@@ -69,6 +70,10 @@
       transform: translateX(0);
     }
   }
+}
+
+.sideContainer {
+  @apply max-h-full overflow-y-auto;
 }
 
 .sideToggle {

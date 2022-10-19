@@ -42,15 +42,17 @@ const Layout: React.FC<PropsWithChildren<{ currentPath: string }>> = ({
       </button>
 
       <div className={cn(styles.side, isMenuOpen && styles.opened)}>
-        <SearchForm />
-        <SidebarMenu
-          currentPath={currentPath}
-          onClick={(isLeafItemClicked: boolean): void => {
-            if (isLeafItemClicked) {
-              toggleMenu()
-            }
-          }}
-        />
+        <div className={cn(styles.sideContainer)}>
+          <SearchForm />
+          <SidebarMenu
+            currentPath={currentPath}
+            onClick={(isLeafItemClicked: boolean): void => {
+              if (isLeafItemClicked) {
+                toggleMenu()
+              }
+            }}
+          />
+        </div>
       </div>
       <div className={styles.content}>
         <SkipNavContent id="main-content" />

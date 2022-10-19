@@ -1,5 +1,6 @@
 .menu {
-  @apply sticky top-20;
+  @apply relative top-0 h-full;
+  padding-left: 20px;
 
   &.isScrollHidden {
     .ps__rail-y {
@@ -9,10 +10,6 @@
   }
 
   @media screen(xsMax) {
-    position: relative;
-    top: 0;
-    height: calc(100% - 60px);
-    padding-left: 20px;
   }
 
   :global(.ReactCollapse--collapse) {
