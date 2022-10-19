@@ -1,7 +1,5 @@
 .menu {
-  position: sticky;
-  top: 60px;
-  overflow-y: hidden;
+  @apply sticky top-20;
 
   &.isScrollHidden {
     .ps__rail-y {

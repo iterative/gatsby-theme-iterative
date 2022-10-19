@@ -14,7 +14,7 @@
 }
 
 .contentBlock {
-  @apply basis-36;
+  @apply basis-36 grow min-h-[6rem];
 
   overflow-y: scroll;
   margin-bottom: 27px;
