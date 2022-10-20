@@ -27,7 +27,8 @@ const getSideBarUrl = (repo, mainBranch = 'main') => {
 
 const getSidebar = async tool => {
   try {
-    const url = getSideBarUrl(tool.repo, tool.mainBranch)
+    let url = tool.url
+    if (!url) url = getSideBarUrl(tool.repo, tool.mainBranch)
     const res = await fetch(url)
     const sidebar = await res.json()
     return sidebar
