@@ -4,16 +4,22 @@ require('isomorphic-fetch')
 const args = process.argv.slice(2)
 const tool = args[0] || 'dvc'
 
-const paths = ['command-reference', 'cli-reference', 'ref']
-
-const getUrl = repo => {
-  return `https://raw.githubusercontent.com/iterative/${repo}/master/content/docs/sidebar.json`
+const repoList = {
+  dvc: { repo: 'dvc.org', branch: 'main' },
+  cml: { repo: 'cml.dev', branch: 'master' },
+  mlem: { repo: 'mlem.ai', branch: 'main' }
 }
 
-const writeCommandsToFile = async commands => {
+const paths = ['command-reference', 'cli-reference', 'ref']
+
+const getUrl = (repo, branch = 'main') => {
+  return `https://raw.githubusercontent.com/iterative/${repo}/${branch}/content/docs/sidebar.json`
+}
+
+const writeCommandsToFile = async (commands, tool) => {
   const file = `${__dirname}/${tool}-commands.js`
 
-  const start = '/* eslint-env node */\n\nmodule.exports = [\n'
+  const start = 'module.exports = [\n'
   const end = ']\n'
   const content =
     start + `${commands.map(cmd => `  '${cmd}'`).join(',\n')}\n` + end
@@ -21,7 +27,8 @@ const writeCommandsToFile = async commands => {
   fs.writeFileSync(file, content)
 }
 
-const getCommands = async url => {
+const getCommands = async tool => {
+  const url = getUrl(repoList[tool].repo, repoList[tool].branch)
   const res = await fetch(url)
   const sidebar = await res.json()
   const cmdRef = sidebar.find(item => paths.includes(item.slug))
@@ -40,34 +47,33 @@ const getCommands = async url => {
     commands.push(label)
   })
 
-  writeCommandsToFile(commands)
+  writeCommandsToFile(commands, tool)
 }
 
 switch (tool) {
   case 'dvc':
-    {
-      const url = getUrl('dvc.org')
-      getCommands(url).catch(err => {
-        console.error(err)
-      })
-    }
-    break
   case 'cml':
-    {
-      const url = getUrl('cml.dev')
-      getCommands(url).catch(err => {
-        console.error(err)
-      })
-    }
-    break
   case 'mlem':
     {
-      const url = getUrl('mlem.ai')
-      getCommands(url).catch(err => {
+      getCommands(tool).catch(err => {
         console.error(err)
       })
     }
     break
+  case 'all': {
+    // dvc
+    getCommands('dvc').catch(err => {
+      console.error(err)
+    })
+    // cml
+    getCommands('cml').catch(err => {
+      console.error(err)
+    })
+    // mlem
+    getCommands('mlem').catch(err => {
+      console.error(err)
+    })
+  }
   default:
     break
 }
