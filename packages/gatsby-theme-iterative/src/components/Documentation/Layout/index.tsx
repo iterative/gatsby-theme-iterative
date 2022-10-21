@@ -42,7 +42,7 @@ const Layout: React.FC<PropsWithChildren<{ currentPath: string }>> = ({
       </button>
 
       <div className={cn(styles.side, isMenuOpen && styles.opened)}>
-        <div className={cn(styles.sideContainer)}>
+        <div className={cn(styles.innerSidebar)}>
           <SearchForm />
           <SidebarMenu
             currentPath={currentPath}

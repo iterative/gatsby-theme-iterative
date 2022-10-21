@@ -1,15 +1,10 @@
 .headerContainer {
-  position: sticky;
-  width: 100%;
-  z-index: 11;
-  top: 0;
-  background-color: #fff;
+  @apply flex flex-col flex-nowrap fixed top-0 left-0 right-0 w-full justify-center z-30 bg-white;
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
-  display: flex;
-  flex-flow: column nowrap;
 }
 
 .header {
+  @apply h-14;
   width: 100%;
   z-index: 3;
   color: #fff;
@@ -20,6 +15,11 @@
   align-items: center;
   transition: height 0.2s linear;
   will-change: height;
+  padding: 0 24px;
+
+  @media screen(xsMax) {
+    padding: 0 16px;
+  }
 }
 
 .logoLink {
@@ -82,13 +82,17 @@
 }
 
 .alert {
-  position: sticky;
   font-size: 18px;
   text-align: center;
   width: 100%;
   background-color: #dee;
   transition: 0.5s all;
   overflow: hidden;
+
+  &.collapsed {
+    height: 0;
+    transform: translateY(-100%);
+  }
 }
 
 .gitHubAlertLink {

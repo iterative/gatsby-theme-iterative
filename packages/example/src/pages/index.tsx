@@ -11,8 +11,9 @@ export default function Home({ location }: PageProps) {
         className={cn(
           'container',
           'mx-auto',
+          'mt-14',
           'px-4',
-          'py-10',
+          'py-14',
           'flex',
           'flex-col',
           'justify-center',

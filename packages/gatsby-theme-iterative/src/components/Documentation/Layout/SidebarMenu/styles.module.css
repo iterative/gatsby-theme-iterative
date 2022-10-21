@@ -1,5 +1,5 @@
 .menu {
-  @apply relative top-0 h-full;
+  @apply relative top-0 h-full overflow-y-auto overflow-x-hidden;
   padding-left: 20px;
 
   &.isScrollHidden {
@@ -7,9 +7,6 @@
       opacity: 0;
       overflow: hidden;
     }
-  }
-
-  @media screen(xsMax) {
   }
 
   :global(.ReactCollapse--collapse) {

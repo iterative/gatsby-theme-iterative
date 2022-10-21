@@ -7,7 +7,6 @@ import './base.css'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
-import { useInView } from 'react-intersection-observer'
 import DefaultSEO from './DefaultSEO'
 import { useRedirects } from './utils'
 
@@ -43,8 +42,6 @@ const MainLayout = ({
     }
   }, [])
 
-  const { ref, inView } = useInView({ rootMargin: '84px 0px 0px 0px' })
-
   return (
     <div
       className={cn(
@@ -56,8 +53,7 @@ const MainLayout = ({
         'items-center'
       )}
     >
-      <div ref={ref} />
-      <LayoutHeader modifiers={modifiers} scrolled={!inView} />
+      <LayoutHeader modifiers={modifiers} />
       <main
         className={cn(
           'w-full',
