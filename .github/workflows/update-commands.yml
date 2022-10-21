@@ -24,8 +24,10 @@ jobs:
 
       - name: Check
         run: |
-          if [[ `git status --porcelain` ]]; then
-           cml pr create . --title "Update tool commands"
+          if [[ `git status packages/gatsby-theme-iterative/config/prismjs --porcelain` ]]; then
+           cml pr create packages/gatsby-theme-iterative/config/prismjs --title "Update tool commands"
           else 
             echo "No changes!"
           fi
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
