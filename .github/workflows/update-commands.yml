@@ -1,9 +1,7 @@
 name: Update tool commands list for Prismjs
 on:
-  workflow_dispatch:
   schedule:
     - cron: '0 10 * * 1-5'
-  push:
 
 jobs:
   fetch-commands:
