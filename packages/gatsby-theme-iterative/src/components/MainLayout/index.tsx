@@ -53,6 +53,7 @@ const MainLayout = ({
         'items-center'
       )}
     >
+      <DefaultSEO pathname={location.pathname} />
       <LayoutHeader modifiers={modifiers} />
       <main
         className={cn(
@@ -65,10 +66,7 @@ const MainLayout = ({
           className
         )}
       >
-        <DefaultSEO pathname={location.pathname} />
-        <div id="layoutContent" className={cn('w-full', 'grow')}>
-          {children}
-        </div>
+        {children}
       </main>
       <LayoutFooter />
     </div>
