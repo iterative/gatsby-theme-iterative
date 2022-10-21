@@ -12,10 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
       - uses: iterative/setup-cml@v1
 
       - name: Install required package
-        run: yarn add isomorphic-fetch
+        run: yarn workspace @dvcorg/gatsby-theme-iterative add isomorphic-fetch
 
       - name: Fetch commands
         run: yarn get-commands all
