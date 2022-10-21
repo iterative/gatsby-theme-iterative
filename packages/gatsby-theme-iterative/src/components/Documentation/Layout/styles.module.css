@@ -51,23 +51,29 @@
 
 .side {
   @apply flex flex-col sm:py-0;
-  flex-shrink: 0;
-  width: 280px;
   background-color: var(--color-light-blue);
 
-  @media screen(xsMax) {
-    position: fixed;
-    z-index: 2;
-    bottom: 0;
-    left: 0;
-    right: 60px;
-    box-shadow: rgb(0 0 0 / 14%) 0 0 4px, rgb(0 0 0 / 28%) 0 4px 8px;
-    transform: translateX(-110%);
-    transition: transform 0.35s ease;
+  flex-shrink: 0;
 
-    &.opened {
-      transform: translateX(0);
-    }
+  width: auto;
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 60px;
+  box-shadow: rgb(0 0 0 / 14%) 0 0 4px, rgb(0 0 0 / 28%) 0 4px 8px;
+  transform: translateX(-110%);
+  transition: transform 0.35s ease;
+
+  &.opened {
+    transform: translateX(0);
+  }
+
+  @media screen(xs) {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    width: 280px;
   }
 }
 

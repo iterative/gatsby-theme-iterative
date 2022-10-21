@@ -1,6 +1,5 @@
 .menu {
-  @apply relative top-0 h-full overflow-y-auto overflow-x-hidden;
-  padding-left: 20px;
+  @apply relative top-0 h-full overflow-y-auto overflow-x-hidden px-2;
 
   &.isScrollHidden {
     .ps__rail-y {
@@ -16,7 +15,6 @@
 }
 
 .sections {
-  min-width: 280px;
   margin-bottom: 25px;
   margin-top: 10px;
 
