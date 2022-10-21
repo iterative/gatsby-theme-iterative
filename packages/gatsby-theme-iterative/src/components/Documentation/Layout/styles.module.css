@@ -78,7 +78,7 @@
 }
 
 .innerSidebar {
-  @apply flex flex-col h-screen pt-14 xs:sticky xs:h-screen xs:top-0 z-20;
+  @apply flex flex-col h-screen pt-14 xs:sticky xs:h-auto xs:max-h-screen xs:top-0 z-20;
 }
 
 .sideToggle {
