@@ -1,0 +1,23 @@
+name: Update tool commands list for Prismjs
+on:
+  schedule: '0 10 * * 1-5'
+
+jobs:
+  fetch-commands:
+    name: Run script to fetch commands
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: iterative/setup-cml@v1
+
+      - name: Fetch commands
+        run: yarn get-commands all
+
+      - name: Check
+        run: |
+          if [[ `git status --porcelain` ]]; then
+           cml pr create . --title "Update tool commands"
+          else 
+            echo "No changes!"
+          fi
