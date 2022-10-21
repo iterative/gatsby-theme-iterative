@@ -10,12 +10,12 @@ import React, {
 } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
-import { Node } from 'unist'
+import { Element } from 'hast'
 import rehypeReact from 'rehype-react'
 import Collapsible from 'react-collapsible'
 
 import Main from './Main'
-import Link from '../../Link'
+import Link, { NoPreRedirectLink } from '../../Link'
 import Tooltip from './Tooltip'
 import Admonition from './Admonition'
 
@@ -25,6 +25,7 @@ import { ReactComponent as LinkIcon } from '../../../images/linkIcon.svg'
 import { useLocation } from '@reach/router'
 
 import Slugger from '../../../utils/front/Slugger'
+import patchHtmlAst from '../../../utils/front/patchHtmlAst'
 
 type RemarkNode = { props: { children: RemarkNode[] } } | string
 
@@ -264,7 +265,7 @@ const renderAst = (slugger: Slugger) => {
     createElement: React.createElement,
     Fragment: React.Fragment,
     components: {
-      a: Link,
+      a: NoPreRedirectLink,
       abbr: Abbr,
       card: Card,
       cards: Cards,
@@ -280,8 +281,9 @@ const renderAst = (slugger: Slugger) => {
     }
   }).Compiler
 }
+
 interface IMarkdownProps {
-  htmlAst: Node
+  htmlAst: Element
   githubLink: string
   tutorials?: { [type: string]: string }
   prev?: string
@@ -296,9 +298,10 @@ const Markdown: React.FC<IMarkdownProps> = ({
   githubLink
 }) => {
   const slugger = new Slugger()
+  const patchedAst = patchHtmlAst(htmlAst)
   return (
     <Main prev={prev} next={next} tutorials={tutorials} githubLink={githubLink}>
-      <TogglesProvider>{renderAst(slugger)(htmlAst)}</TogglesProvider>
+      <TogglesProvider>{renderAst(slugger)(patchedAst)}</TogglesProvider>
     </Main>
   )
 }

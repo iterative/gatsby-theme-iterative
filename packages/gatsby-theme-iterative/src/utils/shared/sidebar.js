@@ -22,13 +22,21 @@
 
 const { titleCase } = require('title-case')
 const sidebar = require('@dvcorg/gatsby-theme-iterative/sidebar')
+const {
+  SIDEBAR_UPPERCASE_KEYWORDS_REGEX,
+  SIDEBAR_PATH_ROOT,
+  SIDEBAR_FILE_ROOT,
+  SIDEBAR_FILE_EXTENSION
+} = require('../../../consts')
 
-const PATH_ROOT = '/doc'
-const FILE_ROOT = '/docs/'
-const FILE_EXTENSION = '.md'
+function uppercaseSlugKeywords(slug) {
+  return slug.replace(SIDEBAR_UPPERCASE_KEYWORDS_REGEX, match => {
+    return match.toUpperCase()
+  })
+}
 
-function dvcTitleCase(slug) {
-  return titleCase(slug.replace(/dvc/g, 'DVC').replace(/-/g, ' '))
+function slugTitleCase(slug) {
+  return titleCase(uppercaseSlugKeywords(slug).replace(/-/g, ' '))
 }
 
 function validateRawItem({ slug, source, children, type, url }) {
@@ -105,15 +113,17 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
 
       const prev = prevItemWithSource && prevItemWithSource.path
 
-      const sourceFileName = source ? source : slug + FILE_EXTENSION
-      const sourcePath = FILE_ROOT + parentPath + sourceFileName
+      const sourceFileName = source ? source : slug + SIDEBAR_FILE_EXTENSION
+      const sourcePath = SIDEBAR_FILE_ROOT + parentPath + sourceFileName
 
       const relativePath = parentPath + slug
 
       return {
-        path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
+        path: relativePath
+          ? `${SIDEBAR_PATH_ROOT}/${relativePath}`
+          : SIDEBAR_PATH_ROOT,
         source: source === false ? false : sourcePath,
-        label: label ? label : dvcTitleCase(slug),
+        label: label ? label : slugTitleCase(slug),
         tutorials: tutorials || {},
         prev,
         next: undefined,
@@ -188,7 +198,7 @@ function getFirstPage() {
 
 function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
-  const isRoot = normalizedPath === PATH_ROOT
+  const isRoot = normalizedPath === SIDEBAR_PATH_ROOT
   const item = isRoot
     ? normalizedSidebar[0]
     : findItemByField(normalizedSidebar, 'path', normalizedPath)
@@ -210,12 +220,12 @@ function getPathWithSource(path) {
 function getParentsListFromPath(path) {
   // If path is the homepage, indicate that it's the only one active.
   // This will have to change if we add children under home, but we don't currently.
-  if (path === PATH_ROOT) return [PATH_ROOT]
+  if (path === SIDEBAR_PATH_ROOT) return [SIDEBAR_PATH_ROOT]
 
-  let currentPath = PATH_ROOT
+  let currentPath = SIDEBAR_PATH_ROOT
 
   return path
-    .replace(PATH_ROOT + '/', '')
+    .replace(SIDEBAR_PATH_ROOT + '/', '')
     .split('/')
     .map(part => {
       const path = `${currentPath}/${part}`

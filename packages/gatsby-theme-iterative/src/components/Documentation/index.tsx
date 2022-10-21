@@ -1,5 +1,5 @@
 import React from 'react'
-import { Node } from 'unist'
+import { Element } from 'hast'
 
 import Markdown from './Markdown'
 import RightPanel from './RightPanel'
@@ -15,7 +15,7 @@ export interface IHeading {
 interface IDocumentationProps {
   path: string
   headings: Array<IHeading>
-  htmlAst: Node
+  htmlAst: Element
 }
 
 const Documentation: React.FC<IDocumentationProps> = ({

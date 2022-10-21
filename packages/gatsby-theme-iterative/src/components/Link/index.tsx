@@ -14,6 +14,7 @@ export type ILinkProps = {
   state?: unknown
   scrollOptions?: Record<string, unknown>
   optOutPreRedirect?: undefined | true
+  opt_out_pre_redirect?: string
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const PROTOCOL_REGEXP = /^https?:\/\//
@@ -90,8 +91,15 @@ const Link: React.FC<ILinkProps> = ({
   href,
   scrollOptions,
   optOutPreRedirect,
+  // remark custom components only support lowercase props and value is always a string
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  opt_out_pre_redirect,
   ...restProps
 }) => {
+  if (opt_out_pre_redirect) {
+    optOutPreRedirect =
+      opt_out_pre_redirect === 'true' ? true : optOutPreRedirect
+  }
   const currentLocation = useLocation()
 
   const onClick = useCallback(
@@ -132,5 +140,11 @@ const Link: React.FC<ILinkProps> = ({
 
   return <ResultLinkComponent href={href} {...restProps} onClick={onClick} />
 }
+
+export const NoPreRedirectLink: React.FC<ILinkProps> = props => (
+  <Link {...props} optOutPreRedirect>
+    {props.children}
+  </Link>
+)
 
 export default Link

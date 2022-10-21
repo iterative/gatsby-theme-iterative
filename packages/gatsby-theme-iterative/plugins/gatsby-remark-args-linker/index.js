@@ -1,6 +1,6 @@
 const _ = require('lodash')
-
-const argsRegex = new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig')
+const consts = require('../../consts')
+const { ARGS_REGEXP } = consts
 
 function patch(context, key, value) {
   if (!_.has(context, key)) {
@@ -51,7 +51,7 @@ module.exports = async (
       if (isFirstArgNode) {
         const firstArgNode = paragraphNode.children[0]
         const value = firstArgNode.value
-        const id = value.match(argsRegex)[0]
+        const id = value.match(ARGS_REGEXP)[0]
         addIdAttrToNode(firstArgNode, id)
 
         const data = patch(listItemNode, `data`, {})
@@ -89,7 +89,7 @@ module.exports = async (
         if (isSecondArgNode) {
           const secondArgNode = paragraphNode.children[2]
           const value = secondArgNode.value
-          const id = value.match(argsRegex)[0]
+          const id = value.match(ARGS_REGEXP)[0]
           addIdAttrToNode(secondArgNode, id)
         }
       }

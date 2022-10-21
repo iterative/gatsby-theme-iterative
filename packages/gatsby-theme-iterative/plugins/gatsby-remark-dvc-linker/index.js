@@ -18,7 +18,7 @@ exports.default = async ({ markdownAST }, { simpleLinkerTerms }) => {
     flow([
       Array,
       liveLinker,
-      commandLinker,
+      commandLinker(simpleLinkerTerms),
       apiLinker,
       simpleLinker(simpleLinkerTerms),
       constant(undefined)

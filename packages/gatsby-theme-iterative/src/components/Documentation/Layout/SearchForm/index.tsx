@@ -34,6 +34,14 @@ const SearchForm: React.FC = props => {
             setSearchAvailable(true)
           }
         })
+      } else {
+        window.docsearch({
+          apiKey: '755929839e113a981f481601c4f52082',
+          indexName: 'dvc',
+          inputSelector: '#doc-search',
+          debug: false // Set to `true` if you want to inspect the dropdown
+        })
+        setSearchAvailable(true)
       }
     }
   }, [])

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Script } from 'gatsby'
 import Helmet from 'react-helmet'
 
 import { MetaProps } from '../../SEO'
@@ -18,6 +19,7 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   const siteMeta = getSiteMeta()
   const siteUrl = siteMeta.siteUrl
   const metaTitle = siteMeta.title
+  const metaTitleTemplate = siteMeta.titleTemplate
   const metaDescription = siteMeta.description
   const metaKeywords = siteMeta.keywords
   const fullUrl = siteUrl + pathname
@@ -102,27 +104,32 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   ]
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang: 'en'
-      }}
-      defaultTitle={metaTitle}
-      titleTemplate={`%s | ${metaTitle}`}
-      meta={meta}
-      link={[
-        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#13adc7' },
-        {
-          rel: 'canonical',
-          href: fullUrl
-        }
-      ]}
-    >
-      <script
+    <>
+      <Helmet
+        htmlAttributes={{
+          lang: 'en'
+        }}
+        defaultTitle={metaTitle}
+        titleTemplate={metaTitleTemplate || `%s | ${metaTitle}`}
+        meta={meta}
+        link={[
+          {
+            rel: 'mask-icon',
+            href: '/safari-pinned-tab.svg',
+            color: '#13adc7'
+          },
+          {
+            rel: 'canonical',
+            href: fullUrl
+          }
+        ]}
+      />
+      <Script
         defer
         data-domain="dvc.org"
         src="https://plausible.io/js/plausible.outbound-links.js"
-      ></script>
-    </Helmet>
+      />
+    </>
   )
 }
 

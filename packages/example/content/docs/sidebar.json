@@ -2,8 +2,7 @@
   {
     "slug": "",
     "label": "Home",
-    "source": "index.md",
-    "icon": "house"
+    "source": "index.md"
   },
   {
     "slug": "install",
@@ -572,10 +571,7 @@
         "slug": "start-gitlab"
       },
       "usage",
-      {
-        "label": "CML with DVC",
-        "slug": "cml-with-dvc"
-      },
+      "cml-with-dvc",
       {
         "label": "Self-hosted Runners",
         "slug": "self-hosted-runners"
@@ -598,7 +594,6 @@
       },
       "get-started",
       {
-        "label": "User Guide",
         "slug": "user-guide",
         "source": "user-guide/index.md",
         "children": [
@@ -643,16 +638,12 @@
     "slug": "dvclive",
     "source": "dvclive/index.md",
     "children": [
-      {
-        "label": "Get Started",
-        "slug": "get-started"
-      },
+      "get-started",
       {
         "label": "DVCLive with DVC",
         "slug": "dvclive-with-dvc"
       },
       {
-        "label": "ML Frameworks",
         "slug": "ml-frameworks",
         "source": "dvclive/ml-frameworks/index.md",
         "children": [
@@ -699,7 +690,6 @@
         ]
       },
       {
-        "label": "API Reference",
         "slug": "api-reference",
         "source": "api-reference/index.md",
         "children": [
@@ -737,5 +727,10 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "examples",
+    "label": "Theme Examples",
+    "source": "examples.md"
   }
 ]

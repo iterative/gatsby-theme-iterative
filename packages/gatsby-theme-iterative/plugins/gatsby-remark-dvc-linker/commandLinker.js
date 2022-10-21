@@ -1,21 +1,36 @@
 /* eslint-env node */
 
-const { createLinkNode } = require('./helpers')
+const { createLinkNode, useMatcher } = require('./helpers')
 const { getItemByPath } = require('../../src/utils/shared/sidebar')
+const consts = require('../../consts')
 
-const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
-const COMMAND_REGEXP = /^[a-z][a-z-]*$/
-const ARGS_REGEXP = new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig')
-const COMMAND_ROOT = '/doc/command-reference/'
+const {
+  ARGS_REGEXP,
+  CLI_REGEXP,
+  COMMAND_REGEXP,
+  COMMAND_ROOT,
+  CML_COMMAND_ROOT
+} = consts
 
-module.exports = astNode => {
+module.exports = aliasEntries => astNode => {
   const node = astNode[0]
   const parent = astNode[2]
-  if (parent.type !== 'link' && DVC_REGEXP.test(node.value)) {
+  if (parent.type !== 'link' && CLI_REGEXP.test(node.value)) {
     const parts = node.value.split(/\s+/)
-    const index = parts.findIndex(part => String(part).trim() === 'dvc')
+    const index = parts.findIndex(part => {
+      const cli = String(part).trim()
+      return cli === 'dvc' || cli === 'cml' || cli === 'mlem'
+    })
+    const cli = parts[index]
+    const commandRoot = cli === 'cml' ? CML_COMMAND_ROOT : COMMAND_ROOT
     const command = parts[index + 1]
-    const baseUrl = `${COMMAND_ROOT}${command}`
+    const aliasEntry =
+      aliasEntries &&
+      aliasEntries.find(({ matches }) =>
+        useMatcher(matches, `${cli} ${command}`)
+      )
+    const baseUrl =
+      aliasEntry && aliasEntry.url ? aliasEntry.url : `${commandRoot}${command}`
     let url
     const isCommandPageExists = getItemByPath(baseUrl)
     if (isCommandPageExists) {
