@@ -14,6 +14,9 @@ jobs:
       - uses: actions/setup-node@v3
       - uses: iterative/setup-cml@v1
 
+      - name: Install required package
+        run: yarn add isomorphic-fetch
+
       - name: Fetch commands
         run: yarn get-commands all
 
