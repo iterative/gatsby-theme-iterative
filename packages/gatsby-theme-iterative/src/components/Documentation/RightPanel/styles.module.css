@@ -1,5 +1,5 @@
 .container {
-  @apply sticky h-screen pt-14 top-0;
+  @apply mt-7 pt-14 sticky h-screen top-0;
   flex-shrink: 0;
 
   width: 170px;
