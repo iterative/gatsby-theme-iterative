@@ -202,7 +202,7 @@
 }
 
 .content {
-  @apply m-7;
+  @apply p-7 mt-14;
   min-width: 200px;
   flex: 1;
   background-color: #fff;
