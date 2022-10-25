@@ -52,17 +52,16 @@
 }
 
 .side {
-  @apply flex flex-col sm:py-0;
+  @apply flex flex-col w-72
+    sm:py-0;
   background-color: var(--color-light-blue);
 
   flex-shrink: 0;
 
-  width: auto;
   position: fixed;
   z-index: 2;
   bottom: 0;
   left: 0;
-  right: 60px;
   box-shadow: rgb(0 0 0 / 14%) 0 0 4px, rgb(0 0 0 / 28%) 0 4px 8px;
   transform: translateX(-110%);
   transition: transform 0.35s ease;
