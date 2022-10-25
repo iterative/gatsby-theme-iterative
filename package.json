@@ -15,6 +15,7 @@
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
     "develop": "yarn workspace example develop",
+    "get-commands": "yarn workspace @dvcorg/gatsby-theme-iterative get-commands",
     "prepare": "husky install"
   },
   "workspaces": [
