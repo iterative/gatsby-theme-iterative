@@ -14,6 +14,7 @@ export interface IPaginatorPageInfo {
 interface ISEOProps {
   title?: string
   defaultMetaTitle?: boolean
+  skipTitleTemplate?: boolean
   description?: string
   keywords?: string
   imageAlt?: string
@@ -28,6 +29,7 @@ interface ISEOProps {
 const SEO: React.FC<ISEOProps> = ({
   title,
   defaultMetaTitle,
+  skipTitleTemplate,
   description,
   keywords,
   image,
@@ -69,7 +71,11 @@ const SEO: React.FC<ISEOProps> = ({
   ])
 
   return (
-    <Helmet title={pageTitle} meta={[...prebuildMeta, ...meta]}>
+    <Helmet
+      title={pageTitle}
+      {...(skipTitleTemplate && { titleTemplate: '' })}
+      meta={[...prebuildMeta, ...meta]}
+    >
       {children}
     </Helmet>
   )
