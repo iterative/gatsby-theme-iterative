@@ -14,6 +14,6 @@ module.exports = [
   'clone',
   'import',
   'build',
-  'apply-remote',
-  'apply'
+  'apply',
+  'apply-remote'
 ]
