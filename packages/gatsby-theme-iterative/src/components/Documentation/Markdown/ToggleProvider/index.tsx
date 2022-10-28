@@ -8,7 +8,7 @@ import React, {
   useRef,
   useState
 } from 'react'
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 interface ITogglesData {
   [key: string]: {
