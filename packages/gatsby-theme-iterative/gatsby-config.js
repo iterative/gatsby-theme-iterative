@@ -28,7 +28,8 @@ module.exports = ({
   docsInstanceName = defaults.docsInstanceName,
   docsPath = defaults.docsPath,
   glossaryInstanceName = defaults.glossaryInstanceName,
-  glossaryPath = defaults.glossaryPath
+  glossaryPath = defaults.glossaryPath,
+  argsLinkerPath = defaults.argsLinkerPath
 }) => ({
   plugins: [
     {
@@ -82,11 +83,7 @@ module.exports = ({
             options: {
               icon: linkIcon,
               // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
-              pathname: [
-                'docs/command-reference',
-                `docs/ref`,
-                'docs/cli-reference'
-              ]
+              pathname: argsLinkerPath
             }
           },
           {

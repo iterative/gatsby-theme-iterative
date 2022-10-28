@@ -1,5 +1,6 @@
 const path = require('path')
 const { name: packageName } = require('./package.json')
+const defaults = require('./config-defaults')
 
 const defaultGetTemplate = (template, defaultTemplate) =>
   template
@@ -30,7 +31,10 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     ),
     cssBase: Joi.string(),
     customMediaConfig: Joi.object(),
-    postCssPlugins: Joi.array()
+    postCssPlugins: Joi.array(),
+    argsLinkerPath: Joi.alternatives()
+      .try(Joi.string(), Joi.array().items(Joi.string()))
+      .default(defaults.argsLinkerPath)
   })
 }
 
