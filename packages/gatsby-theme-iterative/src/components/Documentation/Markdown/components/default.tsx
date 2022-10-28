@@ -6,13 +6,13 @@ import React, {
   useMemo,
   useState
 } from 'react'
-import Slugger from '../../../../utils/front/Slugger'
-import { ReactComponent as LinkIcon } from '../../../images/linkIcon.svg'
 import { useLocation } from '@reach/router'
 import Collapsible from 'react-collapsible'
+import Slugger from '../../../../utils/front/Slugger'
+import { ReactComponent as LinkIcon } from '../../../../images/linkIcon.svg'
 import Link from '../../../Link'
 import Tooltip from '../Tooltip'
-import * as styles from './styles.module.css'
+import * as styles from '../styles.module.css'
 
 type RemarkNode = { props: { children: RemarkNode[] } } | string
 
