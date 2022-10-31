@@ -1,11 +1,14 @@
 {
   "name": "@dvcorg/gatsby-theme-iterative",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "",
   "main": "index.js",
   "types": "src/typings.d.ts",
   "author": "Roger Parent (@rogermparent)",
   "license": "MIT",
+  "scripts": {
+    "get-commands": "node config/prismjs/get-commands.js"
+  },
   "dependencies": {
     "@reach/portal": "^0.17.0",
     "@reach/router": "^1.3.4",

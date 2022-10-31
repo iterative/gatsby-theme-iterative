@@ -1,0 +1,31 @@
+name: Update tool commands list for Prismjs
+on:
+  schedule:
+    - cron: '0 10 * * 1-5'
+
+jobs:
+  fetch-commands:
+    name: Run script to fetch commands
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+      - uses: iterative/setup-cml@v1
+
+      - name: Install required package
+        run: yarn workspace @dvcorg/gatsby-theme-iterative add isomorphic-fetch
+
+      - name: Fetch commands
+        run: yarn get-commands all
+
+      - name: Check
+        run: |
+          if [[ `git status packages/gatsby-theme-iterative/config/prismjs --porcelain` ]]; then
+           cml pr create packages/gatsby-theme-iterative/config/prismjs --title "Update tool commands"
+          else 
+            echo "No changes!"
+          fi
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
