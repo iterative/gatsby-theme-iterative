@@ -16,7 +16,7 @@
   @apply basis-36 grow min-h-[6rem];
 
   overflow-y: scroll;
-  margin-bottom: 27px;
+  margin-bottom: 17px;
 
   &::-webkit-scrollbar {
     appearance: none;
@@ -59,6 +59,7 @@
 }
 
 .buttonsBlock {
+  margin-top: 10px;
   margin-bottom: 20px;
   flex-shrink: 0;
 }
