@@ -171,8 +171,10 @@ module.exports = ({
     }
   ],
   siteMetadata: {
-    author: 'Iterative',
-    siteUrl: 'https://cml.dev',
-    titleTemplate: ''
+    author: '',
+    siteUrl: '',
+    titleTemplate: '',
+    plausibleSrc: 'https://plausible.io/js/plausible.outbound-links.js',
+    plausibleDomain: ''
   }
 })

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Script } from 'gatsby'
 import Helmet from 'react-helmet'
 
 import { MetaProps } from '../../SEO'
@@ -17,11 +16,15 @@ const metaImage = {
 
 const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   const siteMeta = getSiteMeta()
-  const siteUrl = siteMeta.siteUrl
-  const metaTitle = siteMeta.title
-  const metaTitleTemplate = siteMeta.titleTemplate
-  const metaDescription = siteMeta.description
-  const metaKeywords = siteMeta.keywords
+  const {
+    siteUrl,
+    titleTemplate,
+    title: metaTitle,
+    description: metaDescription,
+    keywords: metaKeywords,
+    plausibleDomain,
+    plausibleSrc
+  } = siteMeta
   const fullUrl = siteUrl + pathname
 
   const meta: MetaProps[] = [
@@ -104,32 +107,29 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   ]
 
   return (
-    <>
-      <Helmet
-        htmlAttributes={{
-          lang: 'en'
-        }}
-        defaultTitle={metaTitle}
-        titleTemplate={metaTitleTemplate || `%s | ${metaTitle}`}
-        meta={meta}
-        link={[
-          {
-            rel: 'mask-icon',
-            href: '/safari-pinned-tab.svg',
-            color: '#13adc7'
-          },
-          {
-            rel: 'canonical',
-            href: fullUrl
-          }
-        ]}
-      />
-      <Script
-        defer
-        data-domain="dvc.org"
-        src="https://plausible.io/js/plausible.outbound-links.js"
-      />
-    </>
+    <Helmet
+      htmlAttributes={{
+        lang: 'en'
+      }}
+      defaultTitle={metaTitle}
+      titleTemplate={titleTemplate || `%s | ${metaTitle}`}
+      meta={meta}
+      link={[
+        {
+          rel: 'mask-icon',
+          href: '/safari-pinned-tab.svg',
+          color: '#13adc7'
+        },
+        {
+          rel: 'canonical',
+          href: fullUrl
+        }
+      ]}
+    >
+      {plausibleDomain ? (
+        <script defer data-domain={plausibleDomain} src={plausibleSrc} />
+      ) : null}
+    </Helmet>
   )
 }
 
