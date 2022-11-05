@@ -171,10 +171,6 @@ module.exports = ({
     }
   ],
   siteMetadata: {
-    author: '',
-    siteUrl: '',
-    titleTemplate: '',
-    plausibleSrc: 'https://plausible.io/js/plausible.outbound-links.js',
-    plausibleDomain: ''
+    plausibleSrc: 'https://plausible.io/js/plausible.outbound-links.js'
   }
 })

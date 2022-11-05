@@ -57,6 +57,16 @@ exports.createSchemaCustomization = async api => {
         name: 'String!',
         match: '[String]'
       }
+    }),
+    buildObjectType({
+      name: 'SiteSiteMetadata',
+      fields: {
+        author: 'String',
+        siteUrl: 'String',
+        titleTemplate: 'String',
+        plausibleSrc: 'String',
+        plausibleDomain: 'String'
+      }
     })
   ])
 }
