@@ -12,6 +12,11 @@ const repoList = {
 
 const paths = ['command-reference', 'cli-reference', 'ref']
 
+const sortDashedCommand = (a, b) => {
+  if (a.split('-')[0] === b) return -1
+  return 0
+}
+
 const getUrl = (repo, branch = 'main') => {
   return `https://raw.githubusercontent.com/iterative/${repo}/${branch}/content/docs/sidebar.json`
 }
@@ -46,6 +51,8 @@ const getCommands = async tool => {
     }
     commands.push(label)
   })
+
+  commands.sort(sortDashedCommand)
 
   writeCommandsToFile(commands, tool)
 }
