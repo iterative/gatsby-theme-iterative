@@ -29,8 +29,6 @@ exports.pluginOptionsSchema = ({ Joi }) => {
         url: Joi.string()
       })
     ),
-    cssBase: Joi.string(),
-    customMediaConfig: Joi.object(),
     postCssPlugins: Joi.array(),
     argsLinkerPath: Joi.alternatives()
       .try(Joi.string(), Joi.array().items(Joi.string()))

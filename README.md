@@ -24,14 +24,6 @@ to change that as we make improvements and iron out issues!
 - simpleLinkerTerms: { matches: string, url: string }[] These terms will be
   passed to the simpleLinker remark plugin
 
-- cssBase: string Used as base files for global PostCSS variables and queries
-
-- customMediaConfig: object config passed to `postcss-custom-media`
-
-- customPropertiesConfig: object config passed to `postcss-custom-properties`
-
-- colorModConfig: object config passed to `postcss-color-mod`
-
 - postCssPlugins: Plugin[] If specified, this array will completely replace
   plugins this theme passes to PostCSS. This is mostly an escape hatch for if
   styles are broken with the default plugins. Check out
