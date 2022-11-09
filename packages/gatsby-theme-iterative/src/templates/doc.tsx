@@ -32,7 +32,7 @@ const DocPage: React.FC<
     }
   >
 > = ({ data, pageContext, location }) => {
-  const { slug, headings } = pageContext
+  const { headings } = pageContext
   const { pathname } = location
   const {
     page: {
@@ -42,7 +42,7 @@ const DocPage: React.FC<
     }
   } = data
 
-  const { label } = getItemByPath(slug)
+  const { label } = getItemByPath(pathname)
 
   return (
     <MainLayout
@@ -51,7 +51,7 @@ const DocPage: React.FC<
     >
       <DocumentationLayout currentPath={pathname}>
         <SEO title={title || label} description={description} />
-        <Documentation htmlAst={htmlAst} path={slug} headings={headings} />
+        <Documentation htmlAst={htmlAst} path={pathname} headings={headings} />
       </DocumentationLayout>
     </MainLayout>
   )
