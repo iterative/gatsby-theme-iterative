@@ -28,7 +28,7 @@ async function onCreateNode(
     createContentDigest,
     actions: { createNode, createParentChildLink }
   },
-  { disable, glossaryDirectory }
+  { disable, glossaryInstanceName, docsInstanceName }
 ) {
   if (disable || node.internal.type !== 'MarkdownRemark') {
     return
@@ -52,7 +52,7 @@ async function onCreateNode(
     return
   }
 
-  if (parentFileNode.relativeDirectory === glossaryDirectory) {
+  if (parentFileNode.sourceInstanceName === glossaryInstanceName) {
     // Glossary
 
     const {
@@ -80,37 +80,37 @@ async function onCreateNode(
     createParentChildLink({ parent: node, child: entryNode })
   }
 
-  // Doc page
+  if (parentFileNode.sourceInstanceName === docsInstanceName) {
+    // Doc page
+    const { name, relativePath, relativeDirectory } = parentFileNode
 
-  const splitDir = parentFileNode.relativeDirectory.split(path.sep)
-  if (splitDir[0] !== 'docs') return
+    const slug =
+      name === 'index'
+        ? relativeDirectory
+        : path.posix.join(relativeDirectory, name)
 
-  const { name, relativePath } = parentFileNode
-  splitDir[0] = 'doc'
-
-  const slug = path.posix.join('/', ...splitDir, name === 'index' ? '' : name)
-
-  const fieldData = {
-    slug,
-    sourcePath: relativePath,
-    template: node.frontmatter.template,
-    title: node.frontmatter.title === '' ? null : node.frontmatter.title,
-    description: node.frontmatter.description
-  }
-
-  const docNode = {
-    ...fieldData,
-    id: createNodeId(`MarkdownDocsPage >>> ${node.id}`),
-    parent: node.id,
-    children: [],
-    internal: {
-      type: `DocsPage`,
-      contentDigest: createContentDigest(fieldData)
+    const fieldData = {
+      slug,
+      sourcePath: relativePath,
+      template: node.frontmatter.template,
+      title: node.frontmatter.title === '' ? null : node.frontmatter.title,
+      description: node.frontmatter.description
     }
-  }
 
-  createNode(docNode)
-  createParentChildLink({ parent: node, child: docNode })
+    const docNode = {
+      ...fieldData,
+      id: createNodeId(`MarkdownDocsPage >>> ${node.id}`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: `DocsPage`,
+        contentDigest: createContentDigest(fieldData)
+      }
+    }
+
+    createNode(docNode)
+    createParentChildLink({ parent: node, child: docNode })
+  }
 }
 
 module.exports = onCreateNode

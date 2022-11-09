@@ -12,67 +12,73 @@ import {
   useHamburgerMenu
 } from '../HamburgerMenu'
 
-import { useHeaderIsScrolled } from '../../utils/front/scroll'
 import { ReactComponent as LogoSVG } from '../../images/dvc_icon-color--square_vector.svg'
 import * as styles from './styles.module.css'
 
 import LayoutAlert from './alert'
+import { useInView } from 'react-intersection-observer'
 
-const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
+const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
+  const { ref, inView } = useInView({ rootMargin: '20px 0px 0px 0px' })
+  const scrolled = !inView
+
   const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
-  const scrolled = useHeaderIsScrolled()
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
   const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
   const collapsed = opened || hasCollapsedModifier || scrolled
 
   return (
     <>
-      <header id="header" data-collapsed={collapsed}>
-        <div
+      <div ref={ref} />
+      <header
+        id="header"
+        data-collapsed={collapsed}
+        className={cn(styles.headerContainer)}
+      >
+        {!hasHideAlertModifier && LayoutAlert && (
+          <LayoutAlert collapsed={collapsed} />
+        )}
+        <LayoutWidthContainer
           className={cn(
-            styles.placeholder,
-            collapsed && styles.collapsed,
-            LayoutAlert && styles.withAlert
+            styles.header,
+            'transition-all',
+            'ease-in-out',
+            'delay-150',
+            'py-2',
+            'px-3',
+            collapsed && styles.collapsed
           )}
-        />
-        <div className={styles.header}>
-          {!hasHideAlertModifier && LayoutAlert && (
-            <LayoutAlert collapsed={collapsed} />
-          )}
-          <LayoutWidthContainer
-            className={cn(styles.container, collapsed && styles.collapsed)}
-            wide
+          wide
+        >
+          <Link
+            href="/"
+            className={styles.logoLink}
+            title="DVC"
+            aria-label="DVC"
           >
-            <Link
-              href="/"
-              className={styles.logoLink}
-              title="DVC"
-              aria-label="DVC"
-            >
-              <LogoSVG className={styles.logo} />
-            </Link>
-            <Link
-              className={styles.company}
-              href="https://iterative.ai/"
-              target="_blank"
-            >
-              by <span className={styles.companyName}>iterative.ai</span>
-            </Link>
-            <Nav />
-          </LayoutWidthContainer>
-        </div>
+            <LogoSVG className={styles.logo} />
+          </Link>
+          <Link
+            className={styles.company}
+            href="https://iterative.ai/"
+            target="_blank"
+          >
+            by <span className={styles.companyName}>iterative.ai</span>
+          </Link>
+          <Nav />
+          <HamburgerButton
+            opened={opened}
+            collapsed={collapsed}
+            handleClick={handleToggle}
+          />
+          <HamburgerMenu
+            opened={opened}
+            collapsed={collapsed}
+            handleToggle={handleToggle}
+            handleItemClick={handleItemClick}
+          />
+        </LayoutWidthContainer>
       </header>
-      <HamburgerButton
-        opened={opened}
-        collapsed={collapsed}
-        handleClick={handleToggle}
-      />
-      <HamburgerMenu
-        opened={opened}
-        collapsed={collapsed}
-        handleToggle={handleToggle}
-        handleItemClick={handleItemClick}
-      />
     </>
   )
 }

@@ -5,7 +5,7 @@
 }
 
 .button {
-  @mixin active;
+  @apply active;
 
   box-sizing: border-box;
   display: inline-flex;
@@ -15,15 +15,15 @@
   transition: 0.2s background-color ease-out;
 
   &.small {
-    @mixin button-small;
-
+    font-size: 16px;
+    line-height: 25px;
     height: 38px;
     border-radius: 4px;
   }
 
   &.big {
-    @mixin button-big;
-
+    font-size: 20px;
+    line-height: 30px;
     height: 60px;
     border-radius: 8px;
   }

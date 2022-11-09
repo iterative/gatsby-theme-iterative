@@ -8,7 +8,15 @@ import * as styles from './styles.module.css'
 const LayoutAlert: React.FC<{ collapsed: boolean }> | false = ({
   collapsed
 }) => (
-  <div className={cn(styles.alert, collapsed && styles.collapsed)}>
+  <div
+    className={cn(
+      styles.alert,
+      'transition-all',
+      'ease-in-out',
+      'delay-150',
+      collapsed ? ['h-0'] : ['h-7']
+    )}
+  >
     <span role="img" aria-label="rocket">
       🚀
     </span>{' '}

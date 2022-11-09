@@ -1,12 +1,9 @@
 .searchArea {
-  box-sizing: border-box;
   height: 60px;
   padding-top: 10px;
   z-index: 10;
-  position: sticky;
-  top: var(--layout-header-height);
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     position: relative;
     padding: 10px 20px 0;
     top: 0;
@@ -28,7 +25,6 @@
 }
 
 .input {
-  box-sizing: border-box;
   display: flex;
   flex: 1;
   width: 240px;

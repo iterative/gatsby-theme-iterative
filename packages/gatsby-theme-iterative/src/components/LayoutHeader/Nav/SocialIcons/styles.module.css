@@ -1,38 +1,19 @@
 .socialIcons {
   flex-direction: row;
   display: flex;
-  padding: 0;
-  margin: 0 16px 0 4px;
-
-  @media (--xl-scr) {
-    margin: 0 24px 0 12px;
-  }
-
-  @media (--md-scr) {
-    margin: 0 16px 0 0;
-  }
-
-  @media (--sm-scr) {
-    margin: 0 16px 0 4px;
-  }
 }
 
 .socialIcon {
+  @apply p-1;
   display: block;
-  width: 24px;
-  height: 24px;
   color: #6f7685;
-  padding: 12px;
-  margin: 0;
-
-  @media (--md-scr) {
-    width: 20px;
-    height: 20px;
-    padding: 6px;
-  }
-
   svg {
-    width: inherit;
-    height: inherit;
+    @apply w-5 h-5;
+    @media screen(md) {
+      @apply w-6 h-6;
+    }
+    @media screen(lg) {
+      @apply w-7 h-7;
+    }
   }
 }

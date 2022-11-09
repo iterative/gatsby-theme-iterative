@@ -1,5 +1,6 @@
 const path = require('path')
 const { name: packageName } = require('./package.json')
+const defaults = require('./config-defaults')
 
 const defaultGetTemplate = (template, defaultTemplate) =>
   template
@@ -15,7 +16,13 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     ),
     remark: Joi.boolean().default(true),
     filesystem: Joi.boolean().default(true),
-    glossaryDirectory: Joi.string().default('docs/user-guide/basic-concepts'),
+    glossaryDirectory: Joi.string().default(
+      path.resolve('content', 'docs', 'user-guide', 'basic-concepts')
+    ),
+    docsDirectory: Joi.string().default(path.resolve('content', 'docs')),
+    glossaryInstanceName: Joi.string().default('iterative-glossary'),
+    docsInstanceName: Joi.string().default('iterative-docs'),
+    docsPrefix: Joi.string().default('doc'),
     simpleLinkerTerms: Joi.array().items(
       Joi.object({
         matches: Joi.string(),
@@ -24,9 +31,10 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     ),
     cssBase: Joi.string(),
     customMediaConfig: Joi.object(),
-    customPropertiesConfig: Joi.object(),
-    colorModConfig: Joi.object(),
-    postCssPlugins: Joi.array()
+    postCssPlugins: Joi.array(),
+    argsLinkerPath: Joi.alternatives()
+      .try(Joi.string(), Joi.array().items(Joi.string()))
+      .default(defaults.argsLinkerPath)
   })
 }
 
