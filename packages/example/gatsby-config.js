@@ -9,14 +9,14 @@ module.exports = {
     title: 'Example website',
     description: 'Example website description',
     keywords: ['docs', 'test'],
-    siteUrl: 'http://localhost:8000',
-    plausibleDomain: ''
+    siteUrl: 'http://gatsby-theme-iterative-example.herokuapp.com'
   },
   plugins: [
     {
       resolve: themePackageName,
       options: {
         simpleLinkerTerms: require('./content/linked-terms')
+        //disablePlausible: true
       }
     },
     {

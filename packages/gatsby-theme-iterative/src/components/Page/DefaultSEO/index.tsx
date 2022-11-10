@@ -23,7 +23,8 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
     description: metaDescription,
     keywords: metaKeywords,
     plausibleDomain,
-    plausibleSrc
+    plausibleSrc,
+    plausibleAPI
   } = siteMeta
   const fullUrl = siteUrl + pathname
 
@@ -132,8 +133,9 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
       {plausibleDomainOrDefault ? (
         <script
           defer
-          data-domain={plausibleDomainOrDefault}
-          src={plausibleSrc}
+          data-domain={plausibleDomainOrDefault || undefined}
+          data-api={plausibleAPI || undefined}
+          src={plausibleSrc || undefined}
         />
       ) : null}
     </Helmet>
