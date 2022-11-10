@@ -11,21 +11,19 @@ to change that as we make improvements and iron out issues!
 
 - disable: boolean
 
+  Default: Boolean(process.env.SKIP_DOCS)
+
   Stops this theme from making pages. Could be used as a conditional for test
   and development purposes.
 
-  Default: Boolean(process.env.SKIP_DOCS)
-
 - defaultTemplate: string
+
+  Default: require.resolve('./src/templates/doc.tsx')
 
   Will be passed to the `getTemplate` function to use as a default template, the
   default function simply uses it if `template` isn't specified.
 
-  Default: require.resolve('./src/templates/doc.tsx')
-
 - getTemplate: function
-
-  This function will be used to
 
   Default:
 
@@ -36,29 +34,47 @@ to change that as we make improvements and iron out issues!
       : defaultTemplate
   ```
 
+  This function will be used to
+
 - remark: boolean
+
+  Default: true
 
   if true, this theme will add its own instance of `gatsby-transformer-remark`.
 
-  Default: true
-
 - filesystem: boolean
 
-  if true, this theme will add its own instance of `gatsby-source-filesystem`.
-
   Default: true
+
+  if true, this theme will add its own instance of `gatsby-source-filesystem`.
 
 - glossaryPath: string
 
   Default: path.resolve('content', 'docs', 'user-guide', 'basic-concepts')
 
-- simpleLinkerTerms: { matches: string, url: string }[] These terms will be
-  passed to `plugins/gatsby-remark-dvc-linker`, which will scan code blocks for
-  ones with content matching `matches`, and then link it to that entry's `url`.
+- simpleLinkerTerms: { matches: string, url: string }[]
 
-- postCssPlugins: Plugin[] If specified, this array will completely replace
-  plugins this theme passes to PostCSS. This is mostly an escape hatch for if
-  styles are broken with the default plugins. Check out
+  Default: undefined
+
+  These terms will be passed to `plugins/gatsby-remark-dvc-linker`, which will
+  scan code blocks for ones with content matching `matches`, and then link it to
+  that entry's `url`.
+
+- postCssPlugins: Plugin[]
+
+  Default:
+
+  ```js
+  ;[
+    require('tailwindcss/nesting')(require('postcss-nested')),
+    autoprefixer,
+    require('tailwindcss')
+  ]
+  ```
+
+  If specified, this array will completely replace plugins this theme passes to
+  PostCSS. This is mostly an escape hatch for if styles are broken with the
+  default plugins. Check out
   [the theme's `gatsby-config`](https://github.com/iterative/gatsby-theme-iterative/blob/main/packages/gatsby-theme-iterative/gatsby-config.js)
   to see the default plugins, as not having them in this option will very likely
   break core functionality.
@@ -77,25 +93,25 @@ to change that as we make improvements and iron out issues!
 
 - glossaryInstanceName: string
 
+  Default: 'iterative-glossary'
+
   The `name` that will be passed to the `gatsby-source-filesystem` instance for
   glossary entries. The resulting `sourceInstanceName` will be used to identify
   files that will be processed as glossary pages.
 
-  Default: 'iterative-glossary'
-
 - argsLinkerPath: string
+
+  Default: ['command-reference', `ref`, 'cli-reference']
 
   The path that `plugins/gatsby-remark-args-linker` will operate on, connecting
   arguments listed in the summary with their summaries deeper in the page.
 
-  Default: ['command-reference', `ref`, 'cli-reference']
-
 - docsPrefix: string
+
+  Default: 'doc'
 
   This is the prefix that the docs pages will render to, including the index
   page at the exact path.
-
-  Default: 'doc'
 
 ### Examples
 
