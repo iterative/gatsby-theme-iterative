@@ -19,7 +19,7 @@
   color: #fff;
   overflow-y: auto;
 
-  @media screen(xsMax) {
+  @media (--xs-scr) {
     display: block;
   }
 
@@ -34,12 +34,15 @@
 }
 
 .toggleButton {
-  @apply hover px-2;
+  @mixin hover;
 
-  position: relative;
-  display: flex;
-  visibility: visible;
+  position: fixed;
+  display: none;
+  visibility: hidden;
   z-index: 999;
+  right: 16px;
+  top: 12px;
+  padding: 0;
   border: none;
   width: 40px;
   height: 40px;
@@ -55,15 +58,16 @@
   }
 
   &.opened {
-    position: absolute;
-    top: 1rem;
-    right: 0.5rem;
     outline-color: #fff;
   }
 
-  @media screen(xs) {
-    display: none;
-    visibility: hidden;
+  &.expanded {
+    top: 47px;
+  }
+
+  @media (--xs-scr) {
+    display: flex;
+    visibility: visible;
   }
 }
 
@@ -72,8 +76,8 @@
 }
 
 .logo {
-  @apply hover;
-  @apply active;
+  @mixin hover;
+  @mixin active;
 
   width: 40px;
   height: 40px;
@@ -87,8 +91,8 @@
 }
 
 .company {
-  @apply active;
-  @apply hover;
+  @mixin active;
+  @mixin hover;
 
   font-size: 15px;
   line-height: 20px;
@@ -141,9 +145,9 @@
 }
 
 a.sectionHeading {
-  @apply hover;
-  @apply active;
-  @apply focus;
+  @mixin hover;
+  @mixin active;
+  @mixin focus;
 }
 
 .subSections {
@@ -170,8 +174,8 @@ a.sectionHeading {
 }
 
 .subSectionLink {
-  @apply hover;
-  @apply active;
+  @mixin hover;
+  @mixin active;
 
   display: flex;
   flex-direction: column;
@@ -202,7 +206,7 @@ a.sectionHeading {
 }
 
 .linkButton {
-  @apply active;
+  @mixin active;
 
   display: block;
   margin-top: 15px;

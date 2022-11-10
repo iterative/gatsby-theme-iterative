@@ -7,10 +7,36 @@
   padding: 0;
 }
 
+.linkItem {
+  position: relative;
+  margin-left: 12px;
+
+  &:first-of-type {
+    margin: 0;
+  }
+
+  @media (--md-scr) {
+    margin-left: 0;
+
+    &:first-child {
+      display: none;
+    }
+  }
+
+  @media (--sm-scr) {
+    margin-left: 4px;
+
+    &:nth-child(5),
+    &:nth-child(4) {
+      display: none;
+    }
+  }
+}
+
 .link {
-  @apply active;
-  @apply hover;
-  @apply focus;
+  @mixin active;
+  @mixin hover;
+  @mixin focus;
 
   font-family: var(--font-base);
   font-weight: 400;
@@ -50,7 +76,7 @@
     display: none;
   }
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     font-size: 17px;
     line-height: 20px;
 

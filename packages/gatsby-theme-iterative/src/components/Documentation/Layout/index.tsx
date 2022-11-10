@@ -6,9 +6,11 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import HamburgerIcon from '../../HamburgerIcon'
 import SearchForm from './SearchForm'
 import SidebarMenu from './SidebarMenu'
+import { matchMedia } from '../../../utils/front/breakpoints'
 import { focusElementWithHotkey } from '../../../utils/front/focusElementWithHotkey'
 
 import * as styles from './styles.module.css'
+import { useWindowSize } from 'react-use'
 
 const toggleReducer: Reducer<boolean, void> = state => !state
 
@@ -18,10 +20,15 @@ const Layout: React.FC<PropsWithChildren<{ currentPath: string }>> = ({
 }) => {
   const [isMenuOpen, toggleMenu] = useReducer(toggleReducer, false)
 
+  const windowSize = useWindowSize()
+
   useEffect(() => {
+    if (matchMedia('--xs-scr')) {
+      return
+    }
     const closeEventListener = focusElementWithHotkey('#doc-search', '/')
     return closeEventListener
-  }, [])
+  }, [windowSize])
 
   return (
     <LayoutWidthContainer className={styles.container} wide>
@@ -42,17 +49,15 @@ const Layout: React.FC<PropsWithChildren<{ currentPath: string }>> = ({
       </button>
 
       <div className={cn(styles.side, isMenuOpen && styles.opened)}>
-        <div className={cn(styles.innerSidebar)}>
-          <SearchForm />
-          <SidebarMenu
-            currentPath={currentPath}
-            onClick={(isLeafItemClicked: boolean): void => {
-              if (isLeafItemClicked) {
-                toggleMenu()
-              }
-            }}
-          />
-        </div>
+        <SearchForm />
+        <SidebarMenu
+          currentPath={currentPath}
+          onClick={(isLeafItemClicked: boolean): void => {
+            if (matchMedia('--xs-scr') && isLeafItemClicked) {
+              toggleMenu()
+            }
+          }}
+        />
       </div>
       <div className={styles.content}>
         <SkipNavContent id="main-content" />

@@ -75,12 +75,14 @@
   height: 100%;
   flex-flow: row nowrap;
   align-items: center;
+  box-sizing: border-box;
 
   p {
     margin: 0;
   }
 
   .cardIcon {
+    box-sizing: border-box;
     display: block;
     padding: 0;
     padding-right: 0.75rem;

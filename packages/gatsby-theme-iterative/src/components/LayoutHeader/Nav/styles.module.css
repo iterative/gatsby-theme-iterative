@@ -1,5 +1,5 @@
 .wrapper {
-  @apply hidden;
+  display: flex;
   flex-shrink: 0;
   flex-direction: row;
   align-items: center;
@@ -8,13 +8,12 @@
     list-style-type: none;
   }
 
-  @media screen(xs) {
-    @apply flex;
+  @media (--xs-scr) {
+    display: none;
   }
 }
 
 .getStartedButton {
-  @apply mx-2;
   position: relative;
   border-radius: 100px;
   z-index: 1;
@@ -48,7 +47,7 @@
     opacity: 1;
   }
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     padding: 12px 24px;
     font-size: 14px;
   }

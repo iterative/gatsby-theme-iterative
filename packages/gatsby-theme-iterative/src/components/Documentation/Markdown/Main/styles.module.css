@@ -1,4 +1,16 @@
 :global {
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  em {
+    font-style: italic;
+  }
+
   #markdown-root {
     @keyframes fadeIn {
       from {
@@ -22,22 +34,6 @@
     font-family: inherit;
     font-size: 18px;
 
-    ul {
-      list-style: disc;
-    }
-
-    ol {
-      list-style: decimal;
-    }
-
-    em {
-      font-style: italic;
-    }
-
-    h1:first-child {
-      @apply lg:h-14 pb-2;
-    }
-
     h1,
     h2,
     h3,
@@ -45,7 +41,6 @@
     h5,
     h6 {
       font-weight: 500;
-      word-wrap: normal;
     }
 
     img + em,
@@ -119,10 +114,6 @@
 
     .anchor {
       margin-left: -24px;
-
-      svg {
-        display: inline;
-      }
     }
 
     li {
@@ -174,7 +165,7 @@
 
     &__tooltip {
       padding: 10px;
-
+      box-sizing: border-box;
       color: #fff;
       opacity: 0;
       width: 100%;
@@ -188,7 +179,7 @@
       }
 
       a {
-        @apply focus;
+        @mixin focus;
 
         color: #fff;
         text-decoration: underline;
@@ -202,10 +193,14 @@
 }
 
 .content {
-  @apply py-7 xs:px-7 mt-14;
   min-width: 200px;
+  margin: 30px;
   flex: 1;
   background-color: #fff;
+
+  @media (--xs-scr) {
+    margin: 15px 0;
+  }
 }
 
 .tutorialsWrapper {
@@ -214,7 +209,7 @@
   float: right;
   margin: 5px 0 0 10px;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     margin: 0 0 15px;
   }
 
@@ -230,7 +225,7 @@
   z-index: 1;
   position: relative;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     float: none;
     margin: 0 0 15px;
   }

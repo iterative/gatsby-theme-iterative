@@ -27,13 +27,13 @@ module.exports = async (
   const { visit } = await import('unist-util-visit')
   if (!pathname) return markdownAST
   const parentNode = getNode(markdownNode.parent)
-  let isArgsLinkerPage =
+  let isPath =
     typeof pathname === 'string'
       ? parentNode.relativeDirectory.startsWith(pathname)
       : Array.isArray(pathname)
       ? pathname.some(p => parentNode.relativeDirectory.startsWith(p))
       : false
-  if (!isArgsLinkerPage) return markdownAST
+  if (!isPath) return markdownAST
   visit(
     markdownAST,
     node =>

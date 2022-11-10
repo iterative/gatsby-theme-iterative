@@ -1,4 +1,7 @@
 .wrapper {
+  display: inline-block;
+  cursor: pointer;
+
   &.opened {
     transform: translateX(-4px);
   }

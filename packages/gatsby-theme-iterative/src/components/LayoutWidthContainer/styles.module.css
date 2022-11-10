@@ -1,5 +1,4 @@
 .container {
-  @apply w-full;
   margin: 0 auto;
   padding: 0 15px;
   max-width: var(--layout-width);
@@ -8,11 +7,11 @@
     max-width: var(--layout-width-wide);
   }
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     max-width: 100%;
   }
 
-  @media screen(xsMax) {
+  @media (--xs-scr) {
     padding: 0 31px;
   }
 }

@@ -1,5 +1,4 @@
 .wrapper {
-  @apply z-10;
   width: 100%;
   background-color: #40364d;
 }
@@ -14,11 +13,11 @@
   display: flex;
   flex-wrap: wrap;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     padding: 16px 32px;
   }
 
-  @media screen(xsMax) {
+  @media (--xs-scr) {
     padding: 16px;
   }
 
@@ -28,8 +27,8 @@
 }
 
 .logo {
-  @apply active;
-  @apply hover;
+  @mixin active;
+  @mixin hover;
 
   display: block;
   width: 40px;
@@ -37,7 +36,7 @@
   margin-right: 150px;
   margin-bottom: 18px;
 
-  @media screen(xsMax) {
+  @media (--xs-scr) {
     margin-bottom: 0;
   }
 
@@ -55,12 +54,12 @@
   display: flex;
   flex-direction: row;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     width: 100%;
     flex-wrap: wrap;
   }
 
-  @media screen(xsMax) {
+  @media (--xs-scr) {
     justify-content: space-between;
   }
 }
@@ -71,12 +70,12 @@
   margin-top: 3px;
   margin-right: 86px;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     margin-right: 36px;
     margin-top: 0;
   }
 
-  @media screen(xsMax) {
+  @media (--xs-scr) {
     margin-top: 26px;
     margin-right: 0;
     width: calc(50% - 12px);
@@ -115,8 +114,8 @@
 }
 
 .link {
-  @apply active;
-  @apply focus;
+  @mixin active;
+  @mixin focus;
 
   display: flex;
   align-items: center;
@@ -127,7 +126,7 @@
   letter-spacing: 0.02em;
   padding: 4px 0;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     font-size: 16px;
     line-height: 28px;
   }
@@ -143,7 +142,7 @@
   width: 24px;
   height: 24px;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     margin-right: 10px;
   }
 }
@@ -154,7 +153,7 @@
   width: 20px;
   height: 20px;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     margin-right: 10px;
     width: 18px;
     height: 18px;
@@ -167,7 +166,7 @@
   justify-content: space-between;
   margin-top: 24px;
 
-  @media screen(smMax) {
+  @media (--sm-scr) {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -185,7 +184,7 @@
 }
 
 .companyDescription {
-  @media screen(xsMax) {
+  @media (--xs-scr) {
     font-size: 14px;
     line-height: 16px;
     width: 100%;
@@ -193,8 +192,8 @@
 }
 
 .companyName {
-  @apply active;
-  @apply hover;
+  @mixin active;
+  @mixin hover;
 
   font-weight: 800;
   font-size: inherit;
@@ -229,11 +228,11 @@
 .socialIcons {
   display: flex;
 
-  @media screen(smMax) {
+  @media (--sm-scr) {
     margin-top: 12px;
   }
 
-  @media screen(xxsMax) {
+  @media (--xxs-scr) {
     width: 100%;
     justify-content: space-between;
   }
@@ -242,17 +241,18 @@
 .socialIcon {
   width: 26px;
   height: 26px;
+  padding: 11px;
   margin-right: 24px;
 
-  @media screen(mdMax) {
+  @media (--md-scr) {
     margin-right: 8px;
   }
 
-  @media screen(smMax) {
+  @media (--sm-scr) {
     margin-right: 24px;
   }
 
-  @media screen(xxsMax) {
+  @media (--xxs-scr) {
     margin-right: 0;
   }
 
