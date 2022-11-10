@@ -9,20 +9,52 @@ to change that as we make improvements and iron out issues!
 
 ### Options
 
-- disable: boolean Default: Boolean(process.env.SKIP_DOCS)
+- disable: boolean
 
-- getTemplate: function Default: () => defaultGetTemplate
+  Stops this theme from making pages. Could be used as a conditional for test
+  and development purposes.
 
-- defaultTemplate: string Default: require.resolve('./src/templates/doc.tsx')
+  Default: Boolean(process.env.SKIP_DOCS)
 
-- remark: boolean Default: true
+- defaultTemplate: string
 
-- filesystem: boolean Default: true
+  Will be passed to the `getTemplate` function to use as a default template, the
+  default function simply uses it if `template` isn't specified.
 
-- glossaryDirectory: string Default: 'docs/user-guide/basic-concepts'
+  Default: require.resolve('./src/templates/doc.tsx')
+
+- getTemplate: function
+
+  This function will be used to
+
+  Default:
+
+  ```ts
+  const defaultGetTemplate = (template, defaultTemplate) =>
+    template
+      ? require.resolve(path.resolve('src', 'templates', template + '.tsx'))
+      : defaultTemplate
+  ```
+
+- remark: boolean
+
+  if true, this theme will add its own instance of `gatsby-transformer-remark`.
+
+  Default: true
+
+- filesystem: boolean
+
+  if true, this theme will add its own instance of `gatsby-source-filesystem`.
+
+  Default: true
+
+- glossaryPath: string
+
+  Default: path.resolve('content', 'docs', 'user-guide', 'basic-concepts')
 
 - simpleLinkerTerms: { matches: string, url: string }[] These terms will be
-  passed to the simpleLinker remark plugin
+  passed to `plugins/gatsby-remark-dvc-linker`, which will scan code blocks for
+  ones with content matching `matches`, and then link it to that entry's `url`.
 
 - postCssPlugins: Plugin[] If specified, this array will completely replace
   plugins this theme passes to PostCSS. This is mostly an escape hatch for if
@@ -30,6 +62,40 @@ to change that as we make improvements and iron out issues!
   [the theme's `gatsby-config`](https://github.com/iterative/gatsby-theme-iterative/blob/main/packages/gatsby-theme-iterative/gatsby-config.js)
   to see the default plugins, as not having them in this option will very likely
   break core functionality.
+
+- docsInstanceName: string
+
+  Default: 'iterative-docs'
+
+  The `name` that will be passed to the `gatsby-source-filesystem` instance for
+  docs pages. The resulting `sourceInstanceName` will be used to identify files
+  that will be processed as docs pages.
+
+- docsPath: string
+
+  Default: path.resolve('content', 'docs')
+
+- glossaryInstanceName: string
+
+  The `name` that will be passed to the `gatsby-source-filesystem` instance for
+  glossary entries. The resulting `sourceInstanceName` will be used to identify
+  files that will be processed as glossary pages.
+
+  Default: 'iterative-glossary'
+
+- argsLinkerPath: string
+
+  The path that `plugins/gatsby-remark-args-linker` will operate on, connecting
+  arguments listed in the summary with their summaries deeper in the page.
+
+  Default: ['command-reference', `ref`, 'cli-reference']
+
+- docsPrefix: string
+
+  This is the prefix that the docs pages will render to, including the index
+  page at the exact path.
+
+  Default: 'doc'
 
 ### Examples
 

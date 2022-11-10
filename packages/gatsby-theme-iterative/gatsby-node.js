@@ -16,7 +16,7 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     ),
     remark: Joi.boolean().default(true),
     filesystem: Joi.boolean().default(true),
-    glossaryDirectory: Joi.string().default(
+    glossaryPath: Joi.string().default(
       path.resolve('content', 'docs', 'user-guide', 'basic-concepts')
     ),
     docsDirectory: Joi.string().default(path.resolve('content', 'docs')),
