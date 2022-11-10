@@ -171,6 +171,7 @@ module.exports = ({
     }
   ],
   siteMetadata: {
-    plausibleSrc: 'https://plausible.io/js/plausible.outbound-links.js'
+    plausibleSrc: '/pl/js/plausible.outbound-links.js',
+    plausibleAPI: '/pl/api/event'
   }
 })
