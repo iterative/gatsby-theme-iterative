@@ -3,7 +3,6 @@ import cn from 'classnames'
 import Portal from '@reach/portal'
 import throttle from 'lodash/throttle'
 
-import { getHeaderHeight } from '../../../../../utils/front/scroll'
 import * as styles from './styles.module.css'
 
 interface IDesktopViewProps {
@@ -24,7 +23,6 @@ const getPosition = (toggle: Element, tooltip: Element): ITooltipPosition => {
   const toggleRect = toggle.getBoundingClientRect()
   const tooltipRect = tooltip.getBoundingClientRect()
   const windowWidth = document.documentElement.clientWidth
-  const headerHeight = getHeaderHeight()
   const result: ITooltipPosition = { left: 0, top: 0, arrow: ['l', 'b'] }
 
   if (windowWidth - tooltipRect.width > toggleRect.left) {
@@ -34,7 +32,7 @@ const getPosition = (toggle: Element, tooltip: Element): ITooltipPosition => {
     result.arrow[0] = 'r'
   }
 
-  if (toggleRect.top > tooltipRect.height + ARROW_SIZE + headerHeight) {
+  if (toggleRect.top > tooltipRect.height + ARROW_SIZE) {
     result.top = toggleRect.top - tooltipRect.height - ARROW_SIZE
   } else {
     result.top = toggleRect.top + toggleRect.height + ARROW_SIZE

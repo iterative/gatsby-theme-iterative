@@ -24,7 +24,7 @@ jobs:
       - name: Check
         run: |
           if [[ `git status packages/gatsby-theme-iterative/config/prismjs --porcelain` ]]; then
-           cml pr create packages/gatsby-theme-iterative/config/prismjs --title "Update tool commands"
+           cml pr create packages/gatsby-theme-iterative/config/prismjs --title "Update tool commands" --message "update tool commands"
           else 
             echo "No changes!"
           fi

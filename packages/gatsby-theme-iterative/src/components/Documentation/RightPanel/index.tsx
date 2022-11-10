@@ -6,7 +6,7 @@ import { IHeading } from '../'
 import Link from '../../Link'
 import Tutorials from '../TutorialsLinks'
 
-import { getScrollPosition, getHeaderHeight } from '../../../utils/front/scroll'
+import { getScrollPosition } from '../../../utils/front/scroll'
 import { allImagesLoadedInContainer } from '../../../utils/front/images'
 
 import * as sharedStyles from '../styles.module.css'
@@ -40,11 +40,8 @@ const RightPanel: React.FC<IRightPanelProps> = ({
 
     if (!coordinateKeys.length) return
 
-    const headerHeight = getHeaderHeight()
     const filteredKeys = coordinateKeys.filter(
-      offsetTop =>
-        parseInt(offsetTop, 10) <=
-        currentScroll + (documentHeight - headerHeight) / 2
+      offsetTop => parseInt(offsetTop, 10) <= currentScroll + documentHeight / 2
     )
 
     const newCurrentHeadingSlug = filteredKeys.length
@@ -92,36 +89,35 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
   const contentBlockRef = useRef<HTMLDivElement>(null)
-  const [
-    isScrollToCurrentHeadingHappened,
-    setIsScrollToCurrentHeadingHappened
-  ] = useState(false)
   useEffect(() => {
-    if (isScrollToCurrentHeadingHappened) {
-      return
-    }
-    if (!document.location.hash) {
-      setIsScrollToCurrentHeadingHappened(true)
-      return
-    }
-    if (currentHeadingSlug) {
-      setIsScrollToCurrentHeadingHappened(true)
-      const currentHeadingSlugElem = document.getElementById(
-        `link-${currentHeadingSlug}`
-      )
+    if (currentHeadingSlug !== undefined) {
       const contentBlockElem = contentBlockRef.current
-      if (currentHeadingSlugElem && contentBlockElem) {
-        const hasVerticalScrollbar =
-          contentBlockElem.scrollHeight > contentBlockElem.clientHeight
-        if (hasVerticalScrollbar) {
-          currentHeadingSlugElem.scrollIntoView({
-            block: 'start',
-            inline: 'nearest'
+      if (contentBlockElem) {
+        if (currentHeadingSlug) {
+          const currentHeadingSlugElem = document.getElementById(
+            `link-${currentHeadingSlug}`
+          )
+          if (currentHeadingSlugElem) {
+            const hasVerticalScrollbar =
+              contentBlockElem.scrollHeight > contentBlockElem.clientHeight
+            if (hasVerticalScrollbar) {
+              contentBlockElem.scrollTo({
+                top:
+                  currentHeadingSlugElem.offsetTop -
+                  contentBlockElem.clientHeight +
+                  currentHeadingSlugElem.clientHeight / 2,
+                behavior: 'smooth'
+              })
+            }
+          }
+        } else {
+          contentBlockElem.scrollTo({
+            top: 0
           })
         }
       }
     }
-  })
+  }, [currentHeadingSlug])
 
   return (
     <div className={styles.container}>

@@ -1,33 +1,15 @@
-.placeholder {
-  transition: height 0.2s linear;
-  height: var(--layout-header-height);
-
-  &.withAlert {
-    height: calc(var(--layout-header-height) + var(--layout-alert-height));
-  }
-
-  &.collapsed {
-    height: var(--layout-header-height);
-  }
-}
-
-.header {
-  position: fixed;
-  z-index: 11;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #fff;
+.headerContainer {
+  @apply flex flex-col flex-nowrap fixed top-0 left-0 right-0 w-full justify-center z-30 bg-white;
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
 }
 
-.container {
-  height: var(--layout-header-height);
-  width: auto;
+.header {
+  @apply h-14;
+  width: 100%;
   z-index: 3;
-  position: relative;
   color: #fff;
   display: flex;
+  flex-flow: row nowrap;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
@@ -35,14 +17,13 @@
   will-change: height;
   padding: 0 24px;
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     padding: 0 16px;
   }
 }
 
 .logoLink {
-  @mixin hover;
-  @mixin active;
+  @apply hover active;
 
   height: 40px;
   width: 40px;
@@ -62,8 +43,7 @@
 }
 
 .company {
-  @mixin active;
-  @mixin hover;
+  @apply active hover;
 
   font-size: 15px;
   line-height: 20px;
@@ -87,11 +67,11 @@
     opacity: 0.7;
   }
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     margin-left: 2px;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     padding: 10px 0;
     margin-left: 8px;
   }
@@ -102,8 +82,6 @@
 }
 
 .alert {
-  height: var(--layout-alert-height);
-  line-height: var(--layout-alert-height);
   font-size: 18px;
   text-align: center;
   width: 100%;

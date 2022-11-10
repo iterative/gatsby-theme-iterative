@@ -1,4 +1,6 @@
 const fs = require('fs')
+const vm = require('node:vm')
+
 require('isomorphic-fetch')
 
 const args = process.argv.slice(2)
@@ -19,6 +21,22 @@ const sortDashedCommand = (a, b) => {
 
 const getUrl = (repo, branch = 'main') => {
   return `https://raw.githubusercontent.com/iterative/${repo}/${branch}/content/docs/sidebar.json`
+}
+
+const getAliasList = async (repo, branch = 'main', tool) => {
+  try {
+    const link = `https://raw.githubusercontent.com/iterative/${repo}/${branch}/content/linked-terms.js`
+    const res = await fetch(link)
+    if (res.ok) {
+      const raw = await res.text()
+      const data = vm.runInThisContext(raw.replace('module.exports', 'data'))
+      return data
+        .filter(item => item.matches.startsWith(`${tool} `))
+        .map(item => item.matches.replace(`${tool} `, ''))
+    } else throw new Error('Error with response')
+  } catch (err) {
+    return []
+  }
 }
 
 const writeCommandsToFile = async (commands, tool) => {
@@ -52,6 +70,12 @@ const getCommands = async tool => {
     commands.push(label)
   })
 
+  const alias = await getAliasList(
+    repoList[tool].repo,
+    repoList[tool].branch,
+    tool
+  )
+  commands.push(...alias)
   commands.sort(sortDashedCommand)
 
   writeCommandsToFile(commands, tool)

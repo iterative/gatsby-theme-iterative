@@ -1,11 +1,14 @@
-import React, { PropsWithChildren, useEffect } from 'react'
+import React, { ReactNode, useEffect } from 'react'
+import { PageProps } from 'gatsby'
+import cn from 'classnames'
 
-import { IPageProps } from '../Page'
+import 'reset-css'
+import './base.css'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
-
-import * as styles from './styles.module.css'
+import DefaultSEO from './DefaultSEO'
+import { useRedirects } from './utils'
 
 export enum LayoutModifiers {
   Wide,
@@ -17,31 +20,21 @@ export interface ILayoutModifiable {
   modifiers?: Array<LayoutModifiers>
 }
 
-interface IMainLayoutProps {
+export interface ILayoutComponentProps extends ILayoutModifiable {
+  location: PageProps['location']
   className?: string
+  children?: ReactNode
 }
 
-export type LayoutComponent = React.FC<
-  PropsWithChildren<IMainLayoutProps & IPageProps & ILayoutModifiable>
->
-
-const MainLayout: LayoutComponent = ({
+const MainLayout = ({
   className,
   children,
-  modifiers = []
-}) => {
-  useEffect(() => {
-    if (className) {
-      document.body.classList.add(className)
-
-      return (): void => {
-        document.body.classList.remove(className)
-      }
-    }
-  }, [className])
+  modifiers = [],
+  location
+}: ILayoutComponentProps) => {
+  useRedirects()
 
   useEffect(() => {
-    document.body.classList.add(styles.mainLayout)
     window.addEventListener('keydown', handleFirstTab)
 
     return (): void => {
@@ -50,11 +43,31 @@ const MainLayout: LayoutComponent = ({
   }, [])
 
   return (
-    <div className={styles.layoutWrapper}>
+    <div
+      className={cn(
+        'min-h-screen',
+        'w-full',
+        'flex',
+        'flex-col',
+        'flex-nowrap',
+        'items-center'
+      )}
+    >
+      <DefaultSEO pathname={location.pathname} />
       <LayoutHeader modifiers={modifiers} />
-      <div id="layoutContent" className={styles.layoutContent}>
+      <main
+        className={cn(
+          'w-full',
+          'grow',
+          'flex',
+          'flex-col',
+          'flex-nowrap',
+          'items-center',
+          className
+        )}
+      >
         {children}
-      </div>
+      </main>
       <LayoutFooter />
     </div>
   )

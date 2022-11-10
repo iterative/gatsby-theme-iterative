@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useLocation } from '@reach/router'
 import cn from 'classnames'
-import PerfectScrollbar from 'perfect-scrollbar'
 
 import { getParentsListFromPath } from '../../../../utils/shared/sidebar'
 
-import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import * as styles from './styles.module.css'
 
 import InnerSidebar from './InnerSidebar'
@@ -20,7 +18,6 @@ interface ISidebarMenuProps {
 const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
   const location = useLocation()
   const rootRef = useRef<HTMLDivElement>(null)
-  const psRef = useRef<PerfectScrollbar | undefined>(undefined)
   const [isScrollHidden, setIsScrollHidden] = useState(false)
   const activePaths = currentPath
     ? getParentsListFromPath(currentPath)
@@ -33,8 +30,6 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
     setIsScrollHidden(true)
     setTimeout(() => {
       if (node && parent) {
-        psRef.current?.update()
-
         const parentHeight = parent.clientHeight
         const parentScroll = parent.scrollTop
         const nodeOffset = node.offsetTop
@@ -54,18 +49,7 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
   }
 
   useEffect(() => {
-    if (!psRef.current && rootRef.current) {
-      psRef.current = new PerfectScrollbar(rootRef.current, {
-        wheelPropagation: true
-      })
-    }
-
     scrollToActiveItem()
-
-    return (): void => {
-      psRef.current?.destroy()
-      psRef.current = undefined
-    }
   }, [])
   useEffect(scrollToActiveItem, [location.pathname])
 

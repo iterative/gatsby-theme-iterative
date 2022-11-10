@@ -75,3 +75,13 @@ Second Tab Three
 </tab>
 
 </toggle>
+
+## Skip code with hash
+
+```cli
+$ gto assign cv-class --version v0.1.13 --stage dev
+Created git tag 'cv-class#dev#1' that assigns stage to version 'v0.1.13'
+To push the changes upstream, run:
+    git push origin cv-class#dev#1 #this is a comment
+#This is a comment
+```

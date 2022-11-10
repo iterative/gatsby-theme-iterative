@@ -3,21 +3,6 @@ const fs = require('fs')
 const path = require('path')
 
 const autoprefixer = require('autoprefixer')
-const customMedia = require('postcss-custom-media')
-const customProperties = require('postcss-custom-properties')
-const mixins = require('postcss-mixins')
-const colorMod = require('postcss-color-mod-function')
-
-const mediaConfig = require('./config/postcss/media')
-const mixinsConfig = require('./config/postcss/mixins')
-
-const defaultCssBase = path.join(
-  __dirname,
-  'src',
-  'components',
-  'Page',
-  'base.css'
-)
 
 const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
 
@@ -31,26 +16,20 @@ require('./config/prismjs/dvctable')
 
 const imageMaxWidth = 700
 
+const defaults = require('./config-defaults')
+
 module.exports = ({
   simpleLinkerTerms,
-  cssBase = defaultCssBase,
-  customMediaConfig = { importFrom: [mediaConfig] },
-  customPropertiesConfig = {
-    importFrom: [cssBase],
-    disableDeprecationNotice: true
-  },
-  colorModConfig = {
-    importFrom: [cssBase]
-  },
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
-    customMedia(customMediaConfig),
-    mixins(mixinsConfig),
-    customProperties(customPropertiesConfig),
-    colorMod(colorModConfig),
     autoprefixer,
     require('tailwindcss')
-  ]
+  ],
+  docsInstanceName = defaults.docsInstanceName,
+  docsPath = defaults.docsPath,
+  glossaryInstanceName = defaults.glossaryInstanceName,
+  glossaryPath = defaults.glossaryPath,
+  argsLinkerPath = defaults.argsLinkerPath
 }) => ({
   plugins: [
     {
@@ -68,11 +47,18 @@ module.exports = ({
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
-    {
+    glossaryInstanceName && {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'content',
-        path: path.resolve('content')
+        name: glossaryInstanceName,
+        path: glossaryPath
+      }
+    },
+    docsInstanceName && {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: docsInstanceName,
+        path: docsPath
       }
     },
     'gatsby-plugin-image',
@@ -97,11 +83,7 @@ module.exports = ({
             options: {
               icon: linkIcon,
               // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
-              pathname: [
-                'docs/command-reference',
-                `docs/ref`,
-                'docs/cli-reference'
-              ]
+              pathname: argsLinkerPath
             }
           },
           {
@@ -169,10 +151,10 @@ module.exports = ({
         }
       }
     }
-  ],
+  ].filter(Boolean),
   siteMetadata: {
     author: 'Iterative',
-    siteUrl: 'https://cml.dev',
+    siteUrl: 'https://example.com',
     titleTemplate: ''
   }
 })

@@ -1,11 +1,8 @@
 .container {
-  position: sticky;
-  top: var(--layout-header-height);
+  @apply mt-7 pt-14 sticky h-screen top-0;
   flex-shrink: 0;
-  box-sizing: border-box;
+
   width: 170px;
-  height: calc(100vh - 78px);
-  padding-top: 57px;
   font-size: 16px;
   display: flex;
   flex-direction: column;
@@ -16,8 +13,10 @@
 }
 
 .contentBlock {
+  @apply basis-36 grow min-h-[6rem];
+
   overflow-y: scroll;
-  margin-bottom: 27px;
+  margin-bottom: 17px;
 
   &::-webkit-scrollbar {
     appearance: none;
@@ -30,14 +29,11 @@
   }
 }
 
-.separator {
-  border: none;
-  border-top: 1px solid var(--color-lighter-blue);
-}
-
 .header {
+  @apply h-14 pb-2 flex flex-col flex-nowrap justify-end;
   font-size: 14px;
   text-transform: uppercase;
+  border-bottom: 1px solid var(--color-lighter-blue);
   color: var(--color-black);
 }
 
@@ -63,6 +59,7 @@
 }
 
 .buttonsBlock {
+  margin-top: 10px;
   margin-bottom: 20px;
   flex-shrink: 0;
 }
