@@ -76,7 +76,10 @@ Prism.languages.cli = {
       ...bash
     }
   },
-  comment: bash.comment
+  comment: {
+    pattern: /(^|[\s^"{\\$])#.*/,
+    lookbehind: true
+  }
 }
 
 Prism.languages.dvc = Prism.languages.cli

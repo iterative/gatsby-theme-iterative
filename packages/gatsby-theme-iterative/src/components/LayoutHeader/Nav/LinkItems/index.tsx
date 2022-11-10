@@ -8,40 +8,12 @@ import { ReactComponent as ArrowUpSVG } from '../../../../images/arrow-up-icon.s
 import { ReactComponent as ArrowDownSVG } from '../../../../images/arrow-down-icon.svg'
 
 import { logEvent } from '../../../../utils/front/plausible'
-import { getFirstPage } from '../../../../utils/shared/sidebar'
-
-const docsPage = getFirstPage()
 
 import * as styles from './styles.module.css'
+import { INavLinkData, INavLinkPopupData } from './types'
 
-type PopupName = 'CommunityPopup' | 'OtherToolsPopup'
-
-interface INavLinkData {
-  href: string
-  eventType: string
-  text: string
-}
-
-interface INavLinkPopupData {
-  text: string
-  popup: PopupName
-}
-
-const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
-  {
-    href: docsPage,
-    eventType: 'doc',
-    text: 'Doc'
-  },
-  {
-    text: 'Other Tools',
-    popup: 'OtherToolsPopup'
-  }
-]
-
-const isPopup = (
-  item: INavLinkData | INavLinkPopupData
-): item is INavLinkPopupData => (item as INavLinkPopupData).popup !== undefined
+import navLinkItemsData from './data'
+import { getShowOnClass } from './getShowOnClass'
 
 const LinkItems: React.FC = ({}) => {
   const [isCommunityPopupOpen, setIsCommunityPopupOpen] = useState(false)
@@ -118,66 +90,68 @@ const LinkItems: React.FC = ({}) => {
     }
   }
 
+  const LinkItem = ({ showOn, eventType, href, text }: INavLinkData) => (
+    <li className={cn('relative', getShowOnClass(showOn))}>
+      <Link
+        onClick={(): void => logEvent('Nav', { Item: eventType })}
+        href={href}
+        className={styles.link}
+      >
+        {text}
+      </Link>
+    </li>
+  )
+  const PopupItem = ({ popup, showOn, text }: INavLinkPopupData) => (
+    <li
+      className={cn('relative', getShowOnClass(showOn))}
+      ref={
+        popup === 'OtherToolsPopup'
+          ? otherToolsPopupContainerEl
+          : communityPopupContainerEl
+      }
+    >
+      <>
+        <button
+          onClick={
+            popup === 'OtherToolsPopup'
+              ? toggleOtherToolsPopup
+              : toggleCommunityPopup
+          }
+          className={cn(
+            styles.link,
+            (popup === 'OtherToolsPopup'
+              ? isOtherToolsPopupOpen
+              : isCommunityPopupOpen) && styles.open
+          )}
+        >
+          {text}
+          <ArrowDownSVG className={cn(styles.linkIcon, styles.arrowDownIcon)} />
+          <ArrowUpSVG className={cn(styles.linkIcon, styles.arrowUpIcon)} />
+        </button>
+        {popup === 'OtherToolsPopup' ? (
+          <OtherToolsPopup
+            closePopup={closeAllPopups}
+            isVisible={isOtherToolsPopupOpen}
+          />
+        ) : (
+          <CommunityPopup
+            closePopup={closeAllPopups}
+            isVisible={isCommunityPopupOpen}
+          />
+        )}
+      </>
+    </li>
+  )
+
   return (
     <ul className={styles.linksList}>
-      {navLinkItemsData.map((item, i) => (
-        <li
-          key={i}
-          className={styles.linkItem}
-          ref={
-            isPopup(item)
-              ? item.popup === 'OtherToolsPopup'
-                ? otherToolsPopupContainerEl
-                : communityPopupContainerEl
-              : undefined
-          }
-        >
-          {isPopup(item) ? (
-            <>
-              <button
-                onClick={
-                  item.popup === 'OtherToolsPopup'
-                    ? toggleOtherToolsPopup
-                    : toggleCommunityPopup
-                }
-                className={cn(
-                  styles.link,
-                  (item.popup === 'OtherToolsPopup'
-                    ? isOtherToolsPopupOpen
-                    : isCommunityPopupOpen) && styles.open
-                )}
-              >
-                {item.text}
-                <ArrowDownSVG
-                  className={cn(styles.linkIcon, styles.arrowDownIcon)}
-                />
-                <ArrowUpSVG
-                  className={cn(styles.linkIcon, styles.arrowUpIcon)}
-                />
-              </button>
-              {item.popup === 'OtherToolsPopup' ? (
-                <OtherToolsPopup
-                  closePopup={closeAllPopups}
-                  isVisible={isOtherToolsPopupOpen}
-                />
-              ) : (
-                <CommunityPopup
-                  closePopup={closeAllPopups}
-                  isVisible={isCommunityPopupOpen}
-                />
-              )}
-            </>
-          ) : (
-            <Link
-              onClick={(): void => logEvent('Nav', { Item: item.eventType })}
-              href={item.href}
-              className={styles.link}
-            >
-              {item.text}
-            </Link>
-          )}
-        </li>
-      ))}
+      {navLinkItemsData.map((item, i) =>
+        (item as INavLinkPopupData).popup === undefined ? (
+          <LinkItem {...(item as INavLinkData)} key={i} />
+        ) : (
+          <PopupItem {...(item as INavLinkPopupData)} key={i} />
+        )
+      )}
     </ul>
   )
 }

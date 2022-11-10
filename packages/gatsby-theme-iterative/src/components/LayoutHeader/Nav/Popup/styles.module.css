@@ -1,20 +1,21 @@
 .popup {
-  display: grid;
+  display: none;
+  visibility: hidden;
   padding: 8px;
   opacity: 0;
   position: absolute;
   left: 10px;
   top: calc(100% + 4px);
-  visibility: hidden;
   z-index: 2;
   background-color: #fff;
   filter: drop-shadow(0 2px 8px rgb(0 0 0 / 15%));
   border-radius: 12px;
-  box-sizing: border-box;
+
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 
   &.visible {
     opacity: 1;
+    display: grid;
     visibility: visible;
   }
 }

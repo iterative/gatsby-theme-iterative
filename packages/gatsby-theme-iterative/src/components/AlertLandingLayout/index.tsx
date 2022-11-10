@@ -1,12 +1,15 @@
 import React from 'react'
-import MainLayout, { LayoutComponent, LayoutModifiers } from '../MainLayout'
+import MainLayout, {
+  ILayoutComponentProps,
+  LayoutModifiers
+} from '../MainLayout'
 
 const alertComponentModifiers: LayoutModifiers[] = [
   LayoutModifiers.Collapsed,
   LayoutModifiers.HideAlert
 ]
 
-const AlertLandingLayout: LayoutComponent = props => {
+const AlertLandingLayout = (props: ILayoutComponentProps) => {
   const modifiers: LayoutModifiers[] =
     props.modifiers === undefined
       ? alertComponentModifiers
