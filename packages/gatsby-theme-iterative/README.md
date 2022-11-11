@@ -14,7 +14,7 @@
   Default: require.resolve('./src/templates/doc.tsx')
 
   Will be passed to the `getTemplate` function to use as a default template, the
-  default function simply uses it if `template` isn't specified.
+  default function simply returns this if `template` isn't specified.
 
 - getTemplate: function
 
@@ -27,7 +27,10 @@
       : defaultTemplate
   ```
 
-  This function will be used to
+  This function will be given the `template` field specified in the page's
+  frontmatter, as well as the `defaultTemplate` specified by the option above.
+  It is expected to return the absolute path to a React component to be given to
+  Gatsby's `createPage` action.
 
 - remark: boolean
 
@@ -58,7 +61,7 @@
   Default:
 
   ```js
-  ;[
+  const postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
     autoprefixer,
     require('tailwindcss')
