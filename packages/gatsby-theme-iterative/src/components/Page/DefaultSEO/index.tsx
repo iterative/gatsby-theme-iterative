@@ -28,9 +28,6 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   } = siteMeta
   const fullUrl = siteUrl + pathname
 
-  const plausibleDomainOrDefault =
-    plausibleDomain === null ? new URL(siteUrl).hostname : plausibleDomain
-
   const meta: MetaProps[] = [
     {
       name: 'description',
@@ -130,12 +127,12 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
         }
       ]}
     >
-      {plausibleDomainOrDefault ? (
+      {plausibleSrc ? (
         <script
           defer
-          data-domain={plausibleDomainOrDefault || undefined}
+          data-domain={plausibleDomain || new URL(siteUrl).hostname}
           data-api={plausibleAPI || undefined}
-          src={plausibleSrc || undefined}
+          src={plausibleSrc}
         />
       ) : null}
     </Helmet>
