@@ -1,3 +1,11 @@
+# Gatsby Theme: Iterative
+
+This Gatsby theme is what [Iterative, inc.](https://iterative.ai) uses to power
+all of our Gatsby websites! It contains all of our shared utility code, as well
+as our full docs engine. This project is still evolving, and while it's
+currently very specific to iterative.ai websites we hope to make it usable for
+others in the future.
+
 ## Usage
 
 ### Options
