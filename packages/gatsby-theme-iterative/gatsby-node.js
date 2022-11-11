@@ -32,7 +32,10 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     postCssPlugins: Joi.array(),
     argsLinkerPath: Joi.alternatives()
       .try(Joi.string(), Joi.array().items(Joi.string()))
-      .default(defaults.argsLinkerPath)
+      .default(defaults.argsLinkerPath),
+    plausibleSrc: [Joi.string().optional(), Joi.allow(null)],
+    plausibleAPI: [Joi.string().optional(), Joi.allow(null)],
+    plausibleDomain: [Joi.string().optional(), Joi.allow(null)]
   })
 }
 
@@ -62,6 +65,17 @@ exports.createSchemaCustomization = async api => {
         },
         name: 'String!',
         match: '[String]'
+      }
+    }),
+    buildObjectType({
+      name: 'SiteSiteMetadata',
+      fields: {
+        author: 'String',
+        siteUrl: 'String',
+        titleTemplate: 'String',
+        plausibleSrc: 'String',
+        plausibleDomain: 'String',
+        plausibleAPI: 'String'
       }
     })
   ])
