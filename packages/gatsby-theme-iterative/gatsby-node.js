@@ -26,7 +26,10 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     customMediaConfig: Joi.object(),
     customPropertiesConfig: Joi.object(),
     colorModConfig: Joi.object(),
-    postCssPlugins: Joi.array()
+    postCssPlugins: Joi.array(),
+    plausibleSrc: [Joi.string().optional(), Joi.allow(null)],
+    plausibleAPI: [Joi.string().optional(), Joi.allow(null)],
+    plausibleDomain: [Joi.string().optional(), Joi.allow(null)]
   })
 }
 
@@ -56,6 +59,17 @@ exports.createSchemaCustomization = async api => {
         },
         name: 'String!',
         match: '[String]'
+      }
+    }),
+    buildObjectType({
+      name: 'SiteSiteMetadata',
+      fields: {
+        author: 'String',
+        siteUrl: 'String',
+        titleTemplate: 'String',
+        plausibleSrc: 'String',
+        plausibleDomain: 'String',
+        plausibleAPI: 'String'
       }
     })
   ])
