@@ -33,7 +33,9 @@ const imageMaxWidth = 700
 
 module.exports = ({
   simpleLinkerTerms,
-  disablePlausible,
+  plausibleSrc = '/pl/js/plausible.outbound-links.js',
+  plausibleAPI = '/pl/api/event',
+  plausibleDomain,
   cssBase = defaultCssBase,
   customMediaConfig = { importFrom: [mediaConfig] },
   customPropertiesConfig = {
@@ -174,9 +176,8 @@ module.exports = ({
   siteMetadata: {
     author: 'Iterative',
     titleTemplate: '',
-    plausibleSrc: disablePlausible
-      ? null
-      : '/pl/js/plausible.outbound-links.js',
-    plausibleAPI: '/pl/api/event'
+    plausibleSrc,
+    plausibleAPI,
+    plausibleDomain
   }
 })

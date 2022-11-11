@@ -27,7 +27,9 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     customPropertiesConfig: Joi.object(),
     colorModConfig: Joi.object(),
     postCssPlugins: Joi.array(),
-    disablePlausible: Joi.boolean().default(false)
+    plausibleSrc: Joi.string(),
+    plausibleAPI: Joi.string(),
+    plausibleDomain: Joi.string()
   })
 }
 

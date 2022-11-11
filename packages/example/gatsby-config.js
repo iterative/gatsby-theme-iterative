@@ -16,7 +16,7 @@ module.exports = {
       resolve: themePackageName,
       options: {
         simpleLinkerTerms: require('./content/linked-terms'),
-        disablePlausible: true
+        plausibleSrc: false
       }
     },
     {

@@ -5,8 +5,8 @@ const PageWrapper = require('./src/components/PageWrapper').default
 
 exports.wrapPageElement = PageWrapper
 
-const onRenderBody = ({ setHeadComponents }, { disablePlausible }) => {
-  if (!disablePlausible) {
+const onRenderBody = ({ setHeadComponents }, { plausibleSrc }) => {
+  if (plausibleSrc) {
     return setHeadComponents([
       <script
         key="plausible-custom-events"
