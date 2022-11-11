@@ -171,6 +171,8 @@ module.exports = ({
     }
   ],
   siteMetadata: {
+    author: 'Iterative',
+    titleTemplate: '',
     plausibleSrc: '/pl/js/plausible.outbound-links.js',
     plausibleAPI: '/pl/api/event'
   }
