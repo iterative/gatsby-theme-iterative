@@ -4,7 +4,6 @@ import includes from 'lodash/includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import LayoutWidthContainer from '../LayoutWidthContainer'
-import Link from '../Link'
 import Nav from './Nav'
 import {
   HamburgerMenu,
@@ -12,11 +11,11 @@ import {
   useHamburgerMenu
 } from '../HamburgerMenu'
 
-import { ReactComponent as LogoSVG } from '../../images/dvc_icon-color--square_vector.svg'
 import * as styles from './styles.module.css'
 
 import LayoutAlert from './alert'
 import { useInView } from 'react-intersection-observer'
+import { HeaderBranding } from './HeaderBranding'
 
 const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
   const { ref, inView } = useInView({ rootMargin: '20px 0px 0px 0px' })
@@ -50,21 +49,7 @@ const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
           )}
           wide
         >
-          <Link
-            href="/"
-            className={styles.logoLink}
-            title="DVC"
-            aria-label="DVC"
-          >
-            <LogoSVG className={styles.logo} />
-          </Link>
-          <Link
-            className={styles.company}
-            href="https://iterative.ai/"
-            target="_blank"
-          >
-            by <span className={styles.companyName}>iterative.ai</span>
-          </Link>
+          <HeaderBranding />
           <Nav />
           <HamburgerButton
             opened={opened}
