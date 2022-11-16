@@ -9,7 +9,8 @@ const {
   CLI_REGEXP,
   COMMAND_REGEXP,
   COMMAND_ROOT,
-  CML_COMMAND_ROOT
+  CML_COMMAND_ROOT,
+  GTO_COMMAND_ROOT
 } = consts
 
 module.exports = aliasEntries => astNode => {
@@ -19,10 +20,15 @@ module.exports = aliasEntries => astNode => {
     const parts = node.value.split(/\s+/)
     const index = parts.findIndex(part => {
       const cli = String(part).trim()
-      return cli === 'dvc' || cli === 'cml' || cli === 'mlem'
+      return ['dvc', 'cml', 'mlem', 'gto'].includes(cli)
     })
     const cli = parts[index]
-    const commandRoot = cli === 'cml' ? CML_COMMAND_ROOT : COMMAND_ROOT
+    const commandRoot =
+      cli === 'cml'
+        ? CML_COMMAND_ROOT
+        : cli === 'gto'
+        ? GTO_COMMAND_ROOT
+        : COMMAND_ROOT
     const command = parts[index + 1]
     const aliasEntry =
       aliasEntries &&
