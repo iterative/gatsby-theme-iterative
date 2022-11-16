@@ -20,6 +20,9 @@ const defaults = require('./config-defaults')
 
 module.exports = ({
   simpleLinkerTerms,
+  plausibleSrc = '/pl/js/plausible.outbound-links.js',
+  plausibleAPI = '/pl/api/event',
+  plausibleDomain,
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
     autoprefixer,
@@ -154,7 +157,9 @@ module.exports = ({
   ].filter(Boolean),
   siteMetadata: {
     author: 'Iterative',
-    siteUrl: 'https://example.com',
-    titleTemplate: ''
+    titleTemplate: '',
+    plausibleSrc,
+    plausibleAPI,
+    plausibleDomain
   }
 })

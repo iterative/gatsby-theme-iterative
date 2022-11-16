@@ -6,6 +6,9 @@ interface ISiteMeta {
   keywords: string
   siteUrl: string
   titleTemplate: string
+  plausibleDomain: string | null
+  plausibleSrc: string | null
+  plausibleAPI: string | null
 }
 
 export default function siteMeta(): ISiteMeta {
@@ -21,6 +24,9 @@ export default function siteMeta(): ISiteMeta {
             keywords
             siteUrl
             titleTemplate
+            plausibleDomain
+            plausibleSrc
+            plausibleAPI
           }
         }
       }
