@@ -80,6 +80,43 @@ const getCommands = async tool => {
 
   writeCommandsToFile(commands, tool)
 }
+const getNestedCommands = async (tool, parentTool) => {
+  const url = getUrl(repoList[parentTool].repo, repoList[parentTool].branch)
+  const res = await fetch(url)
+  const sidebar = await res.json()
+  const parent = sidebar.find(item => item.slug === tool)
+  if (!parent || !Array.isArray(parent?.children)) {
+    console.error(
+      `Error: Could not find ${tool} command reference in sidebar.json`
+    )
+    return
+  }
+  const cmdRef = parent.children.find(item => paths.includes(item.slug))
+  if (!cmdRef) {
+    throw new Error(`Could not find command reference in sidebar.json`)
+  }
+  const commands = []
+  cmdRef.children.forEach(item => {
+    const { label, children } = item
+    if (Array.isArray(children)) {
+      children.forEach(subitem => {
+        const { label } = subitem
+        commands.push(label)
+      })
+    }
+    commands.push(label)
+  })
+
+  const alias = await getAliasList(
+    repoList[parentTool].repo,
+    repoList[parentTool].branch,
+    tool
+  )
+  commands.push(...alias)
+  commands.sort(sortDashedCommand)
+
+  writeCommandsToFile(commands, tool)
+}
 
 switch (tool) {
   case 'dvc':
@@ -87,6 +124,13 @@ switch (tool) {
   case 'mlem':
     {
       getCommands(tool).catch(err => {
+        console.error(err)
+      })
+    }
+    break
+  case 'gto':
+    {
+      getNestedCommands(tool, 'mlem').catch(err => {
         console.error(err)
       })
     }
@@ -102,6 +146,10 @@ switch (tool) {
     })
     // mlem
     getCommands('mlem').catch(err => {
+      console.error(err)
+    })
+    // gto
+    getNestedCommands(tool, 'mlem').catch(err => {
       console.error(err)
     })
   }
