@@ -11,6 +11,7 @@ const { bash } = Prism.languages
 const dvc = require('./dvc-commands')
 const cml = require('./cml-commands')
 const mlem = require('./mlem-commands')
+const gto = require('./gto-commands')
 
 // Command arrays are intentionally reverse sorted
 // to prevent shorter matches before longer ones
@@ -57,6 +58,13 @@ Prism.languages.cli = {
       mlem: {
         pattern: new RegExp(
           String.raw`${beforeCommand}\b(?:mlem (?:${mlem.join('|')}))\b`
+        ),
+        greedy: true,
+        lookbehind: true
+      },
+      gto: {
+        pattern: new RegExp(
+          String.raw`${beforeCommand}\b(?:gto (?:${gto.join('|')}))\b`
         ),
         greedy: true,
         lookbehind: true
