@@ -29,9 +29,11 @@ module.exports = async (
   const parentNode = getNode(markdownNode.parent)
   let isArgsLinkerPage =
     typeof pathname === 'string'
-      ? parentNode.relativeDirectory.startsWith(pathname)
+      ? parentNode?.relativeDirectory?.split('/').includes(pathname)
       : Array.isArray(pathname)
-      ? pathname.some(p => parentNode.relativeDirectory.startsWith(p))
+      ? pathname.some(p =>
+          parentNode?.relativeDirectory?.split('/').includes(p)
+        )
       : false
   if (!isArgsLinkerPage) return markdownAST
   visit(
