@@ -85,3 +85,14 @@ To push the changes upstream, run:
     git push origin cv-class#dev#1 #this is a comment
 #This is a comment
 ```
+
+## Highlight --options-with-hypthen
+
+```cli
+$ cml runner launch \
+  --cloud=aws \
+  --cloud-region=us-west \
+  --cloud-type=m+t4 \
+  --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
+  --labels=cml-gpu
+```
