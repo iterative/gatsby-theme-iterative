@@ -29,6 +29,8 @@ require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
 require('./config/prismjs/dvctable')
 
+const defaults = require('./config-defaults')
+
 const imageMaxWidth = 700
 
 module.exports = ({
@@ -45,6 +47,7 @@ module.exports = ({
   colorModConfig = {
     importFrom: [cssBase]
   },
+  argsLinkerPath = defaults.argsLinkerPath,
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
     customMedia(customMediaConfig),
@@ -100,11 +103,7 @@ module.exports = ({
             options: {
               icon: linkIcon,
               // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
-              pathname: [
-                'docs/command-reference',
-                `docs/ref`,
-                'docs/cli-reference'
-              ]
+              pathname: argsLinkerPath
             }
           },
           {
