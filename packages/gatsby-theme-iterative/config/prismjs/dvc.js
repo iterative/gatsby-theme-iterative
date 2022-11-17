@@ -81,7 +81,12 @@ Prism.languages.cli = {
         greedy: true,
         lookbehind: true
       },
-      ...bash
+      ...bash,
+      parameter: {
+        pattern: /(^|\s)-{1,2}(?:\w+:[+-]?)?\w+(?:[\.-]\w+)*(?=[=\s]|$)/,
+        alias: 'variable',
+        lookbehind: true
+      }
     }
   },
   comment: {
