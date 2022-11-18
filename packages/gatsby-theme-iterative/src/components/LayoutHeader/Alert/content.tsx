@@ -6,7 +6,10 @@ export const AlertContent = () => (
     <span role="img" aria-label="rocket">
       🚀
     </span>{' '}
-    <Link href="https://studio.iterative.ai">DVC Studio</Link>, the online UI
-    for DVC, is live!{' '}
+    New Release!{' '}
+    <Link href="https://dvc.org/blog/iterative-studio-model-registry">
+      Git-backed Machine Learning Model Registry
+    </Link>{' '}
+    for all your model management needs.
   </>
 )

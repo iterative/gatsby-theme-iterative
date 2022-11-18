@@ -15,12 +15,17 @@ const LayoutAlert: React.FC<{ collapsed: boolean }> | false = ({
       'transition-all',
       'ease-in-out',
       'delay-150',
-      'white-space-nowrap',
+      'whitespace-nowrap',
       'text-center',
+      'truncate',
+      'overflow-hidden',
+      'px-2',
       collapsed ? 'h-0' : 'h-7'
     )}
   >
-    <AlertContent />
+    <span className="align-middle">
+      <AlertContent />
+    </span>
   </div>
 )
 
