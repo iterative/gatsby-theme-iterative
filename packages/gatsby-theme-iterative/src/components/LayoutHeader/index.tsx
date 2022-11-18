@@ -13,7 +13,7 @@ import {
 
 import * as styles from './styles.module.css'
 
-import LayoutAlert from './alert'
+import LayoutAlert from './Alert'
 import { useInView } from 'react-intersection-observer'
 import { HeaderBranding } from './HeaderBranding'
 

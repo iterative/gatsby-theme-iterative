@@ -12,7 +12,7 @@ import { logEvent } from '../../../../utils/front/plausible'
 import * as styles from './styles.module.css'
 import { INavLinkData, INavLinkPopupData } from './types'
 
-import navLinkItemsData from './data'
+import navLinkItemsData from '../../../../data/headerNav'
 import { getShowOnClass } from './getShowOnClass'
 
 const LinkItems: React.FC = ({}) => {
