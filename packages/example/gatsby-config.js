@@ -16,8 +16,7 @@ module.exports = {
       resolve: themePackageName,
       options: {
         simpleLinkerTerms: require('./content/linked-terms'),
-        plausibleSrc: null,
-        docsPrefix: ''
+        plausibleSrc: null
       }
     },
     {
