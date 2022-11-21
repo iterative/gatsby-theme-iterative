@@ -1,3 +1,0 @@
-## Working with large artifacts
-
-...Git-lfs, DVC and what else is there...
