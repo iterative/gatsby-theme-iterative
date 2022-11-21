@@ -16,12 +16,10 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     ),
     remark: Joi.boolean().default(true),
     filesystem: Joi.boolean().default(true),
-    glossaryPath: Joi.string().default(
-      path.resolve('content', 'docs', 'user-guide', 'basic-concepts')
-    ),
-    docsDirectory: Joi.string().default(path.resolve('content', 'docs')),
-    glossaryInstanceName: Joi.string().default('iterative-glossary'),
-    docsInstanceName: Joi.string().default('iterative-docs'),
+    glossaryPath: Joi.string().default(defaults.glossaryPath),
+    docsPath: Joi.string().default(defaults.docsPath),
+    glossaryInstanceName: Joi.string().default(defaults.glossaryInstanceName),
+    docsInstanceName: Joi.string().default(defaults.docsInstanceName),
     docsPrefix: Joi.string().default('doc'),
     simpleLinkerTerms: Joi.array().items(
       Joi.object({
