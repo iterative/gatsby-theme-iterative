@@ -4,6 +4,7 @@ import cn from 'classnames'
 
 import 'reset-css'
 import './base.css'
+import './fonts.css'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
