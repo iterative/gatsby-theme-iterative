@@ -23,7 +23,7 @@ interface ISEOProps {
   imageWidth?: number
   meta?: MetaProps[]
   link?: LinkProps[]
-  cannonicalUrl?: string
+  canonicalUrl?: string
   pathname?: string
   pageInfo?: IPaginatorPageInfo
   children?: React.ReactNode
@@ -41,7 +41,7 @@ const SEO: React.FC<ISEOProps> = ({
   imageWidth = 1200,
   meta = [],
   link = [],
-  cannonicalUrl,
+  canonicalUrl,
   pathname,
   pageInfo,
   children
@@ -96,11 +96,11 @@ const SEO: React.FC<ISEOProps> = ({
       {...(skipTitleTemplate && { titleTemplate: '' })}
       meta={[...prebuildMeta, ...meta]}
       link={[
-        ...(cannonicalUrl
+        ...(canonicalUrl
           ? [
               {
                 rel: 'canonical',
-                href: cannonicalUrl
+                href: canonicalUrl
               }
             ]
           : pathname
