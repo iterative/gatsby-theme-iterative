@@ -8,8 +8,8 @@ import './fonts.css'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
-import DefaultSEO from './DefaultSEO'
 import { useRedirects } from './utils'
+import SEO from '../SEO'
 
 export enum LayoutModifiers {
   Wide,
@@ -54,7 +54,7 @@ const MainLayout = ({
         'items-center'
       )}
     >
-      <DefaultSEO pathname={location.pathname} />
+      <SEO pathname={location.pathname} />
       <LayoutHeader modifiers={modifiers} />
       <main
         className={cn(

@@ -158,6 +158,7 @@ module.exports = ({
   siteMetadata: {
     author: 'Iterative',
     titleTemplate: '',
+    twitterUsername: '',
     plausibleSrc,
     plausibleAPI,
     plausibleDomain
