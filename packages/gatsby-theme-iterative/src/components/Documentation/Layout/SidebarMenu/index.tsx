@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useLocation } from '@reach/router'
+import { useLocation } from '@gatsbyjs/reach-router'
 import cn from 'classnames'
 
 import { getParentsListFromPath } from '../../../../utils/shared/sidebar'
