@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import cn from 'classnames'
-import Portal from '@reach/portal'
+import { Portal } from '@reach/portal'
 
 import { isTriggeredFromKB } from '../../../../../utils/front/keyboard'
 

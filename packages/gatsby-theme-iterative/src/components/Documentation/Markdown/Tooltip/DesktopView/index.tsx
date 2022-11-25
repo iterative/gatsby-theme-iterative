@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import cn from 'classnames'
-import Portal from '@reach/portal'
+import { Portal } from '@reach/portal'
 import throttle from 'lodash/throttle'
 
 import * as styles from './styles.module.css'
