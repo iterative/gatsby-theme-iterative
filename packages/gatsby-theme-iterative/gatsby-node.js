@@ -20,7 +20,9 @@ exports.pluginOptionsSchema = ({ Joi }) => {
       path.resolve('content', 'docs', 'user-guide', 'basic-concepts')
     ),
     docsDirectory: Joi.string().default(path.resolve('content', 'docs')),
-    glossaryInstanceName: Joi.string().default('iterative-glossary'),
+    glossaryInstanceName: Joi.string()
+      .default('iterative-glossary')
+      .allow(false),
     docsInstanceName: Joi.string().default('iterative-docs'),
     docsPrefix: Joi.string().default('doc'),
     simpleLinkerTerms: Joi.array().items(
