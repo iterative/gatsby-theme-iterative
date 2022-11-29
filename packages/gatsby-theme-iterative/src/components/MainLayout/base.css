@@ -93,3 +93,8 @@ body.user-is-tabbing .link-with-focus {
     border: 2px dotted;
   }
 }
+
+* {
+  /* Prevent mobile browsers from changing font-size */
+  text-size-adjust: none;
+}
