@@ -35,7 +35,7 @@
     }
 
     h1:first-child {
-      @apply lg:h-14 pb-2;
+      @apply pb-2 min-h-[3.5rem];
     }
 
     h1,
