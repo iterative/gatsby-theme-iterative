@@ -1,3 +1,7 @@
+* {
+  @apply scroll-mt-14;
+}
+
 .headerContainer {
   @apply flex flex-col flex-nowrap fixed top-0 left-0 right-0 w-full justify-center z-30 bg-white;
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
