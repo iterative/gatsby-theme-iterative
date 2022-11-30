@@ -1,5 +1,5 @@
-* {
-  @apply scroll-mt-14;
+html {
+  @apply scroll-pt-14;
 }
 
 .headerContainer {

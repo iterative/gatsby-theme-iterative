@@ -44,6 +44,7 @@
     h4,
     h5,
     h6 {
+      @apply scroll-mt-5;
       font-weight: 500;
       word-wrap: normal;
     }
