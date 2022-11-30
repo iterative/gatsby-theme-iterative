@@ -97,6 +97,4 @@ body.user-is-tabbing .link-with-focus {
 * {
   /* Prevent mobile browsers from changing font-size */
   text-size-adjust: none;
-  /* Compensate for the sticky header */
-  scroll-margin-top: 5rem;
 }

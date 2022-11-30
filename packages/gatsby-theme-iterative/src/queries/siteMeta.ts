@@ -9,6 +9,7 @@ interface ISiteMeta {
   plausibleDomain: string | null
   plausibleSrc: string | null
   plausibleAPI: string | null
+  twitterUsername?: string
 }
 
 export default function siteMeta(): ISiteMeta {
@@ -27,6 +28,7 @@ export default function siteMeta(): ISiteMeta {
             plausibleDomain
             plausibleSrc
             plausibleAPI
+            twitterUsername
           }
         }
       }
