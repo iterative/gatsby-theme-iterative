@@ -159,6 +159,7 @@ module.exports = ({
     author: 'Iterative',
     titleTemplate: '',
     twitterUsername: '',
+    imageAlt: '',
     plausibleSrc,
     plausibleAPI,
     plausibleDomain
