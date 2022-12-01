@@ -41,9 +41,10 @@
 }
 
 .tab {
-  margin: 0;
-  padding: 10px 10px 10px 20px;
-  background-color: rgb(27 31 35 / 5%);
+  @apply p-2 m-0;
+  border-left-color: lightblue;
+  border-left-width: thick;
+  border-left-style: groove;
   height: 0;
   opacity: 0;
   position: absolute;
