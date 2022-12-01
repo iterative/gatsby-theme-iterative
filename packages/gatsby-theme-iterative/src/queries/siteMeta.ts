@@ -6,6 +6,7 @@ interface ISiteMeta {
   keywords: string
   siteUrl: string
   titleTemplate: string
+  imageAlt?: string
   plausibleDomain: string | null
   plausibleSrc: string | null
   plausibleAPI: string | null
@@ -25,6 +26,7 @@ export default function siteMeta(): ISiteMeta {
             keywords
             siteUrl
             titleTemplate
+            imageAlt
             plausibleDomain
             plausibleSrc
             plausibleAPI

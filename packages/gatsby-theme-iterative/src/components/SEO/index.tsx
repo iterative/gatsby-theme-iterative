@@ -57,12 +57,12 @@ const SEO: React.FC<ISEOProps> = ({
     return buildMetadata({
       siteUrl: siteMeta.siteUrl,
       siteName: siteMeta.title,
-      title: pageTitle,
+      title: pageTitle || siteMeta.title,
       defaultMetaTitle,
-      description,
-      keywords,
+      description: description || siteMeta.description,
+      keywords: keywords || siteMeta.keywords,
       image,
-      imageAlt,
+      imageAlt: imageAlt || siteMeta.imageAlt,
       imageHeight,
       imageWidth,
       pathname,
@@ -93,7 +93,6 @@ const SEO: React.FC<ISEOProps> = ({
           ? ''
           : siteMeta.titleTemplate || `%s | ${siteMeta.title}`
       }
-      {...(skipTitleTemplate && { titleTemplate: '' })}
       meta={[...prebuildMeta, ...meta]}
       link={[
         ...(canonicalUrl
