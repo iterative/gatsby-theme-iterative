@@ -10,7 +10,6 @@ import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
 import { useRedirects } from './utils'
 import SEO from '../SEO'
-import '@sentry/gatsby'
 
 export enum LayoutModifiers {
   Wide,
