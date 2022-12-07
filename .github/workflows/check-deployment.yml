@@ -6,6 +6,15 @@ on:
         description: 'Pass CI'
         required: true
         type: boolean
+  workflow_dispatch:
+    inputs:
+      passci:
+        description: 'Pass CI'
+        required: true
+        type: boolean
+  pull_request:
+  issue_comment:
+    types: [created, edited]
 
 jobs:
   check-branches:
