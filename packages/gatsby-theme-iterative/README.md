@@ -117,40 +117,17 @@ others in the future.
   This is the prefix that the docs pages will render to, including the index
   page at the exact path.
 
+- sentry: boolean
+
+  Default: true
+
+  If true, this theme will instantiate `@sentry/gatsby` with a default
+  configuration. This configuration can be imported from `sentry-config.js` and
+  overridden by creating a
+  [Sentry configuration file](https://docs.sentry.io/platforms/javascript/guides/gatsby/#sentry-configuration-file)
+  in your project's root.
+
 ### Examples
 
-See this example from
-[the example website's `gatsby-config.js`](https://github.com/iterative/gatsby-theme-iterative/blob/main/packages/example/gatsby-config.js).
-
-```js
-const path = require('path')
-const {
-  name: themePackageName
-} = require('../gatsby-theme-iterative/package.json')
-
-module.exports = {
-  trailingSlash: 'never',
-  siteMetadata: {
-    title: 'Example website',
-    description: 'Example website description',
-    keywords: ['docs', 'test'],
-    siteUrl: 'http://localhost:8000'
-  },
-  plugins: [
-    {
-      resolve: themePackageName,
-      options: {
-        simpleLinkerTerms: require('./content/linked-terms')
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: path.join(__dirname, 'static', 'img')
-      }
-    },
-    '@sentry/gatsby'
-  ]
-}
-```
+Check out the example project in this project's monorepo, particularly
+[`gatsby-config.js`](https://github.com/iterative/gatsby-theme-iterative/blob/main/packages/example/gatsby-config.js).

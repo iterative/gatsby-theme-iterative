@@ -17,6 +17,7 @@ require('./config/prismjs/dvctable')
 const imageMaxWidth = 700
 
 const defaults = require('./config-defaults')
+const sentryConfig = require('./sentry-config')
 
 module.exports = ({
   simpleLinkerTerms,
@@ -32,7 +33,8 @@ module.exports = ({
   docsPath = defaults.docsPath,
   glossaryInstanceName = defaults.glossaryInstanceName,
   glossaryPath = defaults.glossaryPath,
-  argsLinkerPath = defaults.argsLinkerPath
+  argsLinkerPath = defaults.argsLinkerPath,
+  sentry = defaults.sentry
 }) => ({
   plugins: [
     {
@@ -153,6 +155,10 @@ module.exports = ({
           placeholder: 'blurred'
         }
       }
+    },
+    sentry && {
+      resolve: '@sentry/gatsby',
+      options: sentryConfig
     }
   ].filter(Boolean),
   siteMetadata: {
