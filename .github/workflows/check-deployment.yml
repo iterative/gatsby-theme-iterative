@@ -26,4 +26,4 @@ jobs:
         if:
           ${{ !inputs.passci ||
           !contains(github.event.pull_request.labels.*.name, 'deploy') }}
-        run: exit 0
+        run: exit 1
