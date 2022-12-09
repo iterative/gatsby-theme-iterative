@@ -22,8 +22,8 @@ jobs:
       'no-deploy')
     runs-on: ubuntu-latest
     steps:
-      - name: Fail if no passci inputs or deploy label
+      - name: Fail if no passci inputs or pass-ci label
         if:
           ${{ !inputs.passci &&
-          !contains(github.event.pull_request.labels.*.name, 'deploy') }}
+          !contains(github.event.pull_request.labels.*.name, 'pass-ci') }}
         run: exit 1
