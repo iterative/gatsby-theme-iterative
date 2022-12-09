@@ -5,8 +5,8 @@ import { AlertContent } from './content'
 
 import * as styles from './styles.module.css'
 
-const LayoutAlert: React.FC<{ collapsed: boolean }> | false = ({
-  collapsed
+const LayoutAlert: React.FC<{ collapsed?: boolean }> = ({
+  collapsed = false
 }) => (
   <div
     className={cn(
