@@ -13,8 +13,7 @@ on:
         required: true
         type: boolean
   pull_request:
-  issue_comment:
-    types: [created, edited]
+    types: [opened, synchronize, reopened, labeled]
 
 jobs:
   check-branches:
@@ -26,16 +25,8 @@ jobs:
       - name: Pass CI with input
         if: ${{ inputs.passci }}
         run: exit 0
-      - uses: khan/pull-request-comment-trigger@v1.1.0
-        id: check
-        with:
-          trigger: '#pass-ci'
-          reaction: rocket
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-      - name: Fail if not triggred
-        if: steps.check.outputs.triggered != 'true'
+      - name: Pass CI with label
+        if: contains(github.event.pull_request.labels.*.name, 'deploy')
+        run: exit 0
+      - name: Fail
         run: exit 1
-      - name: Exit gracefully
-        if: steps.check.outputs.triggered == 'true'
-        run: 'echo CI passed'
