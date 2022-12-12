@@ -42,9 +42,7 @@
 
 .tab {
   @apply p-2 m-0;
-  border-left-color: lightblue;
-  border-left-width: thick;
-  border-left-style: groove;
+  border-left: thick groove #caf3fa;
   height: 0;
   opacity: 0;
   position: absolute;
