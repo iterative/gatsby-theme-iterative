@@ -137,7 +137,8 @@ module.exports = ({
           },
           'gatsby-remark-responsive-iframe',
           require.resolve('./plugins/resize-image-plugin'),
-          require.resolve('./plugins/external-link-plugin')
+          require.resolve('./plugins/external-link-plugin'),
+          require.resolve('./plugins/null-link-plugin')
         ]
       }
     },
