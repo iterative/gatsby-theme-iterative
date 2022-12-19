@@ -16,7 +16,8 @@ module.exports = {
       resolve: themePackageName,
       options: {
         simpleLinkerTerms: require('./content/linked-terms'),
-        plausibleSrc: null
+        plausibleSrc: null,
+        sentry: false
       }
     },
     {
@@ -25,7 +26,6 @@ module.exports = {
         name: 'images',
         path: path.join(__dirname, 'static', 'img')
       }
-    },
-    '@sentry/gatsby'
+    }
   ]
 }

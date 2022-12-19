@@ -37,7 +37,8 @@ exports.pluginOptionsSchema = ({ Joi }) => {
       .default(defaults.argsLinkerPath),
     plausibleSrc: [Joi.string().optional(), Joi.allow(null)],
     plausibleAPI: [Joi.string().optional(), Joi.allow(null)],
-    plausibleDomain: [Joi.string().optional(), Joi.allow(null)]
+    plausibleDomain: [Joi.string().optional(), Joi.allow(null)],
+    sentry: Joi.boolean().default(defaults.sentry)
   })
 }
 
