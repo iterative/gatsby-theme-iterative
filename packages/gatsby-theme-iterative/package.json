@@ -45,7 +45,7 @@
     "gatsby-transformer-remark": "^6.1.0",
     "gatsby-transformer-sharp": "^5.1.0",
     "github-markdown-css": "^5.1.0",
-    "github-slugger": "^1.4.0",
+    "github-slugger": "^2.0.0",
     "hast-util-select": "^5.0.1",
     "iso-url": "^1.2.1",
     "isomorphic-fetch": "^3.0.0",
