@@ -1,6 +1,6 @@
 import React from 'react'
 import { URL } from 'iso-url'
-import { useLocation } from '@reach/router'
+import { useLocation } from '@gatsbyjs/reach-router'
 import { Link as GatsbyLink } from 'gatsby'
 import { getRedirect } from '../../utils/shared/redirects'
 export type ILinkProps = {
