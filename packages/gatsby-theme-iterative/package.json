@@ -42,7 +42,7 @@
     "gatsby-remark-responsive-iframe": "^6.1.0",
     "gatsby-remark-smartypants": "^6.1.0",
     "gatsby-source-filesystem": "^5.1.0",
-    "gatsby-transformer-remark": "^6.1.0",
+    "gatsby-transformer-remark": "^6.3.2",
     "gatsby-transformer-sharp": "^5.1.0",
     "github-markdown-css": "^5.1.0",
     "github-slugger": "^1.4.0",
