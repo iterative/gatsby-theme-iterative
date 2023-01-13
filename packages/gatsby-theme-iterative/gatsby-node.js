@@ -23,7 +23,7 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     glossaryInstanceName: Joi.string()
       .default('iterative-glossary')
       .allow(false),
-    docsInstanceName: Joi.string().default('iterative-docs'),
+    docsInstanceName: Joi.string().default('iterative-docs').allow(false),
     docsPrefix: Joi.string().default('doc'),
     simpleLinkerTerms: Joi.array().items(
       Joi.object({
