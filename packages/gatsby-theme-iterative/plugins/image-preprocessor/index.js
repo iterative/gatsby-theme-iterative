@@ -12,29 +12,28 @@ module.exports = async (
   const preprocessPromises = []
 
   const preprocessImageNode = async node => {
-    if (
-      node.type === 'image' &&
-      !(node.url?.startsWith('http://') || node.url?.startsWith('https://'))
-    ) {
+    if (node.type === 'image') {
       const { url } = node
-      const imagePath = path.resolve(directory, path.join(baseDir, url))
+      if (url && !(url.startsWith('http://') || url.startsWith('https://'))) {
+        const imagePath = path.resolve(directory, path.join(baseDir, url))
 
-      const imageNode = await getRemarkFileDependency({
-        absolutePath: {
-          eq: imagePath
+        const imageNode = await getRemarkFileDependency({
+          absolutePath: {
+            eq: imagePath
+          }
+        })
+
+        if (
+          (!imageNode || !imageNode.absolutePath) &&
+          process.env.NODE_ENV === `production`
+        ) {
+          throw new Error(
+            `Image Not Found: Image "${url}" not found in folder "${staticFolderName}" referenced from "${markdownNode.fileAbsolutePath}". Please check static folder name and that file exists at "${staticFolderName}${url}".`
+          )
+        } else {
+          const newUrl = path.relative(directory, path.join(baseDir, url))
+          node.url = newUrl
         }
-      })
-
-      if (
-        (!imageNode || !imageNode.absolutePath) &&
-        process.env.NODE_ENV === `production`
-      ) {
-        throw new Error(
-          `Image Not Found: Image "${url}" not found in folder "${staticFolderName}" referenced from "${markdownNode.fileAbsolutePath}". Please check static folder name and that file exists at "${staticFolderName}${url}".`
-        )
-      } else {
-        const newUrl = path.relative(directory, path.join(baseDir, url))
-        node.url = newUrl
       }
     }
   }
