@@ -12,13 +12,10 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "*",
-    "@sentry/gatsby": "^7.31.1",
-    "gatsby": "^5.4.2",
+    "@sentry/gatsby": "^7.13.0",
+    "gatsby": "^5.1.0",
     "gatsby-transformer-remark": "^6.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
-  },
-  "devDependencies": {
-    "eslint": "8.32.0"
   }
 }
