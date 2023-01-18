@@ -1,8 +1,7 @@
 const path = require('path')
-const { find } = require('lodash')
 
 module.exports = async (
-  { files, getRemarkFileDependency, markdownNode, markdownAST },
+  { getRemarkFileDependency, markdownNode, markdownAST },
   { staticFolderName = 'static' }
 ) => {
   if (!markdownNode.fileAbsolutePath) return
@@ -10,8 +9,9 @@ module.exports = async (
   const baseDir = path.resolve(staticFolderName)
   const directory = path.dirname(markdownNode.fileAbsolutePath)
 
-  // Process all markdown image nodes
-  visit(markdownAST, async node => {
+  const preprocessPromises = []
+
+  const preprocessImageNode = async node => {
     if (
       node.type === 'image' &&
       !(node.url?.startsWith('http://') || node.url?.startsWith('https://'))
@@ -19,22 +19,11 @@ module.exports = async (
       const { url } = node
       const imagePath = path.resolve(directory, path.join(baseDir, url))
 
-      let imageNode
-      if (getRemarkFileDependency) {
-        imageNode = await getRemarkFileDependency({
-          absolutePath: {
-            eq: imagePath
-          }
-        })
-      } else {
-        // Legacy: no context, slower version of image query
-        imageNode = find(files, file => {
-          if (file && file.absolutePath) {
-            return file.absolutePath === imagePath
-          }
-          return null
-        })
-      }
+      const imageNode = await getRemarkFileDependency({
+        absolutePath: {
+          eq: imagePath
+        }
+      })
 
       if (
         (!imageNode || !imageNode.absolutePath) &&
@@ -48,5 +37,11 @@ module.exports = async (
         node.url = newUrl
       }
     }
+  }
+
+  visit(markdownAST, node => {
+    preprocessPromises.push(preprocessImageNode(node))
   })
+
+  await Promise.all(preprocessPromises)
 }
