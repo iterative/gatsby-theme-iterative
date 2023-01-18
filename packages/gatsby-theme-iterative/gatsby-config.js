@@ -72,6 +72,9 @@ module.exports = ({
       options: {
         plugins: [
           {
+            resolve: require.resolve('./plugins/image-preprocessor')
+          },
+          {
             resolve: 'gatsby-remark-embedder',
             options: {
               customTransformers: [customYoutubeTransformer]
@@ -115,7 +118,6 @@ module.exports = ({
               includeDefaultCss: true
             }
           },
-          'gatsby-remark-relative-images',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-external-links',
           {
