@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = async (
-  { getRemarkFileDependency, markdownNode, markdownAST },
+  { getRemarkFileDependency, markdownNode, markdownAST, reporter },
   { staticFolderName = 'static' }
 ) => {
   if (!markdownNode.fileAbsolutePath) return
@@ -23,11 +23,8 @@ module.exports = async (
           }
         })
 
-        if (
-          (!imageNode || !imageNode.absolutePath) &&
-          process.env.NODE_ENV === `production`
-        ) {
-          throw new Error(
+        if (!imageNode || !imageNode.absolutePath) {
+          reporter.panicOnBuild(
             `Image Not Found: Image "${url}" not found in folder "${staticFolderName}" referenced from "${markdownNode.fileAbsolutePath}". Please check static folder name and that file exists at "${staticFolderName}${url}".`
           )
         } else {
