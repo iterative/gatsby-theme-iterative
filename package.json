@@ -19,8 +19,7 @@
     "prepare": "husky install"
   },
   "workspaces": [
-    "packages/example",
-    "packages/gatsby-theme-iterative"
+    "packages/*"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.48.2",
