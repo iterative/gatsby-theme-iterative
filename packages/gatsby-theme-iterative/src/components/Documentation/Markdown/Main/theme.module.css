@@ -24,11 +24,6 @@
       border-radius: 0.3em;
       margin: 0.5em 0;
       overflow: auto;
-
-      & > pre {
-        display: inline-block;
-        padding: 1em;
-      }
     }
 
     /**
@@ -39,9 +34,10 @@
   * 3. Adjust the position of the line numbers
   */
     .gatsby-highlight pre[class*="language-"] {
+      display: inline-block;
       background-color: transparent;
       margin: 0;
-      padding: 0;
+      padding: 1em;
       overflow: initial;
       float: left; /* 1 */
       min-width: 100%; /* 2 */
