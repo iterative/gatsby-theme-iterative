@@ -5,8 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "check-format": "prettier -c \"**/*.{js,json,ts,tsx,css,md,mdx}\"",
+    "check-lint": "eslint \"**/*.{js,jsx,ts,tsx,json}\"",
     "format-staged": "pretty-quick --staged --no-restage --bail --pattern '**/*.{js,jsx,md,tsx,ts,json}'",
-    "format-check": "prettier --check '**/*.{js,jsx,md,tsx,ts,json,css}'",
     "format-all": "prettier --write '**/*.{js,jsx,md,tsx,ts,json,css}'",
     "format": "prettier --write",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
@@ -35,6 +36,7 @@
     "lint-staged": "13.1.1",
     "prettier": "2.8.4",
     "stylelint": "14.16.1",
+    "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-standard": "29.0.0"
   }
 }

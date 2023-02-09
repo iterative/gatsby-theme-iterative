@@ -1,7 +1,8 @@
 module.exports = {
-  '*.ts?(x)': () => 'tsc --noEmit --skipLibCheck',
-  '*.{js,jsx,ts,tsx}': ['prettier --write', 'eslint'],
-  '*.md': 'prettier --write',
+  '*.css': ['prettier --write', 'stylelint --fix'],
   '*.json': 'prettier --write',
-  '*.css': 'prettier --write'
+  '*.md': 'prettier --write',
+  '*.mdx': 'prettier --write',
+  '*.ts?(x)': () => 'yarn lint-ts',
+  '*.{js,jsx,ts,tsx}': ['prettier --write', 'eslint --fix']
 }
