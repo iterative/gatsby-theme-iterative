@@ -2,6 +2,10 @@ name: 'Linting and Testing'
 
 on: push
 
+concurrency:
+  group: lint-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   run-tests:
     name: 'Run Tests'
@@ -26,5 +30,3 @@ jobs:
         run: yarn lint-css
       - name: Check TypeScript compilation
         run: yarn lint-ts
-      - name: Run tests
-        run: yarn test
