@@ -5,13 +5,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "check-format": "prettier -c \"**/*.{js,json,ts,tsx,css,md,mdx}\"",
-    "check-lint": "eslint \"**/*.{js,jsx,ts,tsx,json}\"",
-    "format-staged": "pretty-quick --staged --no-restage --bail --pattern '**/*.{js,jsx,md,tsx,ts,json}'",
-    "format-all": "prettier --write '**/*.{js,jsx,md,tsx,ts,json,css}'",
     "format": "prettier --write",
-    "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
-    "lint-css": "stylelint \"**/src/**/*.css\"",
+    "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css}\"",
+    "format-all": "prettier --write \"**/*.{js,jsx,md,tsx,ts,json,css}\"",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx,json}\"",
+    "lint-fix": "eslint --fix \"**/*.{js,jsx,ts,tsx,json}\"",
+    "lint-css": "stylelint \"packages/*/src/**/*.css\"",
+    "lint-css-fix": "stylelint --fix \"packages/*/src/**/*.css\"",
+    "lint-ts": "tsc --noEmit --skipLibCheck",
+    "fix-all": "yarn format-all && yarn lint-fix && yarn lint-css-fix && yarn lint-ts",
     "clean": "yarn workspace example clean",
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
@@ -37,6 +39,6 @@
     "prettier": "2.8.4",
     "stylelint": "14.16.1",
     "stylelint-config-prettier": "^9.0.4",
-    "stylelint-config-standard": "29.0.0"
+    "stylelint-config-standard": "30.0.1"
   }
 }

@@ -4,6 +4,6 @@
 }
 
 :root {
-  --font-base: "Tahoma", "Arial", sans-serif;
-  --font-mono: "Consolas", "Liberation Mono", "Menlo", "Courier", monospace;
+  --font-base: 'Tahoma', 'Arial', sans-serif;
+  --font-mono: 'Consolas', 'Liberation Mono', 'Menlo', 'Courier', monospace;
 }

@@ -33,7 +33,7 @@
   * 2. Always fill the visible space in .gatsby-highlight.
   * 3. Adjust the position of the line numbers
   */
-    .gatsby-highlight pre[class*="language-"] {
+    .gatsby-highlight pre[class*='language-'] {
       display: inline-block;
       background-color: transparent;
       margin: 0;
@@ -43,9 +43,10 @@
       min-width: 100%; /* 2 */
     }
 
-    code[class*="language-"],
-    pre[class*="language-"] {
+    code[class*='language-'],
+    pre[class*='language-'] {
       @apply font-mono;
+
       font-size: 1rem;
       line-height: 1.5rem;
       color: var(--default-blue);
@@ -54,46 +55,39 @@
       white-space: pre;
       word-spacing: normal;
       word-break: normal;
-
-      -moz-tab-size: 4;
-      -o-tab-size: 4;
       tab-size: 4;
-
-      -webkit-hyphens: none;
-      -moz-hyphens: none;
-      -ms-hyphens: none;
       hyphens: none;
-
+      hyphens: none;
       letter-spacing: 0.5px;
       text-shadow: 0 1px #222245;
     }
 
-    pre[class*="language-"]::-moz-selection,
-    pre[class*="language-"] ::-moz-selection,
-    code[class*="language-"]::-moz-selection,
-    code[class*="language-"] ::-moz-selection,
-    pre[class*="language-"]::selection,
-    pre[class*="language-"] ::selection,
-    code[class*="language-"]::selection,
-    code[class*="language-"] ::selection {
+    pre[class*='language-']::selection,
+    pre[class*='language-'] ::selection,
+    code[class*='language-']::selection,
+    code[class*='language-'] ::-moz-selection,
+    pre[class*='language-']::selection,
+    pre[class*='language-'] ::selection,
+    code[class*='language-']::selection,
+    code[class*='language-'] ::selection {
       color: inherit;
       background: #a599e9;
     }
 
     /* Code blocks. */
-    pre[class*="language-"] {
+    pre[class*='language-'] {
       padding: 2em;
       margin: 0.5em 0;
       overflow: auto;
     }
 
-    :not(pre) > code[class*="language-"],
-    pre[class*="language-"] {
+    :not(pre) > code[class*='language-'],
+    pre[class*='language-'] {
       background: var(--bg-dark);
     }
 
     /* Inline code */
-    :not(pre) > code[class*="language-"] {
+    :not(pre) > code[class*='language-'] {
       padding: 0.1em;
       border-radius: 0.3em;
     }
@@ -123,11 +117,11 @@
     }
 
     .token.punctuation {
-      color: #ffffff;
+      color: #fff;
     }
 
     .token.boolean {
-      color: rgb(255, 98, 140);
+      color: rgb(255 98 140);
     }
 
     .token.tag,
@@ -172,7 +166,7 @@
     }
 
     .token.function {
-      color: rgb(250, 208, 0);
+      color: rgb(250 208 0);
     }
 
     .token.regex {
@@ -225,16 +219,12 @@
 
     .line-highlight.line-highlight {
       margin-top: 36px;
-      background: linear-gradient(
-        to right,
-        rgba(179, 98, 255, 0.17),
-        transparent
-      );
+      background: linear-gradient(to right, rgb(179 98 255 / 17%), transparent);
     }
 
-    .line-highlight.line-highlight:before,
-    .line-highlight.line-highlight[data-end]:after {
-      content: "";
+    .line-highlight.line-highlight::before,
+    .line-highlight.line-highlight[data-end]::after {
+      content: '';
     }
 
     .token.entity {
@@ -305,7 +295,7 @@
       background-color: #d7afff;
     }
 
-    pre[class*="language-dvctable"] {
+    pre[class*='language-dvctable'] {
       code {
         display: inline-block;
         line-height: 20px;
