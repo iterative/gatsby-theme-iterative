@@ -11,9 +11,11 @@
 
   svg {
     @apply w-5 h-5;
+
     @media screen(md) {
       @apply w-6 h-6;
     }
+
     @media screen(lg) {
       @apply w-7 h-7;
     }
