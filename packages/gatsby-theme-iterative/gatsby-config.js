@@ -17,6 +17,7 @@ require('./config/prismjs/dvctable')
 const imageMaxWidth = 700
 
 const defaults = require('./config-defaults')
+const sentryConfig = require('./sentry-config')
 
 module.exports = ({
   simpleLinkerTerms,
@@ -32,16 +33,10 @@ module.exports = ({
   docsPath = defaults.docsPath,
   glossaryInstanceName = defaults.glossaryInstanceName,
   glossaryPath = defaults.glossaryPath,
-  argsLinkerPath = defaults.argsLinkerPath
+  argsLinkerPath = defaults.argsLinkerPath,
+  sentry = defaults.sentry
 }) => ({
   plugins: [
-    {
-      resolve: `gatsby-plugin-typescript`,
-      options: {
-        isTSX: true,
-        allExtensions: true
-      }
-    },
     {
       resolve: 'gatsby-plugin-postcss',
       options: {
@@ -69,6 +64,9 @@ module.exports = ({
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          {
+            resolve: require.resolve('./plugins/image-preprocessor')
+          },
           {
             resolve: 'gatsby-remark-embedder',
             options: {
@@ -113,7 +111,6 @@ module.exports = ({
               includeDefaultCss: true
             }
           },
-          'gatsby-remark-relative-images',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-external-links',
           {
@@ -135,7 +132,8 @@ module.exports = ({
           },
           'gatsby-remark-responsive-iframe',
           require.resolve('./plugins/resize-image-plugin'),
-          require.resolve('./plugins/external-link-plugin')
+          require.resolve('./plugins/external-link-plugin'),
+          require.resolve('./plugins/null-link-plugin')
         ]
       }
     },
@@ -153,11 +151,17 @@ module.exports = ({
           placeholder: 'blurred'
         }
       }
+    },
+    sentry && {
+      resolve: '@sentry/gatsby',
+      options: sentryConfig
     }
   ].filter(Boolean),
   siteMetadata: {
     author: 'Iterative',
     titleTemplate: '',
+    twitterUsername: '',
+    imageAlt: '',
     plausibleSrc,
     plausibleAPI,
     plausibleDomain

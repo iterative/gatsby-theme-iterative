@@ -6,13 +6,5 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "none",
-  "useTabs": false,
-  "overrides": [
-    {
-      "files": "*.css",
-      "options": {
-        "singleQuote": false
-      }
-    }
-  ]
+  "useTabs": false
 }

@@ -10,7 +10,7 @@
   }
 
   &::before {
-    content: "";
+    content: '';
     display: block;
     position: fixed;
     z-index: -1;
@@ -37,7 +37,7 @@
     transition: opacity 0.3s linear;
 
     &.opened {
-      content: "";
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
@@ -54,10 +54,9 @@
 .side {
   @apply flex flex-col w-72
     sm:py-0;
+
   background-color: var(--color-light-blue);
-
   flex-shrink: 0;
-
   position: fixed;
   z-index: 2;
   bottom: 0;

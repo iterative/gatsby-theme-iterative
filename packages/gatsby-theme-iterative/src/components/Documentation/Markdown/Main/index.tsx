@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useCallback, PropsWithChildren } from 'react'
 import cn from 'classnames'
-import { navigate } from '@reach/router'
+import { navigate } from 'gatsby'
 
 import Link from '../../../Link'
 import Tutorials from '../../TutorialsLinks'

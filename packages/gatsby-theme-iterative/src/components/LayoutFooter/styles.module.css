@@ -1,11 +1,12 @@
 .wrapper {
   @apply z-10;
+
   width: 100%;
   background-color: #40364d;
 }
 
 .div {
-  background-image: url("../../images/cml_icon-color--square_vector.svg");
+  background-image: url('../../images/cml_icon-color--square_vector.svg');
 }
 
 .container {
