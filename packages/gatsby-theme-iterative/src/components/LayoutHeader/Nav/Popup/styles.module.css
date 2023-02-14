@@ -10,7 +10,6 @@
   background-color: #fff;
   filter: drop-shadow(0 2px 8px rgb(0 0 0 / 15%));
   border-radius: 12px;
-
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 
   &.visible {
@@ -35,19 +34,19 @@
 }
 
 .cmlIcon {
-  background-image: url("../../../../images/cml_icon-color--square_vector.svg");
+  background-image: url('../../../../images/cml_icon-color--square_vector.svg');
 }
 
 .dvcIcon {
-  background-image: url("../../../../images/dvc_icon-color--square_vector.svg");
+  background-image: url('../../../../images/dvc_icon-color--square_vector.svg');
 }
 
 .studioIcon {
-  background-image: url("../../../../images/studio_icon-color--square_vector.svg");
+  background-image: url('../../../../images/studio_icon-color--square_vector.svg');
 }
 
 .mlemIcon {
-  background-image: url("../../../../images/mlem-icon.svg");
+  background-image: url('../../../../images/mlem-icon.svg');
 }
 
 .communityPopup {
@@ -66,7 +65,7 @@
   .link {
     padding: 8px;
     display: grid;
-    grid-template-areas: "icon title" "icon description";
+    grid-template-areas: 'icon title' 'icon description';
     grid-template-columns: 32px 216px;
     column-gap: 16px;
 

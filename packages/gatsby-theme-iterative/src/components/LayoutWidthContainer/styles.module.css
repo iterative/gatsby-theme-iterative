@@ -1,5 +1,6 @@
 .container {
   @apply w-full;
+
   margin: 0 auto;
   padding: 0 15px;
   max-width: var(--layout-width);

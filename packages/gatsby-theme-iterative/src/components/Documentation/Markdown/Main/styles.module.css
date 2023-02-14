@@ -45,6 +45,7 @@
     h5,
     h6 {
       @apply scroll-mt-5;
+
       font-weight: 500;
       word-wrap: normal;
     }
@@ -62,7 +63,7 @@
       margin-top: 0;
     }
 
-    a[target="_blank"] {
+    a[target='_blank'] {
       white-space: nowrap;
 
       &::after {
@@ -72,7 +73,7 @@
         width: 12px;
         height: 12px;
         margin-left: 1px;
-        content: url("../../../../images/external-link.svg");
+        content: url('../../../../images/external-link.svg');
       }
     }
 
@@ -175,7 +176,6 @@
 
     &__tooltip {
       padding: 10px;
-
       color: #fff;
       opacity: 0;
       width: 100%;
@@ -204,6 +204,7 @@
 
 .content {
   @apply py-7 xs:px-7 mt-14;
+
   min-width: 200px;
   flex: 1;
   background-color: #fff;
@@ -242,7 +243,7 @@
 }
 
 .githubIcon {
-  background-image: url("../../../../images/github_icon.svg");
+  background-image: url('../../../../images/github_icon.svg');
 }
 
 .navButtons {
@@ -280,7 +281,7 @@
   width: 1em;
   height: 1em;
   line-height: 1;
-  background-image: url("../../../../images/arrow.svg");
+  background-image: url('../../../../images/arrow.svg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
