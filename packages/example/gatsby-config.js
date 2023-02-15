@@ -17,7 +17,8 @@ module.exports = {
       options: {
         simpleLinkerTerms: require('./content/linked-terms'),
         plausibleSrc: null,
-        sentry: false
+        sentry: false,
+        glossaryInstanceName: false
       }
     },
     {
