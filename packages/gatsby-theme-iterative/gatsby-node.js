@@ -18,8 +18,14 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     filesystem: Joi.boolean().default(true),
     glossaryPath: Joi.string().default(defaults.glossaryPath),
     docsPath: Joi.string().default(defaults.docsPath),
-    glossaryInstanceName: Joi.string().default(defaults.glossaryInstanceName),
-    docsInstanceName: Joi.string().default(defaults.docsInstanceName),
+    glossaryInstanceName: [
+      Joi.string().default(defaults.glossaryInstanceName),
+      Joi.allow(null, false)
+    ],
+    docsInstanceName: [
+      Joi.string().default(defaults.docsInstanceName),
+      Joi.allow(null, false)
+    ],
     docsPrefix: Joi.string().default('doc'),
     simpleLinkerTerms: Joi.array().items(
       Joi.object({
