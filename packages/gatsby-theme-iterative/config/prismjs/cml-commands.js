@@ -11,6 +11,6 @@ module.exports = [
   'check',
   'workflow rerun',
   'workflow',
-  'tensorboard connect'
+  'tensorboard connect',
   'tensorboard'
 ]
