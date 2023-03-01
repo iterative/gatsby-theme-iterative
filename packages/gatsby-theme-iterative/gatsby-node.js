@@ -20,8 +20,10 @@ exports.pluginOptionsSchema = ({ Joi }) => {
       path.resolve('content', 'docs', 'user-guide', 'basic-concepts')
     ),
     docsDirectory: Joi.string().default(path.resolve('content', 'docs')),
-    glossaryInstanceName: Joi.string().default('iterative-glossary'),
-    docsInstanceName: Joi.string().default('iterative-docs'),
+    glossaryInstanceName: Joi.string()
+      .default('iterative-glossary')
+      .allow(false),
+    docsInstanceName: Joi.string().default('iterative-docs').allow(false),
     docsPrefix: Joi.string().default('doc'),
     simpleLinkerTerms: Joi.array().items(
       Joi.object({
@@ -35,7 +37,8 @@ exports.pluginOptionsSchema = ({ Joi }) => {
       .default(defaults.argsLinkerPath),
     plausibleSrc: [Joi.string().optional(), Joi.allow(null)],
     plausibleAPI: [Joi.string().optional(), Joi.allow(null)],
-    plausibleDomain: [Joi.string().optional(), Joi.allow(null)]
+    plausibleDomain: [Joi.string().optional(), Joi.allow(null)],
+    sentry: Joi.boolean().default(defaults.sentry)
   })
 }
 

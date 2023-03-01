@@ -6,9 +6,11 @@ interface ISiteMeta {
   keywords: string
   siteUrl: string
   titleTemplate: string
+  imageAlt?: string
   plausibleDomain: string | null
   plausibleSrc: string | null
   plausibleAPI: string | null
+  twitterUsername?: string
 }
 
 export default function siteMeta(): ISiteMeta {
@@ -24,9 +26,11 @@ export default function siteMeta(): ISiteMeta {
             keywords
             siteUrl
             titleTemplate
+            imageAlt
             plausibleDomain
             plausibleSrc
             plausibleAPI
+            twitterUsername
           }
         }
       }

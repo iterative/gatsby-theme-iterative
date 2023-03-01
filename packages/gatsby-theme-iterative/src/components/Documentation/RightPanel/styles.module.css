@@ -1,7 +1,7 @@
 .container {
   @apply mt-7 pt-14 sticky h-screen top-0;
-  flex-shrink: 0;
 
+  flex-shrink: 0;
   width: 170px;
   font-size: 16px;
   display: flex;
@@ -13,7 +13,7 @@
 }
 
 .contentBlock {
-  @apply basis-36 grow min-h-[6rem];
+  @apply basis-auto min-h-[6rem];
 
   overflow-y: scroll;
   margin-bottom: 17px;
@@ -31,6 +31,7 @@
 
 .header {
   @apply h-14 pb-2 flex flex-col flex-nowrap justify-end;
+
   font-size: 14px;
   text-transform: uppercase;
   border-bottom: 1px solid var(--color-lighter-blue);
@@ -91,11 +92,11 @@
 }
 
 .githubIcon {
-  background-image: url("../../../images/github_icon.svg");
+  background-image: url('../../../images/github_icon.svg');
 }
 
 .discordIcon {
   width: 1.2em;
   height: 1.2em;
-  background-image: url("../../../images/discord.svg");
+  background-image: url('../../../images/discord.svg');
 }

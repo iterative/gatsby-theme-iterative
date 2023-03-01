@@ -83,7 +83,7 @@
 }
 
 .sidebarDefaultBullet {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 9px;
@@ -91,7 +91,7 @@
   border: none;
   height: 8px;
   width: 8px;
-  background: url("../../../../images/triangle_dark.svg") no-repeat center
+  background: url('../../../../images/triangle_dark.svg') no-repeat center
     center;
   transition: 0.5s transform;
 
@@ -105,7 +105,7 @@
   }
 
   &.sidebarLeafBullet {
-    background: url("../../../../images/default_bullet_dark.svg") no-repeat
+    background: url('../../../../images/default_bullet_dark.svg') no-repeat
       center center;
     transform: unset;
   }

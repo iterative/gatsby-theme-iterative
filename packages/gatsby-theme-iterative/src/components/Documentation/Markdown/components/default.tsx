@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState
 } from 'react'
-import { useLocation } from '@reach/router'
+import { useLocation } from '@gatsbyjs/reach-router'
 import Collapsible from 'react-collapsible'
 import Slugger from '../../../../utils/front/Slugger'
 import { ReactComponent as LinkIcon } from '../../../../images/linkIcon.svg'
