@@ -8,7 +8,7 @@ export const AlertContent = () => (
     </span>{' '}
     New Release!{' '}
     <Link href="https://iterative.ai/blog/dvclive-metrics-studio/">
-      Track and visualuze DVC experiment metrics in real-time
+      Track and visualize DVC experiment metrics in real-time
     </Link>{' '}
     with Iterative Studio.
   </>
