@@ -7,9 +7,9 @@ export const AlertContent = () => (
       🚀
     </span>{' '}
     New Release!{' '}
-    <Link href="https://dvc.org/blog/iterative-studio-model-registry">
-      Git-backed Machine Learning Model Registry
+    <Link href="https://iterative.ai/blog/dvclive-metrics-studio/">
+      Track and visualize DVC experiment metrics in real-time
     </Link>{' '}
-    for all your model management needs.
+    with Iterative Studio.
   </>
 )
