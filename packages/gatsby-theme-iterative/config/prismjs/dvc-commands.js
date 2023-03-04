@@ -13,6 +13,7 @@ module.exports = [
   'diff',
   'doctor',
   'exp init',
+  'exp clean',
   'exp run',
   'exp show',
   'exp diff',
