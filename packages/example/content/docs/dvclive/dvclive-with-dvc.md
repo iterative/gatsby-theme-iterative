@@ -90,12 +90,12 @@ $ tree
 └── train.py
 ```
 
-The [metrics summary](/doc/dvclive/api-reference/live/log#description)
+The [metrics summary](/doc/dvclive/live/log#description)
 `training_metrics.json` can be used by `dvc metrics` and visualized with
 `dvc exp show`/`dvc exp diff`.
 
 In addition, the
-[metrics history](/doc/dvclive/api-reference/live/log#step-updates) generated
+[metrics history](/doc/dvclive/live/log#step-updates) generated
 under `training_metrics/scalars` can be visualized with `dvc plots`.
 
 ### Iterative Studio
@@ -128,7 +128,7 @@ When used alongside DVC, DVCLive can create _checkpoint_ signal files used by
 DVC <abbr>experiments<abbr>.
 
 This will save all the outputs (metrics, plots, models, etc.) associated to each
-[`step`](/doc/dvclive/api-reference/live/get_step).
+[`step`](/doc/dvclive/live/get_step).
 
 You can learn more about how to use them in the
 [Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints).

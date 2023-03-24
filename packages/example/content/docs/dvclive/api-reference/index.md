@@ -8,4 +8,4 @@ from dvclive import Live
 ```
 
 Will import the main class of the API:
-[`Live()`](/doc/dvclive/api-reference/live).
+[`Live()`](/doc/dvclive/live).

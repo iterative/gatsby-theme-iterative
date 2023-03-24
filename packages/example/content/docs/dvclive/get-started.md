@@ -20,7 +20,7 @@ from dvclive import Live
 live = Live()
 ```
 
-See [`Live()`](/doc/dvclive/api-reference/live) for details.
+See [`Live()`](/doc/dvclive/live) for details.
 
 ### Log data
 

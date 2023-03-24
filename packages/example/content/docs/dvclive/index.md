@@ -19,7 +19,7 @@ fully compatible with DVC. You can
     Use DVCLive alonside your favorite ML Framework
   </card>
 
-  <card href="/doc/dvclive/api-reference" heading="API Reference">
+  <card href="/doc/dvclive" heading="API Reference">
     See details of all DVCLive's functions
   </card>
 

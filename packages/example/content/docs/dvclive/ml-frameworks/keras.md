@@ -47,7 +47,7 @@ more info.
   is saved (`model.save(model_file)`)
 
 - `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+  [`Live`](/docs/dvclive/live).
 
 ## Examples
 
@@ -65,7 +65,7 @@ model.fit(
         save_weights_only=True)])
 ```
 
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/live).
 
 ```python
 from dvclive.keras import DvcLiveCallback
