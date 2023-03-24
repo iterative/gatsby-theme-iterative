@@ -90,12 +90,10 @@ $ tree
 └── train.py
 ```
 
-The [metrics summary](/doc/dvclive/live/log#description)
-`training_metrics.json` can be used by `dvc metrics` and visualized with
-`dvc exp show`/`dvc exp diff`.
+The [metrics summary](/doc/dvclive/live/log#description) `training_metrics.json`
+can be used by `dvc metrics` and visualized with `dvc exp show`/`dvc exp diff`.
 
-In addition, the
-[metrics history](/doc/dvclive/live/log#step-updates) generated
+In addition, the [metrics history](/doc/dvclive/live/log#step-updates) generated
 under `training_metrics/scalars` can be visualized with `dvc plots`.
 
 ### Iterative Studio

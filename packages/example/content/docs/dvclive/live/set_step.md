@@ -47,8 +47,8 @@ the <abbr>pipeline</abbr>, `DVC` will
 ## Example
 
 Given the [Usage](#usage) code snippet above, the
-[metrics history](/doc/dvclive/live/log#step-updates) generated
-for `metric_1` would be:
+[metrics history](/doc/dvclive/live/log#step-updates) generated for `metric_1`
+would be:
 
 ```dvc
 $ cat dvclive/metric_1.tsv
