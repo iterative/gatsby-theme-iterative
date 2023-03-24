@@ -5,7 +5,7 @@ const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
 const LIVE_API_REGEXP = /Live.([a-z-._]*\(\)$)?/
 const METHOD_REGEXP = /^[a-z-._]*\(\)$/
-const API_ROOT = '/doc/dvclive/api-reference/live/'
+const API_ROOT = '/doc/dvclive/live/'
 
 module.exports = astNode => {
   const node = astNode[0]
