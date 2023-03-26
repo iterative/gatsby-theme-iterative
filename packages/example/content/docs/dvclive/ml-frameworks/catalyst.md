@@ -45,7 +45,7 @@ more info.
   be saved at the end of each `step`.
 
 - `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+  [`Live`](/docs/dvclive/live).
 
 ## Examples
 
@@ -63,7 +63,7 @@ runner.train(
     callbacks=[DvcLiveCallback(model_file="model.pth")])
 ```
 
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/live).
 
 ```python
 from dvclive.catalyst import DvcLiveCallback

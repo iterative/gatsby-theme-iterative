@@ -43,16 +43,15 @@ more info.
 
 - `prefix` - (`None` by default) - string that adds to each metric name.
 
-- `experiment` - (`None` by default) -
-  [`Live`](/docs/dvclive/api-reference/live) object to be used instead of
-  initializing a new one.
+- `experiment` - (`None` by default) - [`Live`](/docs/dvclive/live) object to be
+  used instead of initializing a new one.
 
 - `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+  [`Live`](/docs/dvclive/live).
 
 ## Examples
 
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/live).
 
 ```python
 from dvclive.lightning import DvcLiveLogger

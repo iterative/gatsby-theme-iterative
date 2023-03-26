@@ -43,7 +43,7 @@ more info.
   be saved at the end of each `step`.
 
 - `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+  [`Live`](/docs/dvclive/live).
 
 ## Examples
 
@@ -58,7 +58,7 @@ lightgbm.train(
     callbacks=[DvcLiveCallback(model_file="lgbm_model.txt")])
 ```
 
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/live).
 
 ```python
 lightgbm.train(
