@@ -1,4 +1,47 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "group:allNonMajor"]
+  "extends": [
+    "config:base",
+    "group:linters",
+    "group:postcss",
+    "helpers:disableTypesNodeMajor",
+    ":reviewer(team:websites)",
+    ":enableVulnerabilityAlerts",
+    ":label(dependencies)"
+  ],
+  "prConcurrentLimit": 4,
+  "prHourlyLimit": 2,
+  "dependencyDashboardApproval": true,
+  "packageRules": [
+    {
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": ["*"],
+      "matchDatasources": ["npm"],
+      "stabilityDays": 7,
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "branch",
+      "schedule": ["on tuesday every 2 weeks"],
+      "prPriority": 1,
+      "dependencyDashboardApproval": false
+    },
+    {
+      "matchPackagePatterns": ["*"],
+      "stabilityDays": 7,
+      "matchDatasources": ["npm"],
+      "schedule": ["on tuesday"],
+      "automerge": true,
+      "automergeType": "branch",
+      "dependencyDashboardApproval": false
+    },
+    {
+      "matchPackagePatterns": ["@dvcorg", "iterative"],
+      "additionalBranchPrefix": "iterative-package-",
+      "matchDatasources": ["npm"],
+      "prCreation": "immediate",
+      "prPriority": 2,
+      "dependencyDashboardApproval": false
+    }
+  ]
 }
