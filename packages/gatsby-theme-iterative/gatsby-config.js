@@ -165,5 +165,6 @@ module.exports = ({
     plausibleSrc,
     plausibleAPI,
     plausibleDomain
-  }
+  },
+  trailingSlash: 'never'
 })
