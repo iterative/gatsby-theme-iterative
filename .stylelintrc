@@ -30,6 +30,7 @@
       {
         "ignoreFunctions": ["a", "color-mod"]
       }
-    ]
+    ],
+    "media-feature-range-notation": null
   }
 }
