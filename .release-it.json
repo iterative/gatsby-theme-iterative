@@ -1,0 +1,24 @@
+{
+  "git": {
+    "commitMessage": "chore: release v${version}"
+  },
+  "hooks": {
+    "before:init": [
+      "yarn format-check-all",
+      "yarn lint",
+      "yarn lint-css",
+      "yarn lint-ts"
+    ]
+  },
+  "plugins": {
+    "@release-it-plugins/workspaces": {
+      "workspaces": ["packages/gatsby-theme-iterative"],
+      "publish": false,
+      "additionalManifests": {
+        "versionUpdates": []
+      }
+    }
+  },
+  "github": false,
+  "npm": false
+}
