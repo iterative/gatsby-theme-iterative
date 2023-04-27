@@ -19,6 +19,8 @@
       }
     }
   },
-  "github": false,
+  "github": {
+    "release": true
+  },
   "npm": false
 }
