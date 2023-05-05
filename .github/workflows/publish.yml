@@ -8,12 +8,20 @@ on:
         required: true
         options: ['patch', 'minor', 'major', 'pre']
         default: 'patch'
+      dry-run:
+        type: boolean
+        description: 'Dry run'
+        required: false
+        default: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: git config
         run: |
@@ -32,7 +40,7 @@ jobs:
           yarn install --frozen-lockfile
 
       - run: |
-          yarn release:ci ${{ github.event.inputs.version }}
+          yarn release:ci ${{ github.event.inputs.version }} --dry-run=${{ github.event.inputs.dry-run }}
           cd ./packages/gatsby-theme-iterative
           yarn publish
 
