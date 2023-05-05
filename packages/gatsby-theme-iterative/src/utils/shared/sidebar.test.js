@@ -154,37 +154,77 @@ describe('normalizeSidebar', () => {
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds correct prev/next links in nested list', () => {
+    it('Adds correct prev/next links in nested lists', () => {
       const rawData = [
-        { slug: 'first-item', children: ['nested-item'] },
+        {
+          slug: 'first-item',
+          children: [
+            'nested-item-first',
+            {
+              slug: 'nested-item-second',
+              source: 'nested-item-second/index.md',
+              children: ['nested-nested-item']
+            }
+          ]
+        },
         'second-item'
       ]
+
       const result = [
         {
-          label: 'First Item',
           path: '/doc/first-item',
           source: '/docs/first-item.md',
+          label: 'First Item',
           tutorials: {},
           prev: undefined,
-          next: '/doc/first-item/nested-item',
+          next: '/doc/first-item/nested-item-first',
+          style: undefined,
+          icon: undefined,
           children: [
             {
-              label: 'Nested Item',
-              path: '/doc/first-item/nested-item',
-              source: '/docs/first-item/nested-item.md',
+              path: '/doc/first-item/nested-item-first',
+              source: '/docs/first-item/nested-item-first.md',
+              label: 'Nested Item First',
               tutorials: {},
               prev: '/doc/first-item',
-              next: '/doc/second-item'
+              next: '/doc/first-item/nested-item-second',
+              style: undefined,
+              icon: undefined
+            },
+            {
+              path: '/doc/first-item/nested-item-second',
+              source: '/docs/first-item/nested-item-second/index.md',
+              label: 'Nested Item Second',
+              tutorials: {},
+              prev: '/doc/first-item/nested-item-first',
+              next: '/doc/first-item/nested-item-second/nested-nested-item',
+              style: undefined,
+              icon: undefined,
+              children: [
+                {
+                  path: '/doc/first-item/nested-item-second/nested-nested-item',
+                  source:
+                    '/docs/first-item/nested-item-second/nested-nested-item.md',
+                  label: 'Nested Nested Item',
+                  tutorials: {},
+                  prev: '/doc/first-item/nested-item-second',
+                  next: '/doc/second-item',
+                  style: undefined,
+                  icon: undefined
+                }
+              ]
             }
           ]
         },
         {
-          label: 'Second Item',
           path: '/doc/second-item',
           source: '/docs/second-item.md',
+          label: 'Second Item',
           tutorials: {},
-          prev: '/doc/first-item/nested-item',
-          next: undefined
+          prev: '/doc/first-item/nested-item-second/nested-nested-item',
+          next: undefined,
+          style: undefined,
+          icon: undefined
         }
       ]
 
