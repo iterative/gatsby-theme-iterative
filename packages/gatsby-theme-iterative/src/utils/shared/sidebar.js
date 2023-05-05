@@ -156,6 +156,8 @@ function normalizeSidebar({
       prevRef.next = normalizedItem.path
     }
 
+    prevRef = normalizedItem
+
     if (rawItem.children) {
       normalizedItem.children = normalizeSidebar({
         data: rawItem.children,
@@ -164,9 +166,9 @@ function normalizeSidebar({
         startingPrevRef: normalizedItem
       })
 
-      prevRef = normalizedItem.children[normalizedItem.children.length - 1]
-    } else {
-      prevRef = normalizedItem
+      while (prevRef.children) {
+        prevRef = prevRef.children[prevRef.children.length - 1]
+      }
     }
 
     currentResult.push(normalizedItem)
