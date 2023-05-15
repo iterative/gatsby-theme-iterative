@@ -41,6 +41,8 @@ jobs:
           yarn workspace @dvcorg/gatsby-theme-iterative version --${{ github.event.inputs.version }} --no-git-tag-version
           VERSION=$(jq -r '.version' < packages/gatsby-theme-iterative/package.json)
           git checkout -b bump/v${VERSION}
+          git add .
+          git commit -m "Bump version to v${VERSION}"
           git push --set-upstream origin HEAD
           gh pr create --title "Bump version to v${VERSION}" --body "Approve me 🤖"
           gh pr merge --auto --squash
