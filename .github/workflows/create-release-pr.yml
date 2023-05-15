@@ -18,9 +18,6 @@ on:
           ]
         default: 'patch'
 
-  pull_request:
-    types: [closed]
-
 jobs:
   bump-version-create-pr:
     if: github.event_name == 'workflow_dispatch'
@@ -39,23 +36,17 @@ jobs:
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           yarn workspace @dvcorg/gatsby-theme-iterative version --${{ github.event.inputs.version }} --no-git-tag-version
           VERSION=$(jq -r '.version' < packages/gatsby-theme-iterative/package.json)
-          git checkout -b bump/v${VERSION}
+          git checkout -b bump-theme-package/v${VERSION}
           git add .
           git commit -m "Bump version to v${VERSION}"
           git push --set-upstream origin HEAD
           gh pr create --title "Bump version to v${VERSION}" --body "Approve me 🤖 
-          Please close and reopen this PR to run the required workflows."
-          gh pr merge --auto --squash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  create-release:
-    if: github.event.pull_request.merged && startsWith(github.head_ref, 'bump/')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: >
-          gh release create $(basename ${{github.head_ref }}) --generate-notes
-          --draft
+          Please close and reopen this PR to run the required workflows.
+
+          **Once workflows are enabled. The `publish` workflow will run automatically when this PR is merged.** 
+
+          Else, we can run it manually from the Actions tab.
+          "
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
