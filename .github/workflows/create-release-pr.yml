@@ -43,7 +43,8 @@ jobs:
           git add .
           git commit -m "Bump version to v${VERSION}"
           git push --set-upstream origin HEAD
-          gh pr create --title "Bump version to v${VERSION}" --body "Approve me 🤖 \n Please close and reopen this PR to run the required workflows."
+          gh pr create --title "Bump version to v${VERSION}" --body "Approve me 🤖 
+          Please close and reopen this PR to run the required workflows."
           gh pr merge --auto --squash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
