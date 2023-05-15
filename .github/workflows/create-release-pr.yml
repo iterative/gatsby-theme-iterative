@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: >
-          gh release create v$(basename ${{github.head_ref }}) --generate-notes
+          gh release create $(basename ${{github.head_ref }}) --generate-notes
           --draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
