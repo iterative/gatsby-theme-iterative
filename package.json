@@ -19,11 +19,7 @@
     "serve": "yarn workspace example serve",
     "develop": "yarn workspace example develop",
     "get-commands": "yarn workspace @dvcorg/gatsby-theme-iterative get-commands",
-    "prepare": "husky install",
-    "release": "release-it",
-    "release:pre": "release-it --preRelease=beta",
-    "release:ci": "release-it --ci",
-    "release:dry": "release-it --dry-run"
+    "prepare": "husky install"
   },
   "workspaces": [
     "packages/*"
@@ -42,7 +38,6 @@
     "husky": "8.0.3",
     "lint-staged": "13.2.2",
     "prettier": "2.8.8",
-    "release-it": "^15.10.1",
     "stylelint": "15.6.0",
     "stylelint-config-standard": "33.0.0"
   }

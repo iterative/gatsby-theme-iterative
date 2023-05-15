@@ -1,0 +1,59 @@
+name: Create Release PR
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: choice
+        description: 'version to bump'
+        required: true
+        options:
+          [
+            'patch',
+            'minor',
+            'major',
+            'prepatch',
+            'preminor',
+            'premajor',
+            'prerelease'
+          ]
+        default: 'patch'
+
+  pull_request:
+    types: [closed]
+
+jobs:
+  bump-version-create-pr:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Bump and create PR
+        run: |
+          yarn workspace @dvcorg/gatsby-theme-iterative version --${{ github.event.inputs.version }} --no-git-tag-version
+          VERSION=$(jq -r '.version' < packages/gatsby-theme-iterative/package.json)
+          git checkout -b bump/v${VERSION}
+          git push --set-upstream origin HEAD
+          gh pr create --title "Bump version to v${VERSION}" --body "Approve me 🤖"
+          gh pr merge --auto --squash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  create-release:
+    if: github.event.pull_request.merged && startsWith(github.head_ref, 'bump/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: >
+          gh release create v$(basename ${{github.head_ref }}) --generate-notes
+          --draft
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
