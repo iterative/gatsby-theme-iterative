@@ -1093,75 +1093,6 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.2.0.tgz#2cbcf822bf3764c9658c4d2e568bd0c0cb748016"
   integrity sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==
 
-"@dvcorg/gatsby-theme-iterative@*":
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.4.tgz#df4fee73d9e82f61be14040de126c915e35621e7"
-  integrity sha512-Y7DdZVXT/ey9JhvtBHw17lX1mU3FydoRGwIL4lqxrLD3gsAY+UNK0ilY2554G4veiGDphZgdxiPYiwPWuWbCPA==
-  dependencies:
-    "@reach/portal" "^0.18.0"
-    "@reach/skip-nav" "^0.18.0"
-    "@sentry/gatsby" "^7.31.1"
-    "@svgr/webpack" "^7.0.0"
-    "@types/gatsbyjs__reach-router" "^2.0.0"
-    "@types/isomorphic-fetch" "^0.0.36"
-    "@types/promise-polyfill" "^6.0.4"
-    "@types/react-collapse" "^5.0.1"
-    "@types/react-helmet" "^6.1.6"
-    "@types/unist" "^2.0.6"
-    autoprefixer "^10.4.4"
-    classnames "^2.3.1"
-    ease-component "^1.0.0"
-    gatsby-plugin-image "^3.4.0"
-    gatsby-plugin-manifest "^5.4.0"
-    gatsby-plugin-postcss "^6.4.0"
-    gatsby-plugin-react-helmet "^6.4.0"
-    gatsby-plugin-sharp "^5.4.0"
-    gatsby-plugin-sitemap "^6.4.0"
-    gatsby-plugin-svgr "^3.0.0-beta.0"
-    gatsby-remark-autolink-headers "^6.4.0"
-    gatsby-remark-copy-linked-files "^6.4.0"
-    gatsby-remark-embed-gist "^1.2.1"
-    gatsby-remark-embedder "^6.0.1"
-    gatsby-remark-external-links "^0.0.4"
-    gatsby-remark-images "^7.4.0"
-    gatsby-remark-prismjs "^7.4.0"
-    gatsby-remark-responsive-iframe "^6.4.0"
-    gatsby-remark-smartypants "^6.4.0"
-    gatsby-source-filesystem "^5.4.0"
-    gatsby-transformer-remark "^6.1.0"
-    gatsby-transformer-sharp "^5.4.0"
-    github-markdown-css "^5.1.0"
-    github-slugger "^2.0.0"
-    hast-util-select "^5.0.4"
-    iso-url "^1.2.1"
-    isomorphic-fetch "^3.0.0"
-    lodash "^4.17.21"
-    nanoid "^4.0.0"
-    perfect-scrollbar "^1.5.5"
-    postcss "^8.4.21"
-    postcss-nested "^6.0.0"
-    prismjs "^1.29.0"
-    promise-polyfill "^8.2.3"
-    react-collapse "^5.1.1"
-    react-collapsible "^2.8.4"
-    react-helmet "^6.1.0"
-    react-intersection-observer "^9.3.5"
-    react-use "^17.3.2"
-    rehype-parse "^8.0.4"
-    rehype-react "^7.0.4"
-    rehype-stringify "^9.0.3"
-    remark "^14.0.2"
-    remark-html "^15.0.1"
-    remark-parse "^10.0.1"
-    remark-preset-lint-recommended "^6.1.2"
-    reset-css "^5.0.1"
-    scroll "^3.0.1"
-    tailwindcss "^3.1.3"
-    title-case "^3.0.3"
-    unified "^10.1.2"
-    unist-util-remove-position "^4.0.1"
-    unist-util-visit "^4.1.0"
-
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz#a23514e8fb9af1269d5f7788aa556798d61c6b59"
@@ -2019,16 +1950,6 @@
     walk-sync "^2.0.2"
     yaml "^2.1.1"
 
-"@sentry-internal/tracing@7.51.0":
-  version "7.51.0"
-  resolved "https://registry.yarnpkg.com/@sentry-internal/tracing/-/tracing-7.51.0.tgz#574bd62128aa98656a847332c627663975413fda"
-  integrity sha512-mhXl4B02OQq6/vevjX04OchmQbxPRaLci9vTTPcPcIz/n+wkum29ze35gHcJsPJUesScjd0m19Xou3C8fNnZRA==
-  dependencies:
-    "@sentry/core" "7.51.0"
-    "@sentry/types" "7.51.0"
-    "@sentry/utils" "7.51.0"
-    tslib "^1.9.3"
-
 "@sentry-internal/tracing@7.51.2":
   version "7.51.2"
   resolved "https://registry.yarnpkg.com/@sentry-internal/tracing/-/tracing-7.51.2.tgz#17833047646426ca71445327018ffcb33506a699"
@@ -2037,18 +1958,6 @@
     "@sentry/core" "7.51.2"
     "@sentry/types" "7.51.2"
     "@sentry/utils" "7.51.2"
-    tslib "^1.9.3"
-
-"@sentry/browser@7.51.0":
-  version "7.51.0"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-7.51.0.tgz#c132470ffa658ec5b4c0bdc44c9a72a479e6edb1"
-  integrity sha512-SqaXM9qhGnSqEcdWEnzHKKkCLcMzE0cAc/Y6VQOttGjkP3KRW8INdWrN7F0ySBdy6BMar6ViDJKhB6cMKsuCIg==
-  dependencies:
-    "@sentry-internal/tracing" "7.51.0"
-    "@sentry/core" "7.51.0"
-    "@sentry/replay" "7.51.0"
-    "@sentry/types" "7.51.0"
-    "@sentry/utils" "7.51.0"
     tslib "^1.9.3"
 
 "@sentry/browser@7.51.2":
@@ -2075,15 +1984,6 @@
     proxy-from-env "^1.1.0"
     which "^2.0.2"
 
-"@sentry/core@7.51.0":
-  version "7.51.0"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-7.51.0.tgz#f9949d129ea2683bf70edccacdfeafb7f492260c"
-  integrity sha512-GgYwlXU8Y1kDEHsJO1Bmr2CNan5BzoNRR0TDBmxRgI/DgTNNSYrXeFDELgPi9/p/0XENeuttzDZ3iYd1nF7meA==
-  dependencies:
-    "@sentry/types" "7.51.0"
-    "@sentry/utils" "7.51.0"
-    tslib "^1.9.3"
-
 "@sentry/core@7.51.2":
   version "7.51.2"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-7.51.2.tgz#f2c938de334f9bf26f4416079168275832423964"
@@ -2092,17 +1992,6 @@
     "@sentry/types" "7.51.2"
     "@sentry/utils" "7.51.2"
     tslib "^1.9.3"
-
-"@sentry/gatsby@^7.31.1":
-  version "7.51.0"
-  resolved "https://registry.yarnpkg.com/@sentry/gatsby/-/gatsby-7.51.0.tgz#c68ff67c0489f5eb75b4fb76bfab76131e641bf0"
-  integrity sha512-zRjzhP2cBD932yaP0k0p52uQ/miebOBf24hefNmheOWWVjntGU6Ot2NFG4q8jWYEwlaEIe/3001FDR3T5Y5vlw==
-  dependencies:
-    "@sentry/core" "7.51.0"
-    "@sentry/react" "7.51.0"
-    "@sentry/types" "7.51.0"
-    "@sentry/utils" "7.51.0"
-    "@sentry/webpack-plugin" "1.19.0"
 
 "@sentry/gatsby@^7.51.2":
   version "7.51.2"
@@ -2115,17 +2004,6 @@
     "@sentry/utils" "7.51.2"
     "@sentry/webpack-plugin" "1.19.0"
 
-"@sentry/react@7.51.0":
-  version "7.51.0"
-  resolved "https://registry.yarnpkg.com/@sentry/react/-/react-7.51.0.tgz#a6949cfcfc96b856fa21c19cf458e9d60200b81e"
-  integrity sha512-w9fHVBbv4l3tGFa9YCV1m2ngUTnYxM/r6pO2Q8N9sjeWAk74sREm7fUjBJI24sdJFQJj0KhHNg0I1ZOA+uITyQ==
-  dependencies:
-    "@sentry/browser" "7.51.0"
-    "@sentry/types" "7.51.0"
-    "@sentry/utils" "7.51.0"
-    hoist-non-react-statics "^3.3.2"
-    tslib "^1.9.3"
-
 "@sentry/react@7.51.2":
   version "7.51.2"
   resolved "https://registry.yarnpkg.com/@sentry/react/-/react-7.51.2.tgz#8d09c8358a920d06225f879b0291867175d4f045"
@@ -2137,15 +2015,6 @@
     hoist-non-react-statics "^3.3.2"
     tslib "^1.9.3"
 
-"@sentry/replay@7.51.0":
-  version "7.51.0"
-  resolved "https://registry.yarnpkg.com/@sentry/replay/-/replay-7.51.0.tgz#d37f19d9201f63094f665ed7813c1c82b3be8c30"
-  integrity sha512-3jv+chhhlOVFjPKYJOEJy+J+9yTUEHxybZ0tTwGZYOJp9T8HdO21L6NjYk5b9wEqJonhZHp1BiQnzG82NLDkSQ==
-  dependencies:
-    "@sentry/core" "7.51.0"
-    "@sentry/types" "7.51.0"
-    "@sentry/utils" "7.51.0"
-
 "@sentry/replay@7.51.2":
   version "7.51.2"
   resolved "https://registry.yarnpkg.com/@sentry/replay/-/replay-7.51.2.tgz#1f54e92b472ab87dfdb4e8cd6b8c8252600fe7b0"
@@ -2155,23 +2024,10 @@
     "@sentry/types" "7.51.2"
     "@sentry/utils" "7.51.2"
 
-"@sentry/types@7.51.0":
-  version "7.51.0"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.51.0.tgz#78ea083c329b29deda0a4f19cda39d89ac8c1e38"
-  integrity sha512-8REzzY0DslDryp6Yxj+tJ4NkXFHulLW9k8dgZV2Qo/0rBDMKir8g0IHYeN8ZBcnWrx2F+6rQb6uN6BjyLZY7Dg==
-
 "@sentry/types@7.51.2":
   version "7.51.2"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.51.2.tgz#cb742f374d9549195f62c462c915adeafed31d65"
   integrity sha512-/hLnZVrcK7G5BQoD/60u9Qak8c9AvwV8za8TtYPJDUeW59GrqnqOkFji7RVhI7oH1OX4iBxV+9pAKzfYE6A6SA==
-
-"@sentry/utils@7.51.0":
-  version "7.51.0"
-  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-7.51.0.tgz#5720437fd319a676bd634a90189a636719894cdb"
-  integrity sha512-y5zq4IfZDCm6cg0EQJMghUM4YjZToFni7J5OKopLXKVtc9YtRtkYoFuFqEWm4HBuBwplreiS/KkDQgWn3FVn7A==
-  dependencies:
-    "@sentry/types" "7.51.0"
-    tslib "^1.9.3"
 
 "@sentry/utils@7.51.2":
   version "7.51.2"
@@ -6247,7 +6103,7 @@ gatsby-plugin-react-helmet@^6.4.0:
   dependencies:
     "@babel/runtime" "^7.20.13"
 
-gatsby-plugin-sharp@^5.4.0, gatsby-plugin-sharp@^5.8.1:
+gatsby-plugin-sharp@^5.8.1:
   version "5.9.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-5.9.0.tgz#72b97bb27a4d4c936621a0c7f1eda77f4715b4da"
   integrity sha512-RXiRmuAwRZf7uqzoqBoG+7qbWWXCuf359Td+yKBLC7M+ktsfw9FMfivS6PpY6v+XmEztO8so1n+Sx+nOU5FScw==
@@ -11832,9 +11688,9 @@ socket.io-client@4.5.4:
     socket.io-parser "~4.2.1"
 
 socket.io-parser@~4.2.1:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-4.2.2.tgz#1dd384019e25b7a3d374877f492ab34f2ad0d206"
-  integrity sha512-DJtziuKypFkMMHCm2uIshOYC7QaylbtzQwiMYDuCKy3OPkjLzu4B2vAhTlqipRHHzrI0NJeBAizTK7X+6m1jVw==
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-4.2.3.tgz#926bcc6658e2ae0883dc9dee69acbdc76e4e3667"
+  integrity sha512-JMafRntWVO2DCJimKsRTh/wnqVvO4hrfwOqtO7f+uzwsQMuxO6VwImtYxaQ+ieoyshWOTJyV0fA21lccEXRPpQ==
   dependencies:
     "@socket.io/component-emitter" "~3.1.0"
     debug "~4.3.1"
