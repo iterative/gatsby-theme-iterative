@@ -8,8 +8,7 @@ export const AlertContent = () => (
     </span>{' '}
     New Release!{' '}
     <Link href="https://iterative.ai/blog/dvc-3.0-ml-experiments-data-versioning/">
-      DVC 3.0: Beyond the Command Line with Enhanced ML Experiments and Data
-      Versioning
+      The DVC 3.0 Stack: Beyond the Command Line
     </Link>{' '}
   </>
 )
