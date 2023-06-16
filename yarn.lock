@@ -1027,10 +1027,17 @@
   resolved "https://registry.yarnpkg.com/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3", "@babel/runtime@^7.20.13", "@babel/runtime@^7.20.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.20.13", "@babel/runtime@^7.20.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.21.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.21.0.tgz#5b55c9d394e5fcf304909a8b00c07dc217b56673"
   integrity sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==
+  dependencies:
+    regenerator-runtime "^0.13.11"
+
+"@babel/runtime@^7.22.3":
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.22.5.tgz#8564dd588182ce0047d55d7a75e93921107b57ec"
+  integrity sha512-ecjvYlnAaZ/KVneE/OdKYBYfgXV3Ptu6zQWmgEF7vwKhQnvVS6bjMD2XYgj+SNvQ1GfK/pjgokfPkC/2CO8CuA==
   dependencies:
     regenerator-runtime "^0.13.11"
 
@@ -5663,10 +5670,10 @@ fbjs@^3.0.0:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.30"
 
-fetch-retry@^5.0.2:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-5.0.4.tgz#06e8e4533030bf6faa00ffbb9450cb9264c23c12"
-  integrity sha512-LXcdgpdcVedccGg0AZqg+S8lX/FCdwXD92WNZ5k5qsb0irRhSFsBOpcJt7oevyqT2/C2nEE0zSFNdBEpj3YOSw==
+fetch-retry@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-5.0.6.tgz#17d0bc90423405b7a88b74355bf364acd2a7fa56"
+  integrity sha512-3yurQZ2hD9VISAhJJP9bpYFNQrHHBXE2JxxjY5aLEcDi46RmAzJE2OC9FAde0yis5ElW0jTTzs0zfg/Cca4XqQ==
 
 figures@^3.0.0:
   version "3.2.0"
@@ -6209,15 +6216,15 @@ gatsby-remark-embed-gist@^1.2.1:
     node-fetch "^2.6.0"
     parse-numeric-range "^1.2.0"
 
-gatsby-remark-embedder@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-embedder/-/gatsby-remark-embedder-6.0.1.tgz#6d577d4b7915d3efab0c7a03af22c5c1e436c0fe"
-  integrity sha512-bzhlc6cMeBkdyZ2XGQbNw/OVXxA0ETL7cqltUxmixCe+z1ziEXw83SHL62ETjQGg/vPOTqlv8vp14mUjENbbHw==
+gatsby-remark-embedder@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-embedder/-/gatsby-remark-embedder-7.0.0.tgz#dd0efce30f3e290ce7330ef3f92984aaa9204baa"
+  integrity sha512-b+h5lnzniSsi7dPeGfflKk+fNtJLwmFJE0AeGBB+qGWndrT83ZGFc+k3dY05JyGr1jbXdZpDMsOz9AlqeZ9TRA==
   dependencies:
-    "@babel/runtime" "^7.18.3"
-    fetch-retry "^5.0.2"
+    "@babel/runtime" "^7.22.3"
+    fetch-retry "^5.0.6"
     hast-util-from-parse5 "^6.0.1"
-    node-fetch "^2.6.7"
+    node-fetch "^2.6.11"
     parse5 "^6.0.1"
     unist-util-visit "^2.0.3"
 
@@ -9228,6 +9235,13 @@ node-fetch@^2.6.0, node-fetch@^2.6.1, node-fetch@^2.6.7, node-fetch@^2.6.8, node
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.9.tgz#7c7f744b5cc6eb5fd404e0c7a9fec630a55657e6"
   integrity sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==
+  dependencies:
+    whatwg-url "^5.0.0"
+
+node-fetch@^2.6.11:
+  version "2.6.11"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.11.tgz#cde7fc71deef3131ef80a738919f999e6edfff25"
+  integrity sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==
   dependencies:
     whatwg-url "^5.0.0"
 
