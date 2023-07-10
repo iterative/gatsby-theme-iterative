@@ -16,26 +16,24 @@ interface ISiteMeta {
 export default function siteMeta(): ISiteMeta {
   const {
     site: { siteMetadata }
-  } = useStaticQuery(
-    graphql`
-      query SiteMetadata {
-        site {
-          siteMetadata {
-            title
-            description
-            keywords
-            siteUrl
-            titleTemplate
-            imageAlt
-            plausibleDomain
-            plausibleSrc
-            plausibleAPI
-            twitterUsername
-          }
+  } = useStaticQuery(graphql`
+    query SiteMetadata {
+      site {
+        siteMetadata {
+          title
+          description
+          keywords
+          siteUrl
+          titleTemplate
+          imageAlt
+          plausibleDomain
+          plausibleSrc
+          plausibleAPI
+          twitterUsername
         }
       }
-    `
-  )
+    }
+  `)
 
   return siteMetadata
 }
