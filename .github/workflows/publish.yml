@@ -18,8 +18,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@dvcorg'
       - run: |
-          gh release create $(basename ${{github.head_ref }}) --generate-notes
           cd ./packages/gatsby-theme-iterative
+          gh release create v$(node -p "require('./package.json').version") --generate-notes
           yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
