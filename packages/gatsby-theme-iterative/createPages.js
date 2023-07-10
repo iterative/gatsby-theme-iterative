@@ -40,26 +40,24 @@ const createPages = async (
   const { default: GithubSlugger } = await import('github-slugger')
   const slugger = new GithubSlugger()
 
-  const docsResponse = await graphql(
-    `
-      {
-        docs: allDocsPage(limit: 9999) {
-          edges {
-            node {
-              id
-              slug
-              template
-              parent {
-                ... on MarkdownRemark {
-                  rawMarkdownBody
-                }
+  const docsResponse = await graphql(`
+    {
+      docs: allDocsPage(limit: 9999) {
+        edges {
+          node {
+            id
+            slug
+            template
+            parent {
+              ... on MarkdownRemark {
+                rawMarkdownBody
               }
             }
           }
         }
       }
-    `
-  )
+    }
+  `)
 
   if (docsResponse.errors) {
     throw docsResponse.errors

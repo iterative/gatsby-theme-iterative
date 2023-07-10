@@ -58,7 +58,9 @@
   z-index: 2;
   bottom: 0;
   left: 0;
-  box-shadow: rgb(0 0 0 / 14%) 0 0 4px, rgb(0 0 0 / 28%) 0 4px 8px;
+  box-shadow:
+    rgb(0 0 0 / 14%) 0 0 4px,
+    rgb(0 0 0 / 28%) 0 4px 8px;
   transform: translateX(-110%);
   transition: transform 0.35s ease;
 

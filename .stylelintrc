@@ -31,6 +31,7 @@
         "ignoreFunctions": ["a", "color-mod"]
       }
     ],
-    "media-feature-range-notation": null
+    "media-feature-range-notation": null,
+    "media-query-no-invalid": null
   }
 }
