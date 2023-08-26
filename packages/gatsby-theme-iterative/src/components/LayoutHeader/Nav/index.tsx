@@ -4,6 +4,8 @@ import cn from 'classnames'
 import PseudoButton from '../../PseudoButton'
 import SocialIcons from './SocialIcons'
 import LinkItems from './LinkItems'
+import Link from '../../Link'
+import { ReactComponent as ExternalLinkIcon } from '../../../images/external-link-icon.svg'
 
 import { logEvent } from '../../../utils/front/plausible'
 
@@ -21,6 +23,11 @@ const Nav: React.FC = () => (
     >
       Get Started
     </PseudoButton>
+    <div className="px-4">|</div>
+    <Link href="https://cloud.dvc.ai">
+      Get Enterprise{` `}
+      <ExternalLinkIcon className="ml-1 inline" />
+    </Link>
   </div>
 )
 
