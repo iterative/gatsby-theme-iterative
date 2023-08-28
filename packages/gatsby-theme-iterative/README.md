@@ -131,3 +131,14 @@ others in the future.
 
 Check out the example project in this project's monorepo, particularly
 [`gatsby-config.js`](https://github.com/iterative/gatsby-theme-iterative/blob/main/packages/example/gatsby-config.js).
+
+### Linking the local theme
+
+If you want to test the changes to the theme locally without publishing, you can
+run `yarn add @dvcorg/gatsby-theme-iterative@[/path/to/theme]` in your project,
+or simply update the package.json file and change the version to
+`[/path/to/theme]`, and then run `yarn develop` as normal. This will use the
+local version of the theme instead of the published version.
+
+Note: Get the absolute theme path from `packages/gatsby-theme-iterative`
+directory. You can use `pwd` command to get the absolute path.
