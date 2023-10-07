@@ -51,7 +51,7 @@
     "lodash": "^4.17.21",
     "nanoid": "^4.0.0",
     "perfect-scrollbar": "^1.5.5",
-    "postcss": "^8.4.25",
+    "postcss": "^8.4.31",
     "postcss-nested": "^6.0.0",
     "prismjs": "^1.29.0",
     "promise-polyfill": "^8.2.3",
