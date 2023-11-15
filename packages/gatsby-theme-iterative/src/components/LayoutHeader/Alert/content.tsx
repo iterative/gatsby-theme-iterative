@@ -6,7 +6,10 @@ export const AlertContent = () => (
     <span role="img" aria-label="rocket">
       🚀
     </span>{' '}
-    Help Support Our DVC for VSCode Extension on{' '}
-    <Link href="https://www.producthunt.com/">Product Hunt</Link>!
+    Support our DVC Extension for VSCode on{' '}
+    <Link href="https://www.producthunt.com/posts/dvc-extension-for-vs-code">
+      Product Hunt
+    </Link>
+    !
   </>
 )
