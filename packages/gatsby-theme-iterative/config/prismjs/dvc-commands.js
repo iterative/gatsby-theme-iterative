@@ -1,5 +1,7 @@
 module.exports = [
   'add',
+  'artifacts get',
+  'artifacts',
   'cache dir',
   'cache',
   'check-ignore',
