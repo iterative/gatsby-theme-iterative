@@ -27,8 +27,8 @@ module.exports = aliasEntries => astNode => {
       cli === 'cml'
         ? CML_COMMAND_ROOT
         : cli === 'gto'
-        ? GTO_COMMAND_ROOT
-        : COMMAND_ROOT
+          ? GTO_COMMAND_ROOT
+          : COMMAND_ROOT
     const command = parts[index + 1]
     const aliasEntry =
       aliasEntries &&
