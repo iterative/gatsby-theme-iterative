@@ -46,8 +46,8 @@ export const Details: React.FC<
       typeof cur === 'string'
         ? cur
         : typeof cur === 'object'
-        ? cur?.props?.children?.toString()
-        : '')
+          ? cur?.props?.children?.toString()
+          : '')
   }, '')
   id = useMemo(() => {
     return id ? slugger.slug(id) : slugger.slug(title)

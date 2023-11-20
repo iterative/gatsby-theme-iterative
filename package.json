@@ -25,20 +25,21 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@release-it-plugins/workspaces": "^3.2.0",
-    "@typescript-eslint/eslint-plugin": "5.61.0",
-    "@typescript-eslint/parser": "5.61.0",
-    "eslint": "8.44.0",
-    "eslint-config-prettier": "8.8.0",
+    "@typescript-eslint/eslint-plugin": "6.11.0",
+    "@typescript-eslint/parser": "6.11.0",
+    "eslint": "8.54.0",
+    "eslint-config-prettier": "9.0.0",
     "eslint-plugin-json": "3.1.0",
-    "eslint-plugin-jsx-a11y": "6.7.1",
-    "eslint-plugin-prettier": "^5.0.0-alpha.2",
-    "eslint-plugin-react": "7.32.2",
-    "gatsby-plugin-postcss": "^6.11.0",
+    "eslint-plugin-jsx-a11y": "6.8.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "7.33.2",
+    "gatsby-plugin-postcss": "^6.12.0",
     "husky": "8.0.3",
-    "lint-staged": "13.2.3",
-    "prettier": "3.0.0",
-    "stylelint": "15.10.1",
-    "stylelint-config-standard": "34.0.0"
-  }
+    "lint-staged": "15.1.0",
+    "prettier": "3.1.0",
+    "stylelint": "15.11.0",
+    "stylelint-config-standard": "34.0.0",
+    "typescript": "^5.2.2"
+  },
+  "packageManager": "yarn@4.0.2"
 }

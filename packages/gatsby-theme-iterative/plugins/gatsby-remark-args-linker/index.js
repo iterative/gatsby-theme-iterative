@@ -31,10 +31,10 @@ module.exports = async (
     typeof pathname === 'string'
       ? parentNode?.relativeDirectory?.split('/').includes(pathname)
       : Array.isArray(pathname)
-      ? pathname.some(p =>
-          parentNode?.relativeDirectory?.split('/').includes(p)
-        )
-      : false
+        ? pathname.some(p =>
+            parentNode?.relativeDirectory?.split('/').includes(p)
+          )
+        : false
   if (!isArgsLinkerPage) return markdownAST
   visit(
     markdownAST,

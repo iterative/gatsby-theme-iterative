@@ -103,13 +103,13 @@ const SEO: React.FC<ISEOProps> = ({
               }
             ]
           : pathname
-          ? [
-              {
-                rel: 'canonical',
-                href: fullUrl
-              }
-            ]
-          : []),
+            ? [
+                {
+                  rel: 'canonical',
+                  href: fullUrl
+                }
+              ]
+            : []),
         ...link
       ]}
     >
