@@ -45,7 +45,7 @@
     "gatsby-transformer-sharp": "^5.11.0",
     "github-markdown-css": "^5.1.0",
     "github-slugger": "^2.0.0",
-    "hast-util-select": "^5.0.4",
+    "hast-util-select": "^6.0.0",
     "iso-url": "^1.2.1",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
