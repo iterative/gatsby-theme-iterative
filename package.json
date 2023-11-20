@@ -25,7 +25,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@release-it-plugins/workspaces": "^3.2.0",
+    "@release-it-plugins/workspaces": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "5.61.0",
     "@typescript-eslint/parser": "5.61.0",
     "eslint": "8.44.0",
