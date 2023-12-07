@@ -13,10 +13,10 @@ import { ReactComponent as TwitterSVG } from '../SocialIcon/twitter.svg'
 import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
 import { ReactComponent as CmlSVG } from '../../images/cml_icon-color--square_vector.svg'
 import { ReactComponent as StudioSVG } from '../../images/studio_icon-color--square_vector.svg'
-import { ReactComponent as IterativeSVG } from '../../images/iterative_icon-color--square_vector.svg'
 import { ReactComponent as MlemSVG } from '../../images/mlem-icon.svg'
 
 import * as styles from './styles.module.css'
+import LogoGradient from '../LogoGradient'
 
 const docsPage = getFirstPage()
 
@@ -189,14 +189,9 @@ const LayoutFooter: React.FC = () => (
       <div className={styles.bottomRow}>
         <p className={styles.companyLabel}>
           By{' '}
-          <Link
-            className={styles.companyName}
-            href="https://iterative.ai/"
-            target="_blank"
-          >
-            <IterativeSVG className={styles.companyLogo} />
-            iterative.ai
-          </Link>
+          <LogoGradient className="font-extrabold mr-1" href="https://dvc.ai">
+            dvc.ai
+          </LogoGradient>
           <span className={styles.companyDescription}>
             <ShowOnly as="span" on="desktop">
               {' '}
