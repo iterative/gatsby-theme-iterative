@@ -14,6 +14,12 @@
     "@reach/skip-nav": "^0.18.0",
     "@sentry/gatsby": "^7.57.0",
     "@svgr/webpack": "^8.0.0",
+    "@types/gatsbyjs__reach-router": "^2.0.0",
+    "@types/isomorphic-fetch": "^0.0.39",
+    "@types/promise-polyfill": "^6.0.4",
+    "@types/react-collapse": "^5.0.1",
+    "@types/react-helmet": "^6.1.6",
+    "@types/unist": "^3.0.0",
     "autoprefixer": "^10.4.4",
     "classnames": "^2.3.1",
     "ease-component": "^1.0.0",
@@ -69,13 +75,7 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@types/gatsbyjs__reach-router": "^2.0.0",
     "@types/hast": "3.0.3",
-    "@types/isomorphic-fetch": "^0.0.39",
-    "@types/promise-polyfill": "^6.0.4",
-    "@types/react-collapse": "^5.0.1",
-    "@types/react-helmet": "^6.1.6",
-    "@types/unist": "^3.0.0",
     "stylelint": "15.11.0",
     "typescript": "5.2.2"
   },
