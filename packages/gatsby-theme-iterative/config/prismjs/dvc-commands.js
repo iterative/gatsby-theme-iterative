@@ -33,6 +33,7 @@ module.exports = [
   'get-url',
   'get',
   'import-url',
+  'import-db',
   'import',
   'init',
   'install',
