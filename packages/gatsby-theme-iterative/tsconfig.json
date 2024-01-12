@@ -3,7 +3,7 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": ["dom", "es2015", "es2017", "es2021"],
     "module": "commonjs",
     "noEmit": true,
