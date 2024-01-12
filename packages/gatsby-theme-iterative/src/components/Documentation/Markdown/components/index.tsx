@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 import Slugger from '../../../../utils/front/Slugger'
 import { NoPreRedirectLink } from '../../../Link'
 import Admonition from '../Admonition'

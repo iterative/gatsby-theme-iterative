@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Link from '../../Link'
 import { ReactComponent as LogoSVG } from '../../../images/dvc_icon-color--square_vector.svg'
 import * as styles from './styles.module.css'
