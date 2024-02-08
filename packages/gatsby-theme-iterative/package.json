@@ -31,7 +31,7 @@
     "gatsby-plugin-sitemap": "^6.11.0",
     "gatsby-plugin-svgr": "^3.0.0-beta.0",
     "gatsby-remark-autolink-headers": "^6.11.0",
-    "gatsby-remark-copy-linked-files": "^6.11.0",
+    "gatsby-remark-copy-relative-linked-files": "^1.5.0",
     "gatsby-remark-embed-gist": "^1.2.1",
     "gatsby-remark-embedder": "^7.0.0",
     "gatsby-remark-external-links": "^0.0.4",
