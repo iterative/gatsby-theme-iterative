@@ -134,7 +134,13 @@ module.exports = ({
           require.resolve('./plugins/external-link-plugin'),
           require.resolve('./plugins/null-link-plugin'),
           // moving this plugin after external-link-plugin to allow images to be copied to public folder
-          'gatsby-remark-copy-relative-linked-files'
+          {
+            resolve: 'gatsby-remark-copy-relative-linked-files',
+            options: {
+              filename: ({ name, hash, extension }) =>
+                `${name}-${hash}.${extension}`
+            }
+          }
         ]
       }
     },
