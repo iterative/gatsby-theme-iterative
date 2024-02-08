@@ -111,7 +111,6 @@ module.exports = ({
               includeDefaultCss: true
             }
           },
-          'gatsby-remark-copy-linked-files',
           'gatsby-remark-external-links',
           {
             resolve: 'gatsby-remark-autolink-headers',
@@ -133,7 +132,15 @@ module.exports = ({
           'gatsby-remark-responsive-iframe',
           require.resolve('./plugins/resize-image-plugin'),
           require.resolve('./plugins/external-link-plugin'),
-          require.resolve('./plugins/null-link-plugin')
+          require.resolve('./plugins/null-link-plugin'),
+          // moving this plugin after external-link-plugin to allow images to be copied to public folder
+          {
+            resolve: 'gatsby-remark-copy-relative-linked-files',
+            options: {
+              filename: ({ name, hash, extension }) =>
+                `${name}-${hash}.${extension}`
+            }
+          }
         ]
       }
     },
