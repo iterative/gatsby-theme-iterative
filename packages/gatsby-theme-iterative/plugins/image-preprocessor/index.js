@@ -14,7 +14,7 @@ module.exports = async (
   const preprocessImageNode = async node => {
     if (node.type === 'image') {
       const { url } = node
-      if (url && !(url.startsWith('http://') || url.startsWith('https://'))) {
+      if (url && url.startsWith('/')) {
         const imagePath = path.resolve(directory, path.join(baseDir, url))
 
         const imageNode = await getRemarkFileDependency({
