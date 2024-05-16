@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "module": "commonjs",
     "resolveJsonModule": true,
-    "lib": ["dom", "es2015", "es2017", "es2021"],
     "jsx": "react-jsx",
+    "lib": ["dom", "ESNext"],
     "sourceMap": true,
     "strict": true,
     "noImplicitAny": true,

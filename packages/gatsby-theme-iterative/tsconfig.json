@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "jsx": "react-jsx",
-    "lib": ["dom", "es2015", "es2017", "es2021"],
+    "lib": ["dom", "ESNext"],
     "module": "commonjs",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -20,7 +20,7 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "target": "es5"
+    "target": "ESNext"
   },
   "include": ["./src/**/*", "./*.js"]
 }
