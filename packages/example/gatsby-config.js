@@ -4,6 +4,7 @@ const {
 } = require('../gatsby-theme-iterative/package.json')
 
 module.exports = {
+  jsxRuntime: 'automatic',
   siteMetadata: {
     title: 'Example website',
     description: 'Example website description',

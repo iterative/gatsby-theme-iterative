@@ -108,7 +108,7 @@ module.exports = ({
           {
             resolve: 'gatsby-remark-embed-gist',
             options: {
-              includeDefaultCss: true
+              gistDefaultCssInclude: false
             }
           },
           'gatsby-remark-external-links',
@@ -173,5 +173,6 @@ module.exports = ({
     plausibleAPI,
     plausibleDomain
   },
-  trailingSlash: 'never'
+  trailingSlash: 'never',
+  jsxRuntime: 'automatic'
 })
