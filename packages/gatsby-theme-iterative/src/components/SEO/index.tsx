@@ -4,6 +4,7 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 import getSiteMeta from '../../queries/siteMeta'
 import { buildMetadata, MetaProps, LinkProps } from './helper'
+import { Script } from 'gatsby'
 
 export interface IPaginatorPageInfo {
   currentPage: number
@@ -113,16 +114,24 @@ const SEO: React.FC<ISEOProps> = ({
         ...link
       ]}
     >
-      {siteMeta.plausibleSrc ? (
-        <script
-          defer
-          data-domain={
-            siteMeta.plausibleDomain || new URL(siteMeta.siteUrl).hostname
-          }
-          data-api={siteMeta.plausibleAPI || undefined}
-          src={siteMeta.plausibleSrc}
-        />
-      ) : null}
+      {siteMeta.plausibleSrc && (
+        <>
+          <Script
+            data-domain={
+              siteMeta.plausibleDomain || new URL(siteMeta.siteUrl).hostname
+            }
+            data-api={siteMeta.plausibleAPI || undefined}
+            src={siteMeta.plausibleSrc}
+          />
+          <Script
+            id="plausible-custom-events"
+            dangerouslySetInnerHTML={{
+              __html:
+                'window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }'
+            }}
+          />
+        </>
+      )}
       {children}
     </Helmet>
   )
