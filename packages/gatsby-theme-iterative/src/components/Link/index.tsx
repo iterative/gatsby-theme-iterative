@@ -23,7 +23,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   rel,
   target,
   download = false,
-  className = 'underline text-blue-600 hover:text-blue-800 visited:text-purple-600',
+  className = 'no-underline text-blue-600 hover:text-blue-800 hover:underline',
   ...restProps
 }) => {
   // Handle all situations where a basic `a` must be used over Gatsby Link

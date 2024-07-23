@@ -1,13 +1,14 @@
 import Link from '../../Link'
+import { ReactComponent as GithubSVG } from '../../SocialIcon/github.svg'
 
 export const AlertContent = () => (
   <>
     <span role="img" aria-label="rocket">
       🚀
     </span>{' '}
-    Support our DVC Extension for VSCode on{' '}
-    <Link href="https://www.producthunt.com/posts/dvc-extension-for-vs-code">
-      Product Hunt
+    DataChain Open-Source Release{' '}
+    <Link href="https://github.com/iterative/datachain">
+      Start us on <GithubSVG className="h-5 w-5 inline-block align-middle" />
     </Link>
     !
   </>
