@@ -8,7 +8,7 @@ export const AlertContent = () => (
     </span>{' '}
     DataChain Open-Source Release.{' '}
     <Link href="https://github.com/iterative/datachain">
-      Start us on <GithubSVG className="h-5 w-5 inline-block align-middle" />
+      Star us on <GithubSVG className="h-5 w-5 inline-block align-middle" />
     </Link>
     !
   </>
