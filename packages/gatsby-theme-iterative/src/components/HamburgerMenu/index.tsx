@@ -76,8 +76,8 @@ export const HamburgerMenu: React.FC<
         >
           <LogoSVG />
         </Link>
-        <LogoGradient className="mr-auto" href="https://dvc.ai/">
-          by <span className="font-extrabold">dvc.ai</span>
+        <LogoGradient className="mr-auto">
+          by <span className="font-extrabold">Iterative</span>
         </LogoGradient>
       </div>
       <ul className={styles.sections}>

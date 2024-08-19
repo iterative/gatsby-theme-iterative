@@ -9,11 +9,11 @@ const LogoGradient = ({
   className,
   children
 }: {
-  href: string
+  href?: string
   className?: string
   children: React.ReactNode
 }) => {
-  return (
+  return href ? (
     <Link
       href={href}
       className={cn(
@@ -24,6 +24,8 @@ const LogoGradient = ({
     >
       {children}
     </Link>
+  ) : (
+    <span className={cn(styles.logoGradient, className)}>{children}</span>
   )
 }
 

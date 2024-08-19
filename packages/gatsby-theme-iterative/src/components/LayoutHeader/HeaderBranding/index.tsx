@@ -9,7 +9,7 @@ export const HeaderBranding = () => (
       <LogoSVG className={styles.logo} />
     </Link>
     <LogoGradient className="mr-auto text-sm" href="https://dvc.ai/">
-      by <span className="font-extrabold">dvc.ai</span>
+      by <span className="font-extrabold">Iterative</span>
     </LogoGradient>
   </>
 )
