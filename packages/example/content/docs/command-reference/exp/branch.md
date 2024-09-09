@@ -17,7 +17,8 @@ positional arguments:
 
 Makes a given Git [`branch`] containing the target `experiment`. This makes the
 experiment into a [regular commit], or several in the case of [checkpoint
-experiments] (one per checkpoint).
+experiments]
+(one per checkpoint).
 
 The new `branch` will be based on the experiment's parent commit (`HEAD` at the
 time that the experiment was run). Note that DVC **does not** switch into the

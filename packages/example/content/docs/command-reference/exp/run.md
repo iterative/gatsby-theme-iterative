@@ -33,25 +33,23 @@ directories, etc.
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
-It's possible to [queue experiments] for later execution with the `--queue`
-flag. To actually run them, use `dvc exp run --run-all`. Queued experiments are
-run sequentially by default, but can be run in parallel using the `--jobs`
-option.
+It's possible to [queue experiments] for later execution with the `--queue` flag.
+To actually run them, use `dvc exp run --run-all`. Queued experiments are run sequentially
+by default, but can be run in parallel using the `--jobs` option.
 
 > ⚠️ Parallel runs are experimental and may be unstable. Make sure you're using
 > a number of jobs that your environment can handle (no more than the CPU
 > cores).
 
-It's also possible to run special [checkpoint experiments] that log the
-execution progress (useful for deep learning ML). The `--rev` and `--reset`
-options have special uses for these.
+It's also possible to run special [checkpoint experiments] that log the execution
+progress (useful for deep learning ML). The `--rev` and `--reset` options have special
+uses for these.
 
 > 📖 See the [Running Experiments] guide for more details on all these features.
 
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
-persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
-committing them to the Git repo. Unnecessary ones can be [cleared] with
-`dvc exp gc`.
+persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and committing
+them to the Git repo. Unnecessary ones can be [cleared] with `dvc exp gc`.
 
 [on-the-fly]: #example-modify-parameters-on-the-fly
 [queue experiments]:

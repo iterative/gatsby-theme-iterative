@@ -22,8 +22,7 @@ Any [generic option](/doc/ref) in addition to:
 - `--md`: Produce output in markdown format (`[CML Pull/Merge Request](url)`
   instead of `url`).
 - `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
-- `--user-email=<address>`: Git user email for commits [default:
-  `olivaw@iterative.ai`].
+- `--user-email=<address>`: Git user email for commits [default: `olivaw@iterative.ai`].
 - `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
 
 ## Examples

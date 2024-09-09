@@ -368,8 +368,8 @@ dataset, but you still want to track it in the <abbr>project</abbr> so it can be
 [pulled](/doc/command-reference/plots) later.
 
 As long as you have setup [remote storage] that can handle the data, this can be
-achieved with the `--to-remote` flag. It creates an import `.dvc` file without
-downloading anything, transferring a target directly to a DVC remote instead.
+achieved with the `--to-remote` flag. It creates an import `.dvc` file without downloading
+anything, transferring a target directly to a DVC remote instead.
 
 Let's import a `data.xml` file via HTTP straight to remote:
 

@@ -14,8 +14,8 @@ try these yourself, please refer to the project. [README] about how to install.
 
 ## Creating plots from tabular data
 
-A useful plot to show the classification performance is the [confusion matrix].
-In order to produce it, DVC expects a CSV **plots file** in the form:
+A useful plot to show the classification performance is the [confusion matrix]. In
+order to produce it, DVC expects a CSV **plots file** in the form:
 
 ```csv
 actual,predicted
@@ -99,8 +99,8 @@ workflow:
 - DVC can generate HTML files that includes interactive plots from data series
   in JSON, YAML, CSV, or TSV format.
 
-- DVC can keep track of image files produced as [plot outputs] from the
-  training/evaluation scripts.
+- DVC can keep track of image files produced as [plot outputs] from the training/evaluation
+  scripts.
 
 - [DVCLive] integrations can produce plots automatically during training.
 
