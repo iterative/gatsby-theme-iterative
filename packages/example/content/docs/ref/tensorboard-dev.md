@@ -18,8 +18,7 @@ Any [generic option](/doc/ref) in addition to:
 - `--description=<...>`: TensorBoard experiment description (markdown format, up
   to 600 characters).
 - `--md`: Produce output in markdown format (`[title](url)`).
-- `-t=<...>`, `--title=<...>`: Title for markdown output [default: *value of
-  `--name`*].
+- `-t=<...>`, `--title=<...>`: Title for markdown output [default: *value of `--name`*].
 - `--rm-watermark`: Don't inject a watermark into the comment. Will break some
   CML functionality which needs to distinguish CML reports from other comments.
 

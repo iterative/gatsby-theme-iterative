@@ -1,15 +1,14 @@
 # Sharing Experiments
 
 In a regular Git workflow, <abbr>DVC repository</abbr> versions are typically
-synchronized among team members. And [DVC Experiments] are internally connected
-to this commit history. But to avoid cluttering everyone's copies of the repo,
-by default experiments will only exist in the local environment where they were
-[created].
+synchronized among team members. And [DVC Experiments] are internally connected to
+this commit history. But to avoid cluttering everyone's copies of the repo, by default
+experiments will only exist in the local environment where they were [created].
 
 You must explicitly save or share experiments individually on other locations.
-This is done similarly to [sharing regular project versions], by synchronizing
-with DVC and Git remotes. But DVC takes care of pushing and pulling to/from Git
-remotes in the case of experiments.
+This is done similarly to [sharing regular project versions], by synchronizing with
+DVC and Git remotes. But DVC takes care of pushing and pulling to/from Git remotes
+in the case of experiments.
 
 ```
   ┌────────────────┐     ┌────────────────┐

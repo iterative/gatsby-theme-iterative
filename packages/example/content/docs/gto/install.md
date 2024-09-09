@@ -16,8 +16,8 @@ manager like [pip](https://pypi.org/project/pip/) or
 
 <admon type="info">
 
-We **strongly** recommend creating a [virtual environment] or using [pipx] to
-encapsulate your local environment.
+We **strongly** recommend creating a [virtual environment] or using [pipx] to encapsulate
+your local environment.
 
 [virtual environment]: https://python.readthedocs.io/en/stable/library/venv.html
 [pipx]:

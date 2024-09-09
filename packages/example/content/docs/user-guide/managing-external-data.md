@@ -46,8 +46,8 @@ their remote URLs or external paths to `dvc add`, or put them in `dvc.yaml`
 
 DVC requires that the project's <abbr>cache</abbr> is configured in the same
 external location as the data that will be tracked (external outputs). This
-avoids transferring files to the local environment and enables [file links]
-within the external storage.
+avoids transferring files to the local environment and enables [file links] within
+the external storage.
 
 [file links]:
   /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
@@ -185,8 +185,7 @@ custom cache location for local paths outside of your project.
 
 > Except for external data on different storage devices or partitions mounted on
 > the same file system (e.g. `/mnt/raid/data`). In that case please setup an
-> external cache in that same drive to enable [file links] and avoid copying
-> data.
+> external cache in that same drive to enable [file links] and avoid copying data.
 
 ```dvc
 $ dvc add --external /home/shared/existing-data
