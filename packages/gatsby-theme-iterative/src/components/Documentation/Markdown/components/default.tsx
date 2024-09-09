@@ -115,6 +115,7 @@ export const Card: React.FC<
   PropsWithChildren<{
     icon?: string
     heading?: string
+    headingicon?: string
     href?: string
     headingtag:
       | string
@@ -124,7 +125,14 @@ export const Card: React.FC<
           }>
         >
   }>
-> = ({ children, icon, heading, headingtag: Heading = 'h3', href }) => {
+> = ({
+  children,
+  icon,
+  heading,
+  headingicon,
+  headingtag: Heading = 'h3',
+  href
+}) => {
   let iconElement
 
   if (Array.isArray(children) && icon) {
@@ -139,7 +147,16 @@ export const Card: React.FC<
         {iconElement && <div className={styles.cardIcon}>{iconElement}</div>}
         <div className={styles.cardContent}>
           {heading && (
-            <Heading className={styles.cardHeading}>{heading}</Heading>
+            <Heading className={styles.cardHeading}>
+              {headingicon && (
+                <img
+                  src={headingicon}
+                  alt="Heading Icon"
+                  className={styles.cardHeadingIcon}
+                />
+              )}
+              {heading}
+            </Heading>
           )}
           {children}
         </div>
