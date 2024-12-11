@@ -17,7 +17,6 @@ import studioLogo from '../../images/studio_icon-color--square_vector.svg'
 import mlemLogo from '../../images/mlem-icon.svg'
 
 import * as styles from './styles.module.css'
-import LogoGradient from '../LogoGradient'
 
 const docsPage = getFirstPage()
 
@@ -76,9 +75,6 @@ export const HamburgerMenu: React.FC<
         >
           <LogoSVG />
         </Link>
-        <LogoGradient className="mr-auto">
-          by <span className="font-extrabold">Iterative</span>
-        </LogoGradient>
       </div>
       <ul className={styles.sections}>
         <li className={styles.section}>
