@@ -4,7 +4,6 @@ import cn from 'classnames'
 import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import SocialIcon, { ISocialIcon } from '../SocialIcon'
-import ShowOnly from '../ShowOnly'
 import { getFirstPage } from '../../utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../images/dvc_icon-color--square_vector.svg'
@@ -16,7 +15,6 @@ import { ReactComponent as StudioSVG } from '../../images/studio_icon-color--squ
 import { ReactComponent as MlemSVG } from '../../images/mlem-icon.svg'
 
 import * as styles from './styles.module.css'
-import LogoGradient from '../LogoGradient'
 
 const docsPage = getFirstPage()
 
@@ -187,22 +185,6 @@ const LayoutFooter: React.FC = () => (
       </div>
       <FooterLists />
       <div className={styles.bottomRow}>
-        <p className={styles.companyLabel}>
-          By{' '}
-          <LogoGradient className="font-extrabold mr-1" href="https://dvc.ai">
-            Iterative
-          </LogoGradient>
-          <span className={styles.companyDescription}>
-            <ShowOnly as="span" on="desktop">
-              {' '}
-              - an open platform to operationalize AI
-            </ShowOnly>
-            <ShowOnly as="span" on="mobile">
-              {' '}
-              An open platform to operationalize AI
-            </ShowOnly>
-          </span>
-        </p>
         <FooterSocialIcons />
       </div>
     </LayoutWidthContainer>
