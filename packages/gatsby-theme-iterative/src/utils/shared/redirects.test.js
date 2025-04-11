@@ -174,7 +174,7 @@ describe('getRedirects', () => {
   describe('toS3', () => {
     itRedirects(
       'https://code.dvc.org/foo/bar',
-      'https://r2.dvc.or/code/foo/bar',
+      'https://r2.dvc.org/code/foo/bar',
       303
     )
 
@@ -190,23 +190,11 @@ describe('getRedirects', () => {
       303
     )
 
-    itRedirects(
-      '/exe/foo',
-      'https://r2.dvc.org/dvc-pkgs/exe/foo',
-      303
-    )
+    itRedirects('/exe/foo', 'https://r2.dvc.org/dvc-pkgs/exe/foo', 303)
 
-    itRedirects(
-      '/deb/foo',
-      'https://r2.dvc.org/dvc-pkgs/deb/foo',
-      303
-    )
+    itRedirects('/deb/foo', 'https://r2.dvc.org/dvc-pkgs/deb/foo', 303)
 
-    itRedirects(
-      '/rpm/foo',
-      'https://r2.dvc.org/dvc-pkgs/rpm/foo',
-      303
-    )
+    itRedirects('/rpm/foo', 'https://r2.dvc.org/dvc-pkgs/rpm/foo', 303)
   })
 
   describe('toDiscord', () => {
