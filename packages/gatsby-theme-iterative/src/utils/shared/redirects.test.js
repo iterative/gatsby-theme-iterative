@@ -174,39 +174,27 @@ describe('getRedirects', () => {
   describe('toS3', () => {
     itRedirects(
       'https://code.dvc.org/foo/bar',
-      'https://s3-us-east-2.amazonaws.com/dvc-public/code/foo/bar',
+      'https://r2.dvc.org/code/foo/bar',
       303
     )
 
     itRedirects(
       'https://data.dvc.org/foo/bar',
-      'https://s3-us-east-2.amazonaws.com/dvc-public/data/foo/bar',
+      'https://r2.dvc.org/data/foo/bar',
       303
     )
 
     itRedirects(
       'https://remote.dvc.org/foo/bar',
-      'https://s3-us-east-2.amazonaws.com/dvc-public/remote/foo/bar',
+      'https://r2.dvc.org/remote/foo/bar',
       303
     )
 
-    itRedirects(
-      '/exe/foo',
-      'https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs/exe/foo',
-      303
-    )
+    itRedirects('/exe/foo', 'https://r2.dvc.org/dvc-pkgs/exe/foo', 303)
 
-    itRedirects(
-      '/deb/foo',
-      'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/deb/foo',
-      303
-    )
+    itRedirects('/deb/foo', 'https://r2.dvc.org/dvc-pkgs/deb/foo', 303)
 
-    itRedirects(
-      '/rpm/foo',
-      'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/foo',
-      303
-    )
+    itRedirects('/rpm/foo', 'https://r2.dvc.org/dvc-pkgs/rpm/foo', 303)
   })
 
   describe('toDiscord', () => {
