@@ -5,18 +5,16 @@
     "schedule:monthly",
     "group:linters",
     "group:postcss",
-    "helpers:disableTypesNodeMajor",
     ":reviewer(team:websites)",
     ":enableVulnerabilityAlerts",
     ":label(dependencies)"
   ],
-  "prConcurrentLimit": 4,
-  "prHourlyLimit": 2,
+  "prConcurrentLimit": 1,
+  "rebaseWhen": "conflicted",
   "dependencyDashboardApproval": true,
   "packageRules": [
     {
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch",
+      "groupName": "minor and patch updates",
       "matchPackagePatterns": ["*"],
       "matchDatasources": ["npm"],
       "stabilityDays": 7,
@@ -38,7 +36,6 @@
       "matchPackagePatterns": ["@dvcorg", "iterative"],
       "additionalBranchPrefix": "iterative-package-",
       "matchDatasources": ["npm"],
-      "schedule": ["at any time"],
       "prCreation": "immediate",
       "prPriority": 2,
       "dependencyDashboardApproval": false
