@@ -10,6 +10,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: cd packages/gatsby-theme-iterative && yarn npm publish
+      - name: Publish package to npm
+        run: |
+          cd packages/gatsby-theme-iterative
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *"beta"* ]]; then
+          yarn npm publish --tag beta
+            else
+          yarn npm publish
+            fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
