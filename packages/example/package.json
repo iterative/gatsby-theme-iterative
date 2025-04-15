@@ -11,7 +11,7 @@
     "develop": "gatsby develop"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "*",
+    "@dvcorg/gatsby-theme-iterative": "workspace:*",
     "gatsby": "^5.14.3",
     "gatsby-transformer-remark": "^6.14.0",
     "react": "^18.3.1",
