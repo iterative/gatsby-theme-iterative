@@ -4,7 +4,7 @@ const pseudoShadow = modulePath => {
     return require(
       path.resolve('src', '@dvcorg', 'gatsby-theme-iterative', modulePath)
     )
-  } catch (e) {
+  } catch {
     return require(path.resolve(__dirname, 'src', modulePath))
   }
 }

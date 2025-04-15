@@ -82,7 +82,7 @@ const DesktopView: React.FC<IDesktopViewProps> = ({
       document.removeEventListener('scroll', throttledCalcPosition)
       window.removeEventListener('resize', throttledCalcPosition)
     }
-  }, [])
+  }, [throttledCalcPosition])
   useEffect(() => {
     if (isVisible) {
       requestAnimationFrame(calcPosition)

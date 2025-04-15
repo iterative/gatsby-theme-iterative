@@ -13,7 +13,7 @@ interface ISiteMeta {
   twitterUsername?: string
 }
 
-export default function siteMeta(): ISiteMeta {
+export default function useSiteMeta(): ISiteMeta {
   const {
     site: { siteMetadata }
   } = useStaticQuery(graphql`

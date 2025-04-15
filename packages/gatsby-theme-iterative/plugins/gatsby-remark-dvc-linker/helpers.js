@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // We do not need to consider the position of the AST nodes
 const buildAst = async mdToBuild => {
   const { unified } = await import('unified')
@@ -18,6 +19,7 @@ const useMatcher = (matcher, item) => {
       if (Array.isArray(matcher))
         return matcher.find(submatcher => useMatcher(submatcher, item))
       if (matcher instanceof RegExp) return matcher.match(item)
+      break
     default:
       throw `gatsby-remark-dvc-linker simpleLinker given bad matcher of type "${typeof matcher}"`
   }

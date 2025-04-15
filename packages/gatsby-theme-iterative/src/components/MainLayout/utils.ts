@@ -8,5 +8,5 @@ export const useRedirects = (): void => {
 
   useEffect(() => {
     handleFrontRedirect(location.host, location.pathname)
-  }, [location.href])
+  }, [location])
 }

@@ -37,12 +37,16 @@ const useAPICall = <R>(url: string): IApiCallResult<R> => {
       }
     }
 
-    fetchData()
+    if (url) fetchData()
 
     return (): void => {
       cancelled = true
     }
-  }, [])
+  }, [url])
+
+  if (!url) {
+    return { error: null, ready: false, result: undefined }
+  }
 
   return { error, ready, result }
 }
@@ -94,7 +98,6 @@ export interface IDiscussCommentsCountResponse {
 export function useCommentsCount(
   commentsUrl: string
 ): UseApiResult<IDiscussCommentsCountResponse, number> {
-  if (!commentsUrl) return { error: null, ready: false, result: 0 }
   const response = useAPICall<IDiscussCommentsCountResponse>(
     `/api/comments?url=${commentsUrl}`
   )

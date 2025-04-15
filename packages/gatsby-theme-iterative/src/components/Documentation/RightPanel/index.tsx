@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import cn from 'classnames'
 import throttle from 'lodash/throttle'
 
@@ -34,7 +34,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   const [currentHeadingSlug, setCurrentHeadingSlug] = useState<string | null>(
     null
   )
-  const updateCurrentHeader = (): void => {
+  const updateCurrentHeader = useCallback((): void => {
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
 
@@ -49,9 +49,9 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       : null
 
     setCurrentHeadingSlug(newCurrentHeadingSlug)
-  }
+  }, [documentHeight, headingsOffsets])
 
-  const updateHeadingsPosition = (): void => {
+  const updateHeadingsPosition = useCallback((): void => {
     const offsets = headings.reduce(
       (result: IHeadingsCoordinates, heading: IHeading) => {
         const headingElement = document.getElementById(heading.slug)
@@ -66,12 +66,14 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     )
     setHeadingsOffsets(offsets)
     setDocumentHeight(document.documentElement.clientHeight)
-  }
+  }, [headings])
 
   const initHeadingsPosition = (): void => {
     const root = document.querySelector('#markdown-root')
 
-    root && allImagesLoadedInContainer(root).then(updateHeadingsPosition)
+    if (root) {
+      allImagesLoadedInContainer(root).then(updateHeadingsPosition)
+    }
   }
 
   useEffect(() => {
@@ -84,9 +86,9 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       document.removeEventListener('scroll', throttledSetCurrentHeader)
       window.removeEventListener('resize', updateHeadingsPosition)
     }
-  }, [updateCurrentHeader])
-  useEffect(initHeadingsPosition, [headings])
-  useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
+  }, [updateCurrentHeader, updateHeadingsPosition])
+  useEffect(initHeadingsPosition, [headings, updateHeadingsPosition])
+  useEffect(updateCurrentHeader, [updateCurrentHeader])
 
   const contentBlockRef = useRef<HTMLDivElement>(null)
   useEffect(() => {

@@ -1,9 +1,8 @@
 const IS_CLIENT = ((): boolean => {
   let isDefined = false
   try {
-    window
-    isDefined = true
-  } catch (x) {
+    isDefined = typeof window !== 'undefined'
+  } catch {
     // nothing to do here, move on
   }
   return isDefined

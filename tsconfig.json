@@ -22,5 +22,10 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["./packages/*/src/**/*", "./packages/*/src/*.js", "./*.js"]
+  "include": [
+    "./packages/*/src/**/*",
+    "./packages/*/src/*.js",
+    "./*.js",
+    "eslint.config.mjs"
+  ]
 }

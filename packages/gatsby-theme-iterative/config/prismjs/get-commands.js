@@ -34,7 +34,7 @@ const getAliasList = async (repo, branch = 'main', tool) => {
         .filter(item => item.matches.startsWith(`${tool} `))
         .map(item => item.matches.replace(`${tool} `, ''))
     } else throw new Error('Error with response')
-  } catch (err) {
+  } catch {
     return []
   }
 }
@@ -153,6 +153,4 @@ switch (tool) {
       console.error(err)
     })
   }
-  default:
-    break
 }

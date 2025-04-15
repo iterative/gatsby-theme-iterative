@@ -28,7 +28,7 @@ class Slugger {
       .trim()
       .replace(/[-\s]+/g, this.separator)
       .replace(this.separator + this.separator, this.separator)
-      .replace(/(^\-+|\-+$)/g, '')
+      .replace(/(^-+|-+$)/g, '')
   }
   reset() {
     this.slugs = []

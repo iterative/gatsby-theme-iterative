@@ -24,10 +24,10 @@ Prism.languages.usage = {
       /(^|\n)\s*(usage|arguments|positional arguments|optional arguments)/
   },
   args: {
-    pattern: /(?<=\[)(?:[^\]\[]+|\[(?:[^\]\[]+|\[[^\]\[]*\])*\])*(?=\])/,
+    pattern: /(?<=\[)(?:[^\][]+|\[(?:[^\][]+|\[[^\][]*\])*\])*(?=\])/,
     inside: {
       arg: {
-        pattern: /\-{1,2}[^|]*/
+        pattern: /-{1,2}[^|]*/
       }
     }
   }

@@ -10,22 +10,22 @@ const { buildAst } = require('./helpers')
 
 describe('gatsby-remark-dvc-linker', async () => {
   const { visit } = await import('unist-util-visit')
-  api = {
+  const api = {
     inlineCode: '`dvc.api.get_url()`',
     url: '[`dvc.api.get_url()`](/doc/api-reference/get_url)'
   }
 
-  apiRoot = {
+  const apiRoot = {
     inlineCode: '`dvc.api`',
     url: '[`dvc.api`](/doc/api-reference/)'
   }
 
-  command = {
+  const command = {
     inlineCode: '`dvc get`',
     url: '[`dvc get`](/doc/command-reference/get)'
   }
 
-  live = {
+  const live = {
     inlineCode: '`Live.log()`',
     url: '[`Live.log()`](/doc/dvclive/live/log)'
   }

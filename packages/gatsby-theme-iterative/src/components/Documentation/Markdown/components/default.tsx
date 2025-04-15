@@ -51,7 +51,7 @@ export const Details: React.FC<
   }, '')
   id = useMemo(() => {
     return id ? slugger.slug(id) : slugger.slug(title)
-  }, [id, title])
+  }, [id, slugger, title])
 
   useEffect(() => {
     if (location.hash === `#${id}`) {
@@ -61,7 +61,7 @@ export const Details: React.FC<
     return () => {
       setIsOpen(false)
     }
-  }, [location.hash])
+  }, [id, location.hash])
 
   /*
      Collapsible's trigger type wants ReactElement, so we force a TS cast from

@@ -2,7 +2,7 @@ const safeQuerySelector = (query: string): null | Element => {
   try {
     const el = document.querySelector(query)
     return el
-  } catch (err) {
+  } catch {
     return null
   }
 }
