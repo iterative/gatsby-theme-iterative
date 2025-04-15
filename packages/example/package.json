@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "*",
-    "gatsby": "^5.13.3",
-    "gatsby-transformer-remark": "^6.13.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "gatsby": "^5.14.3",
+    "gatsby-transformer-remark": "^6.14.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

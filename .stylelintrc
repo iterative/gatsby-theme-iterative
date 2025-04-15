@@ -15,10 +15,16 @@
         "ignorePseudoClasses": ["global", "local"]
       }
     ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["mixin", "tailwind", "screen"]
+      }
+    ],
     "at-rule-no-deprecated": [
       true,
       {
-        "ignoreAtRules": ["mixin", "tailwind", "screen", "apply"]
+        "ignoreAtRules": ["apply"]
       }
     ],
     "custom-property-pattern": null,
