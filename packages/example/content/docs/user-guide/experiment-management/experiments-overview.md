@@ -58,12 +58,12 @@ Experiments workflow.
 It will create a simple `dvc.yaml` metafile, which codifies your planned
 experiments. This includes the locations for expected <abbr>dependencies</abbr>
 (data, parameters, source code) and <abbr>outputs</abbr> (ML models,
-<abbr>metrics</abbr>, etc.). These assume [sane defaults] but can be customized with
-the options of `dvc exp init`.
+<abbr>metrics</abbr>, etc.). These assume [sane defaults] but can be customized
+with the options of `dvc exp init`.
 
-💡 We recommend adding the `-i` flag to use its [interactive mode]. This will ask
-you how to run the experiments, and guide you through customizing the aforementioned
-locations (optional).
+💡 We recommend adding the `-i` flag to use its [interactive mode]. This will
+ask you how to run the experiments, and guide you through customizing the
+aforementioned locations (optional).
 
 You can review the resulting changes to your repo (and commit them to Git) to
 begin using DVC Experiments. Now you can move on to [running experiments][run]

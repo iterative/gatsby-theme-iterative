@@ -47,8 +47,8 @@ Any [generic option](/doc/ref) in addition to:
 - `--cloud-startup-script=<...>`: Run the provided
   [Base64](https://linux.die.net/man/1/base64)-encoded Linux shell script during
   the instance initialization.
-- `--cloud-ssh-private=<key>`: Private SSH RSA key [default:
-  *auto-generate throwaway key*]. Only supported on AWS and Azure; intended for debugging
+- `--cloud-ssh-private=<key>`: Private SSH RSA key [default: *auto-generate
+  throwaway key*]. Only supported on AWS and Azure; intended for debugging
   purposes.
 - `--cloud-aws-security-group=<...>`:
   [AWS security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)

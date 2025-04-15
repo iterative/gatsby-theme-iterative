@@ -23,8 +23,8 @@ Searches for changes in the existing tracked data and pipelines. In local mode,
 it shows which files or directories have changed in the <abbr>workspace</abbr>
 (thus could be [added](/doc/command-reference/add) or
 [reproduced](/doc/command-reference/repro) again). In remote mode, it reports
-the differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or `dvc pull`
-could be used to synchronize these).
+the differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or
+`dvc pull` could be used to synchronize these).
 
 | Mode   | Option            | Description                                                                                                                 |
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -138,8 +138,8 @@ that.
   `.dvc` files to inspect. If there are no directories among the targets, this
   option has no effect.
 
-- `-r <name>`, `--remote <name>` - name of the [remote storage] to compare against
-  (see `dvc remote list`). Implies `--cloud`.
+- `-r <name>`, `--remote <name>` - name of the [remote storage] to compare
+  against (see `dvc remote list`). Implies `--cloud`.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.

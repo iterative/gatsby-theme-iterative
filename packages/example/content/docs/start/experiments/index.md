@@ -24,9 +24,9 @@ the [`example-dvc-experiments`][ede] project.
 ## ⚙️ Initializing a project with DVC experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
-commands right away to run experiments in your project. (See the [User Guide] for
-detailed information.) Here, we briefly discuss how to structure an ML project with
-DVC experiments using `dvc exp init`.
+commands right away to run experiments in your project. (See the [User Guide]
+for detailed information.) Here, we briefly discuss how to structure an ML
+project with DVC experiments using `dvc exp init`.
 
 [user guide]: /doc/user-guide/experiment-management/experiments-overview
 

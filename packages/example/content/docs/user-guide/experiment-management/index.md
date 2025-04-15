@@ -59,8 +59,8 @@ main alternatives:
 - **Hybrid** - combining an intuitive directory structure with a good repo
   branching strategy tends to be the best option for complex projects.
   Completely independent experiments live in separate directories (and can be
-  generated with [`foreach` stages], for example), while their progress can be found
-  in different branches.
+  generated with [`foreach` stages], for example), while their progress can be
+  found in different branches.
 
 - **Labels** - in general, you can record experiments in a separate system and
   structure them using custom labeling. This is typical in dedicated experiment

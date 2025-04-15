@@ -350,10 +350,11 @@ When you want to add a large dataset that is outside of your
 it into the <abbr>workspace</abbr> first. But you may not have enough local
 storage space.
 
-You can however set up an [external cache] that can handle the data. To avoid ever
-making a local copy, target the outside data with `dvc add` while specifying an `--out`
-(`-o`) path inside of your project. This way the data will be transferred to the
-<abbr>cache</abbr> directly, and then [linked] into your workspace.
+You can however set up an [external cache] that can handle the data. To avoid
+ever making a local copy, target the outside data with `dvc add` while
+specifying an `--out` (`-o`) path inside of your project. This way the data will
+be transferred to the <abbr>cache</abbr> directly, and then [linked] into your
+workspace.
 
 Let's add a `data.xml` file via HTTP, putting it in `./data.xml`:
 
@@ -388,8 +389,8 @@ dataset, but you still want to track it in the <abbr>project</abbr> so it can be
 [pulled](/doc/command-reference/plots) later.
 
 As long as you have setup [remote storage] that can handle the data, this can be
-achieved with the `--to-remote` flag. It creates a `.dvc` file without downloading
-anything, transferring a target directly to a DVC remote instead:
+achieved with the `--to-remote` flag. It creates a `.dvc` file without
+downloading anything, transferring a target directly to a DVC remote instead:
 
 Let's add a `data.xml` file via HTTP straight to remote:
 
