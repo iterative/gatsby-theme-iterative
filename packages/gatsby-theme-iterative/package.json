@@ -77,8 +77,8 @@
   },
   "devDependencies": {
     "@types/hast": "3.0.4",
-    "stylelint": "15.11.0",
-    "typescript": "5.5.4"
+    "stylelint": "16.18.0",
+    "typescript": "5.8.3"
   },
   "peerDependencies": {
     "gatsby": "^5.0.0",
