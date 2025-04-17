@@ -100,8 +100,9 @@ Git remote, for _write_ (`dvc exp push`) or _read_ (`dvc exp list`,
 `dvc exp pull`) permissions.
 
 DVC does not currently support authentication with [Git credentials]. This means
-that unless the Git server allows unauthenticated HTTP write/read, you should use
-an [SSH Git URL] for Git remotes used for listing, pulling or pushing experiments.
+that unless the Git server allows unauthenticated HTTP write/read, you should
+use an [SSH Git URL] for Git remotes used for listing, pulling or pushing
+experiments.
 
 [git credentials]: https://git-scm.com/docs/gitcredentials
 [ssh git url]:
@@ -112,8 +113,8 @@ an [SSH Git URL] for Git remotes used for listing, pulling or pushing experiment
 You may encounter this error when using DVC on different Python versions with
 the same <abbr>DVC project</abbr> directory, for example having created the
 project on Python 3.8. in one environment and later attempting to update it from
-a Python 3.7 env. This is due to temporary [internal directories] that can be incompatible
-with older Python versions once created.
+a Python 3.7 env. This is due to temporary [internal directories] that can be
+incompatible with older Python versions once created.
 
 In these rare situations, it is safe to remove the corresponding tmp directory
 and retry the DVC command. Specifically, one of:

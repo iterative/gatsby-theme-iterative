@@ -3,3 +3,12 @@ public
 .log
 node_modules
 yarn-error.log
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

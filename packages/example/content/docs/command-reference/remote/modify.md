@@ -890,8 +890,8 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote kerberos true
   ```
 
-- `kerberos_principal` - [Kerberos principal] to use, in case you have multiple ones
-  (for example service accounts). Only used if `kerberos` is `true`.
+- `kerberos_principal` - [Kerberos principal] to use, in case you have multiple
+  ones (for example service accounts). Only used if `kerberos` is `true`.
 
   ```dvc
   $ dvc remote modify myremote kerberos_principal myprincipal

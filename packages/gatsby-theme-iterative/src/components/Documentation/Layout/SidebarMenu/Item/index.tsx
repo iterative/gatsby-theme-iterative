@@ -38,7 +38,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
 
   useEffect(() => {
     setIsExpanded(activePaths && includes(activePaths, path))
-  }, [activePaths])
+  }, [activePaths, path])
 
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path

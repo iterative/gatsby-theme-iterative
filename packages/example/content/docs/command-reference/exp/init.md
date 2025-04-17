@@ -37,8 +37,8 @@ Repository structure assumed by default:
 ```
 
 > Note that `dvc exp init` expects at least a `params.yaml` file present. DVC
-> reads it to find parameters to include in the [stage definition]. It can however
-> be omitted when using the `--explicit` and/or `-i` flags.
+> reads it to find parameters to include in the [stage definition]. It can
+> however be omitted when using the `--explicit` and/or `-i` flags.
 
 You must always provide a command that runs your experiment(s). It can be given
 either directly [as an argument](#the-command-argument), or by using the
@@ -48,8 +48,8 @@ wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
 Different types of stages are supported, such as `dl` (deep learning) which uses
 [DVCLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
 
-> `dvc exp init` is intended as a quick way to start running [DVC Experiments]. See
-> the `dvc.yaml` specification for complex data pipelines.
+> `dvc exp init` is intended as a quick way to start running [DVC Experiments].
+> See the `dvc.yaml` specification for complex data pipelines.
 
 [stage definition]:
   /doc/user-guide/project-structure/pipelines-files#stage-entries

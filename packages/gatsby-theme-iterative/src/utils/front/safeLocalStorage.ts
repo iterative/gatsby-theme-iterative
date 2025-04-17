@@ -4,7 +4,7 @@ const IS_SUPPORTED = ((): boolean => {
     localStorage.setItem(key, key)
     localStorage.removeItem(key)
     return true
-  } catch (e) {
+  } catch {
     return false
   }
 })()

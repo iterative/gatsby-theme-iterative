@@ -25,11 +25,12 @@ ML model registries give your team key capabilities:
 [mp]: https://dvc.org/doc/start/metrics-parameters-plots
 [experiments]: https://dvc.org/doc/user-guide/experiment-management
 
-Many of these benefits are built into DVC: Your [modeling process] and [performance
-data][mp] become **codified** in Git-based <abbr>DVC repositories</abbr>, making
-it possible to reproduce and manage models with standard Git workflows (along with
-code). Large model files are stored separately and efficiently, and can be pushed
-to [remote storage] -- a scalable access point for [sharing].
+Many of these benefits are built into DVC: Your [modeling process] and
+[performance data][mp] become **codified** in Git-based <abbr>DVC
+repositories</abbr>, making it possible to reproduce and manage models with
+standard Git workflows (along with code). Large model files are stored
+separately and efficiently, and can be pushed to [remote storage] -- a scalable
+access point for [sharing].
 
 <admon type="info">
 

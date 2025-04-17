@@ -350,7 +350,6 @@ describe('normalizeSidebar', () => {
       )
     })
 
-    // eslint-disable-next-line max-len
     it("Throws error if item has source: false and doesn't have children", () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
@@ -382,7 +381,6 @@ describe('normalizeSidebar', () => {
       expect(getItemByPath('/doc')).toEqual(result)
     })
 
-    // eslint-disable-next-line max-len
     it('Returns first child with source for all parents with source:false', () => {
       const rawData = [
         {

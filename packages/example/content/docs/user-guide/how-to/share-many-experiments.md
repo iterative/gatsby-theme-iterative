@@ -1,7 +1,8 @@
 # How to Share Many Experiments
 
-`dvc exp push` and `dvc exp pull` allow us to [share experiments] between repositories
-via existing DVC and Git remotes. These however work on individual experiments.
+`dvc exp push` and `dvc exp pull` allow us to [share experiments] between
+repositories via existing DVC and Git remotes. These however work on individual
+experiments.
 
 Here's a simple shell loop to push or pull all experiments (Linux):
 

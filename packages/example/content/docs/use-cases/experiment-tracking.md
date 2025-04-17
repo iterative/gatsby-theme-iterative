@@ -11,9 +11,10 @@ resume a line of work.
 (usually with notebooks or speadsheets)_
 
 DVC provides a layer of [experiment management] features out-of-the-box (no need
-for special servers or websites). Running **DVC Experiments** in your workspace captures
-relevant changesets automatically (input data, source code, hyperparameters, artifacts,
-etc.). This is possible because your entire ML pipeline is [codified with DVC].
+for special servers or websites). Running **DVC Experiments** in your workspace
+captures relevant changesets automatically (input data, source code,
+hyperparameters, artifacts, etc.). This is possible because your entire ML
+pipeline is [codified with DVC].
 
 Other tools tend to focus on experiment navigation by saving metrics and
 artifacts that result from your pipelines, along with fragile links to code
@@ -97,10 +98,10 @@ whether you're using Jupyter notebooks or Scala, CSV data frames or HDFS.
 
 ---
 
-To complete your stack, we also offer [Iterative Studio], an advanced web interface
-to collaborate on DVC projects online, including full experiment management support.
-You can also integrate with CI/CD using [CML], and run your experiments there straight
-from Studio!
+To complete your stack, we also offer [Iterative Studio], an advanced web
+interface to collaborate on DVC projects online, including full experiment
+management support. You can also integrate with CI/CD using [CML], and run your
+experiments there straight from Studio!
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
 [iterative studio]: /doc/studio

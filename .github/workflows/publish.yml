@@ -1,26 +1,23 @@
 name: Publish Package to npmjs
 on:
-  workflow_dispatch:
-  pull_request:
-    types: [closed]
-jobs:
   release:
-    if:
-      github.event_name == 'workflow_dispatch'
-      ||  (github.event.pull_request.merged && startsWith(github.head_ref,
-      'bump-theme-package/'))
+    types: [created]
+jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@dvcorg'
-      - run: |
-          cd ./packages/gatsby-theme-iterative
-          gh release create v$(node -p "require('./package.json').version") --generate-notes
-          yarn publish
+          node-version: '22'
+      - name: Publish package to npm
+        run: |
+          cd packages/gatsby-theme-iterative
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *"beta"* ]]; then
+          yarn npm publish --tag beta
+            else
+          yarn npm publish
+            fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

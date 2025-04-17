@@ -39,7 +39,6 @@ const SocialIcon: React.FC<ISocialIconProps> = ({
   className,
   label
 }): JSX.Element | null => {
-  /* eslint-disable-next-line */
   const icon: JSX.Element = icons[site!]
   return icon ? (
     <Link href={url} className={className} aria-label={label || site}>

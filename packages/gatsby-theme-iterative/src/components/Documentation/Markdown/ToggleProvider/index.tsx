@@ -31,7 +31,7 @@ interface ITogglesContext {
 export const TogglesContext = createContext<ITogglesContext>({})
 
 const makeTextUrlFriendly = (val: string): string =>
-  val.replace(/[^\w\-\._~]/g, '-').replace(/-+/g, '-')
+  val.replace(/[^\w\-._~]/g, '-').replace(/-+/g, '-')
 
 const convertTabTextToQueryText = (
   text: string,
@@ -193,7 +193,7 @@ export const Toggle: React.FC<{
     if (toggleId && !togglesData[toggleId]) {
       addNewToggle(toggleId, tabsTitles, labelParentText)
     }
-  }, [togglesData])
+  }, [addNewToggle, tabsTitles, toggleId, togglesData])
 
   return (
     <div className={cn('toggle', styles.toggle)} ref={toggleEl}>

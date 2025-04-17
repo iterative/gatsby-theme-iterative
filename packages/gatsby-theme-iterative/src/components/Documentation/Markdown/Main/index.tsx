@@ -63,10 +63,13 @@ const Main: React.FC<PropsWithChildren<IMainProps>> = ({
     isCodeBlockRef.current = isInsideCodeBlock(e.target as Element)
     touchstartXRef.current = e.changedTouches[0].screenX
   }, [])
-  const onTouchEnd = useCallback<RawTouchHandler>(e => {
-    touchendXRef.current = e.changedTouches[0].screenX
-    handleSwipeGesture()
-  }, [])
+  const onTouchEnd = useCallback<RawTouchHandler>(
+    e => {
+      touchendXRef.current = e.changedTouches[0].screenX
+      handleSwipeGesture()
+    },
+    [handleSwipeGesture]
+  )
 
   useEffect(() => {
     document.addEventListener('touchstart', onTouchStart, false)
@@ -76,7 +79,7 @@ const Main: React.FC<PropsWithChildren<IMainProps>> = ({
       document.removeEventListener('touchstart', onTouchStart)
       document.removeEventListener('touchend', onTouchEnd)
     }
-  }, [])
+  }, [onTouchEnd, onTouchStart])
 
   return (
     <div className={styles.content} id="markdown-root">

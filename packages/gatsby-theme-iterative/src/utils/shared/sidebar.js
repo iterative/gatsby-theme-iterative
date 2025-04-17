@@ -106,7 +106,7 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
         label,
         ...sharedFields
       }
-    default:
+    default: {
       // If prev item doesn't have source we need to search for it
       const prevItemWithSource =
         prevRef && findPrevItemWithSource(resultRef, prevRef)
@@ -129,6 +129,7 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
         next: undefined,
         ...sharedFields
       }
+    }
   }
 }
 

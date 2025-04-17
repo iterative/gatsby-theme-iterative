@@ -15,10 +15,9 @@ Git repositories in two ways:
    track their version info in Git.
 
    DVC also enables you to [store and share your data and model files], [create
-   data
-   registries], [create data pipelines], connect them with [CML](https://cml.dev)
-   for [CI/CD in machine learning], and so on. Find more about the features and
-   benefits of DVC [here](/doc/start).
+   data registries], [create data pipelines], connect them with
+   [CML](https://cml.dev) for [CI/CD in machine learning], and so on. Find more
+   about the features and benefits of DVC [here](/doc/start).
 
    Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
    repository.

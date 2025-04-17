@@ -15,7 +15,7 @@ import { INavLinkData, INavLinkPopupData } from './types'
 import navLinkItemsData from '../../../../data/headerNav'
 import { getShowOnClass } from './getShowOnClass'
 
-const LinkItems: React.FC = ({}) => {
+const LinkItems: React.FC = () => {
   const [isCommunityPopupOpen, setIsCommunityPopupOpen] = useState(false)
   const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
   const communityPopupContainerEl = useRef<HTMLLIElement>(null)

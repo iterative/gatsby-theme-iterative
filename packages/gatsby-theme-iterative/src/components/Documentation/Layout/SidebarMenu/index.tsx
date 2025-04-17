@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation } from '@gatsbyjs/reach-router'
 import cn from 'classnames'
 
@@ -23,7 +23,7 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
     ? getParentsListFromPath(currentPath)
     : undefined
 
-  const scrollToActiveItem = (): void => {
+  const scrollToActiveItem = useCallback((): void => {
     const node = document.getElementById(currentPath)
     const parent = rootRef.current
 
@@ -46,12 +46,11 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
 
       setIsScrollHidden(false)
     }, 400)
-  }
+  }, [currentPath])
 
   useEffect(() => {
     scrollToActiveItem()
-  }, [])
-  useEffect(scrollToActiveItem, [location.pathname])
+  }, [scrollToActiveItem, location])
 
   return (
     <div

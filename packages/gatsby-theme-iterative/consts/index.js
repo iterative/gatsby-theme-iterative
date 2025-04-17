@@ -1,7 +1,7 @@
 const consts = {
   CLI_REGEXP: /(dvc|cml|mlem|gto)\s+[a-z][a-z-.]*/,
   COMMAND_REGEXP: /^[a-z][a-z-]*$/,
-  ARGS_REGEXP: new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig'),
+  ARGS_REGEXP: new RegExp(/-{1,2}[a-zA-Z-]*/, 'ig'),
 
   COMMAND_ROOT: '/doc/command-reference/',
   CML_COMMAND_ROOT: '/doc/ref/',

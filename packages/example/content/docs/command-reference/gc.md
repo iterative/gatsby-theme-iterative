@@ -25,10 +25,10 @@ details.
 The data kept is determined by reading the <abbr>DVC files</abbr> in the set of
 commits of the given scope.
 
-> Note that `dvc gc` tries to fetch missing [`.dir` files] from remote storage to
-> local cache in order to determine which files should exist inside cached directories.
-> These files may be missing if the cache was previously garbage collected, in a
-> newly cloned copy of the repo, etc.
+> Note that `dvc gc` tries to fetch missing [`.dir` files] from remote storage
+> to local cache in order to determine which files should exist inside cached
+> directories. These files may be missing if the cache was previously garbage
+> collected, in a newly cloned copy of the repo, etc.
 
 Unless the `--cloud` option is used, any files collected from the cache can be
 restored using `dvc fetch`, as long as they have been previously uploaded with
@@ -96,14 +96,15 @@ project we want to clear.
 
   > \* Not including [DVC experiments]
 
-- `--all-experiments` keep cached objects referenced in all [DVC experiments], as
-  well as in the workspace (implying `-w`). This preserves the project's [experimental](/doc/user-guide/experiment-management)
-  data (including checkpoints). See also `dvc exp gc`.
+- `--all-experiments` keep cached objects referenced in all [DVC experiments],
+  as well as in the workspace (implying `-w`). This preserves the project's
+  [experimental](/doc/user-guide/experiment-management) data (including
+  checkpoints). See also `dvc exp gc`.
 
-- `-p <paths>`, `--projects <paths>` - if a single remote or a single [cache
-  is shared] among different projects, this option can be used to specify a list
-  of them (each project is a path) to keep data that is currently referenced
-  from them.
+- `-p <paths>`, `--projects <paths>` - if a single remote or a single [cache is
+  shared] among different projects, this option can be used to specify a list of
+  them (each project is a path) to keep data that is currently referenced from
+  them.
 
 - `-c`, `--cloud` - remove files in remote storage in addition to local cache.
   **This option is dangerous.** The default remote is used unless a specific one

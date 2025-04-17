@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-env node */
 
 const Prism = require('prismjs')
-const argsRegex = new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig')
+const argsRegex = new RegExp(/-{1,2}[a-zA-Z-]*/, 'ig')
 
 // Make sure the $ part of the command prompt in shell
 // examples isn't copiable by making it an 'input' token.

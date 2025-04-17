@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import Helmet from 'react-helmet'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 
-import getSiteMeta from '../../queries/siteMeta'
+import useSiteMeta from '../../queries/useSiteMeta'
 import { buildMetadata, MetaProps, LinkProps } from './helper'
 
 export interface IPaginatorPageInfo {
@@ -46,7 +46,7 @@ const SEO: React.FC<ISEOProps> = ({
   pageInfo,
   children
 }) => {
-  const siteMeta = getSiteMeta()
+  const siteMeta = useSiteMeta()
   const fullUrl = siteMeta.siteUrl + pathname
   const pageTitle = useMemo(() => {
     return pageInfo && pageInfo.currentPage > 1

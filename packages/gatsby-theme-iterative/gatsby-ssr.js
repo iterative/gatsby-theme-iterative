@@ -1,5 +1,4 @@
 /* eslint-env node */
-const React = require('react')
 
 const onRenderBody = ({ setHeadComponents }, { plausibleSrc }) => {
   if (plausibleSrc) {

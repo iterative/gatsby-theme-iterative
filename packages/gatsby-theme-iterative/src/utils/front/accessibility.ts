@@ -1,7 +1,6 @@
 const handleMouseDownOnce = (): void => {
   document.body.classList.remove('user-is-tabbing')
   window.removeEventListener('mousedown', handleMouseDownOnce)
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   window.addEventListener('keydown', handleFirstTab)
 }
 

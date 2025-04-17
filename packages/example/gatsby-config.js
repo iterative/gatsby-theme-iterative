@@ -12,6 +12,7 @@ module.exports = {
     siteUrl: 'http://gatsby-theme-iterative-example.herokuapp.com'
   },
   plugins: [
+    'gatsby-plugin-sharp',
     {
       resolve: themePackageName,
       options: {
