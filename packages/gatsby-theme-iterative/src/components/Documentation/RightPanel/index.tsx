@@ -88,7 +88,13 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     }
   }, [updateCurrentHeader, updateHeadingsPosition])
   useEffect(initHeadingsPosition, [headings, updateHeadingsPosition])
-  useEffect(updateCurrentHeader, [updateCurrentHeader])
+  useEffect(() => {
+    if (Object.keys(headingsOffsets).length > 0) {
+      setTimeout(() => {
+        updateCurrentHeader()
+      }, 0)
+    }
+  }, [headingsOffsets, documentHeight, updateCurrentHeader])
 
   const contentBlockRef = useRef<HTMLDivElement>(null)
   useEffect(() => {

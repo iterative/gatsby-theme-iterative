@@ -1,4 +1,3 @@
-/* eslint-env node */
 /*
   These helpers normalize sidebar structure and create all the resources needed.
   This prevents future recalculations.

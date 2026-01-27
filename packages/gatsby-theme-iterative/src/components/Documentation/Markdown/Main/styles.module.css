@@ -47,7 +47,7 @@
       @apply scroll-mt-5;
 
       font-weight: 500;
-      word-wrap: normal;
+      overflow-wrap: normal;
     }
 
     img + em,

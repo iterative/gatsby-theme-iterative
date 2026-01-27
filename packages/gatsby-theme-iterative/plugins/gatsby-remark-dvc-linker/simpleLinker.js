@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const { createLinkNode, useMatcher } = require('./helpers')
 
 const excludedParentTypes = ['link', 'heading']

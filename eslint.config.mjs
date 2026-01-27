@@ -3,13 +3,14 @@ import eslint from '@eslint/js'
 import json from '@eslint/json'
 
 import tseslint from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
 
 import react from 'eslint-plugin-react'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
 
-export default tseslint.config(
+export default defineConfig(
   {
     ignores: [
       '**/node_modules/**',
@@ -57,7 +58,7 @@ export default tseslint.config(
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
   jsxA11y.flatConfigs.recommended,
-  eslintPluginReactHooks.configs['recommended-latest'],
+  eslintPluginReactHooks.configs.flat.recommended,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     plugins: {
