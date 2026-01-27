@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 // we require prism and load its bash module so we have
 // Prism.languages.bash to embed into our DVC language.
 

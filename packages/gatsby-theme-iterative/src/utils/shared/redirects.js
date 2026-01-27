@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const { navigate } = require('gatsby')
 const { structure, findChildWithSource } = require('./sidebar')
 const redirects = require('@dvcorg/gatsby-theme-iterative/redirects')

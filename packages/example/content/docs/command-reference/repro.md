@@ -110,7 +110,6 @@ up-to-date and only execute the final stage.
 - `targets` (optional command argument) - what to reproduce (all pipeline(s) in
   `./dvc.yaml` by default). Different things can be provided as targets
   depending on the flags used (more details in each option). Examples:
-
   - `dvc repro linear/dvc.yaml`: A `dvc.yaml` file
   - `dvc repro -R pipelines/`: Directory to explore recursively for pipelines
   - `dvc repro train-model`: Specific stage(s) from `./dvc.yaml`

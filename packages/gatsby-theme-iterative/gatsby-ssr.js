@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const onRenderBody = ({ setHeadComponents }, { plausibleSrc }) => {
   if (plausibleSrc) {
     return setHeadComponents([

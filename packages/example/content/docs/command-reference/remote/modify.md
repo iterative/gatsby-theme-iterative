@@ -627,7 +627,6 @@ more information.
   ```
 
   ⚠️ DVC requires the following OAuth Scopes:
-
   - `https://www.googleapis.com/auth/drive`
   - `https://www.googleapis.com/auth/drive.appdata`
 
@@ -760,7 +759,6 @@ $ export OSS_ENDPOINT='endpoint'
   ```
 
   The order in which DVC picks the user name:
-
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `ssh://user@example.com/path`);
   3. User defined in the SSH config file (e.g. `~/.ssh/config`) for this host
@@ -774,7 +772,6 @@ $ export OSS_ENDPOINT='endpoint'
   ```
 
   The order in which DVC decide the port number:
-
   1. `port` parameter set with this command (found in `.dvc/config`);
   2. Port defined in the URL (e.g. `ssh://example.com:1234/path`);
   3. Port defined in the SSH config file (e.g. `~/.ssh/config`) for this host
@@ -964,7 +961,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
-
   - `basic` -
     [basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
     and `password` (or `ask_password`) parameters should also be configured.
@@ -1006,7 +1002,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
   The order in which DVC picks the user name:
-
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `http://user@example.com/path`);
 
@@ -1067,7 +1062,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
   The order in which DVC searches for user name is:
-
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `webdavs://user@example.com/endpoint/path`)
 

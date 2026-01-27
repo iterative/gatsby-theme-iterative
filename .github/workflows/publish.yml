@@ -2,6 +2,11 @@ name: Publish Package to npmjs
 on:
   release:
     types: [created]
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
       - name: Publish package to npm
         run: |
           cd packages/gatsby-theme-iterative
@@ -19,5 +25,3 @@ jobs:
             else
           yarn npm publish
             fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

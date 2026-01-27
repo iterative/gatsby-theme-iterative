@@ -36,3 +36,7 @@ html {
     color: inherit;
   }
 }
+
+.collapsed {
+  /* Collapsed state styles */
+}
