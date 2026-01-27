@@ -21,7 +21,7 @@ jobs:
           cd packages/gatsby-theme-iterative
           VERSION=$(node -p "require('./package.json').version")
           if [[ "$VERSION" == *"beta"* ]]; then
-          yarn npm publish --tag beta
+          npm publish --tag beta
             else
-          yarn npm publish
+          npm publish
             fi
