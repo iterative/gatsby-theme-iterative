@@ -123,7 +123,8 @@ const SEO: React.FC<ISEOProps> = ({
           src={siteMeta.plausibleSrc}
         />
       ) : null}
-      {children}
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      {children as any}
     </Helmet>
   )
 }

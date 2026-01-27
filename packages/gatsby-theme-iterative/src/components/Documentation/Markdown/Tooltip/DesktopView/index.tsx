@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react'
 import cn from 'classnames'
-import { Portal } from '@reach/portal'
+import { Portal } from '@radix-ui/react-portal'
 import throttle from 'lodash/throttle'
 
 import * as styles from './styles.module.css'
@@ -47,7 +47,7 @@ const DesktopView: React.FC<IDesktopViewProps> = ({
   header,
   text
 }) => {
-  const timeoutRef = useRef<number | undefined>()
+  const timeoutRef = useRef<number | undefined>(undefined)
   const toggleRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLDivElement>(null)
   const [tooltipPosition, setPosition] = useState<
@@ -61,7 +61,9 @@ const DesktopView: React.FC<IDesktopViewProps> = ({
 
     setPosition(getPosition(toggleRef.current, tooltipRef.current))
   }, [])
-  const throttledCalcPositionRef = useRef<ReturnType<typeof throttle>>()
+  const throttledCalcPositionRef = useRef<
+    ReturnType<typeof throttle> | undefined
+  >(undefined)
 
   useEffect(() => {
     throttledCalcPositionRef.current = throttle(calcPosition, 50)
@@ -112,7 +114,11 @@ const DesktopView: React.FC<IDesktopViewProps> = ({
               tooltipPosition?.arrow && styles.calculated,
               tooltipPosition?.arrow && styles[tooltipPosition.arrow.join('')]
             )}
-            style={tooltipPosition}
+            style={
+              tooltipPosition
+                ? { left: tooltipPosition.left, top: tooltipPosition.top }
+                : undefined
+            }
             onMouseOver={show}
             onMouseLeave={hide}
             onFocus={show}
