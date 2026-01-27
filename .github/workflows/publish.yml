@@ -21,6 +21,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Publish package to npm
         run: |
+          unset NODE_AUTH_TOKEN
           VERSION=$(node -p "require('./package.json').version")
           if [[ "$VERSION" == *"beta"* ]]; then
             npm publish --tag beta
