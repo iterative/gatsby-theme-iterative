@@ -10,6 +10,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/gatsby-theme-iterative
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,10 +21,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Publish package to npm
         run: |
-          cd packages/gatsby-theme-iterative
           VERSION=$(node -p "require('./package.json').version")
           if [[ "$VERSION" == *"beta"* ]]; then
-          npm publish --tag beta
-            else
-          npm publish
-            fi
+            npm publish --tag beta
+          else
+            npm publish
+          fi

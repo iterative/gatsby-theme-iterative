@@ -88,5 +88,10 @@
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iterative/gatsby-theme-iterative",
+    "directory": "packages/gatsby-theme-iterative"
   }
 }
