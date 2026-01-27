@@ -102,7 +102,6 @@ _Luigi_, etc.
 [_Make_](https://www.gnu.org/software/make/) and others.
 
 - File tracking:
-
   - DVC tracks files based on their hash values (MD5) instead of using
     timestamps. This helps avoid running into heavy processes like model
     retraining when you checkout a previous version of the project (Make would
@@ -115,7 +114,6 @@ _Luigi_, etc.
 - DVC utilizes a
   [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
   (DAG):
-
   - The DAG or dependency graph is defined implicitly by the connections between
     [stages](/doc/command-reference/run), based on their
     <abbr>dependencies</abbr> and <abbr>outputs</abbr>.

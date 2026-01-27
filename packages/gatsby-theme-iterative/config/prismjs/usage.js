@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const dvc = require('./dvc-commands')
 const cml = require('./cml-commands')
 const mlem = require('./mlem-commands')

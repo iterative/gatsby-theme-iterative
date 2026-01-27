@@ -9,6 +9,7 @@ import React, {
   useState
 } from 'react'
 import * as styles from './styles.module.css'
+import { useDeferredSetter } from '../../../../utils/front/useStateHelpers'
 
 interface ITogglesData {
   [key: string]: {
@@ -67,11 +68,12 @@ export const TogglesProvider: React.FC<
 > = ({ children }) => {
   const [togglesData, setTogglesData] = useState({})
   const [lastSelectedTab, setLastSelectedTab] = useState<null | string>(null)
+  const deferredSetLastSelectedTab = useDeferredSetter(setLastSelectedTab)
 
   useEffect(() => {
     const tab = getUrlQueryVal(window.location.search, 'tab')
-    setLastSelectedTab(tab)
-  }, [])
+    deferredSetLastSelectedTab(tab)
+  }, [deferredSetLastSelectedTab])
 
   const addNewToggle = (
     id: string,
@@ -163,6 +165,7 @@ export const Toggle: React.FC<{
   children: Array<{ props: { title: string } } | string>
 }> = ({ height, children }) => {
   const [toggleId, setToggleId] = useState('')
+  const deferredSetToggleId = useDeferredSetter(setToggleId)
   const {
     addNewToggle = (): null => null,
     updateToggleInd = (): null => null,
@@ -187,13 +190,13 @@ export const Toggle: React.FC<{
     if (toggleId === '') {
       const newId = nanoid()
       addNewToggle(newId, tabsTitles, labelParentText)
-      setToggleId(newId)
+      deferredSetToggleId(newId)
     }
 
     if (toggleId && !togglesData[toggleId]) {
       addNewToggle(toggleId, tabsTitles, labelParentText)
     }
-  }, [addNewToggle, tabsTitles, toggleId, togglesData])
+  }, [addNewToggle, tabsTitles, toggleId, togglesData, deferredSetToggleId])
 
   return (
     <div className={cn('toggle', styles.toggle)} ref={toggleEl}>

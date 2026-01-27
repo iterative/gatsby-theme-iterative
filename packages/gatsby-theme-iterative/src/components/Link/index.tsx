@@ -3,6 +3,7 @@ import { URL } from 'iso-url'
 import { useLocation } from '@gatsbyjs/reach-router'
 import { Link as GatsbyLink } from 'gatsby'
 import { getRedirect } from '../../utils/shared/redirects'
+
 export type ILinkProps = {
   children: React.ReactNode
   className?: string
@@ -24,6 +25,9 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   target,
   download = false,
   className = 'no-underline text-blue-600 hover:text-blue-800 hover:underline',
+  style,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   ...restProps
 }) => {
   // Handle all situations where a basic `a` must be used over Gatsby Link
@@ -61,6 +65,9 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
         href={href}
         rel={rel}
         target={target}
+        style={style}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
         className={className}
         {...restProps}
       >
@@ -71,7 +78,8 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
 
   return (
     <GatsbyLink to={href} className={className} {...restProps}>
-      {children}
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      {children as any}
     </GatsbyLink>
   )
 }

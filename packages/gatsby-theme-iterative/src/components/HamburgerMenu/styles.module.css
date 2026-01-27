@@ -70,6 +70,10 @@
   }
 }
 
+.expanded {
+  /* Expanded state styles */
+}
+
 .logoRow {
   display: flex;
 }

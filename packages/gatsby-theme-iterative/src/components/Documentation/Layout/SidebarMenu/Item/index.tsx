@@ -3,6 +3,7 @@ import { Collapse } from 'react-collapse'
 import cn from 'classnames'
 import includes from 'lodash/includes'
 
+import { useDeferredSetter } from '../../../../../utils/front/useStateHelpers'
 import Link from '../../../../Link'
 import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
 import * as styles from '../styles.module.css'
@@ -35,10 +36,11 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   const [isExpanded, setIsExpanded] = useState(
     activePaths && includes(activePaths, path)
   )
+  const deferredSetIsExpanded = useDeferredSetter(setIsExpanded)
 
   useEffect(() => {
-    setIsExpanded(activePaths && includes(activePaths, path))
-  }, [activePaths, path])
+    deferredSetIsExpanded(activePaths && includes(activePaths, path))
+  }, [activePaths, path, deferredSetIsExpanded])
 
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path

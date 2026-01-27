@@ -1,5 +1,3 @@
-/* eslint-env jest */
-
 describe('normalizeSidebar', () => {
   beforeEach(() => {
     jest.resetModules()

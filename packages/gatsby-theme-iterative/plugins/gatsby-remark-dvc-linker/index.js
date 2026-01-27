@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const flow = require('lodash/flow')
 const constant = require('lodash/constant')
 

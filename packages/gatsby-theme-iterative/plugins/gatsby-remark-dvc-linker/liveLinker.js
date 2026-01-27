@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const { createLinkNode } = require('./helpers')
 const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
