@@ -53,7 +53,7 @@
     "perfect-scrollbar": "^1.5.6",
     "postcss": "^8.5.6",
     "postcss-nested": "^7.0.2",
-    "prismjs": "^1.29.0",
+    "prismjs": "^1.30.0",
     "promise-polyfill": "^8.3.0",
     "react-collapse": "^5.1.1",
     "react-collapsible": "^2.10.0",
