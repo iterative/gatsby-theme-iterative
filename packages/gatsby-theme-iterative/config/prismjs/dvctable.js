@@ -1,4 +1,3 @@
-/* eslint-env node */
 const Prism = require('prismjs')
 
 const getTableTextBgColorRegex = color => new RegExp(String.raw`${color}:\S+`)

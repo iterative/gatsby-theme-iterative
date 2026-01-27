@@ -20,15 +20,15 @@ const LinkItems: React.FC = () => {
   const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
   const communityPopupContainerEl = useRef<HTMLLIElement>(null)
   const otherToolsPopupContainerEl = useRef<HTMLLIElement>(null)
-  let pageCloseEventListener: () => void = () => null
-  let keyupCloseEventListener: () => void = () => null
+  const pageCloseEventListener = useRef<(() => void) | null>(null)
+  const keyupCloseEventListener = useRef<(() => void) | null>(null)
 
   const closeAllPopups = (): void => {
     setIsCommunityPopupOpen(false)
     setIsOtherToolsPopupOpen(false)
 
-    pageCloseEventListener()
-    keyupCloseEventListener()
+    pageCloseEventListener.current?.()
+    keyupCloseEventListener.current?.()
   }
 
   const handlePageClick = (event: MouseEvent): void => {
@@ -56,9 +56,9 @@ const LinkItems: React.FC = () => {
     document.addEventListener('click', handlePageClick)
     document.addEventListener('keyup', handlePageKeyup)
 
-    pageCloseEventListener = (): void =>
+    pageCloseEventListener.current = (): void =>
       document.removeEventListener('click', handlePageClick)
-    keyupCloseEventListener = (): void =>
+    keyupCloseEventListener.current = (): void =>
       document.removeEventListener('keyup', handlePageKeyup)
   }
 

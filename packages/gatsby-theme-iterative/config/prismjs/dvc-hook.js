@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const Prism = require('prismjs')
 const argsRegex = new RegExp(/-{1,2}[a-zA-Z-]*/, 'ig')
 

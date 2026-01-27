@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Promise from 'promise-polyfill'
 import { loadResource } from '../../../../utils/front/resources'
+import { useDeferredSetter } from '../../../../utils/front/useStateHelpers'
 
 import * as styles from './styles.module.css'
 
@@ -13,6 +14,7 @@ declare global {
 
 const SearchForm: React.FC = props => {
   const [searchAvailable, setSearchAvailable] = useState<boolean>(false)
+  const deferredSetSearchAvailable = useDeferredSetter(setSearchAvailable)
   useEffect(() => {
     if (window) {
       if (!window.docsearch) {
@@ -31,7 +33,7 @@ const SearchForm: React.FC = props => {
               inputSelector: '#doc-search',
               debug: false // Set to `true` if you want to inspect the dropdown
             })
-            setSearchAvailable(true)
+            deferredSetSearchAvailable(true)
           }
         })
       } else {
@@ -41,10 +43,10 @@ const SearchForm: React.FC = props => {
           inputSelector: '#doc-search',
           debug: false // Set to `true` if you want to inspect the dropdown
         })
-        setSearchAvailable(true)
+        deferredSetSearchAvailable(true)
       }
     }
-  }, [])
+  }, [deferredSetSearchAvailable])
 
   return (
     <div className={styles.searchArea}>

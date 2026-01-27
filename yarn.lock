@@ -2059,6 +2059,7 @@ __metadata:
     "@types/gatsbyjs__reach-router": "npm:^2.0.5"
     "@types/hast": "npm:3.0.4"
     "@types/isomorphic-fetch": "npm:^0.0.39"
+    "@types/lodash": "npm:4.17.23"
     "@types/promise-polyfill": "npm:^6.0.6"
     "@types/react-collapse": "npm:^5.0.4"
     "@types/react-helmet": "npm:^6.1.11"
@@ -2093,7 +2094,7 @@ __metadata:
     lodash: "npm:^4.17.23"
     nanoid: "npm:^5.1.6"
     perfect-scrollbar: "npm:^1.5.6"
-    postcss: "npm:^8.5.3"
+    postcss: "npm:^8.5.6"
     postcss-nested: "npm:^7.0.2"
     prismjs: "npm:^1.29.0"
     promise-polyfill: "npm:^8.3.0"
@@ -4291,6 +4292,13 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/ff8f54fc49621210291f815fe5b15d809fd7d032941b3180743440bd507ecdf08b9e844625fa346af568c84bf34114eb378dcdc3e921a08ba1e2a08d7e3c809c
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:4.17.23":
+  version: 4.17.23
+  resolution: "@types/lodash@npm:4.17.23"
+  checksum: 10c0/9d9cbfb684e064a2b78aab9e220d398c9c2a7d36bc51a07b184ff382fa043a99b3d00c16c7f109b4eb8614118f4869678dbae7d5c6700ed16fb9340e26cc0bf6
   languageName: node
   linkType: hard
 
@@ -15450,7 +15458,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.11, postcss@npm:^8.4.24, postcss@npm:^8.4.47, postcss@npm:^8.5.3":
+"postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.11, postcss@npm:^8.4.24, postcss@npm:^8.4.47":
   version: 8.5.3
   resolution: "postcss@npm:8.5.3"
   dependencies:

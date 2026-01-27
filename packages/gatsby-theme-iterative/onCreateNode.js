@@ -4,9 +4,8 @@ let tooltipHTMLProcessor
 const getTooltipHTMLProcessor = async () => {
   if (!tooltipHTMLProcessor) {
     const { remark } = await import('remark')
-    const { default: recommended } = await import(
-      'remark-preset-lint-recommended'
-    )
+    const { default: recommended } =
+      await import('remark-preset-lint-recommended')
     const { default: remarkHtml } = await import('remark-html')
 
     tooltipHTMLProcessor = remark().use(recommended).use(remarkHtml)

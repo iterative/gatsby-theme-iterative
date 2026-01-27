@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation } from '@gatsbyjs/reach-router'
 import cn from 'classnames'
 
+import { useDeferredSetter } from '../../../../utils/front/useStateHelpers'
 import { getParentsListFromPath } from '../../../../utils/shared/sidebar'
 
 import * as styles from './styles.module.css'
@@ -19,6 +20,7 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
   const location = useLocation()
   const rootRef = useRef<HTMLDivElement>(null)
   const [isScrollHidden, setIsScrollHidden] = useState(false)
+  const deferredSetIsScrollHidden = useDeferredSetter(setIsScrollHidden)
   const activePaths = currentPath
     ? getParentsListFromPath(currentPath)
     : undefined
@@ -27,7 +29,7 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
     const node = document.getElementById(currentPath)
     const parent = rootRef.current
 
-    setIsScrollHidden(true)
+    deferredSetIsScrollHidden(true)
     setTimeout(() => {
       if (node && parent) {
         const parentHeight = parent.clientHeight
@@ -44,9 +46,9 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
         }
       }
 
-      setIsScrollHidden(false)
+      deferredSetIsScrollHidden(false)
     }, 400)
-  }, [currentPath])
+  }, [currentPath, deferredSetIsScrollHidden])
 
   useEffect(() => {
     scrollToActiveItem()

@@ -51,7 +51,7 @@
     "lodash": "^4.17.23",
     "nanoid": "^5.1.6",
     "perfect-scrollbar": "^1.5.6",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.6",
     "postcss-nested": "^7.0.2",
     "prismjs": "^1.29.0",
     "promise-polyfill": "^8.3.0",
@@ -77,6 +77,7 @@
   },
   "devDependencies": {
     "@types/hast": "3.0.4",
+    "@types/lodash": "4.17.23",
     "stylelint": "17.0.0",
     "typescript": "5.9.3"
   },
