@@ -1,6 +1,6 @@
 {
   "name": "@dvcorg/gatsby-theme-iterative",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "",
   "main": "index.js",
   "types": "src/typings.d.ts",
@@ -53,7 +53,7 @@
     "perfect-scrollbar": "^1.5.6",
     "postcss": "^8.5.6",
     "postcss-nested": "^7.0.2",
-    "prismjs": "^1.29.0",
+    "prismjs": "^1.30.0",
     "promise-polyfill": "^8.3.0",
     "react-collapse": "^5.1.1",
     "react-collapsible": "^2.10.0",
@@ -91,7 +91,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iterative/gatsby-theme-iterative",
+    "url": "git+https://github.com/iterative/gatsby-theme-iterative.git",
     "directory": "packages/gatsby-theme-iterative"
   }
 }
